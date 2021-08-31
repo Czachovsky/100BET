@@ -1,0 +1,163 @@
+@import "../mixins";
+
+.mat-drawer-container {
+  background-color: transparent;
+
+  .mat-drawer-backdrop.mat-drawer-shown {
+    background-color: rgba(0,0,0,.6);
+  }
+}
+
+.main-container {
+  height: calc(100vh - 75.3px);
+  overflow: hidden;
+  @include lower-than('lg'){
+    height: auto;
+    overflow: auto;
+  }
+}
+
+@-webkit-keyframes loader {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes loader {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0)
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
+
+.loading-wrapper{
+  background: #16181b;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  &.hide_it{
+    opacity:0;
+    transition: opacity 0.3s ease;
+  }
+  &.vis{
+    visibility: hidden;
+  }
+  ._loader{
+    color: rgba(255,255,255,.9);
+    width: 4.57142857rem;
+    height: 4.57142857rem;
+    font-size: 1.71428571em;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    text-align: center;
+    z-index: 1000;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+
+    &:before, &:after{
+      box-sizing: border-box;
+      width: 4.57142857rem;
+      height: 4.57142857rem;
+      margin: 0 0 0 -2.28571429rem;
+    }
+
+    &:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 50%;
+      border-radius: 500rem;
+      border: .2em solid rgba(255, 255, 255, .15);
+    }
+    &:after{
+      border-color: #fff transparent transparent;
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 50%;
+      -webkit-animation: loader .6s linear;
+      animation: loader .6s linear;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      border-radius: 500rem;
+      border-style: solid;
+      border-width: .2em;
+      -webkit-box-shadow: 0 0 0 1px transparent;
+      box-shadow: 0 0 0 1px transparent;
+    }
+  }
+}
+#insufficient_balance{
+  padding:35px;
+  width: 500px;
+  div.info_icon{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    span{
+      height:68px;
+      width: 68px;
+      background: #d1a306;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i{
+        color: #1d1e22;
+        font-size: rem-calc(35);
+      }
+    }
+  }
+  & > div.a{
+    color: var(--plain-white);
+    font-size: rem-calc(17);
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+  }
+  & > div.b{
+    color: #ffffff;
+    opacity: 0.4;
+    font-size: rem-calc(15);
+    display: block;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .deposit_button{
+    background-image: linear-gradient(83deg, #79bd1f, #649b1c 100%);
+    border-radius: 5px;
+    height: 42px;
+    border-color: #79bd1f;
+    align-items: center;
+    justify-content: center;
+    color: var(--plain-white);
+    font-size: rem-calc(15);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: var(--roboto-medium);
+    &:hover{
+      background: var(--plain-white);
+      color: #79bd1f;
+    }
+
+  }
+}

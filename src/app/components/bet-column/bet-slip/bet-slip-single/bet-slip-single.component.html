@@ -1,0 +1,152 @@
+<div id="bet__slip_single">
+  <div class="bet__slip-picks_wrapper">
+    <div class="bet__slip-pick-sub" *ngFor="let picked of pickedItems; let i = index; trackBy: trackByPickId">
+    <div class="bet__slip-pick-sub-sub" [ngClass]="{'hidee' : isBetPlaced && (picked.stake === 'NaN' || picked.stake === '0.00')}">
+      <div class="bet__slip-pick"
+           [ngClass]="{'pick_blocked': picked.isBlocked, 'isConflict': picked.isConflict, 'swiped' : picked.swipeLeft}"
+           (swipe)="onSwipe($event, i)">
+        <div class="bet__slip-pick_remove_wrapper hidden-lg-down"  *ngIf="!isBetPlaced">
+        <span class="bet__slip-pick_remove" (click)="removeThisItem(picked)">
+          <i class="far fa-trash-alt"></i>
+          <span>{{'betSlipSection.b3' | translate}}</span>
+        </span>
+        </div>
+       <div class='betslip_xxxx'>
+         <div class='betslip_yyyy'>
+           <div class="bet__slip-pick_infos">
+             <div class="bet__slip-pick_infos_selected">
+               {{whatShouldIDisplay(picked.selectedOption, picked)}}
+               <ng-container *ngIf="!picked.isAsian">{{picked.base | number : '1.1-1'}}</ng-container>
+               <ng-container *ngIf="picked.isAsian">{{picked.asianBase}}</ng-container>
+             </div>
+             <div class="bet__slip-pick_infos_res">{{ picked.marketName }}</div>
+             <div class="bet__slip-pick_infos_teams">
+               {{picked.team1Name}} - {{picked.team2Name}}
+             </div>
+           </div>
+           <div class="bet__slip-pick_stake">
+         <span class="bet__slip_odds" *ngIf="picked.isBlocked !== 1">
+         <span [ngClass]="{'changed' : picked.isChanged}">{{ picked.price | oddsFormat: os.oddFormatName}}</span>
+        </span>
+             <span class="input__stake_wrapper" *ngIf="picked.isBlocked !== 1" >
+          <div [ngClass]="{'error': (picked.stakeError || picked.maxStakeError || picked.minStakeError) && !isBetPlaced, 'hasFreeBet' : picked.selectedFreeBet}">
+            <input class="input__stake"
+                   placeholder="Stake"
+                   type="number"
+                   [(ngModel)]="picked.stake"
+                   (click)="showNumpad($event, i); input.select()"
+                   #input
+                   *ngIf="!isBetPlaced"
+                   (keyup)="calculateValue($event, i)"
+                   (focusout)="formatIt($event.target['value'], i)" />
+                    <span class="input__stake_fake_input hidden-lg-up" *ngIf="!isBetPlaced" (click)="picked.showNumpad = true">{{picked.stake}}</span>
+          </div>
+            <span class="placed_stake" *ngIf="isBetPlaced">
+              <ng-container *ngIf="picked.stake === 'NaN' || picked.stake === ''"></ng-container>
+              <ng-container *ngIf="picked.stake !== 'NaN' && picked.stake !== ''">¥{{picked.stake}}</ng-container>
+
+            </span>
+           <span class="_returns"
+                 *ngIf="picked.stake !== '' &&
+                        picked.stake !== 'NaN' &&
+                        picked.isBlocked !== 1 &&
+                        !picked.minStakeError &&
+                        !picked.maxStakeError">
+                      {{'betSlipSection.m12' | translate}} ¥{{ picked.possibleWin  | number : '1.2-2'}}</span>
+        </span>
+             <span *ngIf="picked.isBlocked === 1" class="bet__slip_odds_locked">
+          {{'betSlipSection.b19' | translate}}
+        </span>
+           </div>
+         </div>
+         <div *ngIf='pickedItems.length === 1 && picked?.freebet?.length' class='bet__slip_free_bet' [ngClass]="{'right_shadow':rShadow, 'left_shadow': lShadow}" #xD>
+           <drag-scroll style='width: auto;height:100%' [scrollbar-hidden]='true' (reachesRightBound)="freeBetsShadows()">
+             <div class='bet__slip_free_bet_sub'>
+               <div #xDD>
+              <span *ngFor='let fbet of picked.freebet; let j = index;' (click)='selectFreeBet(fbet, i, j)' [ngClass]="{'active' : fbet.selected}">
+              ¥{{fbet.amount}} {{'betSlipSection.b21' | translate}}
+            </span>
+               </div>
+             </div>
+           </drag-scroll>
+         </div>
+       </div>
+      </div>
+      <div class="remove_pick_mobile hidden-lg-up" (click)="removeThisItem(picked)" *ngIf="!isBetPlaced">
+        <i class="far fa-trash-alt"></i>
+        <span>Delete</span>
+      </div>
+    </div>
+      <workspace-numpad-small *ngIf="picked.showNumpad"
+                              [initialStake]="picked.stake"
+                              (valueFromNumpad)="mobileValueFromNumpad($event, i)"
+                                (acceptValueFromNumpad)="acceptMobileValueFromNumpad($event, i)"></workspace-numpad-small>
+    </div>
+    <div *ngIf="pickedItems.length > 1 && !conflictError">
+      <div class="bet__slip-pick trebles" [ngClass]="{'hasFreeBet': betslip['freeBetMultiSelected'],'hidee' : isBetPlaced && (betslip['multi_stake'] === 'Nan' || betslip['multi_stake'] === '0.00')}" #trebles>
+       <div class='betslip_xxxxys'>
+         <div class='betslip_xxxxyy'>
+           <div class="trebles-title">
+             <div class="subtitle">
+               <ng-container *ngIf="pickedItems.length === 2">{{'betSlipSection.m2' | translate}}</ng-container>
+               <ng-container *ngIf="pickedItems.length === 3">{{'betSlipSection.m3' | translate}}</ng-container>
+               <ng-container *ngIf="pickedItems.length > 3">{{pickedItems.length}} {{'betSlipSection.m4' | translate}}</ng-container>
+             </div>
+             <span (click)="showMultiples = !showMultiples">
+            <ng-container *ngIf="!showMultiples">{{'betSlipSection.m8' | translate}}s</ng-container>
+            <ng-container *ngIf="showMultiples">{{'betSlipSection.m13' | translate}}</ng-container>
+            <i class="fas fa-chevron-down"></i></span>
+           </div>
+           <workspace-bet-slip-multiple (showMultiNumpad)='showMultiNumpadFn($event)' [isBetPlaced]="isBetPlaced"></workspace-bet-slip-multiple>
+         </div>
+         <div *ngIf='pickedItems.length > 1 && betslip.freeBetMulti?.length' class='bet__slip_free_bet' [ngClass]="{'right_shadow':rShadow, 'left_shadow': lShadow}" #xD>
+           <drag-scroll style='width: auto;height:100%' [scrollbar-hidden]='true' (reachesRightBound)="freeBetsShadows()">
+             <div class='bet__slip_free_bet_sub'>
+               <div #xDD>
+              <span *ngFor='let fbetM of betslip.freeBetMulti; let j = index;' (click)='selectFreeBetMulti(fbetM, j)' [ngClass]="{'active' : fbetM.selected}">
+              ¥{{fbetM.amount}} {{'betSlipSection.b21' | translate}}
+            </span>
+               </div>
+             </div>
+           </drag-scroll>
+         </div>
+       </div>
+
+      </div>
+      <workspace-numpad-small *ngIf='showMultiNumpad'
+                              [initialStake]="betslip['multi_stake']"
+                              (valueFromNumpad)="mobileMultiValueFromNumpad($event)"
+                              (acceptValueFromNumpad)="acceptMobileMultiValueFromNumpad($event)"></workspace-numpad-small>
+      <div *ngIf="pickedItems.length >= 2 && showMultiples" class="other_picks">
+          <workspace-betslip-singles pickedItems.length > 1></workspace-betslip-singles>
+        <ng-container *ngIf="pickedItems.length >= 2">
+          <workspace-betslip-doubles [betType]="'Doubles'" [permutation]="2"></workspace-betslip-doubles>
+        </ng-container>
+        <ng-container *ngIf="pickedItems.length >= 3">
+          <workspace-betslip-doubles [betType]="'Trebles'" [permutation]="3"></workspace-betslip-doubles>
+        </ng-container>
+        <ng-container *ngIf="pickedItems.length > 3">
+          <ng-container *ngFor="let pick of pickedItemsLength; let i = index;">
+            <ng-container *ngIf="i+1 > 3">
+              <workspace-betslip-doubles [betType]="i+1+' '+'Folds'" [permutation]="i+1"></workspace-betslip-doubles>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="pickedItems.length === 3"><workspace-betslip-others [betType]="5"></workspace-betslip-others></ng-container>
+        <ng-container *ngIf="pickedItems.length === 3"><workspace-betslip-others [betType]="12"></workspace-betslip-others></ng-container>
+        <ng-container *ngIf="pickedItems.length === 4"><workspace-betslip-others [betType]="6"></workspace-betslip-others></ng-container>
+        <ng-container *ngIf="pickedItems.length === 4"><workspace-betslip-others [betType]="14"></workspace-betslip-others></ng-container>
+        <ng-container *ngIf="pickedItems.length === 5"><workspace-betslip-others [betType]="8"></workspace-betslip-others></ng-container>
+        <ng-container *ngIf="pickedItems.length === 5"><workspace-betslip-others [betType]="15"></workspace-betslip-others></ng-container>
+        <ng-container *ngIf="pickedItems.length === 6"><workspace-betslip-others [betType]="9"></workspace-betslip-others></ng-container>
+        <ng-container *ngIf="pickedItems.length === 6"><workspace-betslip-others [betType]="16"></workspace-betslip-others></ng-container>
+        <ng-container *ngIf="pickedItems.length === 7"><workspace-betslip-others [betType]="10"></workspace-betslip-others></ng-container>
+        <ng-container *ngIf="pickedItems.length === 8"><workspace-betslip-others [betType]="11"></workspace-betslip-others></ng-container>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,81 @@
+<div class="cash-out-settings">
+  <div class="cash-out-settings-menu">
+    <ul>
+      <li><span [ngClass]="{'active' : openedSection === 1}" (click)="openedSection = 1;">{{'myBetsSection.myBetsSettings.settings1' | translate}}</span></li>
+      <li><span [ngClass]="{'active' : openedSection === 2}" (click)="openedSection = 2;">{{'myBetsSection.myBetsSettings.settings2' | translate}}</span></li>
+    </ul>
+  </div>
+
+  <div class="cash-out-settings-body">
+    <div class="partial" *ngIf="openedSection === 1">
+      <span>{{'myBetsSection.myBetsSettings.settings3' | translate}}</span>
+     <div>
+       <input type="range" min="0" max="100" value="0" step="0.01" class="slider" class="partial_slider" [(ngModel)]="partialValue" (ngModelChange)="calculateCashOutSlider($event)">
+       <div class="min_max">
+         <span class="min">0</span>
+         <span class="max">{{maximumCashOut}}</span>
+       </div>
+     </div>
+    </div>
+    <div class="auto" *ngIf="openedSection === 2" [ngClass]="{'active_rule': cashoutBet.auto_cash_out_amount !== null}">
+
+      <div>
+        <span>{{'myBetsSection.myBetsSettings.settings4' | translate}}</span>
+        <div class="input_wrapper" [ngClass]="{'error' : autoCashOutAmountError}">
+          <input type="number"
+                 [(ngModel)]="autoValue"
+                 (ngModelChange)="calculateAutoCashOut($event)"
+                 #input
+                 (click)="input.select()"
+                 maxlength="10"
+                 *ngIf="!cashoutBet.auto_cash_out_amount">
+          <span *ngIf="cashoutBet.auto_cash_out_amount !== null">{{cashoutRule.valueReachesAmount | number: '1.2-2'}}</span>
+        </div>
+      </div>
+
+      <div [ngClass]="{'active_rule_label' : cashoutRule.partialAmount !== null && cashoutBet.auto_cash_out_amount !== null, 'not_created' : !cashoutRule.created}">
+        <label for="full_cash_out">
+          <input type="radio" id="full_cash_out" name="cash_out_type" value="full_cash_out"
+                 checked
+                 [checked]="!cashoutRule.partialAmount"
+                  (change)="cashoutTypeChange($event, 'full')">
+          <span></span>
+          {{'myBetsSection.myBetsSettings.settings5' | translate}}</label>
+      </div>
+      <div [ngClass]="{'active_rule_label' : !cashoutRule.partialAmount && cashoutBet.auto_cash_out_amount !== null, 'not_created' : !cashoutRule.created}">
+        <label for="partial_cash_out">
+        <input type="radio" id="partial_cash_out" name="cash_out_type" value="partial_cash_out"
+               [checked]="cashoutRule.partialAmount !== null"
+               (change)="cashoutTypeChange($event, 'partial')">
+        <span></span>
+        Cash out</label>
+       <div class="input_wrapper" [ngClass]="{'error' : cashoutRule.partialAmountError}">
+         <input type="number" min="0.01"  value="0.00"
+                [(ngModel)]="cashoutRule.partialAmount"
+                (ngModelChange)="calculatePartialAmount($event)"
+                [disabled]="cashoutRule.fullCashout">
+       </div>
+      </div>
+      <div class="cashout_auto_error" *ngIf="autoCashOutAmountError && (autoCashOutAmountMaxError || autoCashOutAmountMinError) || cashoutRule.partialAmountError">
+        <ng-container *ngIf="autoCashOutAmountMaxError">{{'myBetsSection.myBetsSettings.settings6' | translate}} {{autoCashOutAmount.max}}</ng-container>
+        <ng-container *ngIf="autoCashOutAmountMinError">{{'myBetsSection.myBetsSettings.settings7' | translate}} {{autoCashOutAmount.min}}</ng-container>
+        <ng-container *ngIf="cashoutRule.partialAmountError">T{{'myBetsSection.myBetsSettings.settings6' | translate}} {{cashoutRule.valueReaches}}</ng-container>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cash-out-settings-button">
+    <span *ngIf="openedSection === 1"  class="cash-out-settings-accept" (click)="cashOut()" [ngClass]="{'disabled': !doneEnabled}">{{'betSlipSection.b16' | translate}}</span>
+    <span *ngIf="openedSection === 2"  class="cash-out-settings-accept"
+          (click)="createRule(!cashoutBet.auto_cash_out_amount)"
+          [ngClass]="{'disabled':!cashoutBet.auto_cash_out_amount && (cashoutRule.partialAmountError || !cashoutRule.created) && (!cashoutRule.fullCashout && !cashoutRule.partialAmount)}">
+      <ng-container *ngIf="!cashoutBet.auto_cash_out_amount">{{'myBetsSection.myBetsSettings.settings8' | translate}}</ng-container>
+      <ng-container *ngIf="cashoutBet.auto_cash_out_amount !== null">{{'myBetsSection.myBetsSettings.settings9' | translate}}</ng-container>
+    </span>
+
+  </div>
+  <div class="loading-wrapper" *ngIf="cashoutRule.loading">
+    <div class="_loader"></div>
+  </div>
+</div>

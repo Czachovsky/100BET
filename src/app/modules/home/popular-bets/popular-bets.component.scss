@@ -1,0 +1,119 @@
+@import "../../../../mixins";
+
+.popular__bets {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  @include lower-than('lg') {
+    margin: 0;
+  }
+
+  &_wrapper {
+    background: #292929;
+    @include lower-than('lg') {
+      padding: 0;
+    }
+
+    .popular__bets_item {
+      background: var(--plain-white);
+      border: 1px solid #eceff2;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: stretch;
+      padding-right: 10px;
+      @include lower-than('lg') {
+        margin: 0;
+      }
+
+      &_header {
+        color: #9fa5b1;
+        font-size: 0.8571rem;
+        position: relative;
+        line-height: 14px;
+        min-width: 60px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+          display: block;
+          color: var(--text-color);
+        }
+
+        &:after {
+          content: '';
+          height: 100%;
+          width: 1px;
+          position: absolute;
+          background-image: linear-gradient(to bottom, #eceff2, var(--plain-white));
+          display: block;
+          right: 0;
+          top: 0;
+        }
+      }
+
+      &_teams {
+        padding-left: 15px;
+        font-size: 0.8571rem;
+        line-height: 14px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+
+        .popular__bets_item_type {
+          color: var(--cool-grey);
+          margin-bottom: 5px;
+
+          &:before {
+            opacity: 0.5;
+            height: 11px;
+            margin-right: 5px;
+          }
+        }
+
+        .popular__bets_item_teams_names {
+          color: var(--text-color);
+
+          margin-bottom: 5px;
+
+          &_vs {
+            color: var(--cool-grey);
+          }
+        }
+
+        .both_teams_to_score {
+          color: var(--cool-grey);
+
+          span {
+            font-family: var(--roboto-bold);
+            color: var(--text-color);
+          }
+        }
+      }
+
+      &_pick {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+      }
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  &__showall_wrapper {
+    padding-top: 15px;
+    @include lower-than('lg') {
+      padding-bottom: 15px;
+    }
+
+    a {
+      text-decoration: underline;
+      color: var(--text-color);
+      display: block;
+      text-align: center;
+      font-size: 1.143rem;
+    }
+  }
+}

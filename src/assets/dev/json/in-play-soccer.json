@@ -1,0 +1,208 @@
+ [
+    {
+      "itemHour": "08:35",
+      "teams": [
+        {
+          "teamName": "Borussia Dortmund",
+          "teamScore": "2"
+        },
+        {
+          "teamName": "Bayern Monachium",
+          "teamScore": "1"
+        }
+      ],
+      "picks": [
+        {
+          "id": "soccerItemspick1",
+          "inCart": false,
+          "inPlayPickMultiplier": "3.50",
+          "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+          "live": true,
+          "finished": false,
+          "locked": true,
+          "sport_name": "soccer",
+          "option_name" : "Borussia Dortmund",
+          "event_name" : "Borussia Dortmund - Bayern Monachium"
+        },
+        {
+          "id": "soccerItemspick2",
+          "inCart": false,
+          "inPlayPickMultiplier": "3.50",
+          "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+          "live": true,
+          "finished": true,
+          "locked": false,
+          "sport_name": "soccer",
+          "option_name" : "Draw",
+          "event_name" : "Borussia Dortmund - Bayern Monachium"
+        },
+        {
+          "id": "soccerItemspick3",
+          "inCart": false,
+          "inPlayPickMultiplier": "3.50",
+          "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+          "live": false,
+          "finished": false,
+          "locked": false,
+          "sport_name": "soccer",
+          "option_name" : "Bayern Monachium",
+          "event_name" : "Borussia Dortmund - Bayern Monachium"
+        }
+      ]
+    },
+    {
+      "itemHour": "12:28",
+      "teams": [
+        {
+          "teamName": "Arsenal",
+          "teamScore": "2"
+        },
+        {
+          "teamName": "Man UTD",
+          "teamScore": "1"
+        }
+      ],
+      "picks": [
+        {
+          "id": "soccerItemspick21",
+          "inCart": false,
+          "inPlayPickMultiplier": "3.50",
+          "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+          "live": true,
+          "finished": false,
+          "locked": false,
+          "sport_name": "soccer",
+          "option_name" : "Arsenal",
+          "event_name" : "Arsenal - Man UTD"
+        },
+        {
+          "id": "soccerItemspick22",
+          "inCart": false,
+          "inPlayPickMultiplier": "3.50",
+          "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+          "live": true,
+          "finished": false,
+          "locked": false,
+          "sport_name": "soccer",
+          "option_name" : "Draw",
+          "event_name" : "Arsenal - Man UTD"
+        },
+        {
+          "id": "soccerItemspick32",
+          "inCart": false,
+          "inPlayPickMultiplier": "3.50",
+          "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+          "live": true,
+          "finished": false,
+          "locked": false,
+          "sport_name": "soccer",
+          "option_name" : "Man UTD",
+          "event_name" : "Arsenal - Man UTD"
+        }
+      ]
+    },
+   {
+     "itemHour": "08:35",
+     "teams": [
+       {
+         "teamName": "Borussia Dortmund",
+         "teamScore": "2"
+       },
+       {
+         "teamName": "Bayern Monachium",
+         "teamScore": "1"
+       }
+     ],
+     "picks": [
+       {
+         "id": "soccerItemspick1a",
+         "inCart": false,
+         "inPlayPickMultiplier": "3.50",
+         "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+         "live": true,
+         "finished": false,
+         "locked": false,
+         "sport_name": "soccer",
+         "option_name" : "Borussia Dortmund",
+         "event_name" : "Borussia Dortmund - Bayern Monachium"
+       },
+       {
+         "id": "soccerItemspick2a",
+         "inCart": false,
+         "inPlayPickMultiplier": "3.50",
+         "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+         "live": true,
+         "finished": false,
+         "locked": false,
+         "sport_name": "soccer",
+         "option_name" : "Draw",
+         "event_name" : "Borussia Dortmund - Bayern Monachium"
+       },
+       {
+         "id": "soccerItemspick3a",
+         "inCart": false,
+         "inPlayPickMultiplier": "3.50",
+         "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+         "live": true,
+         "finished": false,
+         "locked": false,
+         "sport_name": "soccer",
+         "option_name" : "Bayern Monachium",
+         "event_name" : "Borussia Dortmund - Bayern Monachium"
+       }
+     ]
+   },
+   {
+     "itemHour": "12:28",
+     "teams": [
+       {
+         "teamName": "Arsenal",
+         "teamScore": "2"
+       },
+       {
+         "teamName": "Man UTD",
+         "teamScore": "1"
+       }
+     ],
+     "picks": [
+       {
+         "id": "soccerItemspick21a",
+         "inCart": false,
+         "inPlayPickMultiplier": "3.50",
+         "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+         "live": true,
+         "finished": false,
+         "locked": false,
+         "sport_name": "soccer",
+         "option_name" : "Arsenal",
+         "event_name" : "Arsenal - Man UTD"
+       },
+       {
+         "id": "soccerItemspick22a",
+         "inCart": false,
+         "inPlayPickMultiplier": "3.50",
+         "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+         "live": true,
+         "finished": false,
+         "locked": false,
+         "sport_name": "soccer",
+         "option_name" : "Draw",
+         "event_name" : "Arsenal - Man UTD"
+       },
+       {
+         "id": "soccerItemspick32a",
+         "inCart": false,
+         "inPlayPickMultiplier": "3.50",
+         "inPlaySomethingButDunnoWhat": "-0.5 -1.0",
+         "live": true,
+         "finished": false,
+         "locked": false,
+         "sport_name": "soccer",
+         "option_name" : "Man UTD",
+         "event_name" : "Arsenal - Man UTD"
+       }
+     ]
+   }
+
+ ]
+

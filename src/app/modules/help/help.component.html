@@ -1,0 +1,17 @@
+<perfect-scrollbar>
+  <main>
+    <div class='container__row'>
+      <div class='container__col-12 container__col-lg-3 left_section' *ngIf="isDesktop||isHelpPage">
+        <workspace-help-expansion-panel></workspace-help-expansion-panel>
+      </div>
+
+      <div class='right_section'>
+        <div *ngIf="isDesktop || !isHelpPage">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <workspace-footer></workspace-footer>
+</perfect-scrollbar>

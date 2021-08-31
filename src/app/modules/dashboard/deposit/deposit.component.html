@@ -1,0 +1,106 @@
+<div class="deposit">
+  <div class="dashboard-header">
+    <div class="dashboard-header-sub">{{ 'dashboard.deposit.d1' | translate }}</div>
+    <span (click)='goToHelp()' class='questionM hidden-lg-up'><i class='fal fa-question-circle'></i></span>
+  </div>
+  <div class='deposit_header_sub'>
+    <div class="deposit_header">
+      <picture>
+        <source media="(min-width: 997px)" [srcset]="'assets/images/dashboard/WelcomeDeposit_1.png 1x, assets/images/dashboard/WelcomeDeposit_1@2x.png 2x, assets/images/dashboard/WelcomeDeposit_1@3x.png 3x'"/>
+        <source media="(max-width: 997px)" [srcset]="'assets/images/dashboard/WelcomeRegistration.png 1x, assets/images/dashboard/WelcomeRegistration@2x.png 2x, assets/images/dashboard/WelcomeRegistration@3x.png 3x'"/>
+
+        <img [src]="'assets/images/dashboard/WelcomeDeposit_1.png'" alt="Deposit Bonus">
+
+
+      </picture>
+    </div>
+  </div>
+  <ng-container *ngIf="depositChannels.length">
+    <div class="deposit_list">
+      <div class="deposit_channel"
+           *ngFor="let depositChannel of depositChannels"
+           (click)="selectChannel(depositChannel)"
+            [ngClass]="{'selected' : depositChannel.selected, 'disabled' : !depositChannel.isAvailable}">
+        <div class="channel_img">
+          <img [src]="'/assets/images/providers/'+depositChannel['locales']['en'].toLowerCase().replace(' ', '')+'.png'"
+               [srcset]="'/assets/images/providers/'+depositChannel['locales']['en'].toLowerCase().replace(' ', '')+'@2x.png 2x'">
+        </div>
+        <div class="channel_name"><span>{{ 'dashboard.deposit.d4' | translate }} </span>{{getChannelName(depositChannel['locales'])}}</div>
+      </div>
+    </div>
+    <div class="deposit_amount">
+      <div class="deposit_amount_input">
+        <span>{{ 'dashboard.deposit.d5' | translate }}</span>
+        <input [ngClass]="{'blocked': blockDeposit}"
+                type="number" #amountInput pattern="^\d*(\.\d{0,2})?$"
+               [(ngModel)]="selectedValue"
+               (keypress)="validateAmount($event);"
+               (keyup)="checkAmount($event)"
+               (focusout)="checkAmount($event)"
+               (click)="amountInput.select();">
+        <span [ngClass]="{'blocked': blockDeposit}" class="mobile_input hidden-lg-up" (click)="showNumpad()">{{selectedValue}}</span>
+      </div>
+      <div class="deposit_amount_buttons  hidden-lg-down" [ngClass]="{'blocked': blockDeposit}">
+        <div *ngFor="let value of predefinedValues"
+             (click)="selectValue(value)">{{value}}</div>
+      </div>
+      <span class="min_max" [ngClass]="{'showErr': valueError, 'blocked': blockDeposit}">* {{ 'dashboard.deposit.d6' | translate }} {{selectedChannel.minAmount}}, {{ 'dashboard.deposit.d7' | translate }} {{selectedChannel.maxAmount}}</span>
+      <span class="error">{{textErrorFromBancked}}</span>
+    </div>
+  </ng-container>
+  <div class="deposit_proceed" [ngClass]="{'numpad' : numpad}">
+    <div class="deposit-numpad hidden-lg-up">
+      <workspace-deposit-numpad (valueFromNumpad)="getvalueFromNumpad($event)"></workspace-deposit-numpad>
+    </div>
+    <div>
+      <div class="desc_wr hidden-lg-down">
+        <span>{{ 'dashboard.deposit.d8' | translate }}</span>
+        <a href="#">{{ 'dashboard.deposit.d9' | translate }}</a>
+      </div>
+      <div class="btn_wr">
+        <span (click)="showConfirmationModal()" [ngClass]="{'blocked': blockDeposit}">{{ 'dashboard.deposit.d10' | translate }}
+         <div *ngIf="loading" class="loader">
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+        </div>
+        </span>
+      </div>
+      <div class='numpad-bg' *ngIf='numpad' (click)='numpad = false'></div>
+    </div>
+  </div>
+</div>
+
+
+<workspace-ohb-modal class="noprovider_modal" [(visible)]="showNoChannelsModal" *ngIf="showNoChannelsModal">
+  <div class="success_modal">
+    <div class="_icon">
+      <i class="fas fa-exclamation"></i>
+    </div>
+    <div class="_text">
+      <h4>{{ 'dashboard.accDet.acc17' | translate }}</h4>
+      <ng-container>
+        <span>{{ 'dashboard.deposit.d11' | translate }}</span>
+      </ng-container>
+
+      <button (click)="showNoChannelsModal = false">{{ 'dashboard.accDet.acc15' | translate }}</button>
+    </div>
+  </div>
+</workspace-ohb-modal>
+
+
+<workspace-ohb-modal class="confirmWithdrawal_modal" [(visible)]="confirmDeposit" *ngIf="confirmDeposit">
+  <div class="wrapper text-center">
+    <div class="modal_body">
+      <div class="title">{{ 'selectTranslations.deposit' | translate}}</div>
+      <p>{{'dashboard.deposit.d12' | translate}}: <span>¥ {{amount}}</span></p>
+    </div>
+    <div class="actions">
+      <div (click)="confirmDeposit = false;" >{{ 'dashboard.promotions.p18' | translate }}</div>
+      <div (click)="depositNow(); confirmDeposit = false">{{ 'dashboard.promotions.p19' | translate }}</div>
+    </div>
+  </div>
+</workspace-ohb-modal>

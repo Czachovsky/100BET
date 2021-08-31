@@ -1,0 +1,90 @@
+{
+  "default": {
+    "optionName": 0,
+    "optionDisplayName": "all",
+    "optionValue": "all"
+  },
+  "options": [
+    {
+      "optionName": 0,
+      "optionDisplayName": "all",
+      "optionValue": "all"
+    },
+    {
+      "optionName": 1,
+      "optionDisplayName": "single",
+      "optionValue": "single"
+    },
+    {
+      "optionName": 2,
+      "optionDisplayName": "multi",
+      "optionValue": "multi"
+    },
+    {
+      "optionName": 3,
+      "optionDisplayName": "system",
+      "optionValue": "system"
+    },
+    {
+      "optionName": 5,
+      "optionDisplayName": "trixie",
+      "optionValue": "trixie"
+    },
+    {
+      "optionName": 12,
+      "optionDisplayName": "patent",
+      "optionValue": "patent"
+    },
+    {
+      "optionName": 6,
+      "optionDisplayName": "yankee",
+      "optionValue": "yankee"
+    },
+    {
+      "optionName": 14,
+      "optionDisplayName": "lucky15",
+      "optionValue": "lucky15"
+    },
+    {
+      "optionName": 15,
+      "optionDisplayName": "lucky31",
+      "optionValue": "lucky31"
+    },
+    {
+      "optionName": 16,
+      "optionDisplayName": "lucky63",
+      "optionValue": "lucky63"
+    },
+    {
+      "optionName": 9,
+      "optionDisplayName": "heinz",
+      "optionValue": "heinz"
+    },
+    {
+      "optionName": 8,
+      "optionDisplayName": "superYankee",
+      "optionValue": "superYankee"
+    },
+    {
+      "optionName": 10,
+      "optionDisplayName": "superHeinz",
+      "optionValue": "superHeinz"
+    },
+    {
+      "optionName": 11,
+      "optionDisplayName": "goliath",
+      "optionValue": "goliath"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+

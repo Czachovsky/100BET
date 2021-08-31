@@ -1,0 +1,37 @@
+<div class="fixture__outrights">
+  <div class="fixture__outrights_section" *ngFor="let outright of fixtureArray; first as isFirst"
+       [ngClass]="{'open_it':isFirst}">
+    <div class="fixture__outrights_section_header solid__blue__header" #tableBody [ngClass]="{'active': isFirst}">
+        <span (click)="toggleTableBody(tableBody)">
+          {{ outright.fixtureOutrightsHeadingName }} <div class="fixture__outrights_counter">5</div> <i class="fas fa-angle-down"></i>
+        </span>
+    </div>
+    <div class="fixture__outrights_section_table_wrapper">
+      <div class="fixture__outrights_section_table" *ngFor="let outrightTable of outright.outrightsDataset">
+        <div class="fixture__outrights_section_table_header" #test>
+          <div>
+            <div class="fixture__outrights_headings">{{ outrightTable.outrightsDataset_title }}</div>
+            <div class="fixture__outrights_date">{{ outrightTable.outrightsDatasetDate }}</div>
+          </div>
+          <div>
+            <a class="fixture__outrights_chart" href="#"><i class="far fa-chart-bar"></i></a>
+            <span class="fixture__outrights_expand" (click)="toggleTableBody(test)"><i class="fas fa-angle-down"></i></span>
+          </div>
+        </div>
+        <div class="fixture__outrights_section_table_body">
+        <div class="fixture__outrights_section_table_body_q">{{ outrightTable.outrightsDatasetQuestion }}</div>
+          <div class="fixture__outrights_section_table_body_options">
+            <div class="fixture__outrights_option pick__button"
+                 *ngFor="let outrightOption of outrightTable.outrightsDatasetQuestion_options">
+                  <span>{{ outrightOption.option }}</span> <b>{{ outrightOption.odd }}</b>
+            </div>
+          </div>
+          <div class="fixture__outrights_section_table_body_show_more">
+            <span>Show more</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

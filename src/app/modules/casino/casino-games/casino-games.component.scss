@@ -1,0 +1,352 @@
+@import "../../../../mixins";
+
+.casino_lobby {
+  & > .container {
+    @include higher-than(1400px) {
+      padding: 0;
+      max-width: 1390px;
+    }
+
+
+    @include lower-than('lg') {
+      padding: 0 10px;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 20px 20px;
+      backface-visibility: hidden;
+      margin-bottom: 30px;
+      &.noo_games{
+        display: flex;
+      }
+      @include lower-than('lg'){
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: unset;
+      }
+      .no_games{
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 150px;
+        @include lower-than('lg'){
+          margin-top: 150px;
+        }
+        svg{
+          height: 100px;
+          margin-bottom: 23px;
+        }
+        div{
+          color: #959595;
+          b{
+            font-size: rem-calc(25);
+            font-family: var(--roboto-medium);
+            display: block;
+            margin-bottom: 5px;
+          }
+          div{
+              font-size: rem-calc(21);
+              max-width: 500px;
+              margin:0 auto;
+          }
+        }
+      }
+      .single_game {
+        position: relative;
+        border-radius: 2px;
+        box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.16);
+        background-color: #1d1e1f;
+        //flex-basis: calc(20% - 20px);
+        //max-width: calc(20% - 20px);
+        //margin-bottom: 30px;
+        overflow: hidden;
+        opacity: 0;
+        transform: scale(0, 0);
+        transition: all 0.3s ease;
+        @include lower-than('lg') {
+          flex-basis: calc(50% - 5px);
+          max-width: calc(50% - 5px);
+          margin-bottom: 10px;
+        }
+
+        &:hover {
+          .play_wrapper {
+            opacity: 1;
+            transition: all 0.3s ease;
+          }
+        }
+
+        &.loaded {
+          transform: scale(1, 1);
+          opacity: 1;
+        }
+
+        .favourite_game {
+          position: absolute;
+          opacity: 0.6;
+          color: #e7e7e7;
+          height: 25px;
+          width: 25px;
+          font-size: rem-calc(20);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          right: 10px;
+          top: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 50;
+
+          &.active, &:hover {
+            color: var(--yellow);
+            opacity: 1;
+            transition: all 0.3s ease;
+          }
+        }
+
+        .play_wrapper {
+          position: absolute;
+          z-index: 49;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.6);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: all 0.3s ease;
+          flex-direction: column;
+
+          .play_btn {
+            margin-bottom: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 32px 0 #000000;
+            background-image: linear-gradient(to right, #68a21c, #659c1c);
+            height: 50px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            font-family: var(--roboto-medium);
+            width: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include lower-than(1201px) {
+              width: 125px;
+            }
+          }
+
+          .free_play_btn {
+            height: 50px;
+            cursor: pointer;
+            width: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            box-shadow: 0 0 32px 0 #000000;
+            border: solid 1px #3080cb;
+            background: rgb(45, 163, 173);
+            background: linear-gradient(284deg, rgba(45, 163, 173, 1) 35%, rgba(8, 77, 141, 1) 100%);
+            text-transform: uppercase;
+            font-family: var(--roboto-medium);
+            @include lower-than(1201px) {
+              width: 125px;
+            }
+          }
+        }
+
+        .game_icon {
+          img {
+            width: 100%;
+            display: block;
+          }
+        }
+
+        .game_infos {
+          padding: 20px 10px;
+          display: none;
+        }
+      }
+    }
+  }
+
+  .load_more_games_w {
+    text-align: center;
+    margin-bottom: 15px;
+
+    .load_more_games {
+      height: 50px;
+      padding: 0 40px;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: var(--roboto-medium);
+      display: inline-block;
+      text-align: center;
+      line-height: 50px;
+      margin: 0 auto;
+      border-radius: 3px;
+      cursor: pointer;
+      box-shadow: 0 0 32px 0 #000000;
+      background-image: linear-gradient(to right, #68a21c, #659c1c);
+    }
+  }
+
+}
+
+
+.casino_filters {
+  @include lower-than('lg'){
+    top:100%;
+    position: fixed;
+    background: #2b2b2b;
+    z-index: 350;
+    height: calc(100vh - 100px) !important;
+    width: 100vw;
+    transition: top 0.3s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 70px;
+    @media not all and (min-resolution:.001dpcm)
+    { @supports (-webkit-appearance:none) {
+      height: calc(100vh - 150px) !important;
+    }}
+    &.show-filters{
+      top: 48px;
+      transition: all 0.3s ease;
+      .casino_filters_footer{
+        display: block;
+      }
+    }
+    .casino_filters_header{
+      height: 30px;
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+      background: #2b2b2b;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span{
+        color: #fff;
+        font-family: var(--roboto-bold);
+        font-size: rem-calc(13);
+        &.close_filters{
+          font-family: var(--roboto-regular);
+          cursor: pointer;
+          position: absolute;
+          right:0;
+          top:0;
+          height: 100%;
+          padding:0 15px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+    .casino_filters_footer{
+      height: 70px;
+      box-shadow: 0 -8px 7px 0 rgba(0, 0, 0, 0.16);
+      background-color: #252525;
+      border-top: solid 2px #2f2f2f;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: none;
+      span{
+        height: 50px;
+        border-radius: 2px;
+        background-image: linear-gradient(98deg, #79bd1f, #659c1c 101%);
+        text-transform: uppercase;
+        font-family: var(--roboto-medium);
+        font-size: rem-calc(15);
+        width: calc(100% - 50px);
+        margin: 10px auto 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+  }
+  & > .container {
+    @include higher-than(1400px) {
+      padding: 0;
+      max-width: 1390px;
+    }
+    @include lower-than('lg') {
+      padding: 0 10px;
+    }
+    .game_providers {
+      margin-bottom: 40px;
+      @include lower-than('lg'){
+        margin:0;
+      //  padding-bottom: 70px;
+      }
+      &_header{
+        font-family: var(--roboto-medium);
+        font-size: 1.2857142857rem;
+        margin-bottom: 15px;
+      }
+      &_sub {
+        display: flex;
+        flex-wrap: wrap;
+
+        span {
+          cursor: pointer;
+          height: 49px;
+          padding: 0 15px;
+          font-family: var(--roboto-medium);
+          font-size: rem-calc(16);
+          text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #2c2c2c;
+          border-radius: 2px;
+          margin-bottom: 7px;
+          margin-right: 7px;
+          color: #fff;
+          transition: all 0.3s ease;
+          @include lower-than('lg'){
+            font-family: var(--roboto-regular);
+            font-size: rem-calc(14);
+            background: #1d1e1f;
+            border:1px solid #1d1e1f;
+            text-transform: none;
+            padding: 0 15px;
+            color: #777879;
+            &:hover, &.active {
+              border:1px solid #79bd1f !important;
+              color: #79bd1f !important;
+              background: #292929 !important;
+            }
+            &:last-child{
+              display: none;
+            }
+          }
+          &.hide {
+            display: none;
+            @include lower-than('lg'){
+              display: inherit;
+            }
+          }
+
+          i {
+            margin-left: 10px;
+          }
+
+          &:hover, &.active {
+            color: #16181b;
+            background: #fed40d;
+            transition: all 0.3s ease;
+          }
+        }
+      }
+    }
+  }
+}
+

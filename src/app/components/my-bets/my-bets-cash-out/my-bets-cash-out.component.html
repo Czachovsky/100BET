@@ -1,0 +1,181 @@
+<div class="my_bets my_bets-cash-out">
+  {{cashOutArr}}
+  <div class="my_bets-items">
+    <div class="my_bets-item" >
+      <div class="my_bets-item-header" #betItem>
+        <div (click)="expandIt(betItem)">
+          <span>30.00 System 2/3</span>
+          <span ><i class="fas fa-angle-down"></i></span>
+        </div>
+      </div>
+      <div class="my_bets-item-body">
+        <div class="my_bets-item-body-row">
+          <div class="my_bets-match-row">
+            <div class="icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="match_info">
+              <div class="selected">
+                Borussia Dortmund - 2.0, -2
+              </div>
+              <span>Asian Handicap</span>
+              <div class="infos">
+                <span>RB Leipzig v Borussia Dortmund</span>
+                <span class="yellow">1:1</span>
+                <span>17:00</span>
+              </div>
+            </div>
+            <div class="multiplier">
+              <span>1.4</span>
+              <div class="live__icon">
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+          </div>
+          <div class="cashout_container">
+            <div class="cashout_wrapper">
+              <div class="my_bets-stake_returns">
+                <div class="my_bets-stake">
+                  <span>Stake</span>
+                  <div>¥14</div>
+                </div>
+                <div class="my_bets-returns">
+                  <span>Total To Returns</span>
+                  <div>¥10</div>
+                </div>
+              </div>
+              <div class="my_bets-buttons">
+                <div class="button my_bets-cash-out-button">
+                  <span>Cash out:</span>¥9
+                </div>
+                <div class="button my_bets-settings-button">
+                  <i class="fas fa-cog"></i>
+                  <!-- <div class="square">
+                    <div class="sub" style="display: none;">
+                      <ul class="sub-options">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                      </ul>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my_bets-item">
+      <div class="my_bets-item-header" #betItem1>
+        <div (click)="expandIt(betItem1)">
+          <span>30.00 System 2/3</span>
+          <span><i class="fas fa-angle-down"></i></span>
+        </div>
+      </div>
+      <div class="my_bets-item-body">
+        <div class="my_bets-item-body-row">
+          <div class="my_bets-match-row">
+            <div class="icon">
+              <i class="far fa-clock"></i>
+            </div>
+            <div class="match_info">
+              <div class="selected">
+                Borussia Dortmund - 2.0, -2
+              </div>
+              <span>Asian Handicap</span>
+              <div class="infos">
+                <span>RB Leipzig v Borussia Dortmund</span>
+                <span class="yellow">1:1</span>
+                <span>17:00</span>
+              </div>
+            </div>
+            <div class="multiplier">
+              <span>1.4</span>
+              <div class="live__icon">
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+          </div>
+          <div class="cashout_container">
+            <div class="cashout_wrapper">
+              <div class="my_bets-stake_returns">
+                <div class="my_bets-stake">
+                  <span>Stake</span>
+                  <div>¥14</div>
+                </div>
+                <div class="my_bets-returns">
+                  <span>Total To Returns</span>
+                  <div>¥10</div>
+                </div>
+              </div>
+              <div class="my_bets-buttons">
+                <div class="button my_bets-cash-out-button">
+                  <span>Cash out:</span>¥9
+                </div>
+                <div class="button my_bets-settings-button">
+                  <i class="fas fa-cog"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my_bets-item">
+      <div class="my_bets-item-header" #betItem2>
+        <div (click)="expandIt(betItem2)">
+          <span>30.00 Single</span>
+          <span><i class="fas fa-angle-down"></i></span>
+        </div>
+      </div>
+      <div class="my_bets-item-body">
+        <div class="my_bets-item-body-row">
+          <div class="my_bets-match-row">
+            <div class="icon">
+              <i class="far fa-clock"></i>
+            </div>
+            <div class="match_info">
+              <div class="selected">
+                Borussia Dortmund - 2.0, -2
+              </div>
+              <span>Asian Handicap</span>
+              <div class="infos">
+                <span>RB Leipzig v Borussia Dortmund</span>
+                <span class="yellow">1:1</span>
+                <span>17:00</span>
+              </div>
+            </div>
+            <div class="multiplier">
+              <span>1.4</span>
+              <div class="live__icon">
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+          </div>
+          <div class="cashout_container">
+            <div class="cashout_wrapper">
+              <div class="my_bets-stake_returns">
+                <div class="my_bets-stake">
+                  <span>Stake</span>
+                  <div>¥14</div>
+                </div>
+                <div class="my_bets-returns">
+                  <span>Total To Returns</span>
+                  <div>¥10</div>
+                </div>
+              </div>
+              <div class="my_bets-buttons">
+                <div class="button disabled my_bets-cash-out-button">
+                  <span>Returned ¥20.00</span>
+                </div>
+              </div>
+            </div>
+            <div class="history">View History</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

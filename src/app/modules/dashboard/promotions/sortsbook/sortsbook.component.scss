@@ -1,0 +1,374 @@
+/*Thin 100
+Light 300
+Regular 400
+Medium 500
+Bold 700
+Black 900*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  vertical-align: top;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  background: #242424;
+}
+#container {
+  padding: 30px;
+}
+.listBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #565656;
+  border-radius: 10px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.15);
+  background: #252525;
+}
+.listBoxImg {
+  width: 398px;
+}
+.listBoxImg img {
+  border-radius: 10px 0 0 10px;
+  width: 100%;
+  height: auto;
+}
+.listBoxCont {
+  width: calc(100% - 612px);
+  padding: 10px 30px;
+}
+.listBoxCont p {
+  padding-bottom: 8px;
+}
+.listBoxCont p.contTitle {
+  color: #fed40d;
+  text-transform: uppercase;
+}
+.listBoxCont p.description {
+  color: #faf9f6;
+}
+.listBoxCont p.contSubTitle {
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
+.listBoxCont p.contBot {
+  color: #4c4c4c;
+  padding: 8px 0 0;
+}
+.listBoxBtn {
+  width: 214px;
+  padding-right: 30px;
+}
+.btn {
+  width: 100%;
+  color: #fff;
+  line-height: 58px;
+  padding: 0 15px;
+  border-radius: 4px;
+  background: #024a8c;
+  text-align: center;
+  border: 0;
+  cursor: pointer;
+}
+.contTitleMob {
+  display: none;
+}
+
+.popUp {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.popUpCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.popUpInn {
+  width: 100%;
+  max-width: 413px;
+  border-radius: 10px;
+  box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.6);
+  border: solid 1px #414141;
+  background-image: linear-gradient(to bottom, #1d1e22, #151619);
+}
+.popUpInnTxt {
+  text-align: center;
+  padding: 28px 43px 20px;
+}
+.popHead {
+  font-size: 27px;
+  line-height: 30px;
+  padding-bottom: 10px;
+  font-weight: 500;
+}
+.popBtns {
+  display: flex;
+  justify-content: space-between;
+  border-top: solid 1px #414141;
+}
+.popBtns a:last-child {
+  border-left: solid 1px #414141;
+}
+.popBtns a {
+  width: 50%;
+  color: #4285f4;
+  font-size: 28px;
+  line-height: 62px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}
+.popBtns_1 {
+  display: flex;
+  justify-content: space-between;
+  border-top: solid 1px #414141;
+}
+.popBtns_1 a:last-child {
+  border-left: solid 1px #414141;
+}
+.popBtns_1 a {
+  width: 100%;
+  color: #4285f4;
+  font-size: 28px;
+  line-height: 62px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}
+.promoBoxOuter {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 -29px;
+}
+.promoBoxList {
+  width: 33.33%;
+  padding: 0 29px 58px;
+}
+.promoBox {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.24);
+  border: solid 1px #565656;
+  background-color: #252525;
+}
+.promoBtn {
+  width: 152px;
+  line-height: 48px;
+  border-radius: 5px;
+  text-align: center;
+  background-image: linear-gradient(107deg, #084d8d, #2da3ad);
+  color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.promoRate {
+  color: #4285f4;
+  font-size: 42px;
+  line-height: 44px;
+  font-weight: 500;
+}
+.promoHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.promoHeadLeft {
+  font-size: 17px;
+  line-height: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.promoHeadLeft span {
+  opacity: 0.6;
+  display: block;
+  padding-top: 7px;
+  text-transform: none;
+  font-weight: 400;
+}
+.promoHeadLeft em {
+  color: #fed40d;
+  font-style: normal;
+}
+.promoInnerBox {
+  width: 100%;
+  margin: 17px 0;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: #2c2c2c;
+  color: #fff;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  justify-content: space-between;
+}
+.promoInnerBox span {
+  color: #7c7c7c;
+  display: block;
+  font-size: 14px;
+  line-height: 17px;
+  padding-bottom: 13px;
+}
+
+.promoInnerBoxRgt {
+  padding-left: 48px;
+  margin-left: 20px;
+  position: relative;
+}
+.promoInnerBoxRgt:before {
+  width: 2px;
+  height: 48px;
+  background: #404040;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -25px;
+  content: "";
+}
+.promoBot {
+  color: #fff;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+}
+.promoBot span {
+  color: #4c4c4c;
+  display: block;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 300;
+}
+.promoBot em {
+  display: block;
+  padding: 13px 0;
+  font-style: normal;
+}
+
+@media only screen and (max-width: 1279px) {
+  .contTitleMob {
+    display: block;
+    font-size: 22px;
+    line-height: 24px;
+    color: #fed40d;
+    padding-bottom: 12px;
+  }
+  .contTitle {
+    display: none;
+  }
+  .listBoxImg {
+    width: 100%;
+  }
+  .listBoxCont {
+    width: calc(100%);
+    padding: 10px 0 0;
+  }
+  .listBoxBtn {
+    width: 100%;
+    padding-right: 0;
+    padding-top: 14px;
+  }
+  .listBox {
+    flex-wrap: wrap;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #252525;
+    align-items: flex-start;
+  }
+  .listBoxOut {
+    padding: 18px;
+    border-radius: 5px;
+    border: 1px solid #565656;
+    box-shadow: 0 0 6px 0 rgb(0 0 0 / 15%);
+    background: #252525;
+  }
+  .listBoxImg img {
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+  }
+  .popUpInn {
+    max-width: 267px;
+  }
+  .popHead {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .popUpInnTxt {
+    padding: 17px;
+  }
+  .popUpInnTxt p {
+    font-size: 14px;
+  }
+  .popBtns a {
+    font-size: 18px;
+    line-height: 38px;
+  }
+
+  .popBtns_1 a {
+    font-size: 18px;
+    line-height: 38px;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .promoBoxOuter {
+    margin: 0;
+  }
+  .promoBoxList {
+    width: 100%;
+    padding: 0 0 20px;
+  }
+  .promoBox {
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .promoInnerBoxRgt {
+    padding-left: 20px;
+    margin-left: 20px;
+  }
+  .promoInnerBox {
+    padding: 15px;
+  }
+}
+
+.loading_section {
+  transition: filter 0.3s ease;
+  position: relative;
+
+  & > *:not(.loading-wrapper) {
+    filter: blur(5px);
+    pointer-events: none;
+    transition: filter 0.3s ease;
+  }
+}
+
+.no-records {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .text {
+    font-size: rem-calc(35);
+  }
+
+  .icon {
+    font-size: rem-calc(45);
+    margin-bottom: 18px;
+  }
+}

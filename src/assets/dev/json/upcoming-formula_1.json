@@ -1,0 +1,446 @@
+[
+  {
+    "upcomingDate": "Today",
+    "upcomingHour": "19:30",
+    "upcomingTeams": [
+      {
+        "upcomingTeam": "Formula1 team1"
+      },
+      {
+        "upcomingTeam": "Formula1 team2"
+      }
+    ],
+    "upcoming1x2": [
+      {
+        "id": "upcomnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "up123comnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingHandicap": [
+      {
+        "id": "1upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "2upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingLine": [
+      {
+        "id": "4upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "5upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ]
+  },
+  {
+    "upcomingDate": "Today",
+    "upcomingHour": "19:30",
+    "upcomingTeams": [
+      {
+        "upcomingTeam": "Formula1 team1"
+      },
+      {
+        "upcomingTeam": "Formula1 team2"
+      }
+    ],
+    "upcoming1x2": [
+      {
+        "id": "upcomnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "up123comnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingHandicap": [
+      {
+        "id": "1upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "2upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingLine": [
+      {
+        "id": "4upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "5upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ]
+  },
+  {
+    "upcomingDate": "Today",
+    "upcomingHour": "19:30",
+    "upcomingTeams": [
+      {
+        "upcomingTeam": "Formula1 team1"
+      },
+      {
+        "upcomingTeam": "Formula1 team2"
+      }
+    ],
+    "upcoming1x2": [
+      {
+        "id": "upcomnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "up123comnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingHandicap": [
+      {
+        "id": "1upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "2upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingLine": [
+      {
+        "id": "4upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "5upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ]
+  },
+  {
+    "upcomingDate": "Today",
+    "upcomingHour": "19:30",
+    "upcomingTeams": [
+      {
+        "upcomingTeam": "Formula1 team1"
+      },
+      {
+        "upcomingTeam": "Formula1 team2"
+      }
+    ],
+    "upcoming1x2": [
+      {
+        "id": "upcomnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "up123comnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingHandicap": [
+      {
+        "id": "1upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "2upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingLine": [
+      {
+        "id": "4upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "5upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ]
+  },
+  {
+    "upcomingDate": "Today",
+    "upcomingHour": "19:30",
+    "upcomingTeams": [
+      {
+        "upcomingTeam": "Formula1 team1"
+      },
+      {
+        "upcomingTeam": "Formula1 team2"
+      }
+    ],
+    "upcoming1x2": [
+      {
+        "id": "upcomnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "up123comnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingHandicap": [
+      {
+        "id": "1upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "2upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingLine": [
+      {
+        "id": "4upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "5upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ]
+  },
+  {
+    "upcomingDate": "Today",
+    "upcomingHour": "19:30",
+    "upcomingTeams": [
+      {
+        "upcomingTeam": "Formula1 team1"
+      },
+      {
+        "upcomingTeam": "Formula1 team2"
+      }
+    ],
+    "upcoming1x2": [
+      {
+        "id": "upcomnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "up123comnigbsf123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingHandicap": [
+      {
+        "id": "1upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "2upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ],
+    "upcomingLine": [
+      {
+        "id": "4upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      },
+      {
+        "id": "5upcomnigbs12f123",
+        "upcomingSomethingButDunnoWhat": [
+          "2.0",
+          "2.5"
+        ],
+        "upcomingMultiplier": "3.50"
+      }
+    ]
+  }
+]

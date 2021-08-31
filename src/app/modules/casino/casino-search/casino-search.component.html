@@ -1,0 +1,119 @@
+<div class='search-dialog'>
+  <div class='dialog-header'>
+    <h2>{{ 'casino.cSearch.c1' | translate }}</h2>
+  </div>
+  <div class='search-dialog-content'>
+    <div class='input-box'>
+      <input [formControl]='casinoSearch'
+             (keyup.enter)='hitEnter()'
+             type='search'
+             placeholder="{{ 'casino.cSearch.c2' | translate }}" />
+      <div class='loader' *ngIf='isLoading'>
+        <div class='loader-dot'></div>
+        <div class='loader-dot'></div>
+        <div class='loader-dot'></div>
+        <div class='loader-dot'></div>
+        <div class='loader-dot'></div>
+        <div class='loader-dot'></div>
+      </div>
+      <div class='search' (click)='hitEnter()'>
+        <img [src]="'/assets/images/icons/search/search-outline.svg'" />
+      </div>
+    </div>
+
+    <div class='recent_search'>
+      <div class='recent_search_empty'
+           *ngIf='!recentSearches.length && (!dynamicSearch || !dynamicSearchArr.length) && !nSearch'>
+        <img src='/assets/images/icons/search/no-search-found.svg' />
+        <h4>{{ 'casino.cSearch.c2' | translate }}</h4>
+      </div>
+      <div class='recent_search_list'
+           *ngIf='recentSearches.length && (!dynamicSearch || !dynamicSearchArr.length) && !nSearch'>
+        <h4>{{ 'casino.cSearch.c3' | translate }}</h4>
+        <div style='height: calc(100% - 36px)'>
+          <perfect-scrollbar>
+            <ul>
+              <li *ngFor='let recent of recentSearches'>
+                <div (click)='recentSearch(recent)'>
+                <span class='ico' *ngIf="recent['type'] === 'phrase'">
+                  <i class='far fa-history'></i>
+                </span>
+                  <span class='ico' *ngIf="recent['type'] === 'game'">
+                  <svg xmlns='http://www.w3.org/2000/svg' width='23.562' height='23.867' viewBox='0 0 23.562 23.867'>
+    <defs>
+        <style>
+            .cls-1 {
+              fill: #fff
+            }
+        </style>
+    </defs>
+    <g id='card_icon' transform='translate(-22.5 -17.107)'>
+        <path id='Subtraction_1'
+              d='M-10466.174-9566.025a2.874 2.874 0 0 1-.637-.072l-8.234-1.9h7.045a4 4 0 0 0 4-4v-14.78l1.863.431a2.841 2.841 0 0 1 2.126 3.4l-3.4 14.729a2.823 2.823 0 0 1-2.763 2.192z'
+              class='cls-1' transform='translate(10506 9607)' />
+        <g id='card-spades' transform='translate(18 15.607)'>
+            <path id='Path_581'
+                  d='M13.394 15.99a1.89 1.89 0 0 0 2.673 2.673l.023-.025.024.025a1.89 1.89 0 0 0 2.673-2.673l-2.674-2.671-.023.023-.024-.024-2.673 2.672z'
+                  class='cls-1' transform='translate(-3.087 -4.374)' />
+            <path id='Path_582' fill='#fff' fill-rule='evenodd'
+                  d='M4.5 19.451a2.834 2.834 0 0 0 2.834 2.834h11.338a2.834 2.834 0 0 0 2.834-2.834V4.334A2.834 2.834 0 0 0 18.672 1.5H7.334A2.834 2.834 0 0 0 4.5 4.334zm2.834.945h11.338a.945.945 0 0 0 .945-.945V4.334a.945.945 0 0 0-.945-.945H7.334a.945.945 0 0 0-.945.945v15.117a.945.945 0 0 0 .945.949z' />
+        </g>
+    </g>
+</svg>
+                </span>
+                  <span class='name'>{{recent['name']}}</span>
+                </div>
+              </li>
+            </ul>
+          </perfect-scrollbar>
+        </div>
+      </div>
+      <div class='dynamic_search' *ngIf='dynamicSearch && dynamicSearchArr.length && !nSearch'>
+        <div>
+          <perfect-scrollbar>
+            <ul>
+              <li *ngFor='let game of dynamicSearchArr'>
+                <div (click)='selectFromDynamic(game)'>
+                  <span class='category'>{{game.cats[0].title}}</span>
+                  <span class='name'>{{game.name}}</span>
+                </div>
+              </li>
+            </ul>
+          </perfect-scrollbar>
+        </div>
+
+      </div>
+      <div class='normal_search' *ngIf='nSearch'>
+        <h4 class='hidden-lg-down'>{{ 'casino.cSearch.c4' | translate }} "<span>{{searchedPhrase}}</span>"</h4>
+
+        <div class='normal_search_results'>
+          <perfect-scrollbar>
+            <div class='single_category' *ngFor='let games of normalSearchArr | keyvalue'>
+              <h4>{{games.key}} ({{games.value.length}})</h4>
+              <div class='game_list'>
+                <div *ngFor='let game of games.value'>
+                  <div class='play_wrapper'>
+                    <span class='play_btn' (click)="runGame(game, 'real')">{{'casino.c15' | translate}}</span>
+                    <span class='free_play_btn' (click)="runGame(game, 'fun')"
+                          *ngIf='game.types?.funMode'>{{'casino.c14' | translate}}</span>
+                  </div>
+                  <ng-container *ngIf='game.icon_2'>
+                    <div class='yes_image' [style.backgroundImage]="'url(' + game.icon_2 + ')'"></div>
+                  </ng-container>
+                  <ng-container *ngIf='!game.icon_2'>
+                    <div class='not_image'></div>
+                  </ng-container>
+                  <div class='name'>
+                    {{game.name}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </perfect-scrollbar>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

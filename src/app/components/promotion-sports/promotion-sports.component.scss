@@ -1,0 +1,302 @@
+@import "../../../mixins";
+
+.promotion-row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.container__row {
+    position: relative;
+    width: 100%;
+
+    .offer_box {
+        padding-bottom: 24px;
+        cursor: pointer;
+
+        .promotion__offer {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            margin: 0 0px 0 0;
+            border-radius: 2px;
+            box-shadow: 0 0 26px 0 rgba(0, 0, 0, 0.42);
+
+            img {
+                position: relative;
+                display: block;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .image__label {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 20px 23px 24px 23px;
+                background-color: #0f0f0f;
+
+                h2 {
+                    margin: 0 0 8px 0;
+                    font-family: Roboto;
+                    font-size: 15px;
+                    font-weight: 500;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #ffffff;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+
+                p {
+                    font-family: Roboto;
+                    font-size: 15px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #ffffff;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+        }
+        .promotion__offer_1 {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            margin: 0 0px 0 0;
+            border-radius: 2px;
+            box-shadow: 0 0 26px 0 rgba(0, 0, 0, 0.42);
+
+            img {
+                position: relative;
+                display: block;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .image__label {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 20px 23px 24px 23px;
+                background-color: #0f0f0f;
+
+                h2 {
+                    margin: 0 0 8px 0;
+                    font-family: Roboto;
+                    font-size: 15px;
+                    font-weight: 500;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #ffffff;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+
+                p {
+                    font-family: Roboto;
+                    font-size: 15px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #ffffff;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+        }
+        .last_child {
+            margin: 0 0px 0 0;
+        }
+    }
+}
+
+.container-mobile {
+    .offer_box {
+        padding-bottom: 24px;
+        cursor: pointer;
+
+        @include lower-than("lg") {
+            width: auto;
+            max-width: 100%;
+            margin-right: 12px;
+            padding-bottom: 0px;
+        }
+
+        .promotion__offer {
+            position: relative;
+            height: 100%;
+            width: 77%;
+            margin: 0 0px 0 0;
+            border-radius: 2px;
+            box-shadow: 0 0 26px 0 rgba(0, 0, 0, 0.42);
+
+            @include lower-than("lg") {
+                flex-wrap: wrap;
+            }
+
+            img {
+                position: relative;
+                width: 100%;
+                object-fit: cover;
+
+                @include lower-than("lg") {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            .image__label {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 20px 23px 24px 23px;
+                background-color: #0f0f0f;
+
+                @include lower-than("lg") {
+                    padding: 14px 10px;
+                }
+
+                h2 {
+                    margin: 0 0 8px 0;
+                    font-family: Roboto;
+                    font-size: 15px;
+                    font-weight: 500;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #ffffff;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    @include lower-than("lg") {
+                        margin: 0 0 5px 0;
+                        font-size: 13px;
+                        line-height: 1.15;
+                    }
+                }
+
+                p {
+                    font-family: Roboto;
+                    font-size: 15px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #ffffff;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    @include lower-than("lg") {
+                        font-size: 13px;
+                        line-height: 1.15;
+                        color: #959595;
+                    }
+                }
+            }
+        }
+        .promotion__offer_1 {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            margin: 0 0px 0 0;
+            border-radius: 2px;
+            box-shadow: 0 0 26px 0 rgba(0, 0, 0, 0.42);
+
+            @include lower-than("lg") {
+                flex-wrap: wrap;
+            }
+
+            img {
+                position: relative;
+                width: 100%;
+                object-fit: cover;
+
+                @include lower-than("lg") {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            .image__label {
+                position: relative;
+                width: 100%;
+                height: auto;
+                padding: 20px 23px 24px 23px;
+                background-color: #0f0f0f;
+
+                @include lower-than("lg") {
+                    padding: 14px 10px;
+                }
+
+                h2 {
+                    margin: 0 0 8px 0;
+                    font-family: Roboto;
+                    font-size: 15px;
+                    font-weight: 500;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #ffffff;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    @include lower-than("lg") {
+                        margin: 0 0 5px 0;
+                        font-size: 13px;
+                        line-height: 1.15;
+                    }
+                }
+
+                p {
+                    font-family: Roboto;
+                    font-size: 15px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #ffffff;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    @include lower-than("lg") {
+                        font-size: 13px;
+                        line-height: 1.15;
+                        color: #959595;
+                    }
+                }
+            }
+        }
+        .last_child {
+            margin: 0 0px 0 0;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<mat-sidenav-container class="example-container" (backdropClick)="sidenav.close()">
+  <mat-sidenav #sidenav
+    [mode]="'push'"
+    class="mobile-sidenav"
+    (openedChange)="menufunction($event)">
+    <workspace-sidenav-mobile *ngIf="isMobile" (toggleSideNav)="sidenav.toggle()"></workspace-sidenav-mobile>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <workspace-navigation></workspace-navigation>
+    <div class="main-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div class="loading-wrapper" [ngClass]="{ hide_it: !loading, vis: hideLoader }">
+  <div class="_loader"></div>
+</div>
+<div class=" hidden-lg-up">
+  <workspace-footer-mobile (toggleSideNav)="sidenav.toggle()"></workspace-footer-mobile>
+</div>
+<workspace-bet-history *ngIf="isLoggedIn && isMobile"></workspace-bet-history>

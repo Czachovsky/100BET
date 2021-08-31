@@ -1,0 +1,29 @@
+<div class="hidden-lg-down">
+  <div class="container__row promotion-row">
+    <div class="offer_box container__col-4 container__col-lg-4 container__col-xl-3" [routerLink]="['/promotion/terms-condition/',promotinoOffer.id]" *ngFor="let promotinoOffer of data">
+      <div class="promotion__offer">
+        <img src={{promotinoOffer.img}} />
+        <div class="image__label">
+          <h2>{{promotinoOffer.title}}</h2>
+          <p>{{promotinoOffer.desc}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hidden-lg-up container-mobile">
+  <owl-carousel-o [options]="featuredCarouselOptions">
+    <ng-template carouselSlide *ngFor="let promotinoOffer of data">
+      <div class="offer_box" [routerLink]="['/promotion/terms-condition/',promotinoOffer.id]">
+        <div [ngClass]="{'promotion__offer': data.length === 1, 'promotion__offer_1': data.length !== 1 }" >
+          <img src={{promotinoOffer.img}} />
+          <div class="image__label">
+            <h2>{{promotinoOffer.title}}</h2>
+            <p>{{promotinoOffer.desc}}</p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>

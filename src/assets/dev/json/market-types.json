@@ -1,0 +1,471 @@
+{
+  "types" : [
+    {
+      "id": 1,
+      "alias":"Soccer",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchResult",
+          "optionDisplayName": "matchResult",
+          "optionValue": "P1XP2"
+        },
+        "options": [
+          {
+            "optionName": "MatchResult",
+            "optionDisplayName": "matchResult",
+            "optionValue": "P1XP2"
+          },
+          {
+            "optionName": "AsianHandicap",
+            "optionDisplayName": "asianHandicap",
+            "optionValue": "DrawNoBet"
+          },
+          {
+            "optionName": "OverUnder",
+            "optionDisplayName": "goalTotal",
+            "optionValue": "OverUnder"
+          },
+          {
+            "optionName": "DoubleChance",
+            "optionDisplayName": "1X12X2",
+            "optionValue": "1X12X2"
+          },
+          {
+            "optionName": "BothTeamsToScore",
+            "optionDisplayName": "BothTeamsToScore",
+            "optionValue": "BothTeamsToScore"
+          }
+        ]
+      }
+    },
+    {
+      "id": 71,
+      "alias": "E-Football",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchResult",
+          "optionDisplayName": "matchResult",
+          "optionValue": "P1XP2"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 3,
+      "alias":"Basketball",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner2",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": [
+          {
+            "optionName": "MatchWinner2",
+            "optionDisplayName": "matchWinner",
+            "optionValue": "DrawNoBet"
+          },
+          {
+            "optionName": "MatchHandicap",
+            "optionDisplayName": "pointsHandicap",
+            "optionValue": "DrawNoBet"
+          },
+          {
+            "optionName": "MatchTotal",
+            "optionDisplayName": "totalPoints",
+            "optionValue": "OverUnder"
+          }
+        ]
+      }
+    },
+    {
+      "id": 39,
+      "alias":"Snooker",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchResult",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": [
+          {
+            "optionName": "MatchResult",
+            "optionDisplayName": "matchWinner",
+            "optionValue": "DrawNoBet"
+          },
+          {
+            "optionName": "Handicap",
+            "optionDisplayName": "framesHandicap",
+            "optionValue": "DrawNoBet"
+          },
+          {
+            "optionName": "TotalFramesOver/Under",
+            "optionDisplayName": "totalFrames",
+            "optionValue": "OverUnder"
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "alias":"Tennis",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchResult",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": [
+          {
+            "optionName": "MatchResult",
+            "optionDisplayName": "matchWinner",
+            "optionValue": "DrawNoBet"
+          },
+          {
+            "optionName": "Handicap",
+            "optionDisplayName": "gamesHandicap",
+            "optionValue": "DrawNoBet"
+          },
+          {
+            "optionName": "TotalGamesOver/Under",
+            "optionDisplayName": "totalGames",
+            "optionValue": "OverUnder"
+          }
+        ]
+      }
+    },
+    {
+      "id": 41,
+      "alias":"TableTennis",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": [
+          {
+            "optionName": "MatchWinner",
+            "optionDisplayName": "matchWinner",
+            "optionValue": "DrawNoBet"
+          },
+          {
+            "optionName": "Player1Over/Under",
+            "optionDisplayName": "P1totalPoints",
+            "optionValue": "OverUnder"
+          },
+          {
+            "optionName": "Player2Over/Under",
+            "optionDisplayName": "P2totalPoints",
+            "optionValue": "OverUnder"
+          },
+          {
+            "optionName": "TotalofSets",
+            "optionDisplayName": "totalSets",
+            "optionValue": "OverUnder"
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "alias":"AmericanFootball",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 19,
+      "alias":"Cricket",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 29,
+      "alias":"Handball",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "P1XP2"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 2,
+      "alias":"IceHockey",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner3",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "P1XP2"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 36,
+      "alias":"RugbyLeague",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchResult",
+          "optionDisplayName": "matchResult",
+          "optionValue": "P1XP2"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 37,
+      "alias":"RugbyUnion",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchResult",
+          "optionDisplayName": "matchResult",
+          "optionValue": "P1XP2"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 5,
+      "alias":"Volleyball",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner2",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 22,
+      "alias":"Darts",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner2Way",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 26,
+      "alias":"Futsal",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchResult",
+          "optionDisplayName": "matchResult",
+          "optionValue": "P1XP2"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 10,
+      "alias":"BallHockey",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchResult",
+          "optionDisplayName": "matchResult",
+          "optionValue": "P1XP2"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 14,
+      "alias":"BeachVolleyball",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner2",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 73,
+      "alias": "E-Basketball",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner2",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 77,
+      "alias": "LeagueOfLegends",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 76,
+      "alias": "Dota2",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 82,
+      "alias": "StarCraft",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 83,
+      "alias": "StarCraft2",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 185,
+      "alias": "RainbowSix",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 157,
+      "alias": "RocketLeague",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 201,
+      "alias": "AirHockey",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 9,
+      "alias": "Badminton",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 210,
+      "alias": "Archery",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 75,
+      "alias": "CounterStrike",
+      "marketTypes": {
+        "default": {
+          "optionName": "MatchWinner",
+          "optionDisplayName": "matchWinner",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 17,
+      "alias": "Boxing",
+      "marketTypes": {
+        "default": {
+          "optionName": "MoneyLine",
+          "optionDisplayName": "moneyLine",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 44,
+      "alias": "MMA",
+      "marketTypes": {
+        "default": {
+          "optionName": "MoneyLine",
+          "optionDisplayName": "moneyLine",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    },
+    {
+      "id": 113,
+      "alias": "WWE",
+      "marketTypes": {
+        "default": {
+          "optionName": "MoneyLine",
+          "optionDisplayName": "moneyLine",
+          "optionValue": "DrawNoBet"
+        },
+        "options": []
+      }
+    }
+  ]
+}

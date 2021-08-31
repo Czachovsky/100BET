@@ -1,0 +1,163 @@
+@import "../../../../../mixins";
+
+.phone_recover{
+  .errors_wrapper {
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    @include lower-than('lg'){
+      margin-top:25px;
+    }
+    i {
+      color: var(--yellow);
+      margin-right: 15px;
+    }
+  }
+  form {
+    width: 100%;
+    .login-input-wrapper {
+      margin-bottom: 20px;
+      position: relative;
+      .loader{
+        margin-left:10px;
+      }
+      @include lower-than('lg'){
+        margin-bottom: 25px;
+      }
+      .pass_recover{
+        position: absolute;
+        right: 0;
+        top:0;
+        cursor: pointer;
+        color: #757577;
+        font-size: rem-calc(15);
+        font-family: var(--roboto-light);
+      }
+      & > span {
+        color: #ffffff;
+        font-size: rem-calc(15);
+        font-family: var(--roboto-medium);
+        display: flex;
+        margin-bottom: 12px;
+        i {
+          margin-right: 8px;
+        }
+      }
+      input[type='text'],
+      input[type='password'] {
+        display: block;
+        width: 100%;
+        border-radius: 3px;
+        border: solid 1px #101112;
+        background-color: rgba(10, 10, 10, 0.2);
+        height: 42px;
+        padding: 0 18px;
+        color: #ffffff;
+        &.error{
+          border-color: #d22b2b;
+        }
+      }
+      .notValid{
+        color: #8f383a;
+        font-size: rem-calc(12);
+        line-height: 16px;
+        width: 100%;
+        left: 0;
+        margin-top:3px;
+        margin-bottom: 0;
+      }
+    }
+    .login-btn-wrapper{
+      position: relative;
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        line-height: 45px;
+        font-size: rem-calc(15);
+        font-family: var(--roboto-medium);
+        color: #ffffff;
+        width: 100%;
+        cursor: pointer;
+        background-image: linear-gradient(to right, #68a11d, #659c1c);
+        border: 1px solid #68a11d;
+        //&.disabled{
+        //  pointer-events:  none;
+        //  opacity: 0.7;
+        //}
+      }
+      .loader{
+        margin-left:10px;
+      }
+    }
+  }
+}
+
+::ng-deep .iti{
+  width: 100%;
+  input#phone{
+    width: 100%;
+    border-radius: 3px;
+    border: solid 1px #101112;
+    background-color: rgba(10, 10, 10, 0.2);
+    height: 42px;
+    color: #ffffff;
+    font-size: rem-calc(13);
+  }
+  .iti__flag-container{
+    .country-dropdown{
+      display: none;
+      border-radius: 3px;
+      border: solid 1px #101112;
+      padding:0;
+      .search-container{
+        z-index: 100;
+      }
+      #country-search-box{
+        background: #17181a;
+        color: #fff;
+        border-bottom: solid 1px #101112;
+        height: 30px;
+        font-size: rem-calc(13);
+      }
+      .iti__country-list{
+        background: #17181a;
+        border: solid 1px #101112;
+        box-shadow: none;
+        border-top: none;
+        .iti__divider{
+          border-bottom: 1px solid #565656;
+        }
+        .iti__country{
+          display: flex;
+          align-items: center;
+          .iti__country-name{
+            max-width: 150px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .iti__dial-code{
+            margin-left: auto;
+          }
+        }
+      }
+    }
+    &.open{
+      .country-dropdown{
+        display: block;
+      }
+    }
+    .iti__selected-flag{
+      .tooltip{
+        display: none !important;
+      }
+    }
+  }
+
+
+}
+

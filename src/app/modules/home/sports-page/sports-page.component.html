@@ -1,0 +1,41 @@
+<main>
+  <div class="container__row">
+    <div
+      class="container__col-3 hidden-lg-down with_scrollbar left_section"
+    >
+    <perfect-scrollbar>
+      <div>
+        <workspace-left-column-nav
+        ></workspace-left-column-nav>
+      </div>
+    </perfect-scrollbar>
+    </div>
+    <div class="right__footer__container">
+      <perfect-scrollbar [disabled]="isMobile">
+        <div class="right__container">
+          <div
+            class="container__col-xs-12 container__col-lg-6 with_scrollbar center_section"
+          >
+            <div>
+              <workspace-carousel></workspace-carousel>
+              <div *ngIf="isMobile">
+                <workspace-featured></workspace-featured>
+              </div>
+              <workspace-in-play></workspace-in-play>
+              <workspace-upcoming></workspace-upcoming>
+            </div>
+          </div>
+          <div class="container__col-xs-12 container__col-lg-3 with_scrollbar right_section">
+            <div>
+              <div *ngIf="!isMobile">
+                <workspace-featured></workspace-featured>
+              </div>
+              <workspace-casino-games></workspace-casino-games>
+            </div>
+          </div>
+        </div>
+        <workspace-footer></workspace-footer>
+      </perfect-scrollbar>
+    </div>
+  </div>
+</main>

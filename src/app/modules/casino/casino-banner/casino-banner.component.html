@@ -1,0 +1,28 @@
+<div class='casino_carousel'>
+  <owl-carousel-o [options]="carouselOptions">
+    <ng-container *ngFor="let item of carouselItems;let i = index">
+      <ng-template carouselSlide id="slide-{{i}}">
+        <img [src]="item.img"/>
+        <!-- <div class='casino_banner_item'>
+          <div class='container'>
+            <div class='banner_titles'>
+              <div class='banner_header'>
+                Get $20 bets FREE <br> When you bet $5
+              </div>
+              <div class='banner_subheader'>
+                <div>
+                  2,000+ games<br>
+                  From well-known game providers
+                </div>
+                <div>
+                  Lightning-fast withdrawals<br>
+                  Cashout in under 1-mins on average
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div>

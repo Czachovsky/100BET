@@ -1,0 +1,28 @@
+<div class='mail_recover'>
+
+  <form action='#' [formGroup]="passwordRecoverByMail">
+    <div class='login-input-wrapper'>
+      <span>Username</span>
+      <input type='text' placeholder='Enter your username' formControlName="user_name">
+    </div>
+    <div class='login-input-wrapper'>
+      <span>E-mail</span>
+      <input type='text' placeholder='Enter your email address' formControlName="user_email">
+      <span class="notValid" *ngIf="thisMailError">Enter valid email address</span>
+
+    </div>
+    <div class='login-btn-wrapper'>
+      <button [ngClass]="{'disabled' : theresAnError || thisMailError || isLoading || !passwordRecoverByMail.valid}" (click)='passwordRecover()' class="login-btn btn__solid">Next step
+        <div *ngIf="isLoading" class="loader">
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+        </div>
+      </button>
+    </div>
+  </form>
+  <div class="errors_wrapper" *ngIf="theresAnError"><i class="fas fa-exclamation-triangle"></i>{{errorMessage}}</div>
+</div>

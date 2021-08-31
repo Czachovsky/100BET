@@ -1,0 +1,183 @@
+[
+  {
+    "alias": "Soccer",
+    "icon": "assets/images/icons/sports/soccer.png",
+    "sport": "football",
+    "fieldImg": "assets/images/fields/Soccerfield.png",
+    "mobileField": "assets/images/fields/mobile/Soccer field@3x.png"
+  },
+  {
+    "alias": "Basketball",
+    "icon": "assets/images/icons/sports/basket.png",
+    "fieldImg": "assets/images/fields/Desktop-basketfield@3x.png",
+    "sport": "basketball",
+    "mobileField": "assets/images/fields/mobile/Mobile-basketfield@3x.png"
+  },
+  {
+    "alias": "Tennis",
+    "icon": "assets/images/icons/sports/tennis.png",
+    "fieldImg": "assets/images/fields/desktop-tennisfield@3x.png",
+    "mobileField": "assets/images/fields/mobile/Mobile-tennisfield@3x.png"
+  },
+  {
+    "alias": "Volleyball",
+    "icon": "assets/images/icons/sports/volleyball.png",
+    "iconFont": "fa-volleyball-ball",
+    "sport": "volleyball"
+  },
+  {
+    "alias": "AmericanFootball",
+    "icon": "assets/images/icons/sports/am.football.png",
+    "iconFont": "fa-football-ball"
+  },
+  {
+    "alias": "Snooker",
+    "iconFont": "fa-football-ball",
+    "icon": "assets/images/icons/sports/snooker.png",
+    "fieldImg": "assets/images/fields/Desktop-billard@3x.png",
+    "mobileField": "assets/images/fields/mobile/Mobile-billard@3x.png"
+  },
+  {
+    "alias": "Boxing",
+    "icon": "assets/images/icons/sports/boxing.png",
+    "iconFont": "fa-boxing-glove"
+  },
+  {
+    "alias": "Cricket",
+    "icon": "assets/images/icons/sports/cricket.png",
+    "iconFont": "fa-cricket"
+  },
+  {
+    "alias": "Golf",
+    "icon": "assets/images/icons/sports/golf.png",
+    "iconFont": "fa-golf-ball"
+  },
+  {
+    "alias": "Politics",
+    "icon": "assets/images/icons/sports/politics.png",
+    "iconFont": "fa-handshake"
+  },
+  {
+    "alias": "Handball",
+    "icon": "assets/images/icons/sports/handball.png",
+    "iconFont": "fa-baseball-ball"
+  },
+  {
+    "alias": "RugbyLeague",
+    "icon": "assets/images/icons/sports/rugby-league.png",
+    "iconFont": "fa-football-helmet"
+  },
+  {
+    "alias": "RugbyUnion",
+    "icon": "assets/images/icons/sports/rugby-union.png",
+    "iconFont": "fa-football-helmet"
+  },
+  {
+    "alias": "Volleyball",
+    "icon": "assets/images/icons/sports/volleyball.png",
+    "iconFont": "fa-volleyball-ball"
+  },
+  {
+    "alias": "BeachVolleyball",
+    "icon": "assets/images/icons/sports/beach-volleyball.png",
+    "iconFont": "fa-volleyball-ball"
+  },
+  {
+    "alias": "VirtualHorseRacing",
+    "iconFont": "fa-horse-head"
+  },
+  {
+    "alias": "Darts",
+    "icon": "assets/images/icons/sports/dart.png",
+    "iconFont": "fa-bullseye-arrow"
+  },
+  {
+    "alias": "Cycling",
+    "iconFont": "fa-biking"
+  },
+  {
+    "alias": "AlpineSkiing",
+    "icon": "assets/images/icons/sports/alpine.png",
+    "iconFont": "fa-mountain"
+  },
+  {
+    "alias": "CrossCountrySkiing",
+    "icon": "assets/images/icons/sports/crosscountry.png",
+    "iconFont": "fa-skiing-nordic"
+  },
+  {
+    "alias": "SkiJumping",
+    "icon": "assets/images/icons/sports/ski-jump.png",
+    "iconFont": "fa-ski-jump"
+  },
+  {
+    "alias": "VirtualGreyhoundRacing",
+    "icon": "assets/images/icons/sports/greyhounds.png",
+    "iconFont": "fa-paw"
+  },
+  {
+    "alias": "Chess",
+    "icon": "assets/images/icons/sports/chess.png",
+    "iconFont": "fa-chess-knight"
+  },
+  {
+    "alias": "Floorball",
+    "icon": "assets/images/icons/sports/floorball.png",
+    "iconFont": "fa-golf-club"
+  },
+  {
+    "alias": "Squash",
+    "icon": "assets/images/icons/sports/squash.png",
+    "iconFont": "fa-racquet"
+  },
+  {
+    "alias": "WaterPolo",
+    "icon": "assets/images/icons/sports/waterpolo.png",
+    "iconFont": "fa-water"
+  },
+  {
+    "alias": "IceHockey",
+    "icon": "assets/images/icons/sports/ice-hockey.png",
+    "iconFont": "fa-hockey-sticks"
+  },
+  {
+    "alias": "BallHockey",
+    "iconFont": "fa-hockey-sticks"
+  },
+  {
+    "alias": "AirHockey",
+    "iconFont": "fa-hockey-sticks"
+  },
+  {
+    "alias": "Baseball",
+    "icon": "assets/images/icons/sports/baseball.png",
+    "iconFont": "fa-baseball"
+  },
+  {
+    "alias": "LeagueOfLegends",
+    "icon": "assets/images/icons/sports/LOL-colored.png",
+    "iconFont": "fa-futbol"
+  },
+  {
+    "alias": "CounterStrike",
+    "icon": "assets/images/icons/sports/csgo-colored.png",
+    "iconFont": "fa-futbol"
+  },
+  {
+    "alias": "Dota2",
+    "icon": "assets/images/icons/sports/dota2-colored.png",
+    "iconFont": "fa-futbol"
+  },
+  {
+    "alias": "Futsal",
+    "icon": "assets/images/icons/sports/futsal.png",
+    "iconFont": "fa-futbol"
+  },
+  {
+    "alias": "TableTennis",
+    "iconFont": "fa-table-tennis",
+    "icon": "assets/images/icons/sports/table-tennis.png",
+    "fieldImg": "assets/images/fields/Mobile-tabletennis@3x.png",
+    "mobileField": "assets/images/fields/mobile/Mobile-tabletennis@3x.png"
+  }
+]

@@ -1,0 +1,40 @@
+<div id="bet__slip_system">
+  <div class="bet__slip_header">
+    <workspace-ohb-select  [options]="selectOptions" [selected]="defaoultOption"
+                           (changeValue)="test($event)"></workspace-ohb-select>
+    <div class="bet__slip_system_banker">
+      <span>{{ 'betCol.betBnkr' | translate }}</span>
+      <span class="banker__btn"
+            (click)="showBankerOption = !showBankerOption; changeSettings('bankerEnabled', showBankerOption)"
+            [ngClass]="{'__active':showBankerOption}">B</span>
+    </div>
+  </div>
+  <div class="bet__slip-picks_wrapper">
+    <div class="bet__slip-pick" *ngFor="let picked of pickedItems">
+      <div class="bet__slip-pick_checkbox_wrapper">
+        <input type="checkbox" [checked]="picked.selected" (change)="changeSelectState(picked)">
+      </div>
+      <div class="bet__slip-pick_infos">
+        <div class="bet__slip-pick_infos_selected">{{picked.option_name}}
+        </div>
+        <div class="bet__slip-pick_infos_res">{{ 'betCol.betColmtchres' | translate }}</div>
+        <div class="bet__slip-pick_infos_teams">
+          {{ picked.event_name }}
+        </div>
+      </div>
+      <div class="bet__slip-pick_infos_right" [ngClass]="{'with__banker_info': showBankerOption}">
+        <div class="bet__slip-pick_remove_wrapper">
+          <span *ngIf="picked.locked" class="closed_info"><i class="fas fa-lock"></i></span>
+          <span class="bet__slip-pick_remove">
+          <i class="fas fa-times-circle"></i>
+        </span>
+        </div>
+        <div class="bet__slip-pick_stake">
+          <span class="bet__slip_odds odds__down">{{ picked.stake }}</span>
+          <span *ngIf="showBankerOption" class="bet__slip_single_banker_option">B</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

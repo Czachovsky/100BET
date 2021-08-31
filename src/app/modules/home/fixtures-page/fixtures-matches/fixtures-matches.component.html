@@ -1,0 +1,78 @@
+<div class="fixture__matches">
+  <div class="fixture__matches_select_section">
+    <div class="fixture__matches_select_section_sub">
+      <workspace-ohb-select [options]="selectOptions" [selected]="defaoultOption" (changeValue)="test($event)"></workspace-ohb-select>
+    </div>
+  </div>
+  <div class="fixture__matches_section" *ngFor="let matches of fixtureArray; first as isFirst"
+       [ngClass]="{'open_it':isFirst}">
+    <div class="fixture__matches_section_header solid__blue__header" #tableBody [ngClass]="{'active': isFirst}">
+        <span (click)="toggleTableBody(tableBody)">
+          {{ matches.fixtureMatchesHeadingName }} <div class="matches_couter_header">12</div> <i class="fas fa-angle-down"></i>
+        </span>
+    </div>
+    <div class="fixture__matches_section_tables_wrapper">
+      <div class="fixture__matches_section_table" *ngFor="let matchesTable of matches.fixtureMatchesByDate">
+        <div class="fixture__matches_section_table_date">{{ matchesTable.fixtureMatchesDate }}</div>
+        <div class="fixture__matches_section_table_header">
+          <div class="table_subheader">
+            <div><span>1</span><span>X</span><span>2</span></div>
+            <div class="hidden-lg-down">Handicap</div>
+            <div class="hidden-lg-down">Line</div>
+            <div class="hidden-lg-down"></div>
+          </div>
+        </div>
+        <div class="fixture__matches_section_table_body">
+          <div class="fixture__matches_section_table_body_row" *ngFor="let match of matchesTable.fixtureMatchesDataset">
+            <div class="fixture__match_date hidden-lg-down">{{match.fixtureMatchesDataset_hour}}</div>
+            <div class="fixture__match_teams_options">
+              <div class="fixture__match_teams_options_sub">
+                <div *ngFor="let dataset of match.fixtureMatchesDataset_team"> {{ dataset._team_option_name }} </div>
+                <span class="visible-lg-down hidden-lg-up mobile_time">
+                  <div class="mobile_time_wrapper">{{match.fixtureMatchesDataset_hour}}</div>
+                  <div>125+</div>
+                </span>
+              </div>
+              <div class="fixture__match_teams_options_stats">
+                <a href="#">
+                  <i class="far fa-chart-bar"></i>
+                </a>
+                <a href="#" class="visible-lg-down hidden-lg-up">
+                  <i class="fas fa-desktop"></i>
+                </a>
+              </div>
+            </div>
+            <div class="pull_right">
+              <div class="fixture__match_teams_one_x_two __column">
+                <div class="pick__button" *ngFor="let dataset of match.fixtureMatchesDataset_team"> {{ dataset.one_x_two_option_odd }} </div>
+              </div>
+              <div class="fixture__match_teams_handicap __column hidden-lg-down">
+                <div class="pick__button" *ngFor="let dataset of match.fixtureMatchesDataset_team">
+                <span>
+                  <ng-container
+                    *ngFor="let asianHandicap of dataset.handicap_option_odd.__asian_handicap; first as isFirst">
+                    {{ asianHandicap }}
+                    <ng-container *ngIf="isFirst">, </ng-container>
+                  </ng-container>
+                </span>
+                  {{ dataset.handicap_option_odd.__odd }}
+                </div>
+              </div>
+              <div class="fixture__match_teams_line __column hidden-lg-down">
+                <div class="pick__button" *ngFor="let dataset of match.fixtureMatchesDataset_team"
+                     [ngClass]="{'__empty' : dataset.line_option_odd === ''}">
+                  <span>{{ dataset.line_option_odd.line_option_odd_under_over }} </span>
+                  {{ dataset.line_option_odd.__odd }}
+                </div>
+              </div>
+              <div class="fixture__match_teams_line __column __last_item hidden-lg-down">
+                <div>+74</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

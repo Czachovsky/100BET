@@ -1,0 +1,19 @@
+::ng-deep .OHBCasino{
+  header{
+    background: #16181b;
+    border-bottom: 1px solid #2c2c2c;
+    box-shadow: none;
+  }
+  footer{
+    margin:0;
+  }
+  .login_buttons{
+    & > i{
+      display: none;
+    }
+    .seperator{
+      display: none !important;
+    }
+  }
+}
+

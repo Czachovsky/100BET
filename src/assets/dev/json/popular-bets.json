@@ -1,0 +1,177 @@
+[
+  {
+    "id": "pick1232",
+    "popularBetTitle": "English Premier League",
+    "popularBetDate": "Today",
+    "popularBetHour": "19:30",
+    "inCart": false,
+    "type": "Soccer",
+    "popularBetTeams": [
+      {
+        "popularBetTeamName": "Chelsea"
+      },
+      {
+        "popularBetTeamName": "Bayern Monachium"
+      }
+    ],
+    "popularBetMultiplier": "3.50",
+    "popularBetBothTeamstoScore": true,
+    "popularBetBothTeamstoScoreTranslate": "Yes",
+    "popularBetSomethingButDunnoWhat": "高于 2.0,2.5",
+    "popularBetEventName": "Chelsea - Bayern Monachium"
+  },
+  {
+    "id": "pic341",
+    "popularBetTitle": "English Premier League",
+    "popularBetDate": "28 May",
+    "popularBetHour": "19:30",
+    "inCart": false,
+    "type": "Soccer",
+    "popularBetTeams": [
+      {
+        "popularBetTeamName": "Borussia Dortmund"
+      },
+      {
+        "popularBetTeamName": "Bayern Monachium",
+        "popularBetTeamNameShort": "bayern"
+      }
+    ],
+    "popularBetMultiplier": "7.50",
+    "popularBetBothTeamstoScore": true,
+    "popularBetBothTeamstoScoreTranslate": "Yes",
+    "popularBetSomethingButDunnoWhat": "高于 2.0,2.5",
+    "popularBetEventName": "Borussia Dortmund - Bayern Monachium"
+  },
+  {
+    "id": "pick2354",
+    "popularBetTitle": "English Premier League",
+    "popularBetDate": "28 May",
+    "popularBetHour": "19:30",
+    "inCart": false,
+    "type": "Soccer",
+    "popularBetTeams": [
+      {
+        "popularBetTeamName": "Borussia Dortmund"
+      },
+      {
+        "popularBetTeamName": "Chelsea",
+        "popularBetTeamNameShort": "bayern"
+      }
+    ],
+    "popularBetMultiplier": "7.50",
+    "popularBetBothTeamstoScore": false,
+    "popularBetBothTeamstoScoreTranslate": "No",
+    "popularBetSomethingButDunnoWhat": "高于 2.0,2.5",
+    "popularBetEventName": "Borussia Dortmund - Chelsea"
+  },
+  {
+    "id": "pick235sd4",
+    "popularBetTitle": "English Premier League",
+    "popularBetDate": "28 May",
+    "popularBetHour": "19:30",
+    "inCart": false,
+    "type": "Soccer",
+    "popularBetTeams": [
+      {
+        "popularBetTeamName": "Borussia Dortmund"
+      },
+      {
+        "popularBetTeamName": "Chelsea",
+        "popularBetTeamNameShort": "bayern"
+      }
+    ],
+    "popularBetMultiplier": "7.50",
+    "popularBetBothTeamstoScore": false,
+    "popularBetBothTeamstoScoreTranslate": "No",
+    "popularBetSomethingButDunnoWhat": "高于 2.0,2.5",
+    "popularBetEventName": "Borussia Dortmund - Chelsea"
+  },
+  {
+    "id": "pic23k2354",
+    "popularBetTitle": "English Premier League",
+    "popularBetDate": "28 May",
+    "popularBetHour": "19:30",
+    "inCart": false,
+    "type": "Soccer",
+    "popularBetTeams": [
+      {
+        "popularBetTeamName": "Borussia Dortmund"
+      },
+      {
+        "popularBetTeamName": "Chelsea",
+        "popularBetTeamNameShort": "bayern"
+      }
+    ],
+    "popularBetMultiplier": "7.50",
+    "popularBetBothTeamstoScore": false,
+    "popularBetBothTeamstoScoreTranslate": "No",
+    "popularBetSomethingButDunnoWhat": "高于 2.0,2.5",
+    "popularBetEventName": "Borussia Dortmund - Chelsea"
+  },
+  {
+    "id": "pick2zxc354",
+    "popularBetTitle": "English Premier League",
+    "popularBetDate": "28 May",
+    "popularBetHour": "19:30",
+    "inCart": false,
+    "type": "Soccer",
+    "popularBetTeams": [
+      {
+        "popularBetTeamName": "Borussia Dortmund"
+      },
+      {
+        "popularBetTeamName": "Chelsea",
+        "popularBetTeamNameShort": "bayern"
+      }
+    ],
+    "popularBetMultiplier": "7.50",
+    "popularBetBothTeamstoScore": false,
+    "popularBetBothTeamstoScoreTranslate": "No",
+    "popularBetSomethingButDunnoWhat": "高于 2.0,2.5",
+    "popularBetEventName": "Borussia Dortmund - Chelsea"
+  },
+  {
+    "id": "1pick2354",
+    "popularBetTitle": "English Premier League",
+    "popularBetDate": "28 May",
+    "popularBetHour": "19:30",
+    "inCart": false,
+    "type": "Soccer",
+    "popularBetTeams": [
+      {
+        "popularBetTeamName": "Borussia Dortmund"
+      },
+      {
+        "popularBetTeamName": "Chelsea",
+        "popularBetTeamNameShort": "bayern"
+      }
+    ],
+    "popularBetMultiplier": "7.50",
+    "popularBetBothTeamstoScore": false,
+    "popularBetBothTeamstoScoreTranslate": "No",
+    "popularBetSomethingButDunnoWhat": "高于 2.0,2.5",
+    "popularBetEventName": "Borussia Dortmund - Chelsea"
+  },
+  {
+    "id": "2pick22354",
+    "popularBetTitle": "English Premier League",
+    "popularBetDate": "28 May",
+    "popularBetHour": "19:30",
+    "inCart": false,
+    "type": "Soccer",
+    "popularBetTeams": [
+      {
+        "popularBetTeamName": "Borussia Dortmund"
+      },
+      {
+        "popularBetTeamName": "Chelsea",
+        "popularBetTeamNameShort": "bayern"
+      }
+    ],
+    "popularBetMultiplier": "7.50",
+    "popularBetBothTeamstoScore": false,
+    "popularBetBothTeamstoScoreTranslate": "No",
+    "popularBetSomethingButDunnoWhat": "高于 2.0,2.5",
+    "popularBetEventName": "Borussia Dortmund - Chelsea"
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "default": {
+    "optionName": -10,
+    "optionDisplayName": "all",
+    "optionValue": "all"
+  },
+  "options": [
+    {
+      "optionName": -10,
+      "optionDisplayName": "all",
+      "optionValue": "all"
+    },
+    {
+      "optionName": 0,
+      "optionDisplayName": "unsettled",
+      "optionValue": "unsettled"
+    },
+    {
+      "optionName": 1,
+      "optionDisplayName": "lost",
+      "optionValue": "lost"
+    },
+    {
+      "optionName": 2,
+      "optionDisplayName": "returned",
+      "optionValue": "returned"
+    },
+    {
+      "optionName": 3,
+      "optionDisplayName": "won",
+      "optionValue": "won"
+    },
+    {
+      "optionName": 5,
+      "optionDisplayName": "cashedOut",
+      "optionValue": "cashedOut"
+    },
+    {
+      "optionName": -1,
+      "optionDisplayName": "rejected",
+      "optionValue": "rejected"
+    }
+  ]
+}

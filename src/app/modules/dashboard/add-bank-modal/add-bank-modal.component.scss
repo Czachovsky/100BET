@@ -1,0 +1,165 @@
+@import "../../../../mixins";
+
+.bank-form {
+  display: flex;
+  height: 100%;
+  padding: 16px;
+  overflow: auto;
+  flex-direction: column;
+  background-image: linear-gradient(to bottom, #1c1d21, #151619);
+  @include higher-than('lg') {
+    width: 545px;
+    padding: 44px 39px;
+  }
+  @include lower-than('lg'){
+    padding: 0 16px;
+  }
+  .form-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include lower-than('lg'){
+      min-height: 48px;
+      padding: 14px 0px;
+      margin-bottom: 13px;
+      justify-content: space-between;
+    }
+    i {
+      font-size: 18px;
+    }
+    .title {
+      display: block;
+      text-align: center;
+      font-size: 22px;
+      line-height: 1.32;
+      padding-bottom: 26px;
+      color: var(--white);
+      @include lower-than('lg'){
+        padding-bottom: 0;
+        font-size: 17px;
+      }
+    }
+  }
+
+  .error {
+    font-size: rem-calc(12);
+    color: #8f383a;
+    padding-top: 4px;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+  .fields {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 22px;
+    &:nth-child(4) {
+      @include lower-than('lg'){
+        .field:nth-child(2) {
+          padding-bottom: 0px;
+        }
+      }
+    }
+    @include lower-than('lg'){
+      flex-direction: column;
+      padding: 0 6px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding-bottom: 14px;
+
+      @include higher-than('lg'){
+        &:last-child {
+          padding-bottom: 0px;
+        }
+      }
+      .error {
+        text-align: left;
+      }
+
+      label {
+        margin-bottom: 12px;
+        line-height: 18px;
+        font-size: rem-calc(15);
+        color: #e7e7e7;
+        @include lower-than('lg'){
+          margin-bottom: 8px;
+          font-size: rem-calc(13);
+          line-height: 18px;
+          color: #ffffff;
+        }
+      }
+
+      workspace-ohb-select ::ng-deep {
+        .ohb-select {
+          height: 42px;
+          border: solid 1px #101112;
+          background-color: rgba(10, 10, 10, 0.2);
+          box-shadow: none;
+          width: 100%;
+          background-image: none;
+
+          .ohb-placeholder {
+            // background-color: rgba(10, 10, 10, 0.2);
+            line-height: 40px;
+          }
+
+          @include lower-than('lg'){
+            height: 42px;
+            .ohb-placeholder {
+              line-height: 40px;
+            }
+          }
+        }
+      }
+
+      input {
+        padding: 0 18px;
+        color: #ffffff;
+        height: 42px;
+        border-radius: 3px;
+        border: solid 1px #101112;
+        background-color: rgba(10, 10, 10, 0.2);
+        @include lower-than('lg'){
+          height: 42px;
+        }
+
+        &.disabled {
+          border: solid 1px #404040;
+          background-color: #2b2b2b;
+        }
+      }
+    }
+
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #004d92;
+    line-height: 18px;
+    font-size: rem-calc(15);
+    color: #ffffff;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 12px 0;
+
+    &:disabled {
+      background-color: #ccc;
+      color: #404040;
+      cursor: not-allowed;
+    }
+
+    @include lower-than('lg'){
+      margin: 9px 0px 0 -16px;
+      border-radius: 0;
+      width: 100vw;
+    }
+  }
+}
+

@@ -1,0 +1,211 @@
+<div class="event_view" *ngIf="eventDetails">
+  <div class="event_view__wrapper">
+    <div class="league_top" (click)="redirect()">
+      <i class="far fa-angle-left"></i>
+      <span *ngIf="isEventView">
+        In Play {{gameInfo?.alias}}/{{eventDetails?.competition.name}}
+      </span>
+      <span *ngIf="isMarketView">
+        {{gameInfo?.alias}}/{{eventDetails?.region?.name}}/{{eventDetails?.competition.name}}
+      </span>
+    </div>
+    <div class="banner hidden-lg-down"
+      [class.default]="getFieldImage().indexOf('generic') !== -1"
+      [ngStyle]="{'background-image': 'url(' + getFieldImage() + ')'}">
+      <div class="top"></div>
+      <div class="bottom"></div>
+      <div class="game_time">
+        <span *ngIf="eventDetails?.game?.is_started !== 1">
+          {{eventDetails?.game?.start_ts * 1000 | date: 'EEE'}} {{eventDetails?.game?.start_ts * 1000 | date: 'd/M'}} {{eventDetails?.game?.start_ts * 1000 | date: 'HH:mm' }}
+        </span>
+        <ng-container *ngIf="eventDetails?.game?.is_started === 1">
+          <ng-container  *ngIf="eventDetails?.game?.info.current_game_state !== 'Half Time'">
+            <span *ngIf="gameInfo?.sportId == 1">{{eventDetails?.game?.info?.current_game_time}}{{eventDetails?.game?.info?.current_game_time ? 'm' : ''}}</span>
+            <span *ngIf="gameInfo?.sportId != 1">{{utility.getGameState(eventDetails?.game.info.current_game_state, gameInfo?.sportId)}}</span>
+          </ng-container>
+          <ng-container  *ngIf="eventDetails?.game?.info.current_game_state === 'Half Time'">
+            {{utility.getGameState(eventDetails?.game.info.current_game_state, gameInfo?.sportId)}}
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="teams">
+        <div class="team_1">
+          <!-- <img src="assets/images/inPlay/manchester.png" /> -->
+          <div class="score">
+            <span class="border"
+              [ngStyle]="{'background-color': getColor(eventDetails?.game?.info?.shirt1_color, 'team1') }"></span>
+            <span>{{eventDetails?.game?.team1_name}}</span>
+            <span *ngIf="eventDetails?.game?.is_started">{{eventDetails?.game?.info?.score1}}</span>
+          </div>
+        </div>
+        <div class="team_2">
+          <!-- <img src="assets/images/inPlay/chelsea.png" /> -->
+          <div class="score">
+            <span class="border"
+              [ngStyle]="{'background-color': getColor(eventDetails?.game?.info?.shirt2_color, 'team2')}"></span>
+            <span>{{eventDetails?.game?.team2_name}}</span>
+            <span *ngIf="eventDetails?.game?.is_started">{{eventDetails?.game?.info?.score2}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hidden-lg-up" *ngIf="isEventView && isMobile">
+      <workspace-live-event [gameInfo]="gameInfo"></workspace-live-event>
+    </div>
+    <div class="mobile-banner hidden-lg-up" *ngIf="isMarketView">
+      <div class="banner-container">
+        <img [src]="getFieldImageMobile()" [srcset]="getFieldImageMobile()">
+        <div class="statistics">
+          <a [href]="'http://statistics.100100188.com/#/en/external/page/h2h/' + eventDetails?.game?.team1_id + '/' + eventDetails?.game?.team2_id" target="_blank">
+            <i class="fas fa-chart-bar"></i>
+          </a>
+        </div>
+        <div class="match-details">
+          <div class="game_time">
+            <span>
+              {{eventDetails?.game?.start_ts * 1000 | date: 'EEE'}} {{eventDetails?.game?.start_ts * 1000 | date: 'd/M'}} {{eventDetails?.game?.start_ts * 1000 | date: 'HH:mm' }}
+            </span>
+          </div>
+          <div class="teams">
+            <div class="team_1">
+              <div class="score">
+                <span class="border"
+                  [ngStyle]="{'background-color': getColor(eventDetails?.game?.info?.shirt1_color, 'team1') }"></span>
+                <span>{{eventDetails?.game?.team1_name}}</span>
+              </div>
+            </div>
+            <div class="team_2">
+              <div class="score">
+                <span class="border"
+                  [ngStyle]="{'background-color': getColor(eventDetails?.game?.info?.shirt2_color, 'team2')}"></span>
+                <span>{{eventDetails?.game?.team2_name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="events_categories" *ngIf="eventDetails?.markets">
+      <div class="market_types">
+        <div class="market_types_sub">
+          <span *ngIf="showNavigationLeft()" class="market_types_toLeft" (click)="scrollLeft()">
+            <span>
+              <span class="go_to_left">
+                <i class="fas fa-chevron-left"></i>
+              </span>
+            </span>
+          </span>
+          <ul #scrollEl>
+            <li
+              [class.active]="selectedCategory == category"
+              *ngFor="let category of eventCategories"
+              (click)="selectMarketType(category)">
+                <span>{{category}}</span>
+            </li>
+          </ul>
+          <span *ngIf="showNavigationRight()" class="sports_all_page_categories_toRight" (click)="scrollRight()">
+            <span>
+              <span class="go_to_right">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <ng-container *ngIf="eventDetails['markets'] && eventDetails['markets'][selectedCategory]">
+      <ng-container *ngFor="let market of eventDetails['markets'][selectedCategory] | keyvalue: originalOrder">
+        <div class="match__result">
+          <div class="header" [class.active]="checkForActive(market.key)" #betItem>
+            <div (click)="expandIt(betItem, market)">
+              <div class="header__title">
+                {{market.key}}
+              </div>
+              <div class="right">
+                <button type="button" *ngIf="market.value[0]?.cashout">{{'inPlay.cashOut' | translate}}</button>
+                <i class="far fa-angle-down"></i>
+              </div>
+            </div>
+          </div>
+          <div [class.market]="isMarketView" [style.display]="checkForActive(market.key) ? 'block' : 'none'">
+            <div class="asian_handicap" *ngIf="market.value[0].market_type !== 'CorrectScore' && market.value.length == 1">
+              <div class="single_box"
+                [ngClass]="{'__is_picked': shouldHasPickedClass(event['id']), 'is_blocked' : eventDetails?.game.is_blocked === 1}"
+                (click)="addBetToCart(event, eventDetails?.game, market)"  [ngStyle]="{'flex': getWidth(market.value[0]['col_count'])}"
+                *ngFor="let event of market.value[0]['event']">
+                <span>
+                  <ng-container *ngIf="eventDetails?.game.is_blocked !== 1">
+                    {{event.name}}
+                  </ng-container>
+                  <ng-container *ngIf="event.base || event.base === 0">
+                    <span class="base" *ngIf="isAsian(market.value[0].market_type)">{{event?.base | formatBase}}</span>
+                    <span class="base" *ngIf="!isAsian(market.value[0].market_type)">{{event?.base | number : '1.1-1'}}</span>
+                  </ng-container>
+                  <span *ngIf="eventDetails?.game.is_blocked !== 1">
+                    {{event.price | oddsFormat: os.oddFormatName}}
+                  </span>
+                  <span *ngIf="eventDetails?.game.is_blocked === 1">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="correct-score" *ngIf="market.value[0].market_type === 'CorrectScore' && market.value.length == 1">
+              <div class="column" *ngFor="let c of correctScoreArr">
+                <div class="single_box"
+                  [ngClass]="{'__is_picked': shouldHasPickedClass(event?.id), 'is_blocked' : eventDetails?.game.is_blocked === 1}"
+                  (click)="addBetToCart(event, eventDetails?.game, market)"  [ngStyle]="{'flex': getWidth(market.value[0]['col_count'])}"
+                  *ngFor="let event of getCorrectScore(market.value[0]['event'], c)">
+                  <span *ngIf="event">
+                    <ng-container *ngIf="eventDetails?.game.is_blocked !== 1">
+                      {{event.name}}
+                    </ng-container>
+                    <ng-container *ngIf="event.base || event.base === 0">
+                      <span class="base" *ngIf="isAsian(market.value[0].market_type)">{{event?.base | formatBase}}</span>
+                      <span class="base" *ngIf="!isAsian(market.value[0].market_type)">{{event?.base | number : '1.1-1'}}</span>
+                    </ng-container>
+                    <span *ngIf="eventDetails?.game.is_blocked !== 1">
+                      {{event.price | oddsFormat: os.oddFormatName}}
+                    </span>
+                    <span *ngIf="eventDetails?.game.is_blocked === 1">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <ng-container *ngIf="market.value.length > 1">
+              <div class="over_under_header">
+                <div>
+                  <span *ngFor="let event of market.value[0]['event']">
+                    <span>{{event.name}}</span>
+                  </span>
+                </div>
+              </div>
+              <div class="over_under_wrapper" *ngFor="let marketVal of market.value">
+                <!-- <div class="left_box" *ngIf="isAsian(market.value[0].market_type)">{{marketVal.base | formatBase}}</div>
+                <div class="left_box" *ngIf="!isAsian(market.value[0].market_type)">{{marketVal.base | number : '1.1-1'}}</div> -->
+                <div class="right_box">
+                  <div class="single_box"
+                    [ngClass]="{'__is_picked': shouldHasPickedClass(event['id']), 'is_blocked' : eventDetails?.game.is_blocked === 1}"
+                    (click)="addBetToCart(event, eventDetails?.game, market)" *ngFor="let event of marketVal['event']">
+                    <ng-container *ngIf="event.base || event.base === 0">
+                      <span class="base" *ngIf="isAsian(market.value[0].market_type)">{{event?.base | formatBase}}</span>
+                      <span class="base" *ngIf="!isAsian(market.value[0].market_type)">{{event?.base | number : '1.1-1'}}</span>
+                    </ng-container>
+                    <span *ngIf="eventDetails?.game.is_blocked !== 1">
+                      {{event.price | oddsFormat: os.oddFormatName}}
+                    </span>
+                    <span *ngIf="eventDetails?.game.is_blocked === 1">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

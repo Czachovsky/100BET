@@ -1,0 +1,19 @@
+<div class="my_bets">
+  <div class="solid__blue__header"><span>My Bets</span></div>
+  <ul class="my_bets-tab-bar">
+    <li><button (click)="myBetsTab =0" [ngClass]="{ '__is_active' : myBetsTab === 0 }">Cash out</button></li>
+    <li><button (click)="myBetsTab =1" [ngClass]="{ '__is_active' : myBetsTab === 1 }">Live now</button></li>
+    <li><button (click)="myBetsTab =2" [ngClass]="{ '__is_active' : myBetsTab === 2 }">Unsettled</button></li>
+    <li><button (click)="myBetsTab =3" [ngClass]="{ '__is_active' : myBetsTab === 3 }">Settled</button></li>
+    <li><button (click)="myBetsTab =4" [ngClass]="{ '__is_active' : myBetsTab === 4 }">All</button></li>
+  </ul>
+  !!!!! '{{historyLoaded}}' !!!!!
+<!--  <div class="my_bets_body" *ngIf="historyLoaded">-->
+<!--    '{{this.myBetsArray.cashOut.length}}' - {{historyLoaded}}-->
+    <!--    <workspace-my-bets-cash-out *ngIf="myBetsTab === 0" [cashOutArr]="myBetsCashOut"></workspace-my-bets-cash-out>-->
+<!--    <workspace-my-bets-live-now *ngIf="myBetsTab === 1"></workspace-my-bets-live-now>-->
+<!--    <workspace-my-bets-unsettled *ngIf="myBetsTab === 2"></workspace-my-bets-unsettled>-->
+<!--    <workspace-my-bets-settled *ngIf="myBetsTab === 3"></workspace-my-bets-settled>-->
+<!--    <workspace-my-bets-all *ngIf="myBetsTab === 4"></workspace-my-bets-all>-->
+<!--  </div>-->
+</div>

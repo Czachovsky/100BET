@@ -1,0 +1,44 @@
+<div class="bet-slip__settings">
+  <div class="bet-slip__settings_header">
+    Betting settings
+    <span class="bet-slip__settings_close" (click)="closeSettings()"><i _ngcontent-iuu-c50=""
+                                                                        class="far fa-times-circle"></i></span>
+  </div>
+  <div class="bet-slip__settings_form">
+
+    <div class="bet-slip__settings_form_wrap">
+      <input type="radio" name="betSlipSetting" id="y_adds_change" value=true
+             (change)="changeSettings('odds_option', 'Any')"
+             [checked]="betSlipSettings.odds_option === 'Any'">
+      <label for="y_adds_change">Agree to odds changes</label>
+    </div>
+    <div class="bet-slip__settings_form_wrap">
+      <input type="radio" name="betSlipSetting" id="y_higher_adds" value=true
+             (change)="changeSettings('odds_option', 'Higher')"
+             [checked]="betSlipSettings.odds_option === 'Higher'">
+      <label for="y_higher_adds">Agree to higher odds</label>
+    </div>
+    <div class="bet-slip__settings_form_wrap">
+      <input type="radio" name="betSlipSetting" id="n_adds_change" value=true
+             (change)="changeSettings('odds_option', 'No')"
+             [checked]="betSlipSettings.odds_option === 'No'">
+      <label for="n_adds_change">Don't agree to odds changes</label>
+    </div>
+    <div class="bet-slip__settings_form_notification">
+      <div class="bet-slip__settings_form_notification_sub">
+        <div>
+          <input type="checkbox" name="smsNotifications" id="sms_notifications"
+                 [checked]="betSlipSettings.sms_notification"
+                 (change)="changeSettings('sms_notification', $event.target.checked)">
+          <label for="sms_notifications">SMS Notification</label>
+        </div>
+        <div>
+          <input type="checkbox" name="emailNotifications" id="email_notifications"
+                 [checked]="betSlipSettings.email_notification"
+                 (change)="changeSettings('email_notification', $event.target.checked)">
+          <label for="email_notifications">E-mail Notification</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

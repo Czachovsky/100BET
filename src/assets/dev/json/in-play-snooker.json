@@ -1,0 +1,135 @@
+[
+  {
+    "itemHour": "08:35",
+    "teams": [
+      {
+        "teamName": "Snooker team 1",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Snooker team 2",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "SnookerItemspick1",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "SnookerItemspick2",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "SnookerItemspick3",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  },
+  {
+    "itemHour": "12:28",
+    "teams": [
+      {
+        "teamName": "Snooker team 1a",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Snooker team 2a",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "SnookerItemspick21",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "SnookerItemspick22",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "SnookerItemspick32",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  },
+  {
+    "itemHour": "08:35",
+    "teams": [
+      {
+        "teamName": "Borussia Dortmund",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Bayern Monachium",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "SnookerItemspick13",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "SnookerItemspick23",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "SnookerItemspick33",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  },
+  {
+    "itemHour": "12:28",
+    "teams": [
+      {
+        "teamName": "Arsenal",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Man UTD",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "SnookerItemspick14",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "SnookerItemspick24",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "SnookerItemspick34",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  }
+]
+

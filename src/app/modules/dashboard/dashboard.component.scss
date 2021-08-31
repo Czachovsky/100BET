@@ -1,0 +1,175 @@
+@import "../../../mixins";
+main{
+  margin:15px 20px 0 20px;
+  height: calc(100vh - 75px);
+  @include lower-than('lg'){
+    height: auto !important;
+    margin: 0;
+    .left_section{
+      display: none;
+    }
+  }
+
+.dashboard_left{
+  padding-right: 14px;
+  .player_infos{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 45px;
+    .avatar{
+      height: 165px;
+      width: 165px;
+      border-radius: 100%;
+      overflow: hidden;
+      border: 1px solid #707070;
+      margin-bottom: 16px;
+      img{
+        width: 100%;
+      }
+    }
+    .name{
+      color: #d1d1d1;
+      font-size: rem-calc(32);
+      margin-bottom: 8px;
+    }
+    .verification_level{
+      margin-bottom: 20px;
+      font-size: rem-calc(18);
+      display: flex;
+      align-items: center;
+      color: #707070;
+      span{
+        color: #707070;
+        margin-left: 7px;
+        &.low{
+          color: #ff3636;
+        }
+      }
+      div{
+        cursor: pointer;
+        margin-left: 7px;
+        i{
+          color: #404040;
+        }
+      }
+    }
+  }
+
+  .dashboard_menu{
+    margin-bottom: 50px;
+    li{
+      margin-bottom: 3px;
+      & > div{
+        height: 60px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        padding-left: 15%;
+        .counter{
+          background: #084d8d;
+          color: #d1d1d1;
+          font-size: rem-calc(16);
+          border-radius: 100px;
+          padding:0 10px;
+          margin-left: 10px;
+        }
+        & > span{
+          color: #d1d1d1;
+          font-size: rem-calc(18);
+          i{
+            margin-right: 20px;
+          }
+          @include lower-than(1100px){
+            font-size: rem-calc(16);
+          }
+        }
+        &:hover, &.active{
+          background: #1d1e1f;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+}
+.dashboard_right{
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #242424;
+  padding: 35px;
+  min-height: 100%;
+  @include lower-than('lg'){
+    padding: 0;
+    padding-top: 50px;
+  }
+  ::ng-deep div.dashboard-header{
+    text-align: center;
+    margin-bottom: 18px;
+    @include lower-than('lg'){
+      margin:0;
+    }
+    &-sub{
+      display: block;
+      text-align: left;
+      font-size: rem-calc(24);
+      border-bottom: 2px #2c2c2c solid;
+      padding-bottom: 8px;
+      @include lower-than('lg'){
+        border: none;
+        text-align: center;
+        font-size: rem-calc(17);
+        font-family: var(--roboto-bold);
+        padding-bottom: 25px;
+      }
+    }
+  }
+}
+  ::ng-deep footer{
+    background: #16181b;
+    border-top:1px solid #0f0f0f;
+    & > .container{
+      max-width: 100% !important;
+    }
+  }
+}
+
+::ng-deep .OHBDashboard{
+  .mobile_menu{
+    display: none;
+  }
+}
+
+.wid_and_dep{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+   margin-bottom: 40px;
+  & > div{
+    width: 138px;
+    height: 112px;
+    border-radius: 3px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #2b2b2b;
+    background-color: #16181b;
+    cursor: pointer;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    span{
+      margin-top:15px;
+      color: #d1d1d1;
+      line-height: 19px;
+      font-size: rem-calc(16);
+    }
+    &:hover, &.active{
+      transition: all 0.3s ease;
+      background-color: #1d1e1f;
+      box-shadow: 0 3px 14px 0 rgba(0, 0, 0, 0.32);
+      border: solid 1px #707070;
+    }
+  }
+}

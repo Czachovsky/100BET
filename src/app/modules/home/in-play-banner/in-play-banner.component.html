@@ -1,0 +1,27 @@
+<div class="in-play__banner" *ngIf="matchInfos.alias && matchInfos.alias !== ''">
+  <div class="in-play__banner_container">
+    <div class="in-play__banner_teams">
+      <div class="in-play__banner_teams_team">{{matchInfos.competition.game.team1_name}}</div>
+      <div class="in-play__banner_teams_score">
+        <div>
+          <ng-container *ngIf="matchInfos.competition.game.info.score1 > matchInfos.competition.game.info.score2; else firstLower">
+            <b>{{matchInfos.competition.game.info.score1}}</b>
+          </ng-container>
+          <ng-template #firstLower>
+            {{matchInfos.competition.game.info.score1}}
+          </ng-template>
+          :
+          <ng-container *ngIf="matchInfos.competition.game.info.score1 < matchInfos.competition.game.info.score2; else secondLower">
+            <b>{{matchInfos.competition.game.info.score2}}</b>
+          </ng-container>
+          <ng-template #secondLower>
+            {{matchInfos.competition.game.info.score2}}
+          </ng-template>
+        </div>
+        <div>{{getGameState()}} {{matchInfos.competition.game.info.current_game_time}}″</div>
+      </div>
+      <div class="in-play__banner_teams_team">{{matchInfos.competition.game.team2_name}}</div>
+    </div>
+    <img src="/assets/images/inPlay/in-play-img.png" alt="In Play">
+  </div>
+</div>

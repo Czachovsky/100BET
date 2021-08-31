@@ -1,0 +1,67 @@
+<div *ngIf="help">
+  <header class="hidden-lg-up">
+    <div class="img-back">
+      <a routerLink="/help">
+        <i class="far fa-chevron-left"></i>
+      </a>
+    </div>
+    <h3>{{ help.help }}</h3>
+  </header>
+
+  <section>
+    <ul>
+      <li>
+        <h3>{{ help.h1 }}</h3>
+        <div>
+          <h4>
+            {{ help.p1 }}
+          </h4>
+          <ul>
+            <li>
+              {{ help.l1 }}
+            </li>
+            <li>
+              {{ help.l2 }}
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <h3>{{ help.h2 }}</h3>
+        <div>
+          <h4>
+            {{ help.p2 }}
+          </h4>
+        </div>
+      </li>
+
+      <li>
+        <h3>{{ help.h3 }}</h3>
+        <div>
+          <h4>
+            {{ help.p3 }}
+          </h4>
+        </div>
+      </li>
+
+      <li>
+        <h3>{{ help.h4 }}</h3>
+        <div>
+          <h4>
+            {{ help.p4 }}
+          </h4>
+        </div>
+      </li>
+
+      <li>
+        <h3>{{ help.h5 }}</h3>
+        <div>
+          <h4>
+            {{ help.p5 }}
+          </h4>
+        </div>
+      </li>
+    </ul>
+  </section>
+</div>

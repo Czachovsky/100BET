@@ -1,0 +1,20 @@
+<div class="deposit__numpad" (clickOutside)="setHideNumpad()">
+  <div class="deposit__numpad_predefined">
+    <span *ngFor="let v of predefinedValues" (click)="setPredefinedVal(v)">{{v}}</span>
+  </div>
+  <div class="deposit__numpad_nums">
+    <span (click)="clickButton(1)">1</span>
+    <span (click)="clickButton(2)">2</span>
+    <span (click)="clickButton(3)">3</span>
+    <span (click)="clickButton(4)">4</span>
+    <span (click)="clickButton(5)">5</span>
+    <span (click)="clickButton(6)">6</span>
+    <span (click)="clickButton(7)">7</span>
+    <span (click)="clickButton(8)">8</span>
+    <span (click)="clickButton(9)">9</span>
+    <span (click)="clickButton('.')">.</span>
+    <span (click)="clickButton(0)">0</span>
+    <span (click)="clickButton('backspace')"><i class="fas fa-backspace"></i></span>
+  </div>
+</div>
+

@@ -1,0 +1,99 @@
+<div [ngClass]="{'loading_section': loading}">
+    <div class="no-records" *ngIf="!bonus.length && !loading">
+        <div class="icon"><i class="far fa-times-circle"></i></div>
+        <div class="text">{{'dashboard.transactionRecords.t12' | translate}}</div>
+    </div>
+    <div id="container">
+        <div style="margin-top: 4px;" *ngFor="let b of bonus;">
+            <div class="listBoxOut">
+                <p class="contTitleMob">{{b.name}}</p>
+                <div class="listBox">
+
+                    <div class="listBoxImg">
+                        <img [src]="b.img_url">
+                    </div>
+                    <div class="listBoxCont">
+                        <a href="javascript:void(0)" [routerLink]="['/promotion/terms-condition', b.partner_bonus_id]">
+                            <p class="contTitle">{{b.name}}</p>
+                        </a>
+
+                        <a href="javascript:void(0)" [routerLink]="['/promotion/terms-condition', b.partner_bonus_id]">
+                            <p class="contSubTitle">{{ 'dashboard.promotions.p14' | translate
+                                }}:{{b.start_d}}~{{b.end_d}}
+                            </p>
+                        </a>
+
+                        <a href="javascript:void(0)" [routerLink]="['/promotion/terms-condition', b.partner_bonus_id]">
+                            <p class="description">{{b.description}}</p>
+                        </a>
+
+                        <a href="javascript:void(0)" [routerLink]="['/promotion/terms-condition', b.partner_bonus_id]">
+                            <p class="contBot">{{ 'dashboard.promotions.p8' | translate }}
+                                <img src="../../../../../assets/images/dashboard/promotion/about.svg">
+                            </p>
+                        </a>
+
+                    </div>
+                    <div class="listBoxBtn">
+                        <button class="btn" (click)="openConfirmationPopUp(b)">{{ 'dashboard.promotions.p15' | translate
+                            }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popUp" *ngIf="isGoToMyBonus">
+    <div class="popUpCont">
+        <div class="popUpInn">
+            <div class="popUpInnTxt">
+                <div class="popHead">{{ 'dashboard.promotions.p16' | translate }}</div>
+                <p>{{ 'dashboard.promotions.p17' | translate }}</p>
+            </div>
+            <div class="popBtns">
+                <a href="javascript:void(0)" (click)="closeAllPupUp()">{{ 'dashboard.promotions.p18' |
+                    translate }}</a>
+                <a href="javascript:void(0)" (click)="goToMyBonus()">{{ 'dashboard.promotions.p19' |
+                    translate }}</a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="popUp" *ngIf="isConfirmation">
+    <div class="popUpCont">
+        <div class="popUpInn">
+            <div class="popUpInnTxt">
+                <div class="popHead">{{ 'dashboard.promotions.p20' | translate }}</div>
+                <p>{{ 'dashboard.promotions.p21' | translate }}</p>
+            </div>
+            <div class="popBtns">
+                <a href="javascript:void(0)" (click)="closeAllPupUp()">{{ 'dashboard.promotions.p18' |
+                    translate }}</a>
+                <a href="javascript:void(0)" (click)="claimBonus(current_slectedBonus.partner_bonus_id)">{{
+                    'dashboard.promotions.p19' | translate }}</a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="popUp" *ngIf="isError">
+    <div class="popUpCont">
+        <div class="popUpInn">
+            <div class="popUpInnTxt">
+                <div class="popHead">{{ 'dashboard.promotions.p23' | translate }}</div>
+                <p>{{ errorMessage }}</p>
+            </div>
+            <div class="popBtns_1">
+                <a href="javascript:void(0)" (click)="closeAllPupUp()">{{ 'dashboard.promotions.p24' |
+                    translate }}</a>
+            </div>
+
+        </div>
+    </div>
+</div>

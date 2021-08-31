@@ -1,0 +1,188 @@
+@import '../../../../mixins';
+
+main {
+  margin: 13.7px 19.2px 0 20px;
+
+  @include lower-than(1500px) {
+    padding: 0 15px;
+  }
+  @include lower-than('lg') {
+    padding: 0;
+    margin: 0;
+  }
+
+  .container__row {
+
+    .with_scrollbar {
+      @include lower-than('lg') {
+        height: auto;
+        overflow: auto;
+      }
+    }
+
+    .left_section {
+      margin-right: 14.1px;
+      @include lower-than('md'){
+        padding-right: 0;
+      }
+
+      @include higher-than('lg'){
+        flex: 0 0 250px;
+        max-width: 250px;
+      }
+
+      > div {
+        height: calc(100vh - 75.3px - 13.7px);
+      }
+    }
+
+    .right_container {
+      display: flex;
+      flex: 0 0 calc(100% - 265px);
+      max-width: calc(100% - 265px);
+      height: calc(100vh - 70px);
+      @include lower-than('lg'){
+        position: relative;
+        top: 48px;
+        max-width: 100%;
+        flex: auto;
+      }
+    }
+
+    .center_section {
+      flex: 0 0 65%;
+      max-width: 65%;
+      padding-right: 14px;
+      @include lower-than('lg'){
+        padding-right: 0;
+        max-width: 100%;
+        flex: auto;
+        margin: 0;
+      }
+      .sports_all {
+        height: calc(100vh - 70px);
+        margin: 0;
+
+        ::ng-deep {
+          workspace-footer footer {
+            padding: 43px 72.3px 42px 74px;
+            overflow-x: hidden;
+            @include lower-than(1550px){
+              padding: 20px;
+            }
+
+            .row {
+              @include lower-than(1550px){
+                flex-direction: column;
+                gap: 20px;
+              }
+              .left-content {
+                flex: 0 0 41.06%;
+              }
+              .right-content {
+                flex: 0 0 58.94%;
+                gap: 10px;
+                @include lower-than(1550px){
+                  justify-content: flex-start;
+                  .column {
+                    width: 20%;
+                    justify-content: flex-start !important;
+
+                    &:nth-child(3) {
+                      width: 25%;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .sports_all_page {
+            background: #242424;
+          }
+
+        }
+      }
+
+    }
+
+    .right_section {
+      flex: 0 0 35%;
+      max-width: 35%;
+      @include lower-than('lg'){
+        display: none;
+      }
+
+      ::ng-deep {
+        #main_page__bets {
+          margin-bottom: 24px;
+          background: #292929;
+          @include lower-than('lg'){
+            margin:0;
+          }
+          .solid__blue__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 38px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
+            background-image: linear-gradient(to right, #242424 16%, #2c2c2c 96%);
+
+            span {
+              font-family: var(--roboto-regular);
+              font-size: rem-calc(16);
+              line-height: 19px;
+              color: #ffffff;
+            }
+          }
+
+          workspace-my-bets .my_bets-tab-bar li{
+            height: 37px;
+            line-height: 37px;
+
+            button {
+              font-size: 14px;
+              opacity: 1 !important;
+              color: #949494;
+
+              &:before {
+                height: 1px;
+              }
+
+              &.__is_active {
+                color: #d1d1d1;
+              }
+            }
+          }
+
+          .my_bets-items {
+            .my_bets-item-header > div {
+              height: 38px;
+            }
+            .my_bets-item-body-row {
+              .my_bets-buttons .button.my_bets-cash-out-button {
+                width: 216.3px;
+              }
+              .my_bets-match-row {
+                min-height: 87px;
+                padding: 16px 16.8px;
+
+                .multiplier .live__icon {
+                  display: none;
+                }
+              }
+              .cashout_container {
+                padding: 8.5px 16.8px;
+
+                .my_bets-stake_returns {
+                  flex: 0 0 35%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

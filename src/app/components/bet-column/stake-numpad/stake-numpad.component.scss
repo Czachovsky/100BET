@@ -1,0 +1,60 @@
+@import '../../../../mixins';
+
+.stake__numpad {
+  border-top:1px solid #1e1e1e;
+  border-bottom: 1px solid #1e1e1e;
+  background: #1e1e1e;
+  &_sub {
+    .stake__numpad_incremental {
+      display: flex;
+      text-align: center;
+      margin-top: 1px;
+
+      button {
+        flex: 20%;
+        margin-right: 1px;
+        background: #404040;
+        height: 35px;
+        line-height: 35px;
+        font-size: rem-calc(16);
+        font-family: var(--roboto-bold);
+        color: #dddddd;
+        cursor: pointer;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .stake__numpad_keys {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      gap: 1px 1px;
+      grid-template-areas:
+        '. . . .'
+        '. . . ok'
+        '. . . ok'
+        '. . . ok';
+    }
+
+    button {
+      font-size: rem-calc(16);
+      font-family: var(--roboto-bold);
+      color: #838383;
+      text-align: center;
+      height: 35px;
+      line-height: 35px;
+      background: #404040;
+      cursor: pointer;
+      &.stake {
+        &__ok {
+          grid-area: ok;
+          height: auto;
+        }
+      }
+    }
+  }
+}

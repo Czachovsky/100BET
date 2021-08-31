@@ -1,0 +1,52 @@
+@mixin lower-than($breakpoint) {
+  @if $breakpoint == "sm" {
+    @media (max-width: 576px) {
+      @content;
+    }
+  } @else if $breakpoint == "md" {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == "lg" {
+    @media (max-width: 992px) {
+      @content;
+    }
+  } @else if $breakpoint == "xl" {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin higher-than($breakpoint) {
+  @if $breakpoint == "sm" {
+    @media (min-width: 576px) {
+      @content;
+    }
+  } @else if $breakpoint == "md" {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == "lg" {
+    @media (min-width: 992px) {
+      @content;
+    }
+  } @else if $breakpoint == "xl" {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@function rem-calc($size) {
+  $remSize: $size / 14;
+  @return #{$remSize}rem;
+}

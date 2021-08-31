@@ -1,0 +1,22 @@
+<div class="competition_all">
+  <div class="competition_all_section">
+    <div class="competition_all__body">
+      <div class="competition_all__body_league_row" *ngFor="let region of competitionObject['region']">
+        <div class="competition_all__body_league_row_body">
+          <div class="list_header active" #tableBody>
+            <span (click)="toggleTableBody(tableBody)">{{region.name}}</span>
+            <div><i class="fas fa-angle-down"></i></div>
+          </div>
+          <div class="list_body">
+            <div class="list_row">
+            <div class="list_item" *ngFor="let competition of region.competition | keyvalue" (click)="goToCountryOrRegion(competition.value, region)">
+                {{competition.value['name']}}
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

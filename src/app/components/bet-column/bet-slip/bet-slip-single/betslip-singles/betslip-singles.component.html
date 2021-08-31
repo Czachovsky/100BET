@@ -1,0 +1,44 @@
+<div class="bet__slip-pick more-multiples">
+  <div class="more-multiples-wraper">
+    <div class="more-multiples-title">{{'betSlipSection.m1' | translate}}</div>
+    <div class="more-multiples-stake">
+      <div class="more-multiples-stake">
+        <span>{{betSlipPicks.length}}X</span>
+        <input [value]="singlesStake" (keyup)="calculateValue($event.target['value'])" (focusout)="formatIt($event.target['value'])" (click)="singles.select()" class="input__stake" placeholder="Stake" type="number" #singles/>
+        <span class="input__stake_fake_input hidden-lg-up" (click)="showNumpad = true">{{singlesStake}}</span>
+        <span class="show-more-multiples-stake" (click)="showTable = !showTable"><i class="fas fa-chevron-down"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="more-multiples-table" *ngIf="showTable">
+  <div class="more-multiples-table-body">
+    <div class="more-multiples-table-header">
+      <span>{{'betSlipSection.m9' | translate}}</span>
+      <span>{{'betSlipSection.m10' | translate}}</span>
+      <span>{{'betSlipSection.m11' | translate}}</span>
+      <span>{{'betSlipSection.m12' | translate}}</span>
+    </div>
+
+    <div class="more-multiples-table-body-row" *ngFor="let single of betSlipPicks; let i = index;">
+      <span>{{i+1}}</span>
+      <span>
+           <ng-container *ngIf="single.stake && single.stake !== 'NaN' && singlesStake">
+            {{single.stake | number: '1.2-2'}}
+          </ng-container>
+          <ng-container *ngIf="!single.stake || single.stake === 'NaN' || !singlesStake">--</ng-container>
+      </span>
+      <span>{{single.price | oddsFormat: os.oddFormatName}}</span>
+      <span>
+                <ng-container *ngIf="(single.stake * single.price)">
+            {{(single.stake * single.price) | number: '1.2-2'}}
+          </ng-container>
+          <ng-container *ngIf="!(single.stake * single.price)">--</ng-container>
+      </span>
+    </div>
+  </div>
+</div>
+<workspace-numpad-small *ngIf="showNumpad"
+                        [initialStake]="singlesStake"
+                        (valueFromNumpad)="mobileValueFromNumpad($event)"
+                        (acceptValueFromNumpad)="acceptMobileValueFromNumpad($event)"></workspace-numpad-small>

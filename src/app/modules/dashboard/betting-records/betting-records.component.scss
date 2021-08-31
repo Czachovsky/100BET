@@ -1,0 +1,427 @@
+@import '../../../../mixins';
+
+.betting-records {
+  &.loading_section{
+    transition: filter 0.3s ease;
+    position: relative;
+    & > *:not(.loading-wrapper) {
+      filter: blur(5px);
+      pointer-events: none;
+      transition: filter 0.3s ease;
+    }
+  }
+  .dashboard-header {
+    margin-bottom: 45px;
+    @include lower-than('lg'){
+      .dashboard-header-sub{
+        padding: 0;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+  .casino_or_sportsbook{
+    margin-bottom: 50px;
+    display: flex;
+    padding-top: 20px;
+    @include lower-than('lg'){
+      padding:0;
+      margin:0;
+      box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+      background-color: #292929;
+    }
+    & > div{
+      flex: 0 0 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 54px;
+      font-size: rem-calc(16);
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.16);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      @include lower-than('lg'){
+        box-shadow: none;
+        height: 34px;
+        font-size: rem-calc(13);
+        font-family: var(--roboto-medium);
+        border-bottom: solid 2px #404040;
+        &.active, &:hover{
+          background: none !important;
+          box-shadow: none;
+          border-color:#fed430 ;
+        }
+      }
+      &.active{
+        pointer-events: none;
+      }
+      &.active, &:hover{
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.12);
+        background-color: #404040;
+      }
+    }
+  }
+  .betting-records-header {
+    display: flex;
+    margin-bottom: 50px;
+    @include lower-than('lg'){
+      background-color: #292929;
+      flex-direction: column;
+      padding:20px;
+      margin:0;
+    }
+
+    & > div {
+      display: flex;
+
+      &:first-child {
+        width: calc(100% - 150px);
+        @include lower-than('lg'){
+          width: 100%;
+          flex-direction: column;
+        }
+        & > div {
+          flex: 0 0 33.333%;
+          padding-right: 1.8vw;
+          @include lower-than(1315px){
+
+          }
+          @include lower-than('lg'){
+            flex: 0 0 100%;
+            padding:0;
+          }
+        }
+      }
+
+      &:last-child {
+        align-items: flex-end;
+      }
+
+      .betting-records-header-select {
+        & > div:first-child {
+          font-size: rem-calc(17);
+          margin-bottom: 12px;
+          @include lower-than('lg'){
+            font-size: rem-calc(13);
+            margin: 10px 0;
+
+          }
+        }
+      }
+    }
+
+    .date-range-wrapper {
+      padding-left: 18px;
+      height: 49px;
+      width: 100%;
+      border: 1px solid #101112;
+      background: #212121 none;
+      position: relative;
+      @include lower-than('lg'){
+        height: 44px;
+        border-radius: 5px;
+      }
+    }
+
+    ::ng-deep mat-date-range-input {
+      height: 100%;
+      font-size: rem-calc(15);
+      align-items: center;
+      display: flex;
+    }
+
+    ::ng-deep mat-datepicker-toggle {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      .mat-button-wrapper {
+        &:before {
+          content: "\f073";
+          font-family: "Font Awesome 5 Pro";
+          font-weight: 300;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline-block;
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          line-height: 1;
+          font-size: rem-calc(20);
+          color: #404040;
+        }
+
+        svg {
+          display: none !important;
+        }
+      }
+    }
+
+    ::ng-deep .ohb-select {
+      border-radius: 0;
+      box-shadow: none;
+      border: 1px solid #101112;
+      background: #212121 none;
+      color: #ffffff;
+      width: 100%;
+      height: 49px;
+      line-height: 49px;
+      min-width: unset;
+        @include lower-than('lg'){
+          height: 44px;
+          line-height: 44px;
+          border-radius: 5px;
+        }
+      .ohb-options {
+        ul {
+          li {
+            line-height: 34px;
+          }
+        }
+      }
+    }
+
+    .filter_records {
+      width: 150px;
+      text-align: center;
+      height: 49px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #004d92;
+      border: 1px solid #004d92;
+      color: #fff;
+      font-size: rem-calc(15);
+      cursor: pointer;
+      @include lower-than('lg'){
+        width: 100%;
+        border-radius: 5px;
+        height: 44px;
+        margin-top:10px;
+      }
+    }
+  }
+
+  .betting-records-body {
+    .betting-records {
+      &.empty{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10% 0;
+        .no-records{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          .text{
+            font-size: rem-calc(35);
+
+          }
+          .icon{
+            font-size: rem-calc(45);
+            margin-bottom: 18px;
+          }
+        }
+      }
+      &-table {
+        &-header {
+          display: flex;
+          background: #313131;
+          height: 49px;
+          align-items: center;
+          justify-content: left;
+          padding: 0 20px;
+
+          & > div {
+            color: #d1d1d1;
+            font-size: rem-calc(15);
+            flex: 0 0 14.2%;
+          }
+        }
+
+        &-body {
+
+          .betting-records-row {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #313131;
+            @include lower-than('lg'){
+              border-top: solid 1px #404040;
+              border-bottom: solid 1px #404040;
+              background-color: #313131;
+              margin-bottom: 8px;
+              justify-content: center;
+              position: relative;
+            }
+            & > div {
+
+              &.elements {
+                padding: 0 20px;
+                height: 49px;
+                display: flex;
+                align-items: center;
+              position: relative;
+                @include lower-than('lg'){
+                  justify-content: center;
+                  position: static;
+                  padding: 0 38px 0 22px;
+                  flex-direction: column;
+                  .mobile_row{
+                    height: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    font-size: rem-calc(13);
+                    & > div{
+                      flex: 0 0 50%;
+                      line-height: 20px;
+                      &.mobile_type{
+                        color: #dddddd;
+                      }
+                      &.mobile_date{
+                        color: #959595;
+                        font-family: var(--roboto-light);
+                        text-align: right;
+                        padding-right: 10px;
+                      }
+                      &.mobile_id{
+                        color: #959595;
+                      }
+                    }
+                    & > .outcome{
+                      text-transform: uppercase;
+                      font-family: var(--roboto-light);
+                      text-align: right;
+                      padding-right: 10px;
+                      &.lost{
+                        color: #ff3636;
+                      }
+                      &.won{
+                        color: #79bd1f;
+                      }
+                    }
+                  }
+                }
+                & > div {
+                  flex: 0 0 14.2%;
+                  font-size: rem-calc(15);
+                  @include lower-than('lg'){
+                    flex: unset;
+                  }
+                &.outcome{
+                  &.lost{
+                    color: #ff3636;
+                  }
+                  &.won{
+                    color: #79bd1f;
+                  }
+                }
+                  &.show_more {
+                    flex: unset;
+                    margin-left: auto;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    position: absolute;
+                    right:0;
+                    padding: 10px 29px;
+                    @include lower-than('lg'){
+                      height: 49px;
+                      width: 38px;
+                      padding:0;
+                      background: #2c2c2c;
+                      top:0;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      transition: none !important;
+                      &.active{
+                        transition: none !important;
+                      }
+                    }
+                    &.active {
+                      transform: rotate(180deg);
+                      transition: all 0.3s ease;
+                    }
+                  }
+                }
+              }
+
+
+              &.more_bets {
+                background: #212121;
+                border-top: 1px solid #313131;
+                padding: 20px 0;
+                @include lower-than('lg'){
+                  padding:10px 38px 10px 22px;
+                }
+                .more_bets_header {
+                  color: #959595;
+                  display: flex;
+                  height: 30px;
+                  align-items: center;
+                  width: calc(100% - 300px);
+                  margin: 0 auto 10px;
+
+                  & > div {
+                    font-size: rem-calc(15);
+                    font-family: var(--roboto-medium);
+                    flex: 0 0 20%;
+                  }
+                }
+                .more_bets_body{
+                  @include lower-than('lg'){
+                    & > div{
+                      &:last-child{
+                        margin-bottom: 0;
+                        padding-bottom: 0;
+                        border: none;
+                      }
+                    }
+                    .mobile_body_row{
+                      font-size: rem-calc(13);
+                      border-bottom: 1px solid #2f2f2f;
+                      padding-bottom:10px;
+                      margin-bottom: 10px;
+                      & > div{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        line-height: 20px;
+                      }
+                    }
+                  }
+                  &_row{
+                    display: flex;
+                    height: 30px;
+                    align-items: center;
+                    width: calc(100% - 300px);
+                    margin: 0 auto;
+                    & > div{
+                      flex: 0 0 20%;
+                      font-size: rem-calc(15);
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      padding-right: 10px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+.loading-wrapper{
+  position: absolute;
+  background: none;
+  width: 100%;
+
+}
+}

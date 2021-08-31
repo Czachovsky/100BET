@@ -1,0 +1,156 @@
+@import "../../../../../mixins";
+
+#bet__slip_multi{
+  overflow: hidden;
+    .banker_button{
+      height:58px;
+      width:58px;
+      border:solid 1px #c3c3c3;
+      display: flex;
+      align-items: center;
+      color: #262626;
+      font-size: rem-calc(16);
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: #fafafa;
+      &:hover, &.active{
+        background:#79bd1f;
+        border:1px solid #79bd1f;
+        transition: all 0.3s ease;
+      }
+    }
+  .more-multiples{
+    padding:0 9px;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-title{
+      color: #262626;
+      font-family: var(--roboto-bold);
+      line-height: 16px;
+    }
+    input.input__stake {
+      height: 28px;
+      width: 110px;
+      border: 1px solid #fafafa;
+      background: #fafafa;
+      text-align: right;
+      color: #262626;
+      -moz-appearance: textfield;
+      padding: 0 5px;
+      &:before{
+        content:'';
+        height:1.5px;
+        background: #ff5353;
+        width: 100%;
+        bottom:0;
+        left:0;
+        display: block;
+        position: absolute;
+      }
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+  .trebles{
+    padding:0 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:70px;
+     background: #d5d5d5;
+    @include lower-than('lg'){
+      padding:0 5px;
+    }
+    &.active{
+      .trebles-title{
+        i{
+          transform: rotate(180deg);
+          transition: all 0.3s ease;
+        }
+      }
+    }
+      &-title{
+        & > .subtitle{
+          color: #262626;
+          font-family: var(--roboto-bold);
+          margin-bottom: 3px;
+          &.banker{
+            cursor: pointer;
+          }
+        }
+        & > span{
+          color: #262626;
+          opacity: 0.6;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          i{
+            transition: all 0.3s ease;
+            font-size: 11px;
+            margin-left: 3px;
+          }
+        }
+      }
+      &-stake{
+        display: flex;
+        align-items: center;
+        &-odds{
+          height: 28px;
+          color: #262626;
+          font-size: rem-calc(14);
+          margin-right: 12px;
+          text-align: right;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+        &-wrapper{
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          align-items: flex-end;
+          & > div{
+            display: flex;
+          }
+          input.input__stake{
+            height: 28px;
+            width: 110px;
+            border: 1px solid #fafafa;
+            background: #fafafa;
+            text-align: right;
+            color: #262626;
+            -moz-appearance: textfield;
+            padding: 0 5px;
+            &:before{
+              content:'';
+              height:1.5px;
+              background: #ff5353;
+              width: 100%;
+              bottom:0;
+              left:0;
+              display: block;
+              position: absolute;
+            }
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+          }
+          .__returns{
+            font-family: var(--roboto-medium);
+            font-size: rem-calc(12);
+            color: #79bd1f;
+            margin-top: 3px;
+          }
+        }
+    }
+  }
+}
+

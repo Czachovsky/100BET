@@ -1,0 +1,11 @@
+<div class="ohb-modal" *ngIf="visible">
+<!--  <div class="modal-close">-->
+<!--    <div class="modal-title" *ngIf="modalTitle">{{modalTitle}}</div>-->
+<!-- -->
+<!--  </div>-->
+  <span class="modal_closer" (click)="closeModal()"><i class="fal fa-times"></i></span>
+  <div class="modal-sub">
+    <ng-content></ng-content>
+  </div>
+</div>
+<div class="modal-cover" *ngIf="visible" (click)="closeModal()"></div>

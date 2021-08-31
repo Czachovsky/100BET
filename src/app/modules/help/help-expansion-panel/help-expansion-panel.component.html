@@ -1,0 +1,71 @@
+<section class="mat-content-help-wrapper">
+  <mat-accordion>
+    <mat-expansion-panel class="active" [expanded]="this.help.includes(this.activeUrl)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <img src="/assets/images/icons/help/help.svg">
+          {{'help.helpExpantionPanel.help' | translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="link-box">
+        <a [routerLink]="'main'" [routerLinkActive]="'navigation__active'">
+          {{'help.helpExpantionPanel.help_option1' | translate}}</a>
+      </div>
+      <div class="link-box">
+        <a [routerLink]="'betting-rules'" [routerLinkActive]="'navigation__active'">
+          {{'help.helpExpantionPanel.help_option2' | translate}}</a>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <img src="/assets/images/icons/help/bookmark.svg">
+          {{'help.helpExpantionPanel.termsPrivacy' | translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="link-box active">
+        <a [routerLink]="'terms-conditions'" [routerLinkActive]="'navigation__active'">
+          {{'help.helpExpantionPanel.termsPrivacy_option1' | translate}}</a>
+      </div>
+      <div class="link-box">
+        <a [routerLink]="'responsible-gambling'" [routerLinkActive]="'navigation__active'">
+          {{'help.helpExpantionPanel.termsPrivacy_option2' | translate}}</a>
+      </div>
+      <div class="link-box">
+        <a [routerLink]="'privacy-cookie-policy'" [routerLinkActive]="'navigation__active'">
+          {{'help.helpExpantionPanel.termsPrivacy_option3' | translate}}</a>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <img src="/assets/images/icons/help/terms-privacy.svg">
+          {{'help.helpExpantionPanel.100Bet' | translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="link-box active">
+        <a [routerLink]="'about-us'" [routerLinkActive]="'navigation__active'">
+          {{'help.helpExpantionPanel.100Bet_option1' | translate}}</a>
+      </div>
+      <div class="link-box">
+        <a href="https://aff.100betcn.com/" target="blank">
+          {{'help.helpExpantionPanel.100Bet_option2' | translate}}</a>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <img src="/assets/images/icons/help/user-speaker.svg">
+          {{'help.helpExpantionPanel.contactUs' | translate}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="link-box active">
+        <a [routerLink]="'contact-us'" [routerLinkActive]="'navigation__active'">
+          {{'help.helpExpantionPanel.contactUs_option1' | translate}}</a>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>

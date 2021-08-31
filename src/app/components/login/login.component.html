@@ -1,0 +1,57 @@
+<div class="login_body" [ngClass]="{'reset_password' : passRec}">
+  <form action="#" autocomplete="off" class="login-form" id="ohb-login-form" *ngIf="!passRec">
+    <div class="welcome_wrap"><span>{{ 'dashboard.login.l13' | translate }}</span>{{ 'dashboard.login.l14' | translate }}</div>
+    <div class="login-input-wrapper">
+      <span>{{ 'dashboard.login.l3' | translate }}</span>
+    <input [ngClass]="{'error': loginErr}" class="login-input" id="username" type="text" placeholder="{{ 'dashboard.login.l6' | translate }}" #userName required>
+    </div>
+    <div class="login-input-wrapper">
+      <span>{{ 'dashboard.login.l4' | translate }}</span>
+      <span class='pass_recover' (click)='goToPasswordRecover()'>{{ 'dashboard.login.l17' | translate }}</span>
+    <input [ngClass]="{'error': passErr}" class="login-input" [type]="showPassword ? 'text' : 'password'" id="loginPassword" placeholder="{{ 'dashboard.login.l7' | translate }}" #userPassword required>
+      <div (click)="showPassword = !showPassword" class="show_password">
+        <ng-container *ngIf="!showPassword"><i class="far fa-eye"></i></ng-container>
+        <ng-container *ngIf="showPassword"><i class="fas fa-eye-slash"></i></ng-container>
+      </div>
+    </div>
+    <div class="login-input-wrapper remember">
+      <label>
+        <input type="checkbox" #rememberMe>
+        <span></span>
+        {{ 'dashboard.login.l5' | translate }}
+      </label>
+<!--      <span (click)="goToPasswordRecover()">-->
+<!--        Forget password?-->
+<!--      </span>-->
+    </div>
+    <div class="login-btn-wrapper">
+      <button class="login-btn btn__solid"
+              [ngClass]="{'disabled': !userName.value.length || !userPassword.value.length}"
+              (click)="logIn(userName.value,userPassword.value,$event, rememberMe.checked)" [disabled]="loginLoading">{{ 'dashboard.login.l10' | translate }}
+        <div *ngIf="loginLoading" class="loader">
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+        </div>
+      </button>
+    </div>
+  </form>
+  <div class="password_recovery" *ngIf="passRec">
+      <div class="password_recovery_header"> <span (click)="passRec = false;"><i class="fas fa-chevron-left"></i></span> {{ 'dashboard.login.l8' | translate }}</div>
+    <div class="password_recovery_tabs">
+      <ul>
+        <li><span [ngClass]="{'active': verificationType === 1}" (click)="verificationType = 1">{{ 'dashboard.login.l15' | translate }}</span></li>
+        <li><span [ngClass]="{'active': verificationType === 2}" (click)="verificationType = 2">{{ 'dashboard.login.l16' | translate }}</span></li>
+      </ul>
+    </div>
+    <div class="password_recovery_body">
+      <workspace-phone-verification *ngIf="verificationType === 1"></workspace-phone-verification>
+      <workspace-email-verification *ngIf="verificationType === 2"></workspace-email-verification>
+
+    </div>
+  </div>
+  <span *ngIf="!passRec">{{ 'dashboard.login.l9' | translate }} <span (click)="goToRegister()">{{ 'dashboard.login.l12' | translate }}</span></span>
+</div>

@@ -1,0 +1,39 @@
+<div class="popular__bets">
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+      Popular bets
+    </div>
+
+    <div class="popular__bets_wrapper">
+      <div class="popular__bets_item" *ngFor="let popularBet of popularBetsArray">
+        <div class="popular__bets_item_header">
+          <div class="popular__bets_header_time">
+            {{ popularBet.popularBetDate }}
+            <span>{{popularBet.popularBetHour }}</span>
+          </div>
+        </div>
+        <div class="popular__bets_item_teams">
+              <div class="popular__bets_item_type sport__icon sport__{{popularBet.type | lowercase}}">{{ popularBet.type }}</div>
+              <div class="popular__bets_item_teams_names">
+                <ng-container *ngFor="let team of popularBet.popularBetTeams; first as isFirst" >
+                  {{team.popularBetTeamName}} <span class="popular__bets_item_teams_names_vs" *ngIf="isFirst">v</span>
+                </ng-container>
+
+              </div>
+              <div class="both_teams_to_score">Both Teams to Score - <span>{{ popularBet.popularBetBothTeamstoScoreTranslate }}</span></div>
+        </div>
+        <div class="popular__bets_item_pick">
+          <div>
+            <div class="pick__button" [ngClass]="{'__is_picked' : popularBet.inCart}" (click)="addBetToCart(popularBet)">
+              <span>{{ popularBet.popularBetSomethingButDunnoWhat }}</span>
+              <div>{{ popularBet.popularBetMultiplier }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popular__bets__showall_wrapper">
+        <a href="#" (click)="allPopularBets($event)">View All Popular Bets</a>
+      </div>
+    </div>
+  </div>
+</div>

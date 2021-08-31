@@ -1,0 +1,129 @@
+<div id="bet_slip"
+     cdkDragLockAxis="x"
+     cdkDragBoundary="main"
+     (cdkDragEnded)="dragEnd($event)"
+     [cdkDragFreeDragPosition]="cdkDragPosition"
+     cdkDrag
+     [ngClass]="{'bet_success' : betPlaced, 'bet_changed' : betslipChanged }"
+     *ngIf="pickedItems.length">
+  <div class="bet_slip_header"  #betSlipBody cdkDragHandle [ngClass]="{'active': betSlipHiddenState, 'isLoading': isLoading}">
+    <div class="bet_slip_header_sub">
+      <ng-container *ngIf="!betPlaced">
+        <div>
+          <div class="bet_slip_counter">{{pickedItems.length}}</div>
+          <div class="d__flex">{{'betSlipSection.b1' | translate}}<span class="bet__slip_edit hidden-lg-up">{{'betSlipSection.b18' | translate}}</span></div>
+        </div>
+        <div>
+          <div class="betslip_login" *ngIf="!isLoggedIn" (click)="showLogIn()">{{'betSlipSection.b17' | translate}}</div>
+          <div class="betslip_logged" *ngIf="isLoggedIn && !hideBalance">
+            <span>{{'betSlipSection.b2' | translate}}</span>
+            <div>¥ {{userBalance | number:'1.2-2'}}</div>
+          </div>
+          <span class="betslip_hide" (click)="showOrHide(betSlipBody)"><i class="fas fa-chevron-down"></i></span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="betPlaced">
+        <div class="d__flex">
+          <div class="bet_slip_counter"><i class="fas fa-check"></i></div>
+          <div class="d__flex"><span>{{'betSlipSection.b22' | translate}}</span>
+            <span>{{'betSlipSection.b23' | translate}} {{betRef}}</span>
+          </div>
+        </div>
+        <div class="d__flex">
+          <span class="bet_slip_done" (click)="closeBetSlipSummary()">
+            {{'betSlipSection.b16' | translate}}
+          </span>
+        </div>
+      </ng-container>
+    </div>
+    <div class="bet_slip_header_settings" *ngIf="pickedItems.length > 1  && !betPlaced">
+      <span class="remove_all" (click)="removeAllPicks()">{{'betSlipSection.b15' | translate}}</span>
+<!--      <workspace-ohb-select *ngIf="pickedItems.length >= 3" [options]="selectOptions" [selected]="defaultOption"  (changeValue)="changeBetslipMethod($event)"></workspace-ohb-select>-->
+    </div>
+  </div>
+
+<div [ngClass]="{'show': betSlipHiddenState}" class="bet__slip_wrapper_sub" #betSlipWrapperSub>
+  <div class="bet__slip_wrapper" *ngIf="pickedItems.length" [ngClass]="{'isLoading': isLoading}">
+    <perfect-scrollbar>
+    <div class="bet__slip-picks">
+      <workspace-bet-slip-single
+        [pickedItems]="pickedItems"
+        (chageBetslip)="chagedBetslip($event)"
+        [isBetPlaced]="betPlaced"
+        [conflictError]="error2"
+        [openBetslip]='betSlipHiddenState'
+      ></workspace-bet-slip-single>
+    </div>
+    </perfect-scrollbar>
+    <div class="bet__slip_summary_wrapper" #summaryWrapper>
+      <div class="bet__slip_summary" >
+        <ng-container  *ngIf="!betPlaced">
+          <div class="bet__slip_summary_notifications"  *ngIf="error1">{{'betSlipSection.errors.e1' | translate}}</div>
+          <div class="bet__slip_summary_notifications conflicts"  *ngIf="error2">{{'betSlipSection.errors.e2' | translate}}</div>
+<!--          <div class="bet__slip_summary_notifications" *ngIf="error3">Insufficient balance.</div>-->
+<!--          <div class="bet__slip_summary_notifications"  *ngIf="">{{'betSlipSection.errors.e3' | translate}}</div>-->
+          <div class="bet__slip_summary_notifications"  *ngIf="betslipChanged || error4">{{'betSlipSection.errors.e4' | translate}}</div>
+          <div class="bet__slip_summary_notifications"  *ngIf="maxStakeError">{{'betSlipSection.errors.e5' | translate}}</div>
+          <div class="bet__slip_summary_notifications"  *ngIf="minStakeError">{{'betSlipSection.errors.e6' | translate}}</div>
+          <div class="bet__slip_summary_notifications"  *ngIf="slectedFreeBet">{{'betSlipSection.errors.e9' | translate}}</div>
+          <span class="btn__solid place__bet" *ngIf='!betslipChanged && !error4'
+              (click)="placeBet($event)"
+              [ngClass]="{'placing_bet':  isLoading, 'error': isLoggedIn && (error3 || error4)}">
+        <ng-container *ngIf="isLoggedIn && !isLoading">
+                  <span>{{'betCol.betPlace' | translate}}
+                    <ng-container *ngIf="betSlipSettings.stake_all">¥{{betSlipSettings.stake_all}}</ng-container></span>
+                  <small>{{'betSlipSection.b9' | translate}} ¥{{totalReturn | number : '1.2-2'}}</small>
+        </ng-container>
+        <ng-container *ngIf="!isLoggedIn && !isLoading">
+                 <span>{{'betCol.betPlace_n' | translate}}</span>
+        </ng-container>
+        <ng-container *ngIf="isLoading">
+          <div>{{'betSlipSection.b14' | translate}}
+            <div class="loader">
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+            </div>
+          </div>
+          <span>{{'betSlipSection.b6' | translate}}</span>
+        </ng-container>
+      </span>
+          <span class='btn__solid place__bet' (click)='acceptOddChanges()' *ngIf='betslipChanged || error4'>{{'betSlipSection.b20' | translate}}</span>
+        </ng-container>
+        <ng-container  *ngIf="betPlaced">
+          <div class="bet_placed_summary">
+            <div>
+              <span>{{'betSlipSection.b24' | translate}}</span>
+              <b>¥{{betSlipSettings.stake_all | number : '1.2-2'}}</b>
+            </div>
+            <div>
+              <span>{{'betSlipSection.b25' | translate}}</span>
+              <b>¥{{totalReturn | number : '1.2-2'}}</b>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!pickedItems.length" class="no__bets">
+    <div>
+      {{'betSlipSection.b26' | translate}}
+    </div>
+  </div>
+</div>
+
+</div>
+<workspace-ohb-modal [(visible)]="error3" *ngIf="error3">
+  <div id="insufficient_balance">
+      <div class="info_icon">
+        <span><i class="fas fa-exclamation-triangle"></i></span>
+      </div>
+      <div class="a">{{'betSlipSection.b11' | translate}}</div>
+        <div class="b">{{'betSlipSection.b12' | translate}}</div>
+      <span class="deposit_button d__flex" (click)="goToDepositPage()">{{'betSlipSection.b13' | translate}}</span>
+  </div>
+</workspace-ohb-modal>
+<div class="betslip_cover" *ngIf="betSlipHiddenState" (click)="hideBetslip()"></div>

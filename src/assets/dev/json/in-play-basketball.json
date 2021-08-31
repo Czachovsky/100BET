@@ -1,0 +1,135 @@
+[
+  {
+    "itemHour": "08:35",
+    "teams": [
+      {
+        "teamName": "Basketball team 1",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Basketball team 2",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "basketballItemspick1",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "basketballItemspick2",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "basketballItemspick3",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  },
+  {
+    "itemHour": "12:28",
+    "teams": [
+      {
+        "teamName": "Basketball team 1a",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Basketball team 2a",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "basketballItemspick21",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "basketballItemspick22",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "basketballItemspick32",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  },
+  {
+    "itemHour": "08:35",
+    "teams": [
+      {
+        "teamName": "Borussia Dortmund",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Bayern Monachium",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "basketballItemspick13",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "basketballItemspick23",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "basketballItemspick33",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  },
+  {
+    "itemHour": "12:28",
+    "teams": [
+      {
+        "teamName": "Arsenal",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Man UTD",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "basketballItemspick14",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "basketballItemspick24",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "basketballItemspick34",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  }
+]
+

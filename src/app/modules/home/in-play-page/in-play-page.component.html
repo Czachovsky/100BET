@@ -1,0 +1,49 @@
+<main>
+  <div class="container__row">
+    <div
+      class="container__col-3 hidden-lg-down with_scrollbar left_section"
+    >
+      <div>
+        <perfect-scrollbar>
+          <workspace-left-column-nav></workspace-left-column-nav>
+        </perfect-scrollbar>
+      </div>
+    </div>
+    <div class="right_container">
+      <div
+        class="container__col-xs-12 container__col-lg-6 with_scrollbar center_section"
+      >
+        <div>
+          <div class="sports_all">
+            <perfect-scrollbar>
+            <div class="sports_all_page">
+              <div class="container__fluid">
+                <ng-container *ngIf="gameInfo">
+                  <workspace-markets [gameInfo]="gameInfo"></workspace-markets>
+                </ng-container>
+              </div>
+            </div>
+            <div class="hidden-lg-up">
+              <workspace-casino-games></workspace-casino-games>
+            </div>
+            <workspace-footer></workspace-footer>
+            </perfect-scrollbar>
+          </div>
+
+        </div>
+      </div>
+      <div
+        class="container__col-xs-12 container__col-lg-3 with_scrollbar right_section"
+      >
+        <perfect-scrollbar>
+          <div>
+            <workspace-bet-history></workspace-bet-history>
+            <workspace-casino-games></workspace-casino-games>
+            <workspace-casino-promotions></workspace-casino-promotions>
+          </div>
+        </perfect-scrollbar>
+      </div>
+
+    </div>
+  </div>
+</main>

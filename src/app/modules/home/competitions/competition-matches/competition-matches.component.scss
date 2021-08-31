@@ -1,0 +1,67 @@
+@import "../../../../../mixins";
+
+.competition_matches {
+  padding-bottom: 30px;
+
+ &__header {
+    color: var(--text-color);
+    font-size: rem-calc(13);
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 15px;
+    border-bottom: 1px solid #2f2f2f;
+
+    span {
+      color: rgb(255 255 255 / 0.6);
+      margin-right: 13px;
+    }
+
+    &_inner {
+      display: flex;
+      align-items: center;
+    }
+
+    @include lower-than('lg') {
+      padding: 0 10px;
+    }
+
+    ::ng-deep workspace-ohb-select {
+      .ohb-select {
+        color: #dddddd;
+        height: 34px;
+      }
+    }
+  }
+
+  &__section {
+    margin-top: 10px;
+
+    .solid__blue__header {
+      height: 50px;
+      font-size: rem-calc(16);
+      font-family: var(--roboto-regular);
+      display: flex;
+      padding: 0 20px;
+
+      border-radius: 0;
+
+      span{
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        & > div{
+          margin-left: auto;
+          font-size: rem-calc(18);
+          margin-right: 16px;
+        }
+        i{
+          color: var(--yellow);
+        }
+      }
+    }
+  }
+}

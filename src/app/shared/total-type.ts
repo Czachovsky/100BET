@@ -1,0 +1,21 @@
+export const TOTAL_TYPE = {
+  Soccer: "Total Goals",
+  Tennis: "Total Games",
+  Basketball: "Total Points",
+  Volleyball: "Total Points",
+  IceHockey: "Total Goals",
+  Baseball: "Total Runs",
+  Handball: "Total Goals",
+  BeachVolleyball: "Total Points",
+  Boxing: "Total Rounds",
+  WaterPolo: "Total Goals",
+  TableTennis: "Total Points",
+  Badminton: "Total Points",
+  AmericanFootball: "Total Points",
+  Golf: "Total Holes",
+  Darts: "Total Legs",
+  Cricket: "Total Runs",
+  Rugby: "Total Points",
+  'Electronic sports': "Total Points",
+  'Default': "Total Points"
+}

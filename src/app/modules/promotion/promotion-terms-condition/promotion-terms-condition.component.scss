@@ -1,0 +1,202 @@
+@import "../../../../mixins";
+
+.header__terms__condition {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 14px 0px 14px 0px;
+    background-color: #242424;
+
+    .btn__navigate {
+        position: absolute;
+        left: 11.3px;
+
+        a {
+            position: relative;
+            margin: 2px 0px 2px 0px;
+            font-size: 18px;
+            line-height: 1.22;
+            color: #dddddd;
+
+            .fa-chevron-left:before {
+                content: "\f053";
+            }
+        }
+    }
+
+    h2 {
+        position: relative;
+        margin: auto;
+        font-family: Roboto;
+        font-size: 17px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.71;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+    }
+}
+
+.welcome-image {
+    width: 100%;
+    height: 320px;
+
+    @include lower-than("lg") {
+        height: auto;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-color: #170a35;
+    }
+
+    @include lower-than("lg") {
+        object-fit: contain;
+    }
+}
+
+section {
+    margin: 14px 24px 14px 24px;
+    background-color: #292929;
+
+    @include lower-than("lg") {
+        margin: 0px;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 31px;
+        margin: 0 0 0px;
+        padding: 8px 0px 8px 12.8px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
+        background-image: linear-gradient(to right, #242424 16%, #2c2c2c 96%);
+
+        a {
+            margin: 2px 5.2px 2px 0;
+            font-size: 13px;
+            line-height: 1.46;
+            color: #ffffff;
+
+            .fa-chevron-left:before {
+                content: "\f053";
+            }
+        }
+
+        h3 {
+            margin: 0 0 0 0;
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.15;
+            letter-spacing: normal;
+            text-align: left;
+            color: #d1d1d1;
+        }
+    }
+
+    .content {
+        margin: 0 0.5px 0 0.1px;
+        padding: 30px 19.5px 30px 19.9px;
+
+        @include lower-than("lg") {
+            margin: 0px;
+            padding: 34px 12px 30px 12px;
+        }
+
+        .sub__content {
+            margin: 0 0 30px 0;
+
+            h1 {
+                margin: 0 0px 24px 0;
+                font-family: Roboto;
+                font-size: 24px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 0.92;
+                letter-spacing: normal;
+                text-align: left;
+                color: #fed40d;
+            }
+
+            .third__subheader {
+                line-height: 1.21;
+            }
+
+            p {
+                margin: 0;
+                font-family: Roboto;
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.57;
+                letter-spacing: normal;
+                text-align: left;
+                color: #dddddd;
+            }
+
+            .see__terms__condition {
+                margin: 25px 0 0 0;
+            }
+
+            ul {
+                list-style: decimal;
+                padding: 0px 0px 0px 15px;
+
+                li {
+                    margin: 0 0;
+                    font-family: Roboto;
+                    font-size: 14px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.57;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #dddddd;
+                    ul {
+                        list-style-type: circle;
+                    }
+                }
+            }
+        }
+        mat-accordion {
+            mat-expansion-panel {
+                width: auto;
+                margin: 30px 0 0;
+                padding: 0px;
+                box-shadow: 0 0 13px 0 rgba(0, 0, 0, 0.08);
+                background-color: #313131;
+                border: none !important;
+                border-radius: 0px !important;
+
+                mat-expansion-panel-header {
+                    padding: 22px 20px;
+                    height: 62px;
+
+                    mat-panel-title {
+                        margin: 0 0;
+                        font-family: Roboto;
+                        font-size: 15px;
+                        font-weight: normal;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: 1.47;
+                        letter-spacing: normal;
+                        text-align: left;
+                        color: #dddddd;
+                    }
+                }
+            }
+        }
+    }
+}

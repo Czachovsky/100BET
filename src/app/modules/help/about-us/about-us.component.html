@@ -1,0 +1,23 @@
+<div *ngIf="aboutUs">
+  <header class="hidden-lg-up">
+    <div class="img-back">
+      <a routerLink="/help">
+        <i class="far fa-chevron-left"></i>
+      </a>
+    </div>
+    <h3>{{ aboutUs.title }}</h3>
+  </header>
+  
+  <section>
+    <ul>
+      <li>
+        <h3>{{ aboutUs.h1 }}</h3>
+        <div>
+          <h4>{{ aboutUs.p1 }}</h4>
+          <h4>{{ aboutUs.p2 }}</h4>
+          <h4>{{ aboutUs.p3 }}</h4>
+        </div> 
+      </li>
+    </ul>
+  </section>
+</div>

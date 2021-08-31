@@ -1,0 +1,280 @@
+[
+    {
+        "id": "58256",
+        "bet_credit": "Minimum deposit 100 CNY. 20% Deposit bonus up to 1000 CNY. Minimum odds, bet and wagering exclusion apply. Time limits and T&C apply.",
+        "how_offer_works": [
+            "This promotion is exclusive for new players who registered in 100BET from 1st January 2021 onwards.",
+            "Claim the offer through Member’s promotion page before making a qualifying deposit.",
+            "Bonus will be credited to the player account after making a qualifying deposit.",
+            "Bonus requires 8 times wagering requirement"
+        ],
+        "offer_warning": "If you don’t claim the offer before your deposit, the bonus will not be released.",
+        "specification": [
+            {
+                "text": "To release your bonus, you must first claim the offer from the promotion page.",
+                "subArray": false
+            },
+            {
+                "text": " Available to one per customer only. Make a qualifying deposit of 100 CNY or more to qualify for a 20% matched amount in Bonus, up to a maximum of 1000 CNY. Your deposit and bonus will be held on your account balance and are non-withdrawable.",
+                "subArray": false
+            },
+            {
+                "text": "Wager your bonus 8 times on sports bet to withdraw your ‘Bonus Funds’ balance.",
+                "subArray": false
+            },
+            {
+                "text": "Only sports bet across a wide range of markets will count towards wagering, virtual sports bet do not count.",
+                "subArray": false
+            },
+            {
+                "text": "Bets placed must meet certain conditions to count towards wagering:",
+                "subArray": true,
+                "array": [
+                    "Must contain selection odds of 1.5 (1/2) or greater. Any bets placed at odds of less the 1.5 (1/2) will not count towards wagering.",
+                    "Where abet has been partially cashed out, only the remaining active stake will count.",
+                    "Were a bet has been edited using our edit bet feature, only the new stake on the new bet will count.",
+                    "Fully Cashed out, Instant game, Gaming, void bets or In-Play bets which are settled as a push will not count.",
+                    "All unsettle bets will not count towards wagering"
+                ]
+            },
+            {
+                "text": "Your account balance is non-withdrawable until the wagering is completed.",
+                "subArray": false
+            },
+            {
+                "text": "Your bonus will be forfeit and removed if the wagering requirement has not been met within 30 days from the bonus issued date.",
+                "subArray": false
+            },
+            {
+                "text": "You may have more than one offer available on your account at any time. However, qualifying settled bets will only count towards releasing one of the offers. You may choose which offer is active within the Member’s promotions section.",
+                "subArray": false
+            }
+        ],
+        "general": [
+            "Where any term of the offer or promotion is breached or there is any evidence of a series of bets placed by a customer or group of customers, which due to enhanced payments, Free Bets, risk free bets, Bet Credits or any other promotional offer results in guaranteed customer profits irrespective of the outcome, whether individually or as part of a group, 100BET may reclaim the enhanced payment, Free Bet, risk free bet or Bet Credit element of such offers and/or void any bet funded by the Free Bet or Bet Credits. In addition, where there is evidence of such activity, 100BET may levy an administration charge on the customer up to the value of the Bet Credits, Free Bet, risk free bet or enhanced payment towards the administrative costs incurred in identifying and taking action against the activity.",
+            "100BET may reclaim any bonus amount, Free Bets, Bet Credits or enhanced payments that have been awarded in error.",
+            "All customer offers are limited to one per person. If 100BET has reasonable grounds to suspect that the bonus or offer is being claimed by or for the benefit of the same person more than once or by a group of people then it may withdraw the availability of any offer or all offers to that customer or group of customers and/or void any bet funded by the bonus or offer and remove any winnings from such bet.",
+            "100BET may, at any time, make minor amendments to this promotion to correct typographical errors or to improve on clarity or customer experience and may cancel this promotion for legal or regulatory reasons."
+        ]
+    },
+    {
+        "id": "57696",
+        "bet_credit": "Refund for any soccer game that finishes 0-0. Selected Market and Competition exclusion apply.",
+        "how_offer_works": [
+            "Place a pre-match Correct Score, Half Time/Full Time or Scorecast",
+            "If the game finishes 0-0 and the bet loses, we will refund your 50% stake, up to 100 CNY."
+        ],
+        "offer_warning": "",
+        "specification": [
+            {
+                "text": " This offer is only available to existing and eligible customers.",
+                "subArray": false
+            },
+            {
+                "text": "If customer have more than 1 eligible bets, the maximum refund amount will be 100 CNY in total",
+                "subArray": false
+            },
+            {
+                "text": "This offer is only available for Single Bets, bet placed In multiple bets will not refund.",
+                "subArray": false
+            },
+            {
+                "text": "This offer is available pre-match; Champion League, Europa League, English Premier League (ENG), Italy Serial A (ITA), France Ligue 1 (FRN), German Bundesliga (GER), Spain La Liga (SPN) , China Super League (CN), Major League Soccer (US), J1 League (JPN)",
+                "subArray": false
+            },
+            {
+                "text": "Half Time/Full Time, all Correct Score and all Scorecast markets. If the game finishes 0-0, we will refund your 50% stake, up to 100 CNY if the bet loses.",
+                "subArray": false
+            },
+            {
+                "text": " Bets placed using Bet Credits will are non-refundable.",
+                "subArray": false
+            },
+            {
+                "text": "This offer will not apply where a stake has been fully Cashed Out. Where a stake has been partially Cashed Out, and the match finishes 0-0, only the remaining active stake will be refunded.",
+                "subArray": false
+            },
+            {
+                "text": "If a qualifying bet is edited using our Edit Bet feature prior to kick-off and the match finishes 0-0, only the new stake will be refunded. Where a bet has been edited to include or amend a selection for an event that is In-Play, the offer will no longer apply.",
+                "subArray": false
+            }
+        ],
+        "general": [
+            "Where any term of the offer or promotion is breached or there is any evidence of a series of bets placed by a customer or group of customers, which due to enhanced payments, Free Bets, risk free bets, Bet Credits or any other promotional offer results in guaranteed customer profits irrespective of the outcome, whether individually or as part of a group, 100BET may reclaim the enhanced payment, Free Bet, risk free bet or Bet Credit element of such offers and/or void any bet funded by the Free Bet or Bet Credits. In addition, where there is evidence of such activity, 100BET may levy an administration charge on the customer up to the value of the Bet Credits, Free Bet, risk free bet or enhanced payment towards the administrative costs incurred in identifying and taking action against the activity.",
+            "100BET may reclaim any bonus amount, Free Bets, Bet Credits or enhanced payments that have been awarded in error.",
+            "100BET may, at any time, make minor amendments to this promotion to correct typographical errors or to improve on clarity or customer experience and may cancel this promotion for legal or regulatory reasons."
+        ]
+    },
+    {
+        "id": "57691",
+        "bet_credit": "ACCA Insurance applies to all markets and all leagues. Applies to 4+ fold Accas. Minimum odds of 1.2 (1/5) per selection apply. Max FREE BET 50 CNY refund per day. Does not include in-play bets. T&Cs apply.",
+        "how_offer_works": [
+            "Place a pre-match accumulator, applies to 4+ Fold selection",
+            "Money Back as a FREE BET if one selection of your 4+ ACCA lets you down",
+            "Max FREE BET 50 CNY per customer per day, referring to the day the qualifying bet is settled"
+        ],
+        "offer_warning": "",
+        "specification": [
+            {
+                "text": " This offer is only available to existing and eligible customers.",
+                "subArray": false
+            },
+            {
+                "text": "Applies to 4+ fold ACCA on all pre-match markets and sports",
+                "subArray": false
+            },
+            {
+                "text": "Money Back as a FREE BET if one leg of your 4+ ACCA lets you down",
+                "subArray": false
+            },
+            {
+                "text": "Max FREE BET 50 CNY per customer per day, referring to the day the qualifying bet is settled",
+                "subArray": false
+            },
+            {
+                "text": "FREE BET will be available for 7 days from when it is credited, FREE BET stake not included in any subsequent winnings",
+                "subArray": false
+            },
+            {
+                "text": "Free bets will be credited by 6pm the following day",
+                "subArray": false
+            },
+            {
+                "text": "If any of the selection of your qualifying accumulator bet are postponed or abandoned, leaving you with less than four matches or selections, you will not be eligible for a refund in that accumulator bet",
+                "subArray": false
+            },
+            {
+                "text": "Minimum odds per leg of 1.2 (1/5)",
+                "subArray": false
+            },
+            {
+                "text": "Bets that are cashed out do not qualify for the FREE BET refund",
+                "subArray": false
+            },
+            {
+                "text": "Bets placed with FREE BET will not qualify for the offer",
+                "subArray": false
+            },
+            {
+                "text": "If a qualifying bet is edited using our Edit Bet feature prior to kick-off, only the new stake will be refunded. Where a bet has been edited to include or amend a selection for an event that is In-Play, the offer will no longer apply.",
+                "subArray": false
+            }
+        ],
+        "general": [
+            "Where any term of the offer or promotion is breached or there is any evidence of a series of bets placed by a customer or group of customers, which due to enhanced payments, Free Bets, risk free bets, Bet Credits or any other promotional offer results in guaranteed customer profits irrespective of the outcome, whether individually or as part of a group, 100BET may reclaim the enhanced payment, Free Bet, risk free bet or Bet Credit element of such offers and/or void any bet funded by the Free Bet or Bet Credits. In addition, where there is evidence of such activity, 100BET may levy an administration charge on the customer up to the value of the Bet Credits, Free Bet, risk free bet or enhanced payment towards the administrative costs incurred in identifying and taking action against the activity.",
+            "100BET may reclaim any bonus amount, Free Bets, Bet Credits or enhanced payments that have been awarded in error.",
+            "100BET may, at any time, make minor amendments to this promotion to correct typographical errors or to improve on clarity or customer experience and may cancel this promotion for legal or regulatory reasons."
+        ]
+    },
+    {
+        "id": "60103",
+        "bet_credit": "Place a pre-match bet on selected match & market and receive 50% Stake as FREE BET in Live Bet, up 50 CNY. Selected Bet Type and Competition exclusion apply.",
+        "how_offer_works": [
+            "Every week 100BET will select a football or basketball match in this weekend’s promotion",
+            "Place a pre-match single on selected match and received 50% Stake as FREE BET in Live Bet."
+        ],
+        "offer_warning": "",
+        "specification": [
+            {
+                "text": "This offer is only available to existing and eligible customers.",
+                "subArray": false
+            },
+            {
+                "text": " Applies to pre-match single bet on selected match",
+                "subArray": false
+            },
+            {
+                "text": "Received 50% Stake as FREE BET to use in any Live Bet Market",
+                "subArray": false
+            },
+            {
+                "text": "Max FREE BET 50 CNY per customer",
+                "subArray": false
+            },
+            {
+                "text": "FREE BET will be available for 1 day from when it is credited, FREE BET stake not included in any subsequent winnings",
+                "subArray": false
+            },
+            {
+                "text": "Minimum odds for qualifying bet 1.5 (1/2)",
+                "subArray": false
+            },
+            {
+                "text": "Bets that are cashed out, full or partial before the match start will not count as a qualifying bet",
+                "subArray": false
+            },
+            {
+                "text": "Bets placed with FREE BET will not qualify for the offer",
+                "subArray": false
+            }
+        ],
+        "free_bet_credit": [
+            "FREE BET are non-withdrawable",
+            "Your FREE BET will be valid for 1 day from the date of receipt",
+            "FREE BET stakes are not included in any returns. Any returns from your FREE BET will be added to your Account",
+            "Stakes can be funded in part by your FREE BET and part with your real money balance. However, the FREE BET part of the stake will not be included in any returns",
+            "FREE BET can be used in a number of bets, subject to minimum stake rules",
+            "FREE BET are accepted on all sports and markets, pre-match or in-play/live, one selection or more, but are subject to minimum total odds of 1.8 or more",
+            "The Cash Out feature is not available on bets placed using your FREE BET",
+            " If a bet placed using a FREE BET is void, providing it has not expired, it will be returned to the client’s balance for use within the qualifying period"
+        ],
+        "general": [
+            "Where any term of the offer or promotion is breached or there is any evidence of a series of bets placed by a customer or group of customers, which due to enhanced payments, Free Bets, risk free bets, Bet Credits or any other promotional offer results in guaranteed customer profits irrespective of the outcome, whether individually or as part of a group, 100BET may reclaim the enhanced payment, Free Bet, risk free bet or Bet Credit element of such offers and/or void any bet funded by the Free Bet or Bet Credits. In addition, where there is evidence of such activity, 100BET may levy an administration charge on the customer up to the value of the Bet Credits, Free Bet, risk free bet or enhanced payment towards the administrative costs incurred in identifying and taking action against the activity.",
+            "100BET may reclaim any bonus amount, Free Bets, Bet Credits or enhanced payments that have been awarded in error.",
+            "All customer offers are limited to one per person. If 100BET has reasonable grounds to suspect that the bonus or offer is being claimed by or for the benefit of the same person more than once or by a group of people then it may withdraw the availability of any offer or all offers to that customer or group of customers and/or void any bet funded by the bonus or offer and remove any winnings from such bet.",
+            "100BET may, at any time, make minor amendments to this promotion to correct typographical errors or to improve on clarity or customer experience and may cancel this promotion for legal or regulatory reasons."
+        ]
+    },
+    {
+        "id": "58257",
+        "bet_credit": "Minimum deposit 100 CNY. 100% Deposit bonus up to 1000 CNY. Wagering exclusion apply. Time limits and T&C apply.",
+        "how_offer_works": [
+            "This promotion is exclusive for new players who registered in 100BET from 1st January 2021 onwards.",
+            "Claim the offer through Member’s promotion page before making a qualifying deposit.",
+            "Bonus will be credited to the player account after making a qualifying deposit.",
+            "Bonus only can be used on Casino Slots only",
+            "Bonus requires 30 times wagering requirement"
+        ],
+        "offer_warning": "If you don’t claim the offer before your deposit, the bonus will not be released.",
+        "specification": [
+            {
+                "text": " To release your bonus, you must first claim the offer from the promotion page.",
+                "subArray": false
+            },
+            {
+                "text": "Available to one per customer only. Make a qualifying deposit of 100 CNY or more to qualify for a 100% matched amount in Bonus, up to a maximum of 1000 CNY. Your deposit and bonus will be held on your account balance and are non-withdrawable.",
+                "subArray": false
+            },
+            {
+                "text": "Wager your bonus 30 times on Casino Slots to withdraw your ‘Bonus Funds’ balance.",
+                "subArray": false
+            },
+            {
+                "text": " Only Casino Slots bet across a wide range of product will count towards wagering, any sports, Live Casino, Video Poker Games bets do not count.",
+                "subArray": false
+            },
+            {
+                "text": "Your account balance is non-withdrawable until the wagering is completed.",
+                "subArray": false
+            },
+            {
+                "text": "A bet on a single game round cannot exceed 20 CNY.",
+                "subArray": false
+            },
+            {
+                "text": "Your bonus will be forfeit and removed if the wagering requirement has not been met within 30 days from the bonus issued date.",
+                "subArray": false
+            },
+            {
+                "text": "You may have more than one offer available on your account at any time. However, qualifying settled bets will only count towards releasing one of the offers. You may choose which offer is active within the Member’s promotions section.",
+                "subArray": false
+            }
+        ],
+        "general": [
+            "Where any term of the offer or promotion is breached or there is any evidence of a series of bets placed by a customer or group of customers, which due to enhanced payments, Free Bets, risk free bets, Bet Credits or any other promotional offer results in guaranteed customer profits irrespective of the outcome, whether individually or as part of a group, 100BET may reclaim the enhanced payment, Free Bet, risk free bet or Bet Credit element of such offers and/or void any bet funded by the Free Bet or Bet Credits. In addition, where there is evidence of such activity, 100BET may levy an administration charge on the customer up to the value of the Bet Credits, Free Bet, risk free bet or enhanced payment towards the administrative costs incurred in identifying and taking action against the activity.",
+            "100BET may reclaim any bonus amount, Free Bets, Bet Credits or enhanced payments that have been awarded in error.",
+            "All customer offers are limited to one per person. If 100BET has reasonable grounds to suspect that the bonus or offer is being claimed by or for the benefit of the same person more than once or by a group of people then it may withdraw the availability of any offer or all offers to that customer or group of customers and/or void any bet funded by the bonus or offer and remove any winnings from such bet.",
+            "100BET may, at any time, make minor amendments to this promotion to correct typographical errors or to improve on clarity or customer experience and may cancel this promotion for legal or regulatory reasons."
+        ]
+    }
+]

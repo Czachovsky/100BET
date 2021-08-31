@@ -1,0 +1,180 @@
+[
+  {
+    "featuredTitle": "English Premier League",
+    "featuredDate": "28 May",
+    "featuredTime": "19:30",
+    "inCart": false,
+    "featuredTeams": [
+      {
+        "featuredTeamName": "Borussia Dortmund",
+        "featuredTeamScore": 2
+      },
+      {
+        "featuredTeamName": "Bayern Monachium",
+        "featuredTeamScore": 2
+      }
+    ],
+    "featuredPicks": [
+      {
+        "id": "pick1",
+        "inCart": false,
+        "featuredPickMultiplier": "3.50",
+        "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      },
+      {
+        "id": "pickasd1",
+        "inCart": false,
+        "featuredPickMultiplier": "1.75",
+           "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      }
+    ]
+  },
+  {
+    "featuredTitle": "English Premier League",
+    "featuredDate": "28 May",
+    "featuredTime": "19:30",
+    "inCart": false,
+    "featuredTeams": [
+      {
+        "featuredTeamName": "Borussia Dortmund",
+        "featuredTeamScore": 2
+      },
+      {
+        "featuredTeamName": "Bayern Monachium",
+        "featuredTeamScore": 2
+      }
+    ],
+    "featuredPicks": [
+      {
+        "id": "pick2",
+        "inCart": false,
+        "featuredPickMultiplier": "3.50",
+           "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      },
+      {
+        "id": "pi3rf3ck2",
+        "inCart": false,
+        "featuredPickMultiplier": "1.50",
+           "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      }
+    ]
+  },
+  {
+    "featuredTitle": "English Premier League",
+    "featuredDate": "28 May",
+    "featuredTime": "19:30",
+    "inCart": false,
+    "featuredTeams": [
+      {
+        "featuredTeamName": "Borussia Dortmund",
+        "featuredTeamScore": 2
+      },
+      {
+        "featuredTeamName": "Bayern Monachium",
+        "featuredTeamScore": 2
+      }
+    ],
+    "featuredPicks": [
+      {
+        "id": "pisadfck3",
+        "inCart": false,
+        "featuredPickMultiplier": "3.50",
+           "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      },
+      {
+        "id": "pic234k3",
+        "inCart": false,
+        "featuredPickMultiplier": "1.50",
+           "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      }
+    ]
+  },
+  {
+    "featuredTitle": "English Premier League",
+    "featuredDate": "28 May",
+    "featuredTime": "19:30",
+    "inCart": false,
+    "featuredTeams": [
+      {
+        "featuredTeamName": "Borussia Dortmund",
+        "featuredTeamScore": 2
+      },
+      {
+        "featuredTeamName": "Bayern Monachium",
+        "featuredTeamScore": 2
+      }
+    ],
+    "featuredPicks": [
+      {
+        "id": "pick4",
+        "featuredPickMultiplier": "3.50",
+           "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      },
+      {
+        "id": "pica34k4",
+        "featuredPickMultiplier": "1.50",
+           "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      }
+    ]
+  },
+  {
+    "featuredTitle": "English Premier League",
+    "featuredDate": "28 May",
+    "featuredTime": "19:30",
+    "inCart": false,
+    "featuredTeams": [
+      {
+        "featuredTeamName": "Borussia Dortmund",
+        "featuredTeamScore": 2
+      },
+      {
+        "featuredTeamName": "Bayern Monachium",
+        "featuredTeamScore": 2
+      }
+    ],
+    "featuredPicks": [
+      {
+        "id": "pick5",
+        "inCart": false,
+        "featuredPickMultiplier": "3.50",
+           "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      },
+      {
+        "id": "pick5wegh38736",
+        "inCart": false,
+        "featuredPickMultiplier": "1.50",
+           "featuredSomethingButDunnoWhat": [
+          "-0.5",
+          "-1.0"
+        ]
+      }
+    ]
+  }
+]

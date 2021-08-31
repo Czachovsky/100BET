@@ -1,0 +1,122 @@
+@import "../../../mixins";
+
+.welcome-image {
+    width: 100%;
+    height: 320px;
+
+    @include lower-than("lg") {
+        height: auto;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @include lower-than("lg") {
+        object-fit: contain;
+    }
+}
+
+section {
+    margin: 14px 24px 14px 24px;
+    padding: 0px 0px 31px 0px;
+    background-color: #292929;
+
+    @include lower-than("lg") {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    mat-tab-group {
+        width: 100%;
+
+        mat-tab {
+            height: 54px;
+            padding: 0px 0px 31px 0px;
+        }
+    }
+}
+
+.sports__content {
+    .sports__header {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        padding: 11px 19.3px 11px 20px;
+        margin: 14px 0px;
+        background-image: linear-gradient(92deg, #313131, #313131);
+
+        @include lower-than("lg") {
+            height: 31px;
+            margin: 0 0 10px 0;
+            padding: 8px 0px 8px 16px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
+            background-color: #313131;
+        }
+
+        .icon {
+            margin: 2px 0px 2px 0;
+            width: 24px;
+            color: #dddddd;
+
+            @include lower-than("lg") {
+                margin: 0 0px 0 0;
+                font-size: 15px;
+                line-height: 3.73;
+            }
+        }
+
+        .fa-futbol:before {
+            content: "\f1e3";
+        }
+
+        .fa-spade:before {
+            content: "\f2f4";
+        }
+
+        h3 {
+            margin: 0 0 0 15px;
+            font-family: Roboto;
+            font-size: 24px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.17;
+            letter-spacing: normal;
+            text-align: left;
+            color: #dddddd;
+
+            @include lower-than("lg") {
+                margin: 0 0 0 8px;
+                font-size: 13px;
+                font-weight: normal;
+                line-height: 1.38;
+                color: #d1d1d1;
+            }
+        }
+
+        a {
+            margin-left: auto;
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.19;
+            letter-spacing: normal;
+            text-align: right;
+            color: #fed40d;
+        }
+    }
+
+    .sports__item__list {
+        padding: 0px 20px 0px 20px;
+
+        @include lower-than("lg") {
+            padding: 0px 0px 23px 12px;
+        }
+    }
+}

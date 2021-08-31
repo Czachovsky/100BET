@@ -1,0 +1,92 @@
+@import "../../../../mixins";
+.cashout_history{
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.25);
+  background-color: #e7e7e7;
+  position: absolute;
+  top:30px;
+  right: 8%;
+  width: 495px;
+  color: #262626;
+  z-index: 50;
+  &_header{
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #d4d4d4;
+    height: 55px;
+    padding-left: 16px;
+    & > div:not(.close){
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      div{
+      font-size: rem-calc(11);
+        margin-bottom: 2px;
+      }
+      span{
+        font-size: rem-calc(15);
+      }
+    }
+    .close{
+      width: auto;
+      margin-left: auto;
+      span{
+        height: 55px;
+        width: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        i{
+          font-size: rem-calc(25);
+          color: #d4d4d4;
+        }
+      }
+
+    }
+  }
+  &_body{
+    padding:18px;
+    .header{
+      font-size: rem-calc(13);
+      margin-bottom: 12px;
+    }
+    .footer{
+      display: flex;
+      align-items: center;
+      & > div{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        span{
+          font-size: rem-calc(11);
+          margin-bottom: 5px;
+        }
+        div{
+          color: #79bd1f;
+          font-size: rem-calc(15);
+          font-family: var(--roboto-medium);
+        }
+      }
+    }
+    .body{
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      & > div{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        div{
+          font-size: rem-calc(11);
+          margin-bottom: 5px;
+        }
+        ul{
+          li{
+            margin-bottom: 5px;
+            font-size: rem-calc(15);
+          }
+        }
+      }
+    }
+  }
+}

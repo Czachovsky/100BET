@@ -1,0 +1,342 @@
+<div class="sports_odds__section_body_table">
+  <div class="sports_odds__section_body_table_header">
+    <div class="start-time" *ngIf="startTime">{{startTime}}</div>
+    <div class="table_subheader" *ngIf="headers?.length" [ngStyle]="{'max-width': innerWidth < 992 ? getWidth() : '46%'}">
+      <div *ngFor="let tableItem of headers" [ngStyle]="{'flex-basis': getButtonWidth()}">{{tableItem}}</div>
+      <div class="hidden-lg-down"></div>
+    </div>
+  </div>
+  <div class="sports_odds__section_body_table_body" *ngIf="data?.length">
+    <div class="sports_odds__section_body_table_body_row" *ngFor="let match of data">
+      <div class="hidden-lg-down left-teams-info">
+        <div class="sports_odds_item_date hidden-lg-down">
+          <span *ngIf="!startTime">{{todayOrTomorrow(match.start_ts * 1000) ? (todayOrTomorrow(match.start_ts * 1000) | date: 'MM/dd') : ''}}</span>
+          <span>{{match.start_ts * 1000 | date: 'hh:mm'}}</span>
+        </div>
+        <div class="sports_odds_item_teams hidden-lg-down" (click)="redirectTo(match)">
+          <div class="sports_odds_item_teams_team">{{match.team1_name}}</div>
+          <div class="sports_odds_item_teams_team">{{match.team2_name}}</div>
+          <!-- <div class="result">Draw</div> -->
+        </div>
+        <div class="sports_odds_item_chart hidden-lg-down">
+                <span *ngIf="match.is_stat_available">
+                  <a [href]="'http://statistics.100100188.com/#/en/external/page/h2h/' + match.team1_id + '/' + match.team2_id" target="_blank">
+                    <i class="fas fa-chart-bar"></i>
+                  </a>
+                </span>
+        </div>
+      </div>
+      <div class="hidden-lg-up left-mobile">
+        <div class="main__upcoming_table_item_teams">
+          <div class="main__upcoming_table_item_teams_team">{{match.team1_name}}</div>
+          <div class="main__upcoming_table_item_teams_team">{{match.team2_name}}</div>
+          <div class="hidden-lg-up main__upcoming_table_item_hour_mobile">
+            <div class="time">{{match.start_ts * 1000 | date: 'hh:mm'}}</div>
+            <div class="count" (click)="redirectTo(match)">{{match.markets_count}} <i class="fa fa-angle-right"></i></div>
+          </div>
+        </div>
+        <div *ngIf="match.is_stat_available"  class="main__upcoming_table_item_chart">
+          <span>
+            <a [href]="'http://statistics.100100188.com/#/en/external/page/h2h/' + match.team1_id + '/' + match.team2_id" target="_blank">
+              <i class="fas fa-chart-bar"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="sports_odds_item_picks" [ngStyle]="{'max-width': innerWidth < 992 ? getWidth() : '46%'}">
+        <div class="sports_odds_item_picks_pick" [ngStyle]="{'max-width': getWidth()}">
+          <ng-container *ngFor="let markets of match.market | keyvalue:orderAsc">
+            <ng-container>
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue:orderAsc">
+                <div (click)="addBetToCart(event, match, markets)" class="pick__button"
+                  [ngStyle]="{'flex-basis': getButtonWidth()}"
+                  [ngClass]="{'__is_picked': shouldHasPickedClass(event.value['id']), 'is_blocked' : match.is_blocked === 1}">
+                  <span *ngIf="event.value['base'] || event.value['base'] === 0">
+                    <span *ngIf="markets.value['market_type'] === 'AsianHandicap'">{{event.value['base'] | formatBase}}</span>
+                    <span *ngIf="markets.value['market_type'] !== 'AsianHandicap'">{{event.value['base'] | number : '1.1-1'}}</span>
+                  </span>
+                  <div>{{event.value['price'] | oddsFormat: os.oddFormatName}}</div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div  [ngStyle]="{'flex-basis': getButtonWidth()}"
+              class="pick__button disabled" *ngFor="let tableItem of headers"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="pick__more hidden-lg-down" (click)="redirectTo(match)">+{{match.markets_count}}</div>
+      </div>
+      <!-- <div class="sports_odds_item_picks P1XP2" *ngIf="selectedOption === '1X12X2'">
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === '1X12X2'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === '1X'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === '1X12X2'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === '12'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === '1X12X2'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'X2'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="pick__more">+{{match.markets_count}}</div>
+      </div>
+      <div class="sports_odds_item_picks P1XP2" *ngIf="selectedOption === 'OverUnder'">
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'OverUnder'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'Over'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'OverUnder'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'Under'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="pick__more">+{{match.markets_count}}</div>
+      </div>
+      <div class="sports_odds_item_picks P1XP2" *ngIf="selectedOption === 'BothTeamsToScore'">
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'BothTeamsToScore'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'Yes'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'BothTeamsToScore'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'No'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="pick__more">+{{match.markets_count}}</div>
+      </div>
+      <div class="sports_odds_item_picks P1XP2" *ngIf="selectedOption === 'HalfTimeAsianHandicap'">
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'HalfTimeAsianHandicap'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'Home'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'HalfTimeAsianHandicap'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'Away'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="pick__more">+{{match.markets_count}}</div>
+      </div>
+      <div class="sports_odds_item_picks P1XP2" *ngIf="selectedOption === 'DrawNoBet'">
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'DrawNoBet'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'Home'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'DrawNoBet'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'Away'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="pick__more">+{{match.markets_count}}</div>
+      </div>
+      <div class="sports_odds_item_picks P1XP2" *ngIf="selectedOption === 'EvenOddTotal'">
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'EvenOddTotal'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'Odd'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <ng-container *ngFor="let markets of match.market | keyvalue">
+            <ng-container *ngIf="markets.value['type'] === 'EvenOddTotal'">
+              <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                <div class="pick__button"*ngIf="event.value['type'] === 'Even'">{{event.value['price'] | number : '1.2-2'}}</div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+          <div class="disabled_container">
+            <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+          </div>
+        </div>
+        <div class="pick__more">+{{match.markets_count}}</div>
+      </div>
+      <div class="sports_odds_item_picks" *ngIf="selectedOption === 'AsianHandicap&GoalLine'">
+        <div class="sports_odds_item_picks_pick">
+          <div>
+            <ng-container *ngFor="let markets of match.market | keyvalue">
+              <ng-container *ngIf="markets.value['type'] === 'P1XP2'  || markets.value['type'] === 'P1P2'">
+                <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                  <div class="pick__button"*ngIf="event.value['type'] === 'P1'">{{event.value['price'] | number : '1.2-2'}}</div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <div class="disabled_container">
+              <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+            </div>
+          </div>
+          <div>
+            <ng-container *ngFor="let markets of match.market | keyvalue">
+              <ng-container *ngIf="markets.value['type'] === 'P1XP2'  || markets.value['type'] === 'P1P2'">
+                <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                  <div class="pick__button"*ngIf="event.value['type'] === 'X'">{{event.value['price'] | number : '1.2-2'}}</div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <div class="disabled_container">
+              <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+            </div>
+          </div>
+          <div>
+            <ng-container *ngFor="let markets of match.market | keyvalue">
+              <ng-container *ngIf="markets.value['type'] === 'P1XP2'  || markets.value['type'] === 'P1P2'">
+                <ng-container *ngFor="let event of markets.value['event'] | keyvalue">
+                  <div class="pick__button"*ngIf="event.value['type'] === 'P2'">{{event.value['price'] | number : '1.2-2'}}</div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <div class="disabled_container">
+              <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <div>
+            <ng-container *ngFor="let markets of match.market | keyvalue">
+              <ng-container *ngIf="markets.value['type'] === 'AsianHandicap' && markets.value['name'] === 'Goals Asian Handicap'">
+                <ng-container *ngFor="let event of markets.value['event'] | keyvalue; index as i">
+                  <div class="pick__button"*ngIf="event.value['type'] === 'Away'">{{event.value['price'] | number : '1.2-2'}}</div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <div class="disabled_container">
+              <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+            </div>
+          </div>
+          <div>
+            <ng-container *ngFor="let markets of match.market | keyvalue">
+              <ng-container *ngIf="markets.value['type'] === 'AsianHandicap' && markets.value['name'] === 'Goals Asian Handicap'">
+                <ng-container *ngFor="let event of markets.value['event'] | keyvalue; index as i">
+                  <div class="pick__button"*ngIf="event.value['type'] === 'Home'">{{event.value['price'] | number : '1.2-2'}}</div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <div class="disabled_container">
+              <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <div>
+            <ng-container *ngFor="let markets of match.market | keyvalue">
+              <ng-container *ngIf="markets.value['type'] === 'AsianHandicap' && markets.value['name'] === 'Goals Handicap'">
+                <ng-container *ngFor="let event of markets.value['event'] | keyvalue; index as i">
+                  <div class="pick__button"*ngIf="event.value['type'] === 'Away'">{{event.value['price'] | number : '1.2-2'}}</div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <div class="disabled_container">
+              <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+            </div>
+          </div>
+          <div>
+            <ng-container *ngFor="let markets of match.market | keyvalue">
+              <ng-container *ngIf="markets.value['type'] === 'AsianHandicap' && markets.value['name'] === 'Goals Handicap'">
+                <ng-container *ngFor="let event of markets.value['event'] | keyvalue; index as i">
+                  <div class="pick__button"*ngIf="event.value['type'] === 'Home'">{{event.value['price'] | number : '1.2-2'}}</div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+            <div class="disabled_container">
+              <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="sports_odds_item_picks_pick">
+          <div class="pick__more"></div>
+          <div class="pick__more">+{{match.markets_count}}</div>
+        </div>
+    </div> -->
+    </div>
+  </div>
+</div>

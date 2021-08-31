@@ -1,0 +1,943 @@
+{
+  "fixtureLigaName": "German Budensliga",
+  "fixtureMatches": [
+    {
+      "fixtureMatchesHeadingName": "England / Premiere League",
+      "fixtureMatchesByDate": [
+        {
+          "fixtureMatchesDate": "Wednesday, 01 July",
+          "fixtureMatchesDataset": [
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            },
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            },
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            },
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixtureMatchesHeadingName": "England / Championship",
+      "fixtureMatchesByDate": [
+        {
+          "fixtureMatchesDate": "Wednesday, 01 July",
+          "fixtureMatchesDataset": [
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            },
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            },
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            },
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixtureMatchesHeadingName": "England / Cup",
+      "fixtureMatchesByDate": [
+        {
+          "fixtureMatchesDate": "Wednesday, 01 July",
+          "fixtureMatchesDataset": [
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            },
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            },
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            },
+            {
+              "fixtureMatchesDataset_hour": "19:30",
+              "fixtureMatchesDataset_team": [
+                {
+                  "_team_option_name": "Shalle 04",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "O 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Borussia Dortmund",
+                  "one_x_two_option_odd": "1.85",
+                  "handicap_option_odd": {
+                    "__asian_handicap": [
+                      "2.0",
+                      "2.5"
+                    ],
+                    "__odd": "1.89"
+                  },
+                  "line_option_odd": {
+                    "line_option_odd_under_over": "U 2.5",
+                    "__odd": "1.95"
+                  }
+                },
+                {
+                  "_team_option_name": "Draw",
+                  "one_x_two_option_odd": "1.65",
+                  "handicap_option_odd": "",
+                  "line_option_odd": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fixtureOutrights": [
+    {
+      "fixtureOutrightsHeadingName": "England / Chamipionship",
+      "outrightsDataset": [
+        {
+          "outrightsDataset_title": "Premier Legue 2019/2020 - top 4 finish",
+          "outrightsDatasetDate": "Wed 8 Jul 2020 18:18",
+          "outrightsDatasetQuestion": "Which team will finish in the top 4?",
+          "outrightsDatasetQuestion_options": [
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            },
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            },
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixtureOutrightsHeadingName": "England / Premier League",
+      "outrightsDataset": [
+        {
+          "outrightsDataset_title": "Premier Legue 2019/2020 - Team to be relegated",
+          "outrightsDatasetDate": "Wed 8 Jul 2020 18:18",
+          "outrightsDatasetQuestion": "Top Goalsoccer",
+          "outrightsDatasetQuestion_options": [
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            },
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            },
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            }
+          ]
+        },
+        {
+          "outrightsDataset_title": "Premier Legue 2019/2020 - Team to be relegated",
+          "outrightsDatasetDate": "Wed 8 Jul 2020 18:18",
+          "outrightsDatasetQuestion": "Top Goalsoccer",
+          "outrightsDatasetQuestion_options": [
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            },
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            },
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fixtureOutrightsHeadingName": "England / Cup",
+      "outrightsDataset": [
+        {
+          "outrightsDataset_title": "Premier Legue 2019/2020 - top 4 finish",
+          "outrightsDatasetDate": "Wed 8 Jul 2020 18:18",
+          "outrightsDatasetQuestion": "Which team will finish in the top 4?",
+          "outrightsDatasetQuestion_options": [
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            },
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            },
+            {
+              "option": "Bournemouth",
+              "odd": "1.07"
+            },
+            {
+              "option": "Watford",
+              "odd": "4.00"
+            },
+            {
+              "option": "Aston Villa",
+              "odd": "1.16"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fixtureStandings": [
+    {
+      "fixtureStandingsHeadingName": "England / Premiere League",
+      "fixtureStandingsTeamDataset": [
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        }
+      ]
+    },
+    {
+      "fixtureStandingsHeadingName": "England / Championship",
+      "fixtureStandingsTeamDataset": [
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        }
+      ]
+    },
+    {
+      "fixtureStandingsHeadingName": "England / Cup",
+      "fixtureStandingsTeamDataset": [
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        },
+        {
+          "fixtureStandingsTeamName": "1. Liverpool",
+          "fixtureStandings__p": "33",
+          "fixtureStandings__w": "22",
+          "fixtureStandings__d": "55",
+          "fixtureStandings__l": "22",
+          "fixtureStandings__gf": "33",
+          "fixtureStandings__ga": "12",
+          "fixtureStandings__pt": "14"
+        }
+      ]
+    }
+  ]
+}

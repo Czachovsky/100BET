@@ -1,0 +1,42 @@
+@import "../../../../mixins";
+
+.my_bets-all{
+  &-cash-out{
+    &-header{
+      padding:0 30px;
+      ul{
+        display: flex;
+        justify-content: space-between;
+        li{
+          span{
+            height: 50px;
+            line-height: 50px;
+            color: #838383;
+            font-size: rem-calc(16);
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            &:before{
+              content: "";
+              height: 1px;
+              width: 100%;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              background: var(--yellow);
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+            &.__is_active, &:hover{
+              color: var(--plain-white);
+              &:before{
+                opacity: 1;
+                transition: opacity 0.3s ease;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

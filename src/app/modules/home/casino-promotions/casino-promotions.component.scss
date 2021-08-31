@@ -1,0 +1,120 @@
+@import "../../../../mixins";
+#main_page__casino_promotions{
+  background: #292929;
+  @include lower-than('lg'){
+    display: none;
+  }
+  .solid__blue__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 38px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
+    background-image: linear-gradient(to right, #242424 16%, #2c2c2c 96%);
+
+    span {
+      font-family: var(--roboto-regular);
+      font-size: rem-calc(16);
+      line-height: 19px;
+      color: #ffffff;
+
+      &:nth-child(2) a {
+        font-size: rem-calc(13);
+        line-height: 19px;
+        color: var(--yellow);
+      }
+    }
+  }
+  .casino_games_promotions{
+    padding: 19px 8px;
+    border-bottom-left-radius: var(--radius-base);
+    border-bottom-right-radius: var(--radius-base);
+    .casino_games_promotion{
+      margin-bottom: 12px;
+      max-height: 140px;
+      border-radius: 4px;
+      box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.15);
+      border: solid 0.8px rgba(112, 112, 112, 0.44);
+      background-color: #252525;
+      overflow:hidden;
+      position: relative;
+      display: flex;
+      &:last-child{
+        margin:0;
+      }
+      &:hover{
+        .casino_games_promotion_more{
+          top:0;
+          transition: all 0.2s ease-in-out;
+        }
+      }
+      &_more{
+        background:rgba(41, 41, 41, 0.9);
+        height: 120px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+        top:120px;
+        transition: all 0.2s ease-in-out;
+        span{
+          height: 34px;
+          padding:0 16px;
+          background:var(--plain-white);
+          border-radius: 3px;
+          color: #1a1a1a;
+          cursor: pointer;
+          font-size: rem-calc(15);
+          font-family: var(--roboto-bold);
+          line-height: 34px;
+          text-transform: uppercase;
+        }
+      }
+      &_img{
+        // max-width: auto;
+        cursor: pointer;
+        flex: 0 0 37%;
+        height: 128px;
+        // background-image: url("../../../../assets/images/games/game-4@2x.png");
+        background-position: center;
+        // background-repeat: no-repeat;
+        background-size: cover;
+      }
+      &_desc{
+        margin: 28.5px 30px 24.5px 21px;
+        color: var(--plain-white);
+        background:#252525;
+        position: relative;
+        overflow: hidden;
+        @include lower-than(1500px){
+          margin: 10px;
+        }
+        span a{
+          display: block;
+          color: var(--yellow);
+          font-size: rem-calc(15);
+          line-height: 1.2;
+          text-transform: uppercase;
+          font-family: var(--roboto-regular);
+          margin-bottom: 3px;
+
+          &:nth-child(2) {
+            font-size: rem-calc(13);
+            line-height: 1.31;
+            font-weight: 300;
+            color: #ffffff;
+            opacity: 0.6;
+          }
+        }
+        div a{
+          font-size: rem-calc(13);
+          line-height: 1.31;
+          font-weight: 300;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}

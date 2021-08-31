@@ -1,0 +1,115 @@
+@import "../../../../mixins";
+
+header {
+    padding: 14px 35px 14px 35px;
+    background-color: #292929;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .img-back {
+        position: absolute;
+        left: 15px;
+        z-index: 1;
+
+        a {
+            position: relative;
+            margin: 2px 0px 2px 0px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 900;
+            line-height: 1.22;
+            color: #dddddd;
+
+            .fa-chevron-left:before {
+                content: "\f053";
+            }
+        }
+    }
+
+    h3 {
+        margin: 0px;
+        font-family: Roboto;
+        font-size: 17px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.71;
+        letter-spacing: normal;
+        text-align: center;
+        color: #ffffff;
+    }
+}
+
+section {
+    position: relative;
+    min-height: 282px;
+    height: calc(100vh - 416.2px);
+
+    @include lower-than("lg") {
+        min-height: auto;
+        height: auto;
+        background-color: #292929;
+        padding: 20px 9.7px 0px 26px;
+    }
+
+    ul {
+        list-style: disc;
+
+        li {
+            padding: 0 0 0 0px;
+
+            h3 {
+                position: relative;
+                width: 100%;
+                font-family: Roboto;
+                font-size: 16px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.19;
+                letter-spacing: normal;
+                text-align: left;
+                color: #dddddd;
+                border-bottom: 2px solid #323232;
+                padding-bottom: 13px;
+
+                @include lower-than("lg") {
+                    font-size: 13px;
+                    line-height: 1.15;
+                    padding-bottom: 12px;
+                }
+            }
+
+            div {
+                margin: 25px 37.3px 41px 0px;
+
+                @include lower-than("lg") {
+                    margin: 12px 0px 28px 0px;
+                }
+
+                h4 {
+                    margin: 20px 0 0 0;
+                    font-family: Roboto;
+                    font-size: 15px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #d1d1d1;
+                    
+                    &:first-child{
+                        margin: 0px;
+                    }
+
+                    @include lower-than("lg") {
+                        font-size: 13px;
+                        line-height: 1.31;
+                    }
+                }
+            }
+        }
+    }
+}

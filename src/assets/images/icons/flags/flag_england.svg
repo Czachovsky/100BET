@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21.495" height="13.918" viewBox="0 0 21.495 13.918">
+    <defs>
+        <style>
+            .prefix__cls-4{fill:#db4655}
+        </style>
+    </defs>
+    <g id="prefix___033-england" data-name="033-england" transform="translate(0 -90.839)">
+        <path id="prefix__Path_69" fill="#f2f2f6" d="M28.289 90.839h-9.36l-.693.33-.693-.33H8.182l-.365.428v12.394a.7.7 0 0 0 .693.7h20.052l.42-.3v-5.567l-.525-.675.525-.717v-5.567a.7.7 0 0 0-.693-.696z" data-name="Path 69" transform="translate(-7.488)"/>
+        <path id="prefix__Path_70" fill="#e1e1e6" d="M.693 101.973V90.839a.7.7 0 0 0-.693.7V97.1l.42.752-.42.64v5.567a.7.7 0 0 0 .693.7h9.361l.672-.348.714.348h9.36a.7.7 0 0 0 .693-.7H2.774a2.084 2.084 0 0 1-2.08-2.088z" data-name="Path 70"/>
+        <path id="prefix__Path_71" fill="#e5646e" d="M26.6 97.1H16.549v-6.261h-1.386V97.1H5.8l-.469.7.469.7h9.36v5.567l.693.447.693-.447v-5.573H26.6z" data-name="Path 71" transform="translate(-5.108)"/>
+        <g id="prefix__Group_125" data-name="Group 125" transform="translate(0 97.102)">
+            <path id="prefix__Path_72" d="M0 239.484h.7v1.392H0z" class="prefix__cls-4" data-name="Path 72" transform="translate(0 -239.484)"/>
+            <path id="prefix__Path_73" d="M239.484 404.645h1.392v.7h-1.392z" class="prefix__cls-4" data-name="Path 73" transform="translate(-229.394 -397.686)"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,46 @@
+<div class="cashout_history">
+
+  <div class="cashout_history_header">
+    <div>
+      <div>Stake</div><span>¥{{cashOutHistory.remaining_stake | number: '1.2-2'}}</span>
+    </div>
+    <div>
+      <div>Total To Return</div><span>¥{{cashOutHistory.possible_win}}</span>
+    </div>
+    <div class="close">
+      <span (click)="triggerCloseHistory()">
+        <i class="fal fa-times"></i>
+      </span>
+    </div>
+  </div>
+  <div class="cashout_history_body">
+    <div class="header">
+      Cash Out History
+    </div>
+    <div class="body">
+      <div>
+        <div>Remaining Stake</div>
+        <ul>
+          <li *ngFor="let h of cashOutHistory.cashouts_history">¥{{h.remaining_stake  | number: '1.2-2'}}</li>
+        </ul>
+      </div>
+      <div>
+        <div>To Return</div>
+        <ul>
+          <li *ngFor="let h of cashOutHistory.cashouts_history">¥{{h.to_return  | number: '1.2-2'}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer">
+      <div>
+        <span>Original Stake</span>
+        <div>¥{{cashOutHistory.amount | number: '1.2-2'}}</div>
+      </div>
+      <div>
+        <span>Total Cash Out</span>
+        <div>¥{{cashOutHistory.outcome === 5 ? cashOutHistory.payout : cashOutHistory.total_partial_cashout_amount | number: '1.2-2'}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,38 @@
+<div class="fixture__standings">
+  <div class="fixture__standings_section" *ngFor="let fixt of fixtureArray; first as isFirst">
+    <div class="fixture__standings_section_header solid__blue__header" #tableBody [ngClass]="{'active': isFirst}">
+        <span (click)="toggleTableBody(tableBody)">
+          {{ fixt.fixtureStandingsHeadingName }} <div class="fixture__standings_counter">5</div> <i class="fas fa-angle-down"></i>
+        </span>
+    </div>
+    <div class="fixture__standings_section_table">
+      <div class="fixture__standings_section_table_header">
+        <div>#Team</div>
+        <div class="league__stats">
+          <div>P</div>
+          <div>W</div>
+          <div>D</div>
+          <div>L</div>
+          <div>GF</div>
+          <div>GA</div>
+          <div>PT</div>
+        </div>
+      </div>
+      <div class="fixture__standings_section_table_body">
+        <div class="fixture__standings_section_table_row" *ngFor="let row of fixt.fixtureStandingsTeamDataset">
+          <div class="league__stats_team">{{row.fixtureStandingsTeamName}}</div>
+          <div class="league__stats">
+            <div>{{ row.fixtureStandings__p }}</div>
+            <div>{{ row.fixtureStandings__w }}</div>
+            <div>{{ row.fixtureStandings__d }}</div>
+            <div>{{ row.fixtureStandings__l }}</div>
+            <div>{{ row.fixtureStandings__gf }}</div>
+            <div>{{ row.fixtureStandings__ga }}</div>
+            <div>{{ row.fixtureStandings__pt }}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+@import "../../../../mixins";
+
+.in-play__banner {
+  margin: 0 10px 20px 10px;
+  background: var(--plain-white);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  position: relative;
+
+  &_container {
+    position: relative;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &_teams {
+    position: absolute;
+    display: flex;
+    color: var(--plain-white);
+    align-items: center;
+    white-space: nowrap;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    &_team {
+      font-size: rem-calc(20);
+      width: 33.333%;
+      &:first-child{
+        text-align: right;
+      }
+      &:last-child{
+        text-align: left;
+      }
+    }
+
+    &_score {
+      text-align: center;
+      margin: 0 50px;
+
+      div {
+        &:first-child {
+          font-family: var(--roboto-bold);
+          color: #b4b4b4;
+          font-size: rem-calc(20);
+          line-height: 24px;
+          margin-bottom: 4px;
+          b {
+            color: var(--yellow);
+          }
+
+        }
+        &:last-child{
+          color: var(--plain-white);
+          opacity: .57;
+          font-size: rem-calc(16);
+        }
+      }
+    }
+  }
+}

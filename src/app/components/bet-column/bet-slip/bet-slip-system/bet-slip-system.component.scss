@@ -1,0 +1,93 @@
+@import "../../../../../mixins";
+
+#bet__slip_system {
+  overflow: hidden;
+  .bet__slip_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+
+    ::ng-deep .ohb-select {
+      min-width: 150px;
+    }
+
+    .bet__slip_system_banker {
+      span {
+        color: #838383;
+
+        &.banker__btn {
+          margin-left: 10px;
+          height: 40px;
+          width: 40px;
+          background: #404040;
+          border: 1px solid #404040;
+          display: inline-block;
+          text-align: center;
+          line-height: 38px;
+          font-family: var(--roboto-bold);
+          color: var(--plain-white);
+          font-size: rem-calc(15);
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &.__active, &:hover {
+            border-color: var(--yellow);
+            background-color: rgba(254, 212, 13, 0.15);
+            transition: all 0.3s ease;
+            color: var(--yellow);
+          }
+        }
+      }
+    }
+  }
+
+  .bet__slip-pick_infos_right {
+    margin-left: auto;
+
+    .bet__slip-pick_remove_wrapper {
+      margin-left: 0;
+      text-align: right;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .closed_info {
+        margin-right: 15px;
+        font-style: rem-calc(15);
+        font-family: var(--roboto-bold);
+      }
+    }
+    .bet__slip-pick_stake{
+      align-items: flex-end;
+      .bet__slip_single_banker_option{
+        height: 28px;
+        width: 28px;
+        margin-top:5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #404040;
+        border: 1px solid #404040;
+        color: var(--plain-white);
+        font-size: rem-calc(14);
+        cursor: pointer;
+        &:hover, &.__is_active{
+          border-color: var(--yellow);
+          background-color: rgba(254, 212, 13, 0.15);
+          transition: all 0.3s ease;
+          color: var(--yellow);
+        }
+      }
+    }
+    &.with__banker_info{
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      .bet__slip-pick_remove_wrapper{
+        margin: 0;
+        margin-left: 15px;
+      }
+    }
+  }
+}

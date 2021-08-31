@@ -1,0 +1,52 @@
+<div class='game_launcher' *ngIf='gameObj'>
+  <div class='game_launcher_iframe'  [style.backgroundImage]="'url(' + gameObj.background + ')'" #iFrameWrap>
+    <div class='game_buttons'>
+      <span (click)="gameAction('close')"><i class="fal fa-times"></i></span>
+      <span *ngIf='!isFullScreen' (click)="gameAction('enter_full_screen')"><i class="far fa-expand"></i></span>
+      <span *ngIf='isFullScreen' (click)="gameAction('close_full_screen')"><i class="far fa-compress"></i></span>
+      <span (click)="gameAction('new_tab')"><i class="far fa-external-link-alt"></i></span>
+    </div>
+    <div class='iframe__wrapper' [style.width]="iframeWrapperWidth+'px'">
+      <div class='iframe_wrapper' [style.paddingTop]="aspectRatio+'%'">
+        <iframe *ngIf='canGameStart'  [src]="gameUrl | safe: 'resourceUrl'" frameborder='0'></iframe>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class='rest_games hidden-lg-down'>
+    <div class='rest_games_header'>
+      {{'casino.c17' | translate}}
+    </div>
+    <div class='rest_games_list'>
+      <div class='single_game' *ngFor='let game of restGames'>
+        <span class="favourite_game" [ngClass]="{'active': game.favouriteGame}" (click)="favouriteGame(game)"><i class="fas fa-star"></i></span>
+        <div class='play_wrapper'>
+          <span class='play_btn' (click)="runGame(game, 'real')">  {{'casino.c15' | translate}}</span>
+          <span class="free_play_btn" (click)="runGame(game, 'real')">
+                {{'casino.c14' | translate}}
+            </span>
+
+        </div>
+        <div class='game_icon'>
+          <img src="{{game.icon_2}}" alt="{{game.name}}">
+        </div>
+        <div class="game_infos">
+          <span class="title">{{game.name}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<workspace-ohb-modal [(visible)]="depositError" *ngIf="depositError">
+  <div id="insufficient_balance">
+    <div class="info_icon">
+      <span><i class="fas fa-exclamation-triangle"></i></span>
+    </div>
+    <div class="a">{{'betSlipSection.b11' | translate}}</div>
+    <div class="b">{{'betSlipSection.b12' | translate}}</div>
+    <span class="deposit_button d__flex" (click)="goToDepositPage()">{{'betSlipSection.b13' | translate}}</span>
+  </div>
+</workspace-ohb-modal>

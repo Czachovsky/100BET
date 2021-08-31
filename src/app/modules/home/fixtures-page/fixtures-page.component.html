@@ -1,0 +1,25 @@
+<workspace-breadcrumbs [homeUrl]="'/sportsbook/home'" [routeArr]="routerObj"></workspace-breadcrumbs>
+
+<div class="fixture__list event_list">
+  <div class="container__fluid">
+    <div class="fixture__list_select">
+      <ul class="smaller_menu">
+        <li><span (click)="changeTable('matches')"
+                  [ngClass]="{'__is_active' : openedTable === 'matches'}">{{ 'rest.matches' | translate }}</span></li>
+        <li><span (click)="changeTable('outrights')"
+                  [ngClass]="{'__is_active' : openedTable === 'outrights'}">{{ 'rest.outrights' | translate }}</span></li>
+        <li><span (click)="changeTable('standings')"
+                  [ngClass]="{'__is_active' : openedTable === 'standings'}">{{ 'rest.standings' | translate }}</span></li>
+      </ul>
+    </div>
+    <div class="fixture__list_body" *ngIf="fixtureData">
+      <workspace-fixtures-matches *ngIf="openedTable === 'matches'"
+                                  [fixtureArray]="fixtureData.fixtureMatches"></workspace-fixtures-matches>
+      <workspace-fixtures-outrights *ngIf="openedTable === 'outrights'"
+                                    [fixtureArray]="fixtureData.fixtureOutrights"></workspace-fixtures-outrights>
+      <workspace-fixtures-standings *ngIf="openedTable === 'standings'"
+                                    [fixtureArray]="fixtureData.fixtureStandings"></workspace-fixtures-standings>
+    </div>
+
+  </div>
+</div>

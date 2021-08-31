@@ -1,0 +1,33 @@
+@import "../../../../mixins";
+.table_items_pick{
+  display: flex;
+  border-left: solid 2px #2f2f2f;
+  &.column_picks{
+    flex-direction: column;
+    .pick__button{
+      border-bottom: solid 2px #2f2f2f;
+      border-right: none;
+      &:last-child{
+        border: none;
+      }
+    }
+  }
+  &.row_picks{
+    .pick__button{
+      border-right: solid 2px #2f2f2f;
+      &:last-child{
+        border: none;
+      }
+    }
+  }
+  .pick__button{
+    background: transparent;
+    max-width: 136px;
+    width: 9vw;
+    min-height: 62px;
+    margin: 0;
+    div{
+      font-size: rem-calc(14);
+    }
+  }
+}

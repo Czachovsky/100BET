@@ -1,0 +1,209 @@
+@import "../../../../mixins";
+
+.game_launcher{
+  width: 100vw;
+  padding:0 6rem;
+  background-color: #16181b;
+  margin-top:20px;
+  @include lower-than('lg'){
+    padding:0;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    margin: 0;
+    z-index: 9999;
+  }
+  .game_launcher_iframe{
+    margin-bottom: 30px;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    height: calc(100vh - 96px);
+    @include lower-than('lg'){
+      height: 100vh;
+    }
+    .iframe__wrapper{
+      margin: 0 auto;
+      max-width: calc(100% - 30px);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include lower-than('lg'){
+        height:100%;
+      }
+    }
+    .iframe_wrapper{
+      position: relative;
+      @include lower-than('lg'){
+        height:100%;
+      }
+      iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include lower-than('lg'){
+          height: calc(100% - 100px);
+          top: 50px;
+        }
+      }
+    }
+    .game_buttons{
+      position: absolute;
+      right: -50px;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 50px;
+      box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.16);
+      background: #2c2c2c;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      padding-top:30px;
+      @include lower-than('lg'){
+        right: 0;
+        height: 50px;
+        width: auto;
+        flex-direction: inherit;
+        z-index: 100;
+      }
+      span{
+        cursor: pointer;
+        margin-bottom: 30px;
+        font-size: 22px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include lower-than('lg'){
+          width: 50px;
+        }
+        &:last-child{
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .rest_games{
+    .rest_games_header{
+      border-bottom: 1px solid #2c2c2c;
+      color: #fff;
+      font-size: rem-calc(24);
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+    }
+    .rest_games_list{
+      display: flex;
+      margin-bottom: 30px;
+      .single_game{
+        margin-right: 30px;
+        width: 260px;
+        background:#1d1e1f;
+        box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.16);
+        border-radius: 2px;
+        overflow: hidden;
+        position: relative;
+        .favourite_game {
+          position: absolute;
+          opacity: 0.6;
+          color: #e7e7e7;
+          height: 25px;
+          width: 25px;
+          font-size: rem-calc(20);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          right: 10px;
+          top: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 50;
+
+          &.active, &:hover {
+            color: var(--yellow);
+            opacity: 1;
+            transition: all 0.3s ease;
+          }
+        }
+        .play_wrapper{
+          position: absolute;
+          z-index: 49;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.6);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: all 0.3s ease;
+          flex-direction: column;
+          .play_btn{
+            margin-bottom: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 32px 0 #000000;
+            background-image: linear-gradient(to right, #68a21c, #659c1c);
+            height: 50px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            font-family: var(--roboto-medium);
+            width: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include lower-than(1201px){
+              width: 125px;
+            }
+          }
+          .free_play_btn{
+            height: 50px;
+            cursor: pointer;
+            width: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            box-shadow: 0 0 32px 0 #000000;
+            border: solid 1px #3080cb;
+            background: rgb(45,163,173);
+            background: linear-gradient(284deg, rgba(45,163,173,1) 35%, rgba(8,77,141,1) 100%);
+            text-transform: uppercase;
+            font-family: var(--roboto-medium);
+            @include lower-than(1201px){
+              width: 125px;
+            }
+          }
+        }
+        .game_icon{
+          img{
+            width: 100%;
+            display: block;
+          }
+        }
+        .game_infos{
+          padding: 20px 10px;
+          display: none;
+        }
+        &:hover{
+          .play_wrapper{
+            opacity: 1;
+            transition: all 0.3s ease;
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .open-game{
+  .navigation_mobile_bottom, header{
+    display: none;
+  }
+.main-container{
+  height: 100vh;
+}
+}

@@ -1,0 +1,50 @@
+<div class="competition_daily">
+  <div class="competition_daily__dates">
+    <span *ngIf="showNavigationLeft()" class="sports_all_page_categories_toLeft" (click)="scrollLeft()">
+      <span>
+        <span class="go_to_left">
+          <i class="fas fa-chevron-left"></i>
+        </span>
+      </span>
+    </span>
+    <ul #scrollEl>
+      <li *ngFor="let date of datesArr; let i = index;">
+        <span [ngClass]="{'active' : date.active}" (click)="changeDate(date, i)">
+          <ng-container *ngIf="date.today">{{'days.Today' | translate}}</ng-container>
+          <ng-container *ngIf="!date.today">
+            {{ 'days.' + date.day | translate}} {{date.date}}
+          </ng-container>
+          </span>
+      </li>
+    </ul>
+    <span *ngIf="showNavigationRight()" class="sports_all_page_categories_toRight" (click)="scrollRight()">
+      <span>
+        <span class="go_to_right">
+          <i class="fas fa-chevron-right"></i>
+        </span>
+      </span>
+    </span>
+  </div>
+  <div class="daily_matches__header" *ngIf="selectOptions?.length">
+    <span>{{'rest.view' | translate}}</span>
+    <workspace-ohb-select
+      [options]="selectOptions"
+      [selected]="defaoultOption"
+      (changeValue)="selectMarket($event)">
+    </workspace-ohb-select>
+  </div>
+
+  <ng-container *ngIf="sportsOddsData.length">
+    <workspace-sports-odds-listing (redirect)="redirectTo($event)" [data]="sportsOddsData" [headers]="actualTableHeader"></workspace-sports-odds-listing>
+  </ng-container>
+  <ng-container *ngIf="!sportsOddsData.length">
+    <div class="competition_daily__section">
+      <div class="solid__blue__header">
+      <span style="pointer-events: none;">No data found :(</span>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
+

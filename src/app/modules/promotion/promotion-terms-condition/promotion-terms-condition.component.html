@@ -1,0 +1,96 @@
+<perfect-scrollbar *ngIf = "term_and_condition">
+  <div class="welcome-image hidden-lg-down">
+    <img src="/assets/images/promotion/promotion.jpg" />
+  </div>
+
+  <div class="header__terms__condition hidden-lg-up">
+    <div class="btn__navigate">
+      <a routerLink="/promotion"><i class="far fa-chevron-left"></i></a>
+    </div>
+    <h2>{{ 'promotion.promotionTermCondition.title' | translate }}</h2>
+  </div>
+
+  <div class="welcome-image hidden-lg-up">
+    <img src="/assets/images/banner_mobile.png" />
+  </div>
+
+  <section>
+    <div class="header hidden-lg-down">
+      <a routerLink="/promotion"><i class="far fa-chevron-left"></i></a>
+      <h3>{{ 'promotion.promotionTermCondition.promotion' | translate }}</h3>
+    </div>
+
+    <div class="content">
+      <div class="sub__content">
+        <h1>{{ 'promotion.promotionTermCondition.h1' | translate }}</h1>
+        <p>
+          {{ term_and_condition.bet_credit }}
+        </p>
+      </div>
+
+      <div class="sub__content">
+        <h1>{{ 'promotion.promotionTermCondition.h2' | translate }}</h1>
+        <ul>
+          <li *ngFor='let t of term_and_condition.how_offer_works ;'>{{ t }}</li>
+        </ul>
+        <br>
+        <p>
+          {{ term_and_condition.offer_warning }}
+        </p>
+      </div>
+
+      <div class="sub__content">
+        <h1>
+          {{ 'promotion.promotionTermCondition.h3' | translate }}
+        </h1>
+        <ul>
+          <li *ngFor='let t of term_and_condition.specification ;'>
+            {{ t.text }}
+            <ul *ngIf = "t.subArray">
+              <li *ngFor='let sub_arr of t.array;'>{{ sub_arr }}</li>
+            </ul>
+          </li>
+        </ul>
+        
+      </div>
+
+      <div class="sub__content" *ngIf="term_and_condition.free_bet_credit">
+        <h1>
+          {{ 'promotion.promotionTermCondition.h5' | translate }}
+        </h1>
+        <ul>
+          <li *ngFor='let t of term_and_condition.free_bet_credit ;'>
+            {{ t }}
+          </li>
+        </ul> 
+      </div>
+
+      <div class="sub__content">
+        <h1>
+          {{ 'promotion.promotionTermCondition.h4' | translate }}
+        </h1>
+        <ul>
+          <li *ngFor='let t of term_and_condition.general ;'>
+            {{ t }}
+          </li>
+        </ul> 
+      </div>
+
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ 'promotion.promotionTermCondition.fullTermsCondition' | translate }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>{{ 'promotion.promotionTermCondition.content' | translate }}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </section>
+
+  <workspace-footer></workspace-footer>
+</perfect-scrollbar>
+<workspace-ohb-modal [(visible)]="showSearch" *ngIf="showSearch" class='home_search_modal'>
+  <workspace-advance-search></workspace-advance-search>
+</workspace-ohb-modal>

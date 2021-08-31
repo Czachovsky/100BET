@@ -1,0 +1,87 @@
+<div class='casino_filters' [ngClass]="{'show-filters' : showMobileFilters}">
+  <div class='casino_filters_header hidden-lg-up'>
+    <span>{{'casino.c5' | translate}}</span>
+    <span class='close_filters' (click)='hideFilters()'>{{'casino.c6' | translate}}</span>
+  </div>
+  <workspace-casino-sort-search [casinoCategories]='casinoCategories'></workspace-casino-sort-search>
+  <div class="container">
+    <div class="game_providers">
+      <div class='game_providers_header hidden-lg-up'>{{'casino.c4' | translate}}</div>
+      <div class="game_providers_sub">
+        <span (click)="selectProvider(provider)"
+              [ngClass]="{'active' : provider.selected, 'hide' : provider.hidden }"
+              *ngFor="let provider of providers">
+          {{provider.title}}
+          <i *ngIf='provider.name === "show_all"' class="fas fa-ellipsis-h"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class='casino_filters_footer hidden-lg-up'>
+    <span (click)='applyMobileFilters()'>{{'casino.c9' | translate}}</span>
+  </div>
+</div>
+<div class="casino_lobby">
+  <div class="container">
+    <div class="games" [ngClass]="{'noo_games' : !gameList.length}">
+        <div class="single_game" *ngFor="let game of gameList" [ngClass]="{'loaded': game.loaded}">
+          <span class="favourite_game" [ngClass]="{'active': game.favouriteGame}" (click)="favouriteGame(game)"><i class="fas fa-star"></i></span>
+          <div class="play_wrapper">
+            <span class="play_btn" (click)="runGame(game, 'real')">
+              {{'casino.c15' | translate}}
+            </span>
+            <span class="free_play_btn" *ngIf='game.types?.funMode' (click)="runGame(game, 'fun')">
+              {{'casino.c14' | translate}}
+            </span>
+          </div>
+          <div class="game_icon">
+            <img src="{{game.icon_2}}" alt="{{game.name}}">
+          </div>
+          <div class="game_infos">
+            <span class="title">{{game.name}}</span>
+          </div>
+        </div>
+      <div *ngIf='!gameList.length' class='no_games'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="102.786" height="106.658" viewBox="0 0 102.786 106.658">
+          <defs>
+            <clipPath id="slfuj90wea">
+              <path fill="#959595" stroke="#16181b" d="M37.133 20.067A11.067 11.067 0 1 1 26.067 9a11.067 11.067 0 0 1 11.066 11.067z" transform="translate(-15 -9)"/>
+            </clipPath>
+          </defs>
+          <g>
+            <g fill="none" stroke-linecap="round">
+              <path d="M53.329 106.658a53.08 53.08 0 0 1-29.817-9.108A53.485 53.485 0 0 1 4.191 74.087a53.259 53.259 0 0 1 4.917-50.575A53.483 53.483 0 0 1 32.571 4.191 53.415 53.415 0 0 1 83.486 9.34a53.518 53.518 0 0 1 19.3 24L67.522 53.759 102.5 74.01a53.341 53.341 0 0 1-49.171 32.648z" transform="translate(-5.001 -5) translate(5 5)"/>
+              <path fill="#959595" d="M53.329 102.658c9.9 0 19.447-2.92 27.61-8.443 3.937-2.664 7.468-5.879 10.493-9.553 2.298-2.792 4.276-5.814 5.904-9.02L65.518 57.222l-5.98-3.462 5.98-3.462 32.15-18.614c-1.613-3.298-3.594-6.411-5.912-9.287-3.023-3.75-6.567-7.034-10.534-9.759C72.995 6.987 63.35 4 53.329 4c-6.661 0-13.121 1.304-19.2 3.875-2.922 1.236-5.74 2.766-8.378 4.547-2.613 1.765-5.07 3.793-7.303 6.026-2.233 2.233-4.26 4.69-6.026 7.303-1.781 2.638-3.311 5.456-4.547 8.378C5.304 40.21 4 46.67 4 53.33c0 6.662 1.304 13.121 3.875 19.2 1.236 2.922 2.766 5.741 4.547 8.378 1.765 2.613 3.793 5.07 6.026 7.303 2.233 2.233 4.69 4.26 7.303 6.026 2.637 1.781 5.456 3.311 8.378 4.547 6.079 2.571 12.538 3.875 19.2 3.875m0 4c-7.2 0-14.184-1.41-20.758-4.19-3.16-1.337-6.208-2.992-9.059-4.918-2.824-1.907-5.48-4.098-7.892-6.511-2.414-2.414-4.605-5.069-6.512-7.893-1.926-2.85-3.58-5.899-4.917-9.059C1.41 67.513 0 60.53 0 53.33 0 46.13 1.41 39.146 4.19 32.571c1.336-3.16 2.99-6.208 4.917-9.059 1.907-2.824 4.098-5.479 6.512-7.892 2.413-2.414 5.068-4.604 7.892-6.512 2.851-1.926 5.899-3.58 9.059-4.917C39.145 1.41 46.129 0 53.329 0 64.162 0 74.59 3.23 83.486 9.34c4.287 2.945 8.117 6.493 11.384 10.545 3.293 4.085 5.957 8.613 7.916 13.457L67.522 53.76 102.5 74.01c-2.003 4.757-4.688 9.195-7.98 13.194-3.269 3.97-7.084 7.444-11.34 10.324-8.826 5.973-19.149 9.13-29.851 9.13z" transform="translate(-5.001 -5) translate(5 5)"/>
+            </g>
+            <g clip-path="url(#slfuj90wea)" transform="translate(-5.001 -5) translate(44.912 22.723)">
+              <g>
+                <path fill="#959595" stroke="#16181b" stroke-width="1.075px" d="M19.769 21.727l-8.7-8.7-8.7 8.7a1.385 1.385 0 0 1-1.963-1.959l8.7-8.7-8.7-8.7A1.385 1.385 0 1 1 2.365.406l8.7 8.7 8.7-8.7a1.385 1.385 0 1 1 1.958 1.958l-8.7 8.7 8.7 8.7a1.385 1.385 0 1 1-1.959 1.959z"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+
+        <div>
+          <b>{{'casino.c16' | translate}}</b>
+          <div>{{'casino.c18' | translate}}</div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="load_more_games_w" *ngIf="showLoadMore">
+      <span class="load_more_games" (click)="loadMoreGames()"> {{'casino.c13' | translate}}</span>
+    </div>
+  </div>
+</div>
+
+<workspace-ohb-modal [(visible)]="depositError" *ngIf="depositError">
+  <div id="insufficient_balance">
+    <div class="info_icon">
+      <span><i class="fas fa-exclamation-triangle"></i></span>
+    </div>
+    <div class="a">{{'betSlipSection.b11' | translate}}</div>
+    <div class="b">{{'betSlipSection.b12' | translate}}</div>
+    <span class="deposit_button d__flex" (click)="goToDepositPage()">{{'betSlipSection.b13' | translate}}</span>
+  </div>
+</workspace-ohb-modal>

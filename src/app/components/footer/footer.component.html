@@ -1,0 +1,84 @@
+<footer>
+
+  <div class="container">
+    <div class="row">
+      <div class="left-content hidden-md-down">
+        <div class="bet_logo"></div>
+        <div class="licence">
+          License Number MGA/B2C/331/2016 issued on 1 August 2018.<br>
+          Ocean Star Limited, Dragonara Business Centre, 5th Floor, Dragonara Road, St. Julians STJ3141, Malta
+        </div>
+        <img class="supporters" width="284" height="38" src="../../../assets/images/footer-supporters.png" alt="" />
+        <div class="seperator"></div>
+        <div class="copyright">
+          <div class="time">{{currentTimeZone}}</div>
+          <div class="copy">Copyright &copy; 2020 100bet. {{'footer.allRightsReserved' | translate}}</div>
+        </div>
+      </div>
+      <div class="right-content">
+        <div class="column">
+          <div>
+            <h2>100bet</h2>
+            <ul>
+              <li><a routerLink="/help/about-us">{{'footer.aboutUs' | translate}}</a></li>
+              <li><a routerLink="/help/contact-us">{{'footer.contactUs' | translate}}</a></li>
+              <li><a href="https://aff.100betcn.com/" target="blank">{{'footer.affiliates' | translate}}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <div>
+            <h2>{{'footer.promotions' | translate}}</h2>
+            <ul>
+              <li><a routerLink="/sportsbook/home">{{'footer.sports' | translate}}</a></li>
+              <li><a routerLink="/casino">{{'footer.casino' | translate}}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <div>
+            <h2>{{'footer.help' | translate}}</h2>
+            <ul>
+              <li><a routerLink="/help/main">{{'footer.help' | translate}}</a></li>
+              <li><a routerLink="/help/terms-conditions">{{'footer.termsConditions' | translate}}</a></li>
+              <li><a routerLink="/help/responsible-gambling">{{'footer.responsibleGambling' | translate}}</a></li>
+              <li><a routerLink="/help/privacy-cookie-policy">{{'footer.privacyCookiePolicy' | translate}}</a></li>
+              <li><a routerLink="/help/betting-rules">{{'footer.SportsBettingRules' | translate}}</a></li>
+              <li><a href="javascript:void(0);;" (click)='loadChat();'>
+                <div class="loader" *ngIf="loadingChat"></div>
+                {{'footer.onlineService' | translate}} 
+              </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="column">
+          <div>
+            <div class="lang_changer" [ngClass]="{'opened': langChanger}">
+              <div class="lang_changer_displayer" (click)="langChanger = !langChanger">
+                <img class="flag" [src]="currentLanguage.flag" alt="" />
+                {{ currentLanguage.displayer }} <i class="fas fa-chevron-down"></i>
+              </div>
+              <ul>
+                <li *ngFor="let lang of languages">
+                  <span (click)="changeLang(lang)">{{ lang.displayer }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="logo__copyright hidden-md-up">
+      <div class="bet_logo"></div>
+      <div class="copy">Copyright &copy; 2020 100bet. {{'footer.allRightsReserved' | translate}}</div>
+    </div>
+    <div class="licence__container hidden-md-up">
+      <div class="licence">
+        License Number MGA/B2C/331/2016 issued on 1 August 2018.<br>
+        Ocean Star Limited, Dragonara Business Centre, 5th Floor, Dragonara Road, St. Julians STJ3141, Malta
+      </div>
+      <img class="supporters" width="284" height="38" src="../../../assets/images/footer-supporters.png" alt="" />
+      <div class="time">{{currentTimeZone}}</div>
+    </div>
+</div>
+</footer>

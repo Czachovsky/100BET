@@ -1,0 +1,177 @@
+<div class="withdrawal">
+  <div class="dashboard-header">
+    <div class="nav hidden-lg-up"><i class="fas fa-chevron-left"></i></div>
+    <div class="dashboard-header-sub">{{'dashboard.d2' | translate}}</div>
+    <div class="help hidden-lg-up"><i class="far fa-question-circle"></i></div>
+  </div>
+  <div class="bank-info">
+    <div class="add-bank" *ngIf="!userInfo?.iban || !userInfo?.address" (click)="showModal()">
+      <i class="fas fa-plus-circle"></i>
+      <span>{{'withdrawal.addNewCard' | translate}}</span>
+    </div>
+    <div class="bank-detail" *ngIf="userInfo?.iban && userInfo?.address">
+      <div class="added-bank">
+        <div class="bank-card">
+          <span>{{bankName || 'Bank Name'}}</span>
+          <div><span>XXXX  XXXX  XXXX</span> {{userInfo.iban.substr(userInfo.iban.length - 4)}}</div>
+        </div>
+      </div>
+      <div class="hint">
+        <i class="fal fa-info-circle"></i><div>{{'withdrawal.contactSupport' | translate}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>{{'withdrawal.amount' | translate}}</label>
+    <input type="number" class="amount" [(ngModel)]="amount" step="0.01" name="amount" />
+    <!-- <div class="amount-btn hidden-lg-down">
+      <div class="amount" *ngFor="let val of predefinedValues" (click)="amount = val">{{val}}</div>
+    </div> -->
+    <!-- <div class="min-max" *ngIf="amount && amount.toString().length < 20 && amount.toString().indexOf('.') !== -1">
+      {{'withdrawal.error.message8' | translate}}
+    </div> -->
+    <div class="min-max" *ngIf="userInfo?.iban && userInfo?.address">* {{'withdrawal.min' | translate}} {{getDigit(minimumReqAmount)}}, {{'withdrawal.max' | translate}} {{getDigit(maximumReqAmount)}}</div>
+  </div>
+  <div class="info">
+    <span class="hidden-lg-down">
+      {{'withdrawal.cancelMsg' | translate}}
+    </span>
+    <span class="hidden-lg-up">{{'withdrawal.cancelMsg1' | translate}}</span>
+    <a href="javascript:;" (click)="goToDashboardSection('transaction')">{{'withdrawal.viewTransaction' | translate}}</a>
+  </div>
+  <div class="balance-info hidden-lg-down">
+    <div class="balance-btn">
+      <div class="left">
+        <div class="title">
+          {{'betSlipSection.b2' | translate}}<i class="fas fa-question-circle"></i>
+        </div>
+        <div class="amount">¥{{getDigit(balance)}}<span>.{{getFractional(balance)}}</span></div>
+      </div>
+      <div class="seperator"></div>
+      <div class="right">
+        <div class="title">
+          {{'withdrawal.withdrawable' | translate}}<i class="fas fa-question-circle"></i>
+        </div>
+        <div class="amount">¥{{getDigit(withdrawable)}}<span>.{{getFractional(withdrawable)}}</span></div>
+      </div>
+    </div>
+    <div class="btn">
+      <div class="title">{{'withdrawal.noOfWith' | translate}}<i class="fas fa-question-circle"></i></div>
+      <div class="no">{{withdrawalAttempLeft}}</div>
+      <div class="status">{{'withdrawal.availableToday' | translate}}</div>
+    </div>
+    <div class="btn">
+      <div class="title">{{'withdrawal.singleWithAmt' | translate}}<i class="fas fa-question-circle"></i></div>
+      <ng-container *ngIf="!userInfo?.address">
+        <div class="no">{{'selectTranslations.selectBank' | translate}}</div>
+      </ng-container>
+      <ng-container *ngIf="userInfo?.address">
+        <div class="no">
+          {{getDigit(minimumReqAmount)}}<span>.{{getFractional(minimumReqAmount)}}</span> ~ {{getDigit(maximumReqAmount)}}<span>.{{getFractional(maximumReqAmount)}}</span>
+        </div>
+      </ng-container>
+      <div class="status">{{'withdrawal.availableToday' | translate}}</div>
+    </div>
+    <div class="btn">
+      <div class="title">{{'withdrawal.withdrawAmount' | translate}}<i class="fas fa-question-circle"></i></div>
+      <div class="no">{{withdrawAmount | number: '1.0-0'}}</div>
+      <div class="status">{{'withdrawal.availableToday' | translate}}</div>
+    </div>
+  </div>
+  <div class="balance-info-mobile hidden-lg-up">
+    <div class="btn">
+      <div class="left">
+        <div class="title">{{'withdrawal.withdrawableAmount' | translate}}</div>
+        <div class="no">¥{{userInfo?.balance | number: '1.2-2'}}</div>
+      </div>
+      <div class="help"><i class="fas fa-question-circle"></i></div>
+    </div>
+    <div class="btn">
+      <div class="left">
+        <div class="title">{{'withdrawal.dailyNoOfWith' | translate}}</div>
+        <div class="no">{{withdrawalAttempLeft}}</div>
+      </div>
+      <div class="help"><i class="fas fa-question-circle"></i></div>
+    </div>
+    <div class="btn">
+      <div class="left">
+        <div class="title">{{'withdrawal.singleWithAmt' | translate}}</div>
+        <ng-container *ngIf="!userInfo?.address">
+          <div class="no">{{'selectTranslations.selectBank' | translate}}</div>
+        </ng-container>
+        <ng-container *ngIf="userInfo?.address">
+          <div class="no">
+            {{getDigit(minimumReqAmount)}}<span>.{{getFractional(minimumReqAmount)}}</span> ~ {{getDigit(maximumReqAmount)}}<span>.{{getFractional(maximumReqAmount)}}</span>
+          </div>
+        </ng-container>
+      </div>
+      <div class="help"><i class="fas fa-question-circle"></i></div>
+    </div>
+    <div class="btn">
+      <div class="left">
+        <div class="title">{{'withdrawal.withdrawAmount' | translate}}</div>
+        <div class="no">{{withdrawAmount | number: '1.2-2'}}</div>
+      </div>
+      <div class="help"><i class="fas fa-question-circle"></i></div>
+    </div>
+  </div>
+  <div class="withdrawal-form">
+    <div class="action">
+      <div class="how-to hidden-lg-down">
+        <span>{{'withdrawal.howTo' | translate}}</span>
+        <a href="javascript:;">{{'withdrawal.learn' | translate}}</a>
+      </div>
+      <button type="submit" [ngClass]="{'blocked': !bankList.length}" (click)="confirmWithdraw()" [disabled] = "!bankList.length">
+        {{'withdrawal.withdrawNow' | translate}}
+        <div *ngIf="isLoading" class="loader">
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+        </div>
+      </button>
+    </div>
+    <div class="error-msg" *ngIf="message">{{message}}</div>
+  </div>
+</div>
+
+<div class="hidden-lg-down" *ngIf="showForm && !isMobile">
+  <workspace-ohb-modal [(visible)]="showForm">
+    <workspace-add-bank-modal [bankList]="bankList" (addedCard)="addedCard($event)" [userInfo]="userInfo"></workspace-add-bank-modal>
+  </workspace-ohb-modal>
+</div>
+<div class="hidden-lg-up" *ngIf="showForm && isMobile">
+  <div class="form-mobile">
+    <workspace-add-bank-modal [bankList]="bankList" (addedCard)="addedCard($event)" (hideForm)="showForm = false" [userInfo]="userInfo"></workspace-add-bank-modal>
+  </div>
+</div>
+<workspace-ohb-modal class="noprovider_modal" [(visible)]="showNoChannelsModal" *ngIf="showNoChannelsModal">
+  <div class="success_modal">
+    <div class="_icon">
+      <i class="fas fa-exclamation"></i>
+    </div>
+    <div class="_text">
+      <h4>{{ 'dashboard.accDet.acc17' | translate }}</h4>
+      <ng-container>
+        <span>{{ 'dashboard.deposit.d11' | translate }}</span>
+      </ng-container>
+
+      <button (click)="showNoChannelsModal = false;closeModal()">{{ 'dashboard.accDet.acc15' | translate }}</button>
+    </div>
+  </div>
+</workspace-ohb-modal>
+
+<workspace-ohb-modal class="confirmWithdrawal_modal" [(visible)]="confirmWithdrawal" *ngIf="confirmWithdrawal">
+  <div class="wrapper text-center">
+    <div class="modal_body">
+      <div class="title">{{ 'selectTranslations.withdraw' | translate}}</div>
+      <p>{{'withdrawal.confirmWithdrawalMessage' | translate}}: <span>¥ {{amount}}</span></p>
+    </div>
+    <div class="actions">
+      <div (click)="confirmWithdrawal = false;closeModal();amount=enteredAmount" >{{ 'dashboard.promotions.p18' | translate }}</div>
+      <div (click)="withdraw();closeModal()" >{{ 'dashboard.promotions.p19' | translate }}</div>
+    </div>
+  </div>
+</workspace-ohb-modal>

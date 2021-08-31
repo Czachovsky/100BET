@@ -1,0 +1,109 @@
+@import "../../../mixins";
+
+@include lower-than('lg') {
+  .navigation_mobile_bottom {
+    box-shadow: 0 -2px 20px 0 rgba(32, 32, 32, 0.5);
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    z-index: 300;
+    .betslip_prompt{
+      position:absolute;
+      background: var(--yellow);
+      height: 25px;
+      border-radius: 15px;
+      padding:0 8px;
+      color: #292929;
+      font-size: rem-calc(15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      left:50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: -1;
+      top:-40px;
+    }
+    ul {
+      display: flex;
+      border-top: 2px solid #343434;
+      background: #252525;
+      li {
+        text-align: center;
+        width: 25%;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        a {
+          position: relative;
+          height: 67px;
+          color: rgb(221 221 221 / 0.4);
+          display: flex;
+
+          font-size: rem-calc(12);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          span {
+            &.counter{
+              position: absolute;
+              height:16px;
+              width: 16px;
+              background: var(--yellow);
+              color: #252525;
+              font-size: rem-calc(12);
+              border-radius: 50px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              right: 14px;
+              top:9px;
+            }
+            &.mobile_bottom_icon {
+              margin-bottom: 10px;
+              i{
+                font-size: rem-calc(18);
+              }
+              img {
+                width: 20px;
+              }
+              svg {
+                height: 22px;
+                display: block;
+                transition: all 0.3s ease;
+
+                path, rect {
+                  transition: all 0.3s ease;
+                }
+              }
+            }
+          }
+
+          &.navigation_mobile_active {
+            i, span {
+              color: #ffffff;
+            }
+            svg {
+              transition: all 0.3s ease;
+
+              path, rect {
+                fill: var(--yellow);
+                transition: all 0.3s ease;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+::ng-deep .casino-filters{
+  .navigation_mobile_bottom,  .mobile_menu{
+    display: none;
+  }
+}

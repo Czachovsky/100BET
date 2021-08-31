@@ -1,0 +1,26 @@
+<div class="bet__slip-pick more-multiples">
+  <div class="more-multiples-wraper">
+    <div class="more-multiples-title">{{betTypes[betType]}}</div>
+    <div class="more-multiples-stake">
+      <div class="more-multiples-stake">
+        <span>{{betTypeSettings.multiplier}}X</span>
+        <div class="input__stake_wrapper">
+          <div>
+            <input class="input__stake" placeholder="Stake" type="number"
+                   [value]="otherStake"
+                   (focusout)="formatIt($event.target['value'])"
+                   (keyup)="test($event.target['value'])"
+                   (click)="input.select()" #input/>
+            <span class="input__stake_fake_input hidden-lg-up" (click)="showNumpad = true">{{otherStake}}</span>
+            <span class="show-more-multiples-stake" style="opacity: 0;pointer-events: none;"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <span class="_returns" *ngIf="betTypeSettings.possibleWin > 0 &&  betTypeSettings.possibleWin !== ''">Returns ¥{{betTypeSettings.possibleWin | number : '1.2-2'}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<workspace-numpad-small  *ngIf="showNumpad"
+                         [initialStake]="otherStake"
+                         (valueFromNumpad)="mobileValueFromNumpad($event)"
+                         (acceptValueFromNumpad)="acceptMobileValueFromNumpad($event)"></workspace-numpad-small>

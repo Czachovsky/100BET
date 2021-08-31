@@ -1,0 +1,21 @@
+<div class="highlights">
+  <div class="main__highlights__header" *ngIf="selectOptions?.length">
+    <span>{{'rest.view' | translate}}</span>
+    <workspace-ohb-select
+      [options]="selectOptions"
+      [selected]="defaoultOption"
+      (changeValue)="selectMarket($event)">
+    </workspace-ohb-select>
+  </div>
+
+  <ng-container *ngIf="highlights.length">
+    <workspace-sports-odds-listing (redirect)="redirectTo($event)" [data]="highlights" [headers]="actualTableHeader"></workspace-sports-odds-listing>
+  </ng-container>
+  <ng-container *ngIf="!highlights.length">
+    <div class="competition_daily__section">
+      <div class="solid__blue__header">
+      <span style="pointer-events: none;">No data found :(</span>
+      </div>
+    </div>
+  </ng-container>
+</div>

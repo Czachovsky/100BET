@@ -1,0 +1,44 @@
+@import "../../../mixins";
+
+main {
+    margin: 14.7px 24px 0px 24px;
+
+    @include lower-than("lg") {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container__row {
+        @include higher-than("lg") {
+            flex-wrap: nowrap;
+        }
+        @include lower-than("lg"){
+            flex-wrap: wrap;
+        }
+
+        .left_section {
+            margin-right: 14.1px;
+            @include lower-than("lg") {
+                padding-right: 0;
+                margin-right: 0;
+            }
+
+            @include higher-than("lg") {
+                flex: 0 0 250px;
+                max-width: 250px;
+            }
+        }
+
+        .right_section {
+            width: 100%;
+            height: auto;
+            background-color: #292929;
+            padding: 26px 9.7px 0px 47px;
+            box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+
+            @include lower-than("lg") {
+                padding: 0px;
+            }
+        }
+    }
+}

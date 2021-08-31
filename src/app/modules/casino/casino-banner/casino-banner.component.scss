@@ -1,0 +1,72 @@
+@import "../../../../mixins";
+
+.casino_carousel {
+  margin-bottom: 14px;
+  overflow: hidden;
+  position: relative;
+  // .casino_banner_item {
+  //   height: 530px;
+  //   // background: url('../../../../assets/images/casino_banner1.png') no-repeat scroll center right / auto 100%;
+
+  //   .container {
+  //     height: 100%;
+  //     position: relative;
+  //     @include higher-than(1400px) {
+  //       padding: 0;
+  //       max-width: 1390px;
+  //     }
+  //     @include lower-than('lg'){
+  //       padding:0 10px;
+  //     }
+  //     .banner_titles {
+  //       height: 100%;
+  //       display: flex;
+  //       flex-direction: column;
+  //       justify-content: center;
+
+  //       .banner_header {
+  //         font-family: var(--roboto-bold);
+  //         font-size: rem-calc(54);
+  //         margin-bottom: 20px;
+  //       }
+  //       .banner_subheader{
+  //         & > div{
+  //           margin-bottom: 20px;
+  //           color: #8da9c2;
+  //           font-weight: var(--roboto-medium);
+  //         }
+  //       }
+  //     }
+
+  //   }
+  // }
+
+  ::ng-deep .owl-dots {
+    margin: 0 !important;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .owl-dot {
+      display: block;
+      padding: 8px 0;
+
+      span {
+        height: 12px;
+        width: 12px;
+        margin: 0;
+        background: #2e3032;
+        transition: all 0.3s ease;
+      }
+
+      &:hover, &.active {
+        span {
+          background: #fff;
+          transition: all 0.3s ease;
+          transform: scale(1.5);
+        }
+      }
+    }
+  }
+}

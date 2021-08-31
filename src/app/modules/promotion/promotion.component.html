@@ -1,0 +1,31 @@
+<perfect-scrollbar>
+  <div class='welcome-image'>
+    <img src='/assets/images/promotion/promotion.jpg' />
+  </div>
+
+  <section class='mat-tab-promotion-wrapper'>
+    <mat-tab-group animationDuration='0ms'>
+      <mat-tab label='{{item.title}}' *ngFor='let item of getData()'>
+        <ng-template matTabContent>
+          <div class='sports__content' *ngFor='let header of item.data ;let i = index'>
+            <div class='sports__header'>
+              <!-- <i class='fa fa-futbol icon'></i> -->
+              <img class="icon" src="assets/images/icons/sports/soccer.png" />
+              <h3>{{header.name}}</h3>
+              <a href='#' class='hidden-lg-down'>{{'promotion.view' | translate}}</a>
+            </div>
+            <div class='sports__item__list'>
+              <workspace-promotion-sports [data]="header.promotionOffer"></workspace-promotion-sports>
+            </div>
+          </div>
+        </ng-template>
+
+      </mat-tab>
+    </mat-tab-group>
+  </section>
+
+  <workspace-footer></workspace-footer>
+</perfect-scrollbar>
+<workspace-ohb-modal [(visible)]="showSearch" *ngIf="showSearch" class='home_search_modal'>
+  <workspace-advance-search></workspace-advance-search>
+</workspace-ohb-modal>

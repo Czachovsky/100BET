@@ -1,0 +1,112 @@
+<div class="register_body">
+  <div class="reg-header">
+    <a routerLink = "/help" (click) = "goToHelp();loadChat()" class="go_to_faq"><i class="fal fa-question-circle"></i></a>
+  </div>
+  <div class="welcome_wrap"><span>{{'dashboard.register.r11' | translate}}</span>{{'dashboard.register.r12' | translate}}</div>
+ <div class="register_banner" (click)="check()">
+   <img *ngIf="currentLang === 'en'" [src]="'assets/images/WelcomeRegistration.png'">
+   <img *ngIf="currentLang !== 'en'" [src]="'assets/images/WelcomeRegistration-CN.png'">
+ </div>
+  <form action="#"  autocomplete="off" class="login-form" id="ohb-recompactgister-form" method="POST"
+        (ngSubmit)="registerUser(registerForm.value)"
+        [formGroup]="registerForm">
+    <div class="_header">{{'dashboard.register.r28' | translate}}</div>
+    <div class="register-input-wrapper">
+      <span>{{'dashboard.login.l3' | translate}}</span>
+      <input [ngClass]="{'error': !(registerForm.controls.user_name.valid) && registerForm.controls.user_name.dirty}" class="register-input" id="username" type="text" placeholder="{{'dashboard.login.l6' | translate}}" #userUsername required formControlName="user_name">
+      <div class="username_validation" *ngIf="registerForm.controls.user_name.dirty">
+        <div>
+          <span [ngClass]="{'active': usernameValidation.chars}">{{'dashboard.register.r29' | translate}}</span>
+          <span [ngClass]="{'active': usernameValidation.eng_and_numbers}">{{'dashboard.register.r30' | translate}}</span>
+        </div>
+        <div>
+          <span [ngClass]="{'active': usernameValidation.one_letter}">{{'dashboard.register.r31' | translate}}</span>
+          <span [ngClass]="{'active': usernameValidation.no_space}">{{'dashboard.register.r32' | translate}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="register-input-wrapper">
+      <span>{{'dashboard.login.l4' | translate}}</span>
+      <input class="register-input" [ngClass]="{'error' : !(registerForm.controls.password.valid) && registerForm.controls.password.dirty}" id="password" type="password" placeholder="{{'dashboard.login.l7' | translate}}" #userPassword required formControlName="password">
+<!--      <span class="notValid" *ngIf="!(registerForm.controls.password.valid) && registerForm.controls.password.dirty">{{'dashboard.register.r33' | translate}}</span>-->
+      <div class="username_validation" *ngIf="registerForm.controls.password.dirty">
+        <div>
+          <span [ngClass]="{'active': passwordValidation.chars}">{{'dashboard.register.r29' | translate}}</span>
+          <span [ngClass]="{'active': passwordValidation.eng_and_numbers}">{{'dashboard.register.r30' | translate}}</span>
+          <span [ngClass]="{'active': passwordValidation.one_number}">{{'dashboard.register.r31b' | translate}}</span>
+        </div>
+        <div>
+          <span [ngClass]="{'active': passwordValidation.one_letter}">{{'dashboard.register.r31a' | translate}}</span>
+          <span [ngClass]="{'active': passwordValidation.no_space}">{{'dashboard.register.r32' | translate}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="register-input-wrapper">
+      <span>{{'dashboard.register.r1' | translate}}</span>
+      <input [ngClass]="{'error' : ((registerForm.controls.password.value !== registerForm.controls.password_confirm.value) || registerForm.controls.password_confirm.value === '') && registerForm.controls.password_confirm.dirty}" class="register-input" id="password-confirm" type="password" placeholder="{{'dashboard.login.l7' | translate}}" #userPasswordConfirm required formControlName="password_confirm">
+      <span class="notValid" *ngIf="((registerForm.controls.password.value !== registerForm.controls.password_confirm.value) || registerForm.controls.password_confirm.value === '') && registerForm.controls.password_confirm.dirty">{{'dashboard.accDet.acc35' | translate}}</span>
+    </div>
+    <div class="_header">{{'dashboard.register.r26' | translate}}</div>
+    <div class="register-input-wrapper">
+      <span>{{'dashboard.register.r27' | translate}}</span>
+      <input class="register-input" id="name" type="text" placeholder="{{'dashboard.register.r27' | translate}}" #userName required formControlName="user_full_name">
+      <span class="notValid name-error">
+        <i class="fas fa-info-circle"></i>
+        {{'dashboard.register.r34' | translate}}
+      </span>
+<!--      <span class="notValid" *ngIf="registerForm.controls.user_full_name.dirty && (! || !registerForm.controls.user_full_name.valid)">{{'dashboard.register.r35' | translate}}</span>-->
+    </div>
+    <div class="register-input-wrapper">
+      <span>{{'dashboard.register.r2' | translate}}</span>
+      <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="preferredCountries" [customPlaceholder]="'dashboard.login.l18' | translate"
+                          [searchCountryPlaceholder]="'dashboard.login.l19' | translate"
+                          [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                          [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+                          [selectedCountryISO]="CountryISO.China" [maxLength]="15" [tooltipField]="TooltipLabel.Name"
+                          [phoneValidation]="true" [separateDialCode]="true"
+                          [numberFormat]="PhoneNumberFormat.National" name="phone" formControlName="phone_number">
+      </ngx-intl-tel-input>
+      <span class="notValid" *ngIf="!(registerForm.controls.phone_number.valid) && phoneTyped">{{'dashboard.register.r36' | translate}}</span>
+    </div>
+    <div class="register-input-wrapper">
+      <span>{{'dashboard.register.r23' | translate}}</span>
+      <div class="verification">
+        <input class="register-input" id="code" type="text" placeholder="{{'dashboard.register.r23' | translate}}" formControlName="verification_code" required>
+        <span *ngIf="!waitOneMinute" (click)="getVerificationCode()">{{'dashboard.register.r24' | translate}}</span>
+        <span *ngIf="waitOneMinute" class="verification_timer">{{waitingTimer}}</span>
+      </div>
+      <span class="notValid" *ngIf="registerForm.controls.verification_code.dirty && !registerForm.controls.verification_code.valid">{{'dashboard.register.r37' | translate}}</span>
+    </div>
+    <div class="register-input-wrapper termsAndCond">
+      <label>
+        <input type="checkbox" formControlName="terms" (ngModelChange)="oncheckboxChange($event)">
+        <span></span>
+        <div [ngClass]="{'error': !acceptTerms && registerForm.controls.terms.dirty}">
+          {{'dashboard.register.r18' | translate}} <a herf="javascript:;" (click)="redirect('/help/terms-conditions')">{{'dashboard.register.r19' | translate}}</a> {{'dashboard.register.r20' | translate}} <a herf="javascript:;" (click)="redirect('/help/privacy-cookie-policy')">{{'dashboard.register.r21' | translate}}</a>{{'dashboard.register.r22' | translate}}
+        </div>
+      </label>
+      <div>
+        {{'dashboard.register.r13' | translate}} <span>{{'dashboard.register.r14' | translate}}</span> {{'dashboard.register.r15' | translate}} <span>{{'dashboard.register.r16' | translate}}</span> {{'dashboard.register.r17' | translate}}
+      </div>
+    </div>
+    <div class='recaptcha_wrapper'>
+      <re-captcha #recapthaEl (error)='recaptchaError($event)' [badge]='"bottomright"' [theme]='"dark"' [size]='"normal"' [type]='"image"' (resolved)="resolved($event)" siteKey="6Lfij9cZAAAAAOtnijJgyUhHUlv7cCXoFsQSVW_m"></re-captcha>
+    </div>
+    <div class="register-btn-wrapper">
+      <div>
+        <button [disabled]="registerLoading&&!acceptTerms" [ngClass]='{"disabled_btn" : (!recaptchaResolved || !acceptTerms)}' class="register-btn btn__solid">{{'dashboard.register.r5' | translate}} <div *ngIf="registerLoading" class="loader">
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+        </div></button>
+      </div>
+      <div>
+        <span (click)="showLogin()">{{'dashboard.register.r4' | translate}}</span>
+      </div>
+    </div>
+  </form>
+</div>
+

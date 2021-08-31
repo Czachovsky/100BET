@@ -1,0 +1,47 @@
+@import "../../../../../../mixins";
+
+.more-multiples-stake{
+  display: flex;
+  align-items: baseline;
+  .input__stake_wrapper{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    @include lower-than('lg'){
+      input{
+        opacity: 0;
+        height: 0 !important;
+        width: 0 !important;
+        position: absolute;
+      }
+      .input__stake_fake_input{
+        height: 28px;
+        width: 110px;
+        border: 1px solid #fafafa;
+        background: #fafafa;
+        text-align: right;
+        color: #262626;
+        padding: 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin:0 !important;
+      }
+    }
+
+    & > div{
+      display: flex;
+      justify-content: center;
+    }
+    ._returns{
+      color: #79bd1f !important;
+      font-size: rem-calc(12);
+      margin-top: 3px;
+      font-weight: 500;
+      position: relative;
+      white-space: nowrap;
+      margin-right: 0;
+    }
+  }
+}
+

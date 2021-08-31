@@ -1,0 +1,237 @@
+@import '../../../mixins';
+
+.login_body {
+  display: flex;
+  height: 100%;
+  padding: 16px;
+  flex-direction: column;
+  @include higher-than('lg') {
+    width: 545px;
+    padding: 44px 39px;
+  }
+  @include lower-than('lg'){
+    padding-top: 80px;
+  }
+  &.reset_password{
+    padding: 0 0 24px;
+  }
+  .errors_wrapper {
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    @include lower-than('lg'){
+      margin-top:25px;
+    }
+    i {
+      color: var(--yellow);
+      margin-right: 15px;
+    }
+  }
+  form {
+    width: 100%;
+    .welcome_wrap{
+      text-align: center;
+      font-size: rem-calc(22);
+      color:#ffffff;
+      margin-bottom: 25px;
+      @include lower-than('lg'){
+        font-size: rem-calc(15);
+        font-family: var(--roboto-bold);
+        span{
+          font-size: rem-calc(13);
+        }
+      }
+      span{
+        display: block;
+        text-transform: uppercase;
+        color: #959595;
+        font-size: rem-calc(18);
+        margin-bottom: 8px;
+        line-height: 29px;
+      }
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 42px;
+      line-height: 45px;
+      font-size: rem-calc(15);
+      font-family: var(--roboto-medium);
+      color: #ffffff;
+      width: 100%;
+      cursor: pointer;
+      background-image: linear-gradient(to right, #68a11d, #659c1c);
+      border: 1px solid #68a11d;
+      &.disabled{
+        pointer-events:  none;
+        opacity: 0.7;
+      }
+    }
+    .login-input-wrapper {
+      margin-bottom: 20px;
+      position: relative;
+      @include lower-than('lg'){
+        margin-bottom: 25px;
+      }
+      .pass_recover{
+        position: absolute;
+        right: 0;
+        top:0;
+        cursor: pointer;
+        color: #959595;
+        font-size: rem-calc(15);
+        font-family: var(--roboto-light);
+      }
+      & > span {
+        color: #ffffff;
+        font-size: rem-calc(15);
+        font-family: var(--roboto-medium);
+        display: flex;
+        margin-bottom: 12px;
+        i {
+          margin-right: 8px;
+        }
+      }
+      input[type='text'],
+      input[type='password'] {
+        display: block;
+        width: 100%;
+        border-radius: 3px;
+        border: solid 1px #101112;
+        background-color: rgba(10, 10, 10, 0.2);
+        height: 42px;
+        padding: 0 18px;
+        color: #ffffff;
+        &.error{
+          border-color: #d22b2b;
+        }
+      }
+      &.remember {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        label {
+          align-items: center;
+          display: flex;
+          cursor: pointer;
+          font-size: rem-calc(15);
+          color: #ffffff;
+          input{
+            margin-right: 8px;
+            &:before{
+              height: 16px;
+              width: 16px;
+            }
+          }
+        }
+        span {
+          cursor: pointer;
+          margin: 0;
+          font-size: rem-calc(16);
+          transition: all 0.3s ease;
+          &:hover{
+            color: var(--yellow);
+            transition: all 0.3s ease;
+          }
+        }
+      }
+      .show_password{
+        height: 42px;
+        width: 42px;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+  }
+  & > span {
+    text-align: center;
+    color: #959595;
+    font-size: rem-calc(15);
+    margin-top: 16px;
+    @include lower-than('lg'){
+      margin-top:25px;
+    }
+    & > span{
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: #ffffff;
+      text-decoration: underline;
+      &:hover{
+        color: var(--yellow);
+        transition: all 0.3s ease;
+      }
+    }
+
+  }
+  .password_recovery{
+    &_header{
+      height: 48px;
+      display: flex;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      background: #404040;
+      color: #dddddd;
+      font-size: rem-calc(16);
+      align-items: center;
+      span{
+        cursor: pointer;
+        height: 48px;
+        width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    &_tabs{
+      border-bottom: 2px solid #2f2f2f;
+      ul{
+        display: flex;
+        li{
+          width: 50%;
+          padding:0 24px;
+          position: relative;
+          &:first-child{
+            &:before{
+              content:'';
+              width: 2px;
+              height: 25px;
+              background: #2f2f2f;
+              display: block;
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+          span{
+            font-size: rem-calc(16);
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-bottom:1px solid transparent;
+            &:hover, &.active{
+              border-color: var(--yellow);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.login-btn-wrapper{
+  position: relative;
+  .loader{
+    margin-left:10px;
+  }
+}

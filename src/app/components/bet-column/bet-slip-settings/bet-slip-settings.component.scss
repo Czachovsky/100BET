@@ -1,0 +1,56 @@
+@import "../../../../mixins";
+::ng-deep workspace-bet-slip-settings{
+  width: 100%;
+}
+.bet-slip__settings{
+  padding:15px 0;
+  &_header{
+    font-family: var(--roboto-bold);
+    font-size: rem-calc(15);
+    color: var(--plain-white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  &_close{
+    cursor: pointer;
+    color: #73767e;
+    transition: all 0.3s ease;
+    font-size: rem-calc(19);
+  }
+  &_form{
+   &_wrap{
+      display: flex;
+      align-items: center;
+      label{
+        line-height: 17px;
+        margin-left: 10px;
+        color: #73767e;
+      }
+      margin-bottom: 12px;
+    }
+    &_notification{
+      border-top: 1px solid #1e1e1e;
+      padding-top:15px;
+      margin:0 -15px;
+      margin-bottom: 0;
+      &_sub{
+        padding:0 15px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0;
+        & > div{
+          display: flex;
+          align-items: center;
+        }
+        label{
+          margin-left: 15px;
+          line-height: 17px;
+        }
+      }
+    }
+  }
+}

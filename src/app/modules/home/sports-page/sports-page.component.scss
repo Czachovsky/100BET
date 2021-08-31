@@ -1,0 +1,124 @@
+@import '../../../../mixins';
+
+main {
+  margin: 13.7px 0px 0 24px;
+
+  @include lower-than('lg') {
+    padding: 0;
+    margin: 0;
+  }
+
+  .container__row {
+
+    .with_scrollbar {
+      @include lower-than('lg') {
+        height: auto;
+        overflow: auto;
+      }
+    }
+
+    .left_section {
+      margin-right: 14.1px;
+      @include lower-than('md'){
+        padding-right: 0;
+      }
+
+      @include higher-than('lg'){
+        flex: 0 0 250px;
+        max-width: 250px;
+        height: calc(100vh - 100px);
+      }
+    }
+
+    .right__footer__container {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 calc(100% - 288px);
+      max-width: calc(100% - 288px);
+      height: calc(100vh - 75px);
+
+      @include lower-than('lg'){
+        flex: 0 0 100%;
+        max-width: 100%;
+        overflow: hidden;
+        height: auto;
+      }
+
+      .right__container {
+        display: flex;
+        @include lower-than('md'){
+          overflow-x: hidden;
+        }
+        @include lower-than('lg'){
+          flex-direction: column;
+        }
+        .center_section {
+          margin-right: 13.9px;
+          @include lower-than('md'){
+            padding-right: 0;
+            margin: 0;
+          }
+          @include higher-than('lg'){
+            flex: 0 0 65%;
+            max-width: 65%;
+          }
+
+          workspace-carousel {
+            display: block;
+          }
+          .banner_mobile {
+            display: none;
+            margin: 0 0 10px 0;
+
+            img {
+              width: 100%;
+              height: auto;
+            }
+
+            @media (max-width: 767px) {
+              display: block;
+              margin: 0;
+            }
+          }
+
+        }
+
+        .right_section {
+          @include higher-than('lg'){
+            flex: 0 0 34%;
+            max-width: 34%;
+          }
+        }
+      }
+
+      workspace-footer ::ng-deep footer {
+        padding: 50px 72px 49.5px 74px;
+
+        .container {
+          @include higher-than('lg'){
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+  }
+}
+::ng-deep .OHBCasino{
+  header{
+    background: #16181b;
+    border-bottom: 1px solid #2c2c2c;
+    box-shadow: none;
+  }
+  footer{
+    margin:0;
+  }
+  .login_buttons{
+    & > i{
+      display: none;
+    }
+    .seperator{
+      display: none !important;
+    }
+  }
+}

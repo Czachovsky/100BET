@@ -1,0 +1,122 @@
+<div class="a-z-label">{{'sectionTitles.sportsMenu' | translate}}</div>
+<div class="left__nav" *ngIf="leftSideMenuV2.length">
+  <ul class="left__nav__nodes" [workspaceTransitionGroup]="'flip-list'">
+    <li *ngFor="let item of leftSideMenuV2;let i = index;" [class.show_matches]="item.showMatches"
+      [workspaceTransitionGroupItem]="!item.childrenNode || !item.childrenNode.length">
+      <div #childrenNode [ngClass]="{'active': item.extend}">
+        <div class="nav__nodes__wrapper" (click)="expandElements(item)">
+          <span class="nav__nodes__parent sport__icon sport__{{item.sportype | lowercase}}" (click)="goToSportPage(item, true)">
+            <!-- <i class="fa {{item.icon}}"></i> -->
+            <img [src]="item.icon ? item.icon : 'assets/images/icons/sports/soccer.png'" alt="" />
+            <div>{{ item.name }}</div>
+          </span>
+          <div class="__btns">
+            <span class="favourite" *ngIf="!item.childrenNode && item.favourite !== undefined"
+              [ngClass]="{'fas __true': item.favourite, 'far' : !item.favourite}" (click)="addToFavourite(item)"></span>
+            <span class="menu__opener" *ngIf="item.childrenNode && item.childrenNode.length"
+              [ngClass]="{'inactive' : !item.childrenNode || !item.childrenNode.length}">
+              <i class="fas fa-angle-down"></i>
+            </span>
+          </div>
+        </div>
+        <ng-container *ngIf="item.showMatches && item.liveMatches">
+          <ng-container *ngFor="let match of item.liveMatches">
+            <div class="in__play__leagues">
+              <div class="lague__name">{{match['name']}} ({{objectKeys(match['game']).length}})</div>
+              <div (click)="onChangeGame(game.id, item)"
+                *ngFor="let game of match['game']; trackBy: trackByFn;">
+                <div class="teams_info">
+                  <div class="team">
+                    <span>{{game['team1_name']}}</span>
+                    <span>{{game['info'].score1}}</span>
+                  </div>
+                  <div class="team">
+                    <span>{{game['team2_name']}}</span>
+                    <span>{{game['info'].score2}}</span>
+                  </div>
+                </div>
+                <div class="match_info">
+                  <div class="game_time">
+                    <div>
+                      <span *ngIf="game.is_started !== 1">{{'inPlay.notStarted' | translate}}</span>
+                      <span *ngIf="game.is_started === 1">
+                        <ng-container  *ngIf="game.info.current_game_state !== 'Half Time'">
+                          <span *ngIf="item.id == 1">{{game.info.current_game_time ? getCurrentTime(game.info) : '00'}}{{'inPlay.m' | translate}}</span>
+                          <span *ngIf="item.id != 1">{{ utility.getGameState(game.info.current_game_state, item.id) }}</span>
+                          <!-- <span>{{game.info.current_game_time ? getCurrentTime(game.info) : '00'}}{{'inPlay.m' | translate}}</span> -->
+                        </ng-container>
+                        <span *ngIf="game.info.current_game_state === 'Half Time'">
+                          {{utility.getGameState(game.info.current_game_state, item.id)}}
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="num_of_matches">+{{game.markets_count}}</div>
+                  <div class="live__icon" *ngIf="liveStreamIds.includes(game.id)">
+                    <i class="fa fa-play"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <ul *ngIf="item.extend">
+        <li *ngFor="let child of item.childrenNode" [class.show_matches]="child.showMatches">
+          <div class="nav__nodes__wrapper firstChild" #grandChildrenNode>
+            <span (click)="goToSportPage(child, true)">
+              <!-- <i class="fa {{child.icon}}"></i>  -->
+              <img [src]="child.icon ? child.icon : 'assets/images/icons/sports/soccer.png'" alt="" />
+              {{child.name}}</span>
+            <div class="__btns">
+              <span class="favourite" [ngClass]="{'fas __true': child.favourite, 'far' : !child.favourite}"
+                (click)="addToFavourite(child, item)"></span>
+            </div>
+          </div>
+          <ng-container *ngIf="child.showMatches && child.liveMatches">
+            <ng-container *ngFor="let match of child.liveMatches">
+              <div class="in__play__leagues">
+                <div class="lague__name">{{match['name']}} ({{objectKeys(match['game']).length}})</div>
+                <div (click)="onChangeGame(game.id, child)" *ngFor="let game of match['game']; trackBy: trackByFn;">
+                  <div class="teams_info">
+                    <div class="team">
+                      <span>{{game['team1_name']}}</span>
+                      <span>{{game['info'].score1}}</span>
+                    </div>
+                    <div class="team">
+                      <span>{{game['team2_name']}}</span>
+                      <span>{{game['info'].score2}}</span>
+                    </div>
+                  </div>
+                  <div class="match_info">
+                    <div class="game_time">
+                      <div>
+                        <span *ngIf="game.is_started !== 1">{{'inPlay.notStarted' | translate}}</span>
+                        <span *ngIf="game.is_started === 1">
+                          <ng-container  *ngIf="game.info.current_game_state !== 'Half Time'">
+                            <span *ngIf="child.id == 1">{{game.info.current_game_time ? getCurrentTime(game.info) : '00'}}{{'inPlay.m' | translate}}</span>
+                            <span *ngIf="child.id != 1">{{ utility.getGameState(game.info.current_game_state, child.id) }}</span>
+                          </ng-container>
+                          <span *ngIf="game.info.current_game_state === 'Half Time'">{{utility.getGameState(game.info.current_game_state, child.id)}}</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="num_of_matches">+{{game.markets_count}}</div>
+                    <div class="live__icon" *ngIf="liveStreamIds.includes(game.id)">
+                      <i class="fa fa-play"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <!--  <div class="left__nav_search">-->
+  <!--    <div class="left__nav_search_wrapper">-->
+  <!--      <input placeholder="{{ 'rest.src' | translate}}" [formControl]="leftColumnSearch"><a href="#"><i class="fas fa-search"></i></a>-->
+  <!--    </div>-->
+  <!--  </div>-->
+</div>

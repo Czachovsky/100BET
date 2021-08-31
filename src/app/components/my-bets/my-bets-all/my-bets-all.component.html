@@ -1,0 +1,110 @@
+<div class="my_bets my_bets-all">
+  <div class="my_bets-items">
+    <div class="my_bets-item" >
+      <div class="my_bets-item-header" #betItem>
+        <div (click)="expandIt(betItem)">
+          <span>30.00 System 2/3</span>
+          <div>Lost</div>
+          <span ><i class="fas fa-angle-down"></i></span>
+        </div>
+      </div>
+      <div class="my_bets-item-body" >
+        <div class="my_bets-item-body-row">
+          <div class="my_bets-match-row">
+            <div class="icon">
+              <i class="far fa-clock"></i>
+            </div>
+            <div class="match_info">
+              <div class="selected">
+                Borussia Dortmund - 2.0, -2
+              </div>
+              <span>Asian Handicap</span>
+              <span>RB Leipzig - Borussia Dortmund</span>
+              <div class="infos">
+                <span>17:00</span>
+                <span>Wed 8 Jul 2020</span>
+              </div>
+            </div>
+            <div class="multiplier">
+              1.4
+            </div>
+          </div>
+        </div>
+        <div class="my_bets-item-body-row">
+          <div class="my_bets-stake_returns">
+            <span>Stake:</span>
+            <div>¥14</div>
+          </div>
+          <div class="my_bets-stake_returns">
+            <span>Returns:</span>
+            <div>¥10</div>
+          </div>
+        </div>
+        <div class="my_bets-item-body-row">
+          <span class="my_bets-button my_bets-cash-out-button">
+            <span>Cash out: </span>¥9
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="my_bets-item" >
+      <div class="my_bets-item-header" #betItem1>
+        <div (click)="expandIt(betItem1)">
+          <span>30.00 System 2/3</span>
+          <div>Return ￥20</div>
+          <span ><i class="fas fa-angle-down"></i></span>
+        </div>
+      </div>
+      <div class="my_bets-item-body" >
+        <div class="my_bets-item-body-row">
+          <div class="my_bets-match-row">
+            <div class="icon">
+              <i class="far fa-clock"></i>
+            </div>
+            <div class="match_info">
+              <div class="selected">
+                Borussia Dortmund - 2.0, -2
+              </div>
+              <span>Asian Handicap</span>
+              <span>RB Leipzig - Borussia Dortmund</span>
+              <div class="infos">
+                <span>17:00</span>
+                <span>Wed 8 Jul 2020</span>
+              </div>
+            </div>
+            <div class="multiplier">
+              1.4
+            </div>
+          </div>
+        </div>
+        <div class="my_bets-item-body-row">
+          <div class="my_bets-stake_returns">
+            <span>Stake:</span>
+            <div>¥14</div>
+          </div>
+          <div class="my_bets-stake_returns">
+            <span>Returns:</span>
+            <div>¥10</div>
+          </div>
+        </div>
+        <div class="my_bets-item-body-row">
+          <span class="my_bets-button my_bets-cash-out-button">
+            <span>Cash out: </span>¥9
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="my_bets-all-cash-out">
+    <div class="my_bets-all-cash-out-header">
+      <ul>
+        <li><span (click)="cashOutType =1" [ngClass]="{ __is_active: cashOutType === 1 }">Partial cash out</span></li>
+        <li><span (click)="cashOutType =2" [ngClass]="{ __is_active: cashOutType === 2 }">Auto cash out</span></li>
+      </ul>
+    </div>
+    <div class="my_bets-all-cash-out-body">
+      <workspace-partial-cash-out *ngIf="cashOutType === 1"></workspace-partial-cash-out>
+      <workspace-auto-cash-out *ngIf="cashOutType === 2"></workspace-auto-cash-out>
+    </div>
+  </div>
+</div>

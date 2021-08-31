@@ -1,0 +1,21 @@
+@import "../../../../../mixins";
+
+.button {
+  border-top: solid 2px #313131;
+  padding: 15px;
+  display: flex;
+  button {
+    background: var(--yellow);
+    border:1px solid var(--yellow);
+    border-radius: 3px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    font-family: var(--roboto-bold);
+    font-size: rem-calc(16);
+    color: #1a1a1a;
+    text-transform: uppercase;
+  }
+}

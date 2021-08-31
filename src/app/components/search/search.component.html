@@ -1,0 +1,29 @@
+<div>
+  <input type="text" [formControl]="apiSearchInput">
+  <div class="search_result" *ngIf="gamesList.length || comeptitionsList.length">
+    <div *ngIf="gamesList.length" class="search_games">
+    <ul>
+      <li *ngFor="let sport of gamesList">
+      <ng-container *ngIf="sport.games.length">
+         <div>
+           <div class="sport_name"> {{sport.name}}</div>
+           <ul *ngIf="sport.games.length">
+             <li *ngFor="let game of sport.games" class="sport_link">
+               <div>{{game.team1_name}}<ng-container *ngIf="game.team2_name && game.team2_name !== ''"> - {{game.team2_name}}</ng-container></div>
+               <div>{{game.competition}}</div>
+             </li>
+           </ul>
+         </div>
+      </ng-container>
+      </li>
+    </ul>
+    </div>
+    <div *ngIf="comeptitionsList.length" class="search_competition">
+      <ul>
+        <li *ngFor="let sport of comeptitionsList">
+          <div class="sport_name"> {{sport.name}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

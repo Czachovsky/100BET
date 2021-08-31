@@ -1,0 +1,55 @@
+<div class="bank-form">
+  <div class="form-header">
+    <div class="nav hidden-lg-up"><i class="fas fa-chevron-left" (click)="hideForm.emit(true)"></i></div>
+    <div class="title">{{'withdrawal.addNewCard' | translate}}</div>
+    <div></div>
+  </div>
+  <form [formGroup]="form">
+    <div class="fields">
+      <div class="field">
+        <label>{{'dashboard.register.r27' | translate}}</label>
+        <input type="text" disabled [value]="userInfo?.name" name="fullname" class="disabled" />
+      </div>
+      <div class="field">
+        <label>{{'withdrawal.bankName' | translate}}</label>
+        <workspace-ohb-select
+          [options]="options"
+          [selected]="defaoultOption"
+          (changeValue)="selectName($event)"
+        >
+        </workspace-ohb-select>
+        <!-- <div class="error" *ngIf="isSubmit && form.get('bank_name').invalid">{{'withdrawal.pleaseEnter' | translate}} {{'withdrawal.bankName' | translate}}</div> -->
+      </div>
+      <div class="field">
+        <label>{{'withdrawal.bankAccountNumber' | translate}}</label>
+        <input type="number" formControlName="account_number" name="account_number" />
+        <div class="error" *ngIf="form.get('account_number').errors?.pattern">{{'withdrawal.error.message7' | translate}}</div>
+        <!-- <div class="error" *ngIf="isSubmit && form.get('account_number').invalid">{{'withdrawal.pleaseEnter' | translate}} {{'withdrawal.bankAccountNumber' | translate}}</div> -->
+      </div>
+      <div class="field">
+        <label>{{'withdrawal.province' | translate}}</label>
+        <input type="text" formControlName="province" name="province" />
+        <!-- <div class="error" *ngIf="isSubmit && form.get('province').invalid">{{'withdrawal.pleaseEnter' | translate}} {{'withdrawal.province' | translate}}</div> -->
+      </div>
+      <div class="field">
+        <label>{{'withdrawal.city' | translate}}</label>
+        <input type="text" formControlName="city" name="city" />
+        <!-- <div class="error" *ngIf="isSubmit && form.get('city').invalid">{{'withdrawal.pleaseEnter' | translate}} {{'withdrawal.city' | translate}}</div> -->
+      </div>
+      <div class="field">
+        <label>{{'withdrawal.bankBranch' | translate}}</label>
+        <input type="text" autocomplete="false" formControlName="bank_branch" name="bank_branch" />
+        <!-- <div class="error" *ngIf="isSubmit && form.get('bank_branch').invalid">{{'withdrawal.pleaseEnter' | translate}} {{'withdrawal.bankBranch' | translate}}</div> -->
+      </div>
+      <div class="field">
+        <label>{{'dashboard.login.l4' | translate}}</label>
+        <input type="password" autocomplete="false" formControlName="password" name="password" />
+        <!-- <div class="error" *ngIf="isSubmit && form.get('password').invalid">{{'withdrawal.pleaseEnter' | translate}} {{'dashboard.login.l4' | translate}}</div> -->
+      </div>
+    </div>
+    <div class="error" *ngIf="message">{{message}}</div>
+    <button type="button" [disabled]="form.invalid" (click)="updateUser()">
+      {{'withdrawal.addNewCard' | translate}}
+    </button>
+  </form>
+</div>

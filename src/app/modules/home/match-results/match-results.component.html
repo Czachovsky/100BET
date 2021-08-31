@@ -1,0 +1,178 @@
+<div class="match-results" *ngIf="inPlayObject.alias && inPlayObject.alias !== ''">
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+     <span>
+       <span>
+         Match Results ({{inPlayObject.competition.game.info.score1}}:{{inPlayObject.competition.game.info.score2}})
+       <i class="__danger"></i>
+       </span>
+      <i class="fas fa-angle-down"></i></span>
+    </div>
+    <ul class="match-results__menu smaller_menu">
+      <li><span [ngClass]="{'__is_active' : whichShow === 1}" (click)="whichShow = 1;">Regular time</span></li>
+      <li><span [ngClass]="{'__is_active' : whichShow === 2, 'disabled': !firstHalf.length}" (click)="whichShow = 2;">1st Half</span></li>
+      <li><span [ngClass]="{'__is_active' : whichShow === 3, 'disabled': !secondHalf.length}" (click)="whichShow = 3;">2and Half</span></li>
+    </ul>
+    <div class="match-results__wrapper" *ngIf="whichShow === 1">
+        <div class="match-results__row">
+          <div class="match-results__cell">
+            <ng-container *ngIf="regularTime['P1XP2']">
+              <div class="pick__button">
+                <div>{{inPlayObject.competition.game.team1_name}}</div>
+                <ng-container *ngFor="let markets of regularTime['P1XP2']['event'] | keyvalue">
+                  <ng-container *ngIf="markets.value['name'] === 'W1' || markets.value['name'] === 'P1'">
+                    <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                  </ng-container>
+                </ng-container>
+              </div>
+            </ng-container>
+          </div>
+          <div class="match-results__cell">
+            <ng-container *ngIf="regularTime['P1XP2']">
+            <div class="pick__button">
+            <div>Draw</div>
+              <ng-container *ngFor="let markets of regularTime['P1XP2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === 'Draw'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </div>
+            </ng-container>
+          </div>
+          <div class="match-results__cell">
+            <ng-container *ngIf="regularTime['P1XP2']">
+            <div class="pick__button">
+            <div>{{inPlayObject.competition.game.team2_name}}</div>
+              <ng-container *ngFor="let markets of regularTime['P1XP2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === 'W2' || markets.value['name'] === 'P2'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </div>
+            </ng-container>
+          </div>
+        </div>
+      <div class="match-results__header">
+        Double chance
+      </div>
+      <div class="match-results__row">
+        <div class="match-results__cell">
+            <div class="pick__button">
+            <div>{{inPlayObject.competition.game.team1_name}}</div>
+            <ng-container *ngIf="regularTime['1X12X2']">
+                <ng-container *ngFor="let markets of regularTime['1X12X2']['event'] | keyvalue">
+                  <ng-container *ngIf="markets.value['name'] === '1X'">
+                    <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                  </ng-container>
+                </ng-container>
+            </ng-container>
+            </div>
+        </div>
+        <div class="match-results__cell">
+          <div class="pick__button">
+            <div>Draw</div>
+            <ng-container *ngIf="regularTime['1X12X2']">
+              <ng-container *ngFor="let markets of regularTime['1X12X2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === '12'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+        <div class="match-results__cell">
+          <div class="pick__button">
+            <div>{{inPlayObject.competition.game.team2_name}}</div>
+            <ng-container *ngIf="regularTime['1X12X2']">
+              <ng-container *ngFor="let markets of regularTime['1X12X2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === 'X2'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="match-results__wrapper" *ngIf="whichShow === 2">
+      <div class="match-results__row">
+        <div class="match-results__cell">
+          <ng-container *ngIf="firstHalf[0]">
+            <div class="pick__button">
+              <div>{{inPlayObject.competition.game.team1_name}}</div>
+              <ng-container *ngFor="let markets of regularTime['P1XP2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === 'W1' || markets.value['name'] === 'P1'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+        <div class="match-results__cell">
+          <ng-container *ngIf="firstHalf[0]">
+            <div class="pick__button">
+              <div>Draw</div>
+              <ng-container *ngFor="let markets of regularTime['P1XP2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === 'Draw'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+        <div class="match-results__cell">
+          <ng-container *ngIf="firstHalf[0]">
+            <div class="pick__button">
+              <div>{{inPlayObject.competition.game.team2_name}}</div>
+              <ng-container *ngFor="let markets of regularTime['P1XP2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === 'W2' || markets.value['name'] === 'P2'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="match-results__wrapper" *ngIf="whichShow === 3">
+      <div class="match-results__row">
+        <div class="match-results__cell">
+          <ng-container *ngIf="secondHalf[0]">
+            <div class="pick__button">
+              <div>{{inPlayObject.competition.game.team1_name}}</div>
+              <ng-container *ngFor="let markets of regularTime['P1XP2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === 'W1' || markets.value['name'] === 'P1'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+        <div class="match-results__cell">
+          <ng-container *ngIf="secondHalf[0]">
+            <div class="pick__button">
+              <div>Draw</div>
+              <ng-container *ngFor="let markets of regularTime['P1XP2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === 'W1' || markets.value['name'] === 'P1'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+        <div class="match-results__cell">
+          <ng-container *ngIf="secondHalf[0]">
+            <div class="pick__button">
+              <div>{{inPlayObject.competition.game.team2_name}}</div>
+              <ng-container *ngFor="let markets of regularTime['P1XP2']['event'] | keyvalue">
+                <ng-container *ngIf="markets.value['name'] === 'W1' || markets.value['name'] === 'P1'">
+                  <div><b>{{markets.value['price'] | number : '1.2-2'}}</b></div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

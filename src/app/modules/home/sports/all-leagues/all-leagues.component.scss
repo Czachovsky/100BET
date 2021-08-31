@@ -1,0 +1,142 @@
+@import "../../../../../mixins";
+
+.competition_all {
+
+  &_section {
+    .solid__blue__header {
+      height: 50px;
+      font-size: rem-calc(16);
+      font-family: var(--roboto-regular);
+      display: flex;
+      padding: 0 20px;
+
+      border-radius: 0;
+
+      i {
+        transition: all 0.3s ease;
+      }
+
+      &.active {
+        i {
+          transition: all 0.3s ease;
+          transform: rotate(180deg);
+        }
+      }
+
+      span {
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+  }
+
+  &__body {
+    &_league_row {
+      &_header {
+
+      }
+
+      &:last-child {
+        @include lower-than('lg') {
+          padding-bottom: 8px;
+        }
+      }
+
+      &_body {
+        padding-bottom: 10px;
+        @include lower-than('lg') {
+          padding-bottom: 0px;
+        }
+        .list_header {
+          height: 50px;
+          display: flex;
+          align-items: stretch;
+          padding: 0 20px;
+          justify-content: space-between;
+          cursor: pointer;
+          background:#313131;
+          @include lower-than('lg') {
+            height: 27px;
+          }
+
+          &.sliding {
+            cursor: pointer;
+
+            span {
+              pointer-events: none;
+            }
+          }
+
+          &.active {
+            div > i {
+              transition: all 0.3s ease;
+              transform: rotate(180deg);
+            }
+          }
+
+          span {
+            display: flex;
+            align-items: center;
+            font-family: var(--roboto-regular);
+            flex: 2;
+            font-size: rem-calc(16);
+            @include lower-than('lg') {
+              font-size: rem-calc(13);
+            }
+            i {
+              margin-right: 10px;
+              color: var(--yellow);
+            }
+          }
+
+          div {
+            display: flex;
+            align-items: center;
+
+            & > i {
+              transition: all 0.3s ease;
+              color: var(--white);
+              font-size: rem-calc(14);
+            }
+          }
+        }
+
+        .list_row {
+          display: flex;
+          border-bottom: solid 1px #313131;
+          flex-wrap: wrap;
+          .list_item {
+            min-width: 25%;
+            flex: 1;
+            padding: 0 10px;
+            height: 59px;
+            text-align: center;
+            font-size: rem-calc(15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: solid 2px #313131;
+            border-bottom: solid 2px #313131;
+            cursor: pointer;
+            @include lower-than(1400px) {
+              min-width: 33.3333%;
+            }
+            @include lower-than('lg') {
+              font-size: rem-calc(13);
+              min-height: 34px;
+              padding: 5px;
+              height: auto;
+            }
+
+          }
+        }
+      }
+    }
+
+
+  }
+}
+

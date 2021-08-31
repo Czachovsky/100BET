@@ -1,0 +1,87 @@
+@import "../../../mixins";
+
+.ohb-modal {
+  position: fixed;
+  top: 5vh;
+  left: 50%;
+  z-index: 999;
+  border-radius: 10px;
+  transform: translateX(-50%);
+  overflow: auto;
+  box-shadow: 0 0 23px 0 rgba(0, 0, 0, 0.7);
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: #707070;
+  background-image: linear-gradient(to bottom, #1d1e22, #151619);
+  @include higher-than('lg'){
+    max-height: 90vh;
+    overflow: auto;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  @include lower-than('lg'){
+    max-height: 100vh;
+    max-width: 100vw;
+    height: 100vh;
+    width: 100vw;
+    transform: none;
+    left:0;
+    top:0;
+    border-radius: 0;
+  }
+  .modal-close {
+
+    span {
+      height: 48px;
+      width: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .modal-title{
+      flex:2;
+      text-align: center;
+      color: var(--plain-white);
+      font-family: var(--roboto-bold);
+      font-size: rem-calc(18);
+    }
+  }
+  .modal-sub{
+    height: calc(100% - 48px);
+    @include lower-than('lg'){
+      height: auto;
+    }
+  }
+  .modal_closer{
+    color:var(--plain-white);
+    opacity: 0.3;
+    font-size: rem-calc(23);
+    position: absolute;
+    right: 10px;
+    top:10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    z-index: 100;
+    @include lower-than('lg'){
+      font-size: rem-calc(30);
+    }
+  }
+}
+
+.modal-cover {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: #1e1e1e;
+  opacity: 0.8;
+  left: 0;
+  top: 0;
+  z-index: 998;
+}

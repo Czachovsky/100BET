@@ -1,0 +1,78 @@
+<div class="asian-handicap" *ngIf="inPlayObject.alias && inPlayObject.alias !== ''">
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+        <span>
+       <span>
+         Asian Handicap ({{inPlayObject.competition.game.info.score1}}:{{inPlayObject.competition.game.info.score2}})
+       </span>
+      <i class="fas fa-angle-down"></i></span>
+    </div>
+    <div class="asian-handicap__wrapper">
+      <div class="asian-handicap_teams">
+        <div class="asian-handicap_teams_sub">
+          <div>{{inPlayObject.competition.game.team1_name}}</div>
+          <div>{{inPlayObject.competition.game.team2_name}}</div>
+        </div>
+        <div class="asian-handicap_teams_scores">
+          <ng-container *ngIf="asianHandicap['AsianHandicap']">
+            <div class="pick__button">
+              <ng-container *ngFor="let markets of asianHandicap['AsianHandicap'] | keyvalue; let i = index;">
+                <ng-container *ngIf="i === 0">
+                  <ng-container *ngFor="let event of markets.value['event'] | keyvalue;">
+              <ng-container *ngIf="event.value['type_1'] === 'Away'">
+                {{event.value['base']}} <b>{{event.value['price'] | number : '1.2-2'}}</b>
+                  </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="asianHandicap['AsianHandicap']">
+            <div class="pick__button">
+              <ng-container *ngFor="let markets of asianHandicap['AsianHandicap'] | keyvalue; let i = index;">
+                <ng-container *ngIf="i === 0">
+                  <ng-container *ngFor="let event of markets.value['event'] | keyvalue;">
+                    <ng-container *ngIf="event.value['type_1'] === 'Home'">
+                      {{event.value['base']}} <b>{{event.value['price'] | number : '1.2-2'}}</b>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="asian-handicap_teams_to_score">
+        <div class="asian-handicap_teams_to_score_header">
+          Both Teams to score
+        </div>
+        <div class="asian-handicap_teams_to_score_sub">
+          <ng-container *ngIf="asianHandicap['BothTeamsToScore']">
+          <div class="pick__button">
+            <ng-container *ngFor="let markets of asianHandicap['BothTeamsToScore'] | keyvalue; let i = index;">
+              <ng-container *ngIf="i === 0">
+                <ng-container *ngFor="let event of markets.value['event'] | keyvalue;">
+                  <ng-container *ngIf="event.value['name'] === 'Yes'">
+                    Yes <b>{{event.value['price'] | number : '1.2-2'}}</b>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </div>
+          <div class="pick__button">
+            <ng-container *ngFor="let markets of asianHandicap['BothTeamsToScore'] | keyvalue; let i = index;">
+              <ng-container *ngIf="i === 0">
+                <ng-container *ngFor="let event of markets.value['event'] | keyvalue;">
+                  <ng-container *ngIf="event.value['name'] === 'No'">
+                    No <b>{{event.value['price'] | number : '1.2-2'}}</b>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

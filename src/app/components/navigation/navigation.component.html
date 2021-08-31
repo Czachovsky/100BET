@@ -1,0 +1,258 @@
+<header class="container__fluid">
+  <div class="header__lower">
+    <div class="logo">
+      <div class="logo__container" (click)='showUserMenu = false' [routerLink]="'sportsbook/home'"></div>
+    </div>
+    <nav class="main__navbar hidden-lg-down" #mainNavbar>
+      <ul>
+        <li><a (click)='showUserMenu = false' [routerLink]="'sportsbook/home'" [routerLinkActive]="'navigation__active'"
+          (mouseenter)="bottomLinePosition($event)"
+          (mouseleave)="bottomLinePosition()"
+          (click) = "changeSearchStatus(true)">{{ 'nav.navSp' | translate}}</a></li>
+        <li>
+          <a (click)='showUserMenu = false' [routerLink]="'sportsbook/in-play'" [routerLinkActive]="'navigation__active'"
+          (mouseenter)="bottomLinePosition($event)" [ngClass]="{'navigation__active': marketsActive.isActive }"
+          (mouseleave)="bottomLinePosition()"
+          (click) = "changeSearchStatus(true)">{{ 'nav.navInP' | translate}}</a>
+          <a routerLink="/sportsbook/markets" routerLinkActive #marketsActive="routerLinkActive" style="display: none"></a>
+        </li>
+        <li><a (click)='showUserMenu = false' [routerLink]="'casino'" [routerLinkActive]="'navigation__active'"
+          (mouseenter)="bottomLinePosition($event)"
+          (mouseleave)="bottomLinePosition()"
+          (click) = "changeSearchStatus(false)">{{ 'nav.navCas' | translate}}</a></li>
+        <li><a (click)='showUserMenu = false' [routerLink]="'promotion'" [routerLinkActive]="'navigation__active'"
+          (mouseenter)="bottomLinePosition($event)"
+          (mouseleave)="bottomLinePosition()"
+          (click) = "changeSearchStatus(false)">{{ 'nav.navProm' | translate}}</a></li>
+        <li (click)='showUserMenu = false' *ngIf="isLoggedIn"><a [routerLink]="'sportsbook/my-bets'" [routerLinkActive]="'navigation__active'"
+          (mouseenter)="bottomLinePosition($event)"
+          (mouseleave)="bottomLinePosition()"
+          (click) = "changeSearchStatus(true)">{{'nav.myBets' | translate}}</a>
+          <span class='my_bets_counter' *ngIf='betsCount'>{{betsCount}}</span>
+        </li>
+      </ul>
+      <div class="bottomLine" #bottomLine></div>
+    </nav>
+    <div class="login_buttons">
+      <!-- <workspace-search *ngIf="showSearch"></workspace-search> -->
+       <i class="fa fa-search" *ngIf= "showSearch" (click)="showAdvancedSearch()"></i>
+      <span class="seperator"></span>
+      <a href="javascript:;" class="btn__solid join-now" (click)="registerAction($event)" *ngIf="!isLoggedIn">{{ 'nav.joinNow' | translate}}</a>
+      <a href="javascript:;" class="register" (click)="logInAction($event)" *ngIf="!isLoggedIn">{{ 'nav.navLog' | translate}}</a>
+      <div *ngIf="isLoggedIn" class="top_logedin_section">
+        <div class="deposit_and_balance">
+          <div class="balance" *ngIf="!isBalanceHidden">¥{{userData.balance | number : '1.2-2'}}</div>
+          <div class="deposit" (click)="goToDashboardSection('deposit')">{{'dashboard.d1' | translate}}</div>
+        </div>
+        <div class="user_icon" (click)="showUserMenu = !showUserMenu"><i class="fal fa-user-circle"></i></div>
+        <div class='user_menu_bg' *ngIf='showUserMenu' (click)='showUserMenu = false'></div>
+        <div class="user_menu" [ngClass]="{'open':showUserMenu}">
+            <div class="user_menu_sub">
+              <div class="user_menu_top">
+                <div class="user_menu_top_user">
+                  <div [ngClass]="{'balance_hidden': isBalanceHidden}">
+                    <div class="user_name">{{userData.username}}</div>
+                    <div class="user_balance">
+                      <span *ngIf="!isBalanceHidden">¥{{userData.balance | number : '1.2-2'}}</span>
+                      <div>
+                        <span (click)="hideUserBalance()">
+                          <ng-container *ngIf="!isBalanceHidden">
+                            <i class="far fa-eye"></i>
+                          </ng-container>
+                              <ng-container *ngIf="isBalanceHidden">
+                            <i class="far fa-eye-slash"></i>
+                          </ng-container>
+                        </span>
+                      </div>
+                    </div>
+                    <div class='withdrawable_balance' *ngIf='!isBalanceHidden'>
+                      <div>{{'dashboard.d17' | translate}}</div>
+                      <span>¥{{withdrawable | number : '1.2-2'}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="user_menu_top_buttons">
+                  <span (click)="goToDashboardSection('deposit')">{{'dashboard.d1' | translate}}</span>
+                  <span (click)="goToDashboardSection('withdraw')">{{'dashboard.d2' | translate}}</span>
+                </div>
+              </div>
+              <div class="user_menu_bottom">
+                <ul>
+                  <li><div><span (click)="goToDashboardSection('details')"><i class="fal fa-user"></i> {{'dashboard.d3' | translate}}</span></div></li>
+                  <li><div><span (click)="goToDashboardSection('transaction')"><i class="fal fa-history"></i> {{'dashboard.d4' | translate}}</span></div></li>
+                  <li><div><span (click)="goToDashboardSection('betting')"><i class="fal fa-list-alt"></i> {{'dashboard.d5' | translate}}</span></div></li>
+                  <li><div><span (click)="goToDashboardSection('promotions')"><i class="fal fa-gift"></i> {{'dashboard.d6' | translate}}</span> <div *ngIf="clientClaimableDepositBonuses > 0" class="counter">{{clientClaimableDepositBonuses}}</div></div></li>
+                  <li><div><span (click)="goToDashboardSection('messages')"><i class="fal fa-envelope"></i> {{'dashboard.d7' | translate}}</span> <div *ngIf="userData.unread_count > 0" class="counter">{{userData.unread_count}}</div></div></li>
+                  <li><div><span (click)="logOut($event)"><i class="fal fa-sign-out"></i> {{'dashboard.d9' | translate}}</span></div></li>
+                </ul>
+                <div class='chat hidden-lg-down'>
+                  <span (click)='loadChat();'>
+                  <div class="loader" *ngIf='loadingChat'>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                    <div class="loader-dot"></div>
+                  </div>
+                    <ng-container *ngIf='!utility._isChatVisible'><i class="far fa-comment"></i> {{'dashboard.d18' | translate}}</ng-container>
+                    <ng-container *ngIf='utility._isChatVisible'><i class="far fa-comment"></i> {{'dashboard.d19' | translate}}</ng-container>
+                  </span>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mobile_menu hidden-lg-up" *ngIf="!showMobileMenu">
+    <!-- <span class="go_to_left"></span> -->
+    <div  *ngIf="ShowNav">
+      <ul *ngIf='!isCasino'>
+        <li>
+          <a href="javascript:;" (click)="activeMenu = ''" [class.in-active]="activeMenu && activeMenu !== 'promos'" [routerLink]="'/promotion'" routerLinkActive="navigation_mobile_active">
+            <span class="mobile_menu_icon">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="18" height="15.75" viewBox="0 0 18 15.75">
+                <path id="Path_421" data-name="Path 421" d="M16.313-10.125H15.4a3.12,3.12,0,0,0,.352-1.406,2.976,2.976,0,0,0-.914-2.18,2.976,2.976,0,0,0-2.18-.914,3.206,3.206,0,0,0-1.9.6,7.945,7.945,0,0,0-1.723,1.793,7.945,7.945,0,0,0-1.723-1.793,3.206,3.206,0,0,0-1.9-.6,2.976,2.976,0,0,0-2.18.914,2.976,2.976,0,0,0-.914,2.18,2.978,2.978,0,0,0,.352,1.406H1.688a1.627,1.627,0,0,0-1.2.492A1.627,1.627,0,0,0,0-8.437v4.5a.548.548,0,0,0,.158.4.548.548,0,0,0,.4.158h.563V-.738A1.8,1.8,0,0,0,1.67.58a1.8,1.8,0,0,0,1.318.545H15.012A1.8,1.8,0,0,0,16.33.58a1.8,1.8,0,0,0,.545-1.318V-3.375h.563a.548.548,0,0,0,.4-.158.548.548,0,0,0,.158-.4v-4.5a1.627,1.627,0,0,0-.492-1.2A1.627,1.627,0,0,0,16.313-10.125ZM8.156-.562H2.988a.155.155,0,0,1-.176-.176V-3.375H6.75V-5.062H1.688V-8.437H8.156ZM5.414-10.125a1.361,1.361,0,0,1-1-.4,1.361,1.361,0,0,1-.4-1,1.361,1.361,0,0,1,.4-1,1.361,1.361,0,0,1,1-.4,1.5,1.5,0,0,1,.738.176,2.954,2.954,0,0,1,.9.756A18.843,18.843,0,0,1,8.367-10.23l.07.105ZM9.7-10.23a18.843,18.843,0,0,1,1.318-1.775,2.954,2.954,0,0,1,.9-.756,1.5,1.5,0,0,1,.738-.176,1.361,1.361,0,0,1,1,.4,1.361,1.361,0,0,1,.4,1,1.361,1.361,0,0,1-.4,1,1.361,1.361,0,0,1-1,.4H9.633Zm6.609,5.168H11.25v1.688h3.938V-.738a.155.155,0,0,1-.176.176H9.844V-8.437h6.469Z" transform="translate(0 14.625)" fill="#ffffff"/>
+              </svg> -->
+              <img width="30" src="assets/images/icons/sports/promotion.png" />
+            </span>
+            <span>{{'mobileMenu.promos' | translate}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" [class.in-active]="activeMenu && activeMenu !== 'search'"
+          routerLinkActive="navigation_mobile_active" (click)="openSearch();activeMenu = 'search'">
+            <span class="mobile_menu_icon">
+              <!-- <i class="far fa-futbol"></i> -->
+              <img width="30" src="assets/images/icons/sports/search.png" />
+            </span>
+            <span>{{'mobileMenu.search' | translate}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" [class.in-active]="activeMenu && activeMenu !== 'support'" routerLinkActive="navigation_mobile_active" (click)='loadChat()'>
+            <span class="mobile_menu_icon">
+              <img width="30" src="assets/images/icons/sports/support.png" />
+            </span>
+            <span *ngIf='!utility._isChatVisible'>{{'mobileMenu.support' | translate}}</span>
+            <span *ngIf='utility._isChatVisible'>{{'dashboard.d19' | translate}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" [class.in-active]="activeMenu" [routerLink]="'sportsbook/soccer'" routerLinkActive="navigation_mobile_active">
+            <span class="mobile_menu_icon">
+              <!-- <i class="far fa-futbol"></i> -->
+              <img width="18" src="assets/images/icons/sports/soccer.png" />
+            </span>
+            <span>{{'mobileMenu.soccer' | translate}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" [class.in-active]="activeMenu" [routerLink]="'sportsbook/basketball'" routerLinkActive="navigation_mobile_active">
+            <span class="mobile_menu_icon">
+              <!-- <i class="fa fa-basketball-ball"></i> -->
+              <img width="24" src="assets/images/icons/sports/basket.png" />
+            </span>
+            <span>{{'mobileMenu.basketball' | translate}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" [class.in-active]="activeMenu" [routerLink]="'sportsbook/tennis'" routerLinkActive="navigation_mobile_active">
+            <span class="mobile_menu_icon">
+              <!-- <i class="fa fa-tennis-ball" aria-hidden="true"></i> -->
+              <img width="18" src="assets/images/icons/sports/tennis.png" />
+            </span>
+            <span>{{'mobileMenu.tennis' | translate}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" [class.in-active]="activeMenu" [routerLink]="'sportsbook/snooker'" routerLinkActive="navigation_mobile_active">
+            <span class="mobile_menu_icon">
+              <!-- <i class="far fa-futbol" aria-hidden="true"></i> -->
+              <img width="18" src="assets/images/icons/sports/snooker.png" />
+            </span>
+            <span>{{'mobileMenu.snooker' | translate}}</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;" [class.in-active]="activeMenu" [routerLink]="'sportsbook/table-tennis'" routerLinkActive="navigation_mobile_active">
+            <span class="mobile_menu_icon">
+              <!-- <i class="fa fa-table-tennis" aria-hidden="true"></i> -->
+              <img width="25" src="assets/images/icons/sports/table-tennis.png" />
+            </span>
+            <span>{{'mobileMenu.tableTennis' | translate}}</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="javascript:;" routerLinkActive="navigation_mobile_active">
+            <span class="mobile_menu_icon">
+              <div class="live">
+                <i class="fa fa-play" aria-hidden="true"></i>
+              </div>
+            </span>
+            <span>Live</span></a>
+        </li> -->
+      </ul>
+      <ul *ngIf='isCasino'>
+        <li>
+          <a href="javascript:;" [routerLink]="'/promotion'">
+            <span class="mobile_menu_icon"><i class="fal fa-gift"></i></span>
+            <span>{{'mobileMenu.promos' | translate}}</span>
+            </a>
+        </li>
+        <li>
+          <a href="javascript:;" (click)='openSearch()'>
+            <span class="mobile_menu_icon"><i class="far fa-search"></i></span>
+            <span>{{'mobileMenu.search' | translate}}</span></a>
+        </li>
+        <li>
+          <a href="javascript:;" (click)='loadChat()'>
+            <span class="mobile_menu_icon"><i class="far fa-headset"></i></span>
+            <span *ngIf='!utility._isChatVisible'>{{'mobileMenu.support' | translate}}</span>
+            <span *ngIf='utility._isChatVisible'>{{'dashboard.d19' | translate}}</span>
+          </a></li>
+        <li>
+          <a href="javascript:;" (click)='loadPopularGames()'>
+          <span class="mobile_menu_icon"><i class="fas fa-thumbs-up"></i></span>
+          <span>{{'mobileMenu.popular' | translate}}</span></a></li>
+      </ul>
+    </div>
+    <!-- <span class="go_to_right"></span> -->
+  </div>
+</header>
+
+
+<workspace-ohb-modal [(visible)]="resetBySms" *ngIf="resetBySms">
+<workspace-can-login-now (openLogin)='openLogin()'></workspace-can-login-now>
+</workspace-ohb-modal>
+<workspace-ohb-modal [(visible)]="showLogin" *ngIf="showLogin">
+  <workspace-login (passwordRecover)='hangleShowRecover($event)'></workspace-login>
+</workspace-ohb-modal>
+<workspace-ohb-modal [(visible)]="showPasswordRecover" *ngIf="showPasswordRecover">
+  <workspace-password-recover (backToLoginEmitter)='hangleShowRecover($event)'></workspace-password-recover>
+</workspace-ohb-modal>
+<workspace-ohb-modal class="register-modal-wrapper" [(visible)]="showRegister" *ngIf="showRegister">
+  <workspace-register (userRegistered)="showRegisteredModal($event)"></workspace-register>
+</workspace-ohb-modal>
+<workspace-ohb-modal [(visible)]="completeRegistration" *ngIf="completeRegistration">
+  <div class="registered">
+   <div class="icon"> <i class="fas fa-check-circle"></i></div>
+    <div class="congrats">
+      <div>Congratulation!</div>
+      <div>{{userData?.first_name}}</div>
+    </div>
+    <div class="info">
+      <span>You've successfully registered. <br/>
+        {{'dashboard.register.r38' | translate}}
+        <a href="javascript:;" (click)="redirect('promotions')">{{'dashboard.register.r39' | translate}}</a>
+        {{'dashboard.register.r40' | translate}}
+        <a href="javascript:;" (click)="redirect('deposit')">{{'dashboard.register.r41' | translate}}</a>
+        {{'dashboard.register.r42' | translate}}
+      </span>
+    </div>
+    <div class="_btn">
+      <span class="btn__solid" (click)="goToDashboardSection('deposit');completeRegistration=false;">Deposit now</span>
+    </div>
+  </div>
+</workspace-ohb-modal>

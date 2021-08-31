@@ -1,0 +1,25 @@
+export const BET_TYPES = {
+  1: 'Single',
+  2: 'Multi',
+  3: 'System',
+  4: 'Chain',
+  5: 'Trixie',
+  6: 'Yankee',
+  8: 'Super Yankee',
+  9: 'Heinz',
+  10: 'Super Heinz',
+  11: 'Goliath',
+  12: 'Patent',
+  14: 'Lucky 15',
+  15: 'Lucky 31',
+  16: 'Lucky 63',
+  40: 'Straight Forecast',
+  41: 'Reverse Forecast',
+  42: 'Combination Forecast',
+  43: 'Straight Tricast',
+  44: 'Combination Tricast',
+  50: 'Bet Builder',
+  51: 'Bet On Lineups',
+  'Toto': 'Pool Betting'
+};
+

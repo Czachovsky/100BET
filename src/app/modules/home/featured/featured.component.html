@@ -1,0 +1,157 @@
+<div id="home__page__featured" *ngIf="featuredNewArray.length">
+  <div class="feature__header">{{ 'sectionTitles.title1' | translate }}</div>
+  <div class="container__fluid">
+    <div class="featured__item" *ngFor="let featured of featuredNewArray">
+      <div class="featured__item__header">
+        <div class="title">{{ featured.name }}</div>
+      </div>
+      <div class="featured__item__body">
+        <ng-container *ngFor="let eachGame of featured.game">
+            <div class="item__desc__wrapper">
+              <ng-container *ngFor="let markets of eachGame.market | keyvalue; let i = index">
+                <ng-container *ngIf="markets.value['type'] === 'AsianHandicap' && i === 0">
+                  <div class="left">
+                    <div class="time">
+                      <div class="featured__card_result_time is_live" *ngIf="eachGame.is_started === 1">
+                        <div *ngIf="eachGame.info.current_game_state !== 'Half Time'">
+                          <i class="fas fa-clock"></i>{{ eachGame.info.current_game_time }}″
+                          <ng-container *ngIf="
+                          eachGame.info.match_add_minutes &&
+                          eachGame.info.match_add_minutes !== ''
+                            ">+{{ eachGame.info.match_add_minutes }}</ng-container>
+                        </div>
+                        <span>{{ getGameState(eachGame.info.current_game_state) }}</span>
+                        <div *ngIf="eachGame.info.current_game_state === 'Half Time'">
+                          <i class="fas fa-clock"></i>Half Time
+                        </div>
+                        <i class="fab fa-youtube" *ngIf="liveStreamIds.includes(eachGame.id)"></i>
+                      </div>
+                      <div class="featured__card_result_time" *ngIf="eachGame.is_started !== 1">
+                        <div>{{ todayOrTomorrow(eachGame.start_ts * 1000) ? todayOrTomorrow(eachGame.start_ts * 1000) : ''}} &nbsp; {{eachGame.start_ts * 1000 | date: 'HH:mm' }}
+                          <i class="fab fa-youtube" *ngIf="liveStreamIds.includes(eachGame.id)"></i></div>
+                      </div>
+                    </div>
+                    <div class="team__name" (click)="redirectTo(eachGame)">
+                      <div>{{eachGame.team1_name}}</div>
+                      <div>{{eachGame.team2_name}}</div>
+                    </div>
+                  </div>
+                  <div class="right">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button" [ngClass]="{
+                          __is_picked: shouldHasPickedClass(pick.value['id']),
+                          is_blocked: eachGame.is_blocked === 1
+                        }" (click)="addBetToCart(pick, eachGame, markets)">
+                        <div class="team">{{pick.value['base'] > 0 ? '+' : ''}}{{ pick.value['base'] | formatBase }}</div>
+                        <div class="price" *ngIf="eachGame.is_blocked !== 1">
+                          {{ pick.value['price'] | oddsFormat: os.oddFormatName }}
+                        </div>
+                        <div *ngIf="eachGame.is_blocked === 1">
+                          <i class="fas fa-lock"></i>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="home__page__featured__mobile" *ngIf="featuredArray.length">
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+      {{ 'sectionTitles.title1' | translate }}
+    </div>
+    <div class="featured__wrapper">
+      <owl-carousel-o [options]="featuredCarouselOptions">
+        <ng-container *ngFor="let featured of featuredArray">
+          <ng-template carouselSlide>
+            <div class="featured__item">
+              <div class="featured__item__header">
+                <div class="featured__item__header__left">{{ featured.competition }}</div>
+                <div class="featured__item__header__right">
+                  <div class="featured__card_result_time is_live" *ngIf="featured.is_started === 1">
+                    <div *ngIf="featured.info.current_game_state !== 'Half Time'">
+                      <i class="fas fa-clock"></i>{{ featured.info.current_game_time }}″
+                      <ng-container *ngIf="
+                          featured.info.match_add_minutes &&
+                          featured.info.match_add_minutes !== ''
+                        ">+{{ featured.info.match_add_minutes }}</ng-container>
+                    </div>
+                    <span>{{
+                      getGameState(featured.info.current_game_state)
+                    }}</span>
+                    <div *ngIf="featured.info.current_game_state === 'Half Time'">
+                      <i class="fas fa-clock"></i>Half Time
+                    </div>
+                  </div>
+                  <div class="featured__card_result_time" *ngIf="featured.is_started !== 1">
+                    <div>
+                      {{ featured.start_ts * 1000 | date: 'dd MMM hh:mm a' }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="featured__item__body">
+                <ul (click)="redirectTo(featured)">
+                  <li>
+                    <span class="featured__team teams__icon">{{
+                      featured.team2_name
+                    }}</span>
+                    <span class="featured__score">{{
+                      featured.info.score2
+                    }}</span>
+                  </li>
+                  <li>
+                    <span class="featured__team teams__icon">{{
+                      featured.team1_name
+                    }}</span>
+                    <span class="featured__score">{{
+                      featured.info.score1
+                    }}</span>
+                  </li>
+                </ul>
+                <div class="featured__card_result_body">
+                  <div class="featured__card__options">
+                    <ul>
+                      <ng-container *ngFor="let markets of featured.market | keyvalue;let i = index">
+                        <ng-container *ngIf="
+                            markets.value['type'] === 'AsianHandicap' && i === 0
+                          ">
+                          <li *ngFor="
+                              let pick of markets.value['event'] | keyvalue
+                            ">
+                            <div class="pick__button" [ngClass]="{
+                                __is_picked: shouldHasPickedClass(
+                                  pick.value['id']
+                                ),
+                                is_blocked: featured.is_blocked === 1
+                              }" (click)="addBetToCart(pick, featured, markets)">
+                              <span *ngIf="featured.is_blocked !== 1">
+                                <span>{{ pick.value['base'] | formatBase}}</span>
+                              </span>
+                              <div *ngIf="featured.is_blocked !== 1">
+                                {{ pick.value['price'] | oddsFormat: os.oddFormatName }}
+                              </div>
+                              <div *ngIf="featured.is_blocked === 1">
+                                <i class="fas fa-lock"></i>
+                              </div>
+                            </div>
+                          </li>
+                        </ng-container>
+                      </ng-container>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</div>

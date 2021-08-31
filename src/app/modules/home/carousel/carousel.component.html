@@ -1,0 +1,30 @@
+<div id="home__page__carousel" *ngIf="carouselLength">
+  <owl-carousel-o #owlCar [options]="carouselOptions"
+                  (initialized)="initializedCarousel()"
+                  (changed)="isMoved($event)"
+                  (dragging)="isDragging($event)">
+    <ng-container *ngFor="let item of carouselItems;let i = index">
+      <ng-template carouselSlide id="slide-{{i}}" >
+        <img [src]="item.url"/>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+
+  <div class="bottom__menu">
+    <div class="bottom__menu__wrapper">
+      <div class="menu__item"
+        *ngFor="let item of compititions;let i = index"
+        [class.active]="activeSlide == i"
+        (click)="owlCar.to('slide-' + i)">
+          <span>{{ 'homePage.carousel.' + item | translate}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- <workspace-carousel-counter
+    [time]="carouselOptions.autoplayTimeout"
+    [start]="startCarousel"
+    [dragging]="pauseOnDragging"
+    [moved]="carouselMoved">
+  </workspace-carousel-counter> -->
+</div>

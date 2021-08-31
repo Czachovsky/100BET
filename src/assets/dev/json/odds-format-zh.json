@@ -1,0 +1,39 @@
+{
+  "default":   {
+    "optionName": "decimal",
+    "optionDisplayName": "decimal",
+    "optionValue": "oddDecimal"
+  },
+  "options": [
+    {
+      "optionName": "decimal",
+      "optionDisplayName": "decimal",
+      "optionValue": "oddDecimal"
+    },
+    {
+      "optionName": "fractional",
+      "optionDisplayName": "fractional",
+      "optionValue": "oddFractional"
+    },
+    {
+      "optionName": "american",
+      "optionDisplayName": "american",
+      "optionValue": "oddAmerican"
+    },
+    {
+      "optionName": "honkkong",
+      "optionDisplayName": "honkkong",
+      "optionValue": "oddHonkKong"
+    },
+    {
+      "optionName": "malay",
+      "optionDisplayName": "malay",
+      "optionValue": "oddMalay"
+    },
+    {
+      "optionName": "indo",
+      "optionDisplayName": "indo",
+      "optionValue": "oddIndo"
+    }
+  ]
+}

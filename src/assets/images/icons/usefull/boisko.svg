@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="25" viewBox="0 0 38 25">
+  <g id="boisko" transform="translate(-1539.34 -142)">
+    <g id="Path_314" data-name="Path 314" transform="translate(1539.34 142)" fill="none">
+      <path d="M0,0H38V25H0Z" stroke="none"/>
+      <path d="M 2 2 L 2 23 L 36 23 L 36 2 L 2 2 M 0 0 L 38 0 L 38 25 L 0 25 L 0 0 Z" stroke="none" fill="#61697d"/>
+    </g>
+    <g id="Rectangle_552" data-name="Rectangle 552" transform="translate(1540.34 150)" fill="none" stroke="#61697d" stroke-width="1">
+      <rect width="4" height="9" stroke="none"/>
+      <rect x="0.5" y="0.5" width="3" height="8" fill="none"/>
+    </g>
+    <g id="Rectangle_553" data-name="Rectangle 553" transform="translate(1572.34 150)" fill="none" stroke="#61697d" stroke-width="1">
+      <rect width="4" height="9" stroke="none"/>
+      <rect x="0.5" y="0.5" width="3" height="8" fill="none"/>
+    </g>
+    <g id="Path_315" data-name="Path 315" transform="translate(1539.34 142)" fill="none">
+      <path d="M0,0H20.169V25H0Z" stroke="none"/>
+      <path d="M 1.999996185302734 2 L 1.999996185302734 23 L 18.16943740844727 23 L 18.16943740844727 2 L 1.999996185302734 2 M -3.814697265625e-06 0 L 20.16943740844727 0 L 20.16943740844727 25 L -3.814697265625e-06 25 L -3.814697265625e-06 0 Z" stroke="none" fill="#61697d"/>
+    </g>
+    <path id="Path_316" data-name="Path 316" d="M4,0A4,4,0,1,1,0,4,4,4,0,0,1,4,0Z" transform="translate(1554.34 150)" fill="#61697d"/>
+  </g>
+</svg>

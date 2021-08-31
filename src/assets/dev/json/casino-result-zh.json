@@ -1,0 +1,25 @@
+{
+  "default": {
+    "optionName": -10,
+    "optionDisplayName": "all",
+    "optionValue": "all"
+  },
+  "options": [
+    {
+      "optionName": -10,
+      "optionDisplayName": "all",
+      "optionValue": "all"
+    },
+    {
+      "optionName": 1,
+      "optionDisplayName": "won",
+      "optionValue": "won"
+    },
+    {
+      "optionName": 0,
+      "optionDisplayName": "lost",
+      "optionValue": "lost"
+    }
+  ]
+}
+

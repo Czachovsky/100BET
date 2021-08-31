@@ -1,0 +1,314 @@
+@import '../../../../mixins';
+
+header {
+  padding: 14px 35px 14px 35px;
+  background-color: #292929;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .img-back {
+    position: absolute;
+    left: 15px;
+    z-index: 1;
+
+    a {
+      position: relative;
+      margin: 2px 0px 2px 0px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.22;
+      color: #dddddd;
+
+      .fa-chevron-left:before {
+        content: '\f053';
+      }
+    }
+  }
+
+  h3 {
+    margin: 0px;
+    font-family: Roboto;
+    font-size: 17px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+  }
+}
+
+section {
+  @include lower-than('lg') {
+    background-color: #292929;
+    padding: 20px 9.7px 0px 26px;
+  }
+
+  ol {
+    list-style: disc;
+    // list-style-type: none;
+    // counter-reset: css-counter;
+
+    li {
+      padding: 0 0 0 0px;
+
+      h3 {
+        position: relative;
+        // width: 100%;
+        display: inline-block;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.19;
+        letter-spacing: normal;
+        text-align: left;
+        color: #dddddd;
+
+        @include lower-than('lg') {
+          font-size: 13px;
+          line-height: 1.15;
+        }
+      }
+
+      div.divider {
+        position: relative;
+        width: 100%;
+        height: 2px;
+        margin: 13px 0 0 0;
+        background-color: #323232;
+
+        @include lower-than('lg') {
+          margin: 12px 0 0 0;
+        }
+      }
+
+      div {
+        margin: 25px 37.3px 41px 0px;
+
+        @include lower-than('lg') {
+          margin: 12px 0px 28px 0px;
+        }
+
+        h4 {
+          font-family: Roboto;
+          font-size: 15px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.2;
+          letter-spacing: normal;
+          text-align: left;
+          color: #d1d1d1;
+
+          @include lower-than('lg') {
+            font-size: 13px;
+            line-height: 1.31;
+          }
+        }
+
+        ol {
+          // list-style: decimal;
+          padding-left: 30px;
+          list-style-type: none;
+          counter-reset: css-counter 0;
+
+          @include lower-than('lg') {
+            list-style: none;
+            padding-left: 0px;
+          }
+
+          li {
+            margin-top: 10px;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.2;
+            letter-spacing: normal;
+            text-align: left;
+            color: #d1d1d1;
+
+            @include lower-than('lg') {
+              margin-top: 15px;
+              font-size: 13px;
+              line-height: 1.31;
+
+              &:before {
+                counter-increment: css-counter;
+                content: counter(css-counter) '.';
+                padding-left: 10px;
+              }
+            }
+
+            ul {
+              padding-left: 30px;
+              list-style-type: circle;
+              counter-reset: css-counter 0;
+
+              @include lower-than('lg') {
+                list-style: none;
+                padding-left: 0px;
+              }
+
+              li {
+                margin-top: 10px;
+                font-family: Roboto;
+                font-size: 15px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.2;
+                letter-spacing: normal;
+                text-align: left;
+                color: #d1d1d1;
+    
+                @include lower-than('lg') {
+                  margin-top: 15px;
+                  font-size: 13px;
+                  line-height: 1.31;
+    
+                  &:before {
+                    counter-increment: css-counter;
+                    content: counter(css-counter) '.';
+                    padding-left: 10px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        ol li:before {
+          counter-increment: css-counter;
+          content: counters(css-counter, '.') '. ';
+          font-size: 15px;
+
+          @include lower-than('lg') {
+            font-size: 13px;
+          }
+        }
+
+        ol li ul li:before {
+          content: none;
+          counter-increment: none;
+          font-size: 15px;
+
+          @include lower-than('lg') {
+            font-size: 13px;
+          }
+        }
+
+        ol div li:before {
+          counter-increment: css-counter;
+          content: counters(css-counter, '.') '. ';
+          font-size: 15px;
+
+          @include lower-than('lg') {
+            font-size: 13px;
+          }
+        }
+
+        ol.list-style-alphabet {
+          list-style-type: lower-latin;
+        }
+
+        ol.list-style-alphabet li:before {
+          content: none;
+          counter-increment: none;
+        }
+
+        .spacing, .no-spacing {
+          margin: 10px 0 0 0;
+          font-size: 15px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.2;
+          letter-spacing: normal;
+          text-align: left;
+          color: #d1d1d1;
+
+          @include lower-than('lg') {
+            margin-top: 15px;
+            font-size: 13px;
+            line-height: 1.31;
+          }
+        }
+        .no-spacing{
+          margin: 0px;
+        }
+
+        .dash::before {
+          margin: 0px 5px 0 0 !important;
+          content: '-';
+        }
+      }
+    }
+  }
+
+  // ol li:before {
+  //   counter-increment: css-counter;
+  //   content: counters(css-counter, '.') '. ';
+  //   color: #dddddd;
+  //   font-size: 16px;
+
+  //   @include lower-than('lg') {
+  //     font-size: 13px;
+  //   }
+  // }
+}
+
+
+ul li {
+  margin-top: 10px;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #d1d1d1;
+
+  @include lower-than('lg') {
+    margin-top: 15px;
+    font-size: 13px;
+    line-height: 1.31;
+  }
+}
+
+.spacing-left{
+  padding: 0 0 0 30px;
+  @include lower-than('lg') {
+    padding : 0px;
+  }
+}
+
+table, th, td {
+  border: 1px solid #d1d1d1;
+  border-collapse: collapse;
+}
+
+td{
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #d1d1d1;
+
+  @include lower-than('lg') {
+    font-size: 13px;
+    line-height: 1.31;
+  }
+}

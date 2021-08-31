@@ -1,0 +1,105 @@
+<div class="transaction-records" [ngClass]="{'loading_section': loading}">
+  <div class="dashboard-header">
+    <div class="dashboard-header-sub">{{'dashboard.transactionRecords.t1' | translate}}</div>
+  </div>
+  <div class="transaction-records-body">
+    <div class="transaction-records-body-header">
+      <div class="type">
+        <span>{{'dashboard.transactionRecords.t2' | translate}}</span>
+        <div class="hidden-lg-down">
+          <span [ngClass]="{'active' : selectedType === 0}" (click)="transactionType('all');selectedType = 0">{{'dashboard.transactionRecords.t5' | translate}}</span>
+          <span [ngClass]="{'active' : selectedType === 1}" (click)="transactionType('deposit');selectedType = 1">{{'dashboard.transactionRecords.t6' | translate}}</span>
+          <span [ngClass]="{'active' : selectedType === 2}" (click)="transactionType('withdraw');selectedType = 2">{{'dashboard.transactionRecords.t7' | translate}}</span>
+        </div>
+        <div class="hidden-lg-up">
+          <workspace-ohb-select [selected]="defaultTypeOption" [options]="selectTypeOption" (changeValue)="transactionType($event.optionValue)"></workspace-ohb-select>
+        </div>
+      </div>
+      <div class="range">
+        <span>{{'dashboard.transactionRecords.t3' | translate}}</span>
+        <div>
+          <div class="date-range-wrapper" [ngClass]="{'pickedSelected' : pickedSelected}">
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker" (click)="picker.open(); pickedSelected = true;" [max]="maxDate">
+              <input matStartDate formControlName="start" placeholder="Start date">
+              <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </div>
+          <div class="buttons">
+            <span [ngClass]="{'active' : selectedDate === 0}" (click)="setDate(0);selectedDate = 0; pickedSelected = false;">{{'dashboard.transactionRecords.t8' | translate}}</span>
+            <span [ngClass]="{'active' : selectedDate === 1}" (click)="setDate(1);selectedDate = 1; pickedSelected = false;">{{'dashboard.transactionRecords.t9' | translate}}</span>
+            <span [ngClass]="{'active' : selectedDate === 2}" (click)="setDate(7);selectedDate = 2; pickedSelected = false;">{{'dashboard.transactionRecords.t10' | translate}}</span>
+            <span [ngClass]="{'active' : selectedDate === 3}" (click)="setDate(30);selectedDate = 3; pickedSelected = false;">{{'dashboard.transactionRecords.t11' | translate}}</span>
+          </div>
+          <div class="button">
+            <button (click)="searchTransactions()">{{'dashboard.transactionRecords.t4' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="transaction-records-body-body" [ngClass]="{'empty': !dataArray.length}">
+      <div class="no-records" *ngIf="!dataArray.length">
+        <div class="icon"><i class="far fa-times-circle"></i></div>
+        <div class="text">{{'dashboard.transactionRecords.t12' | translate}}</div>
+      </div>
+      <div class="table-body-body"  *ngIf="dataArray.length">
+        <div class="table-header hidden-lg-down">
+          <div>{{'dashboard.transactionRecords.t13' | translate}}</div>
+          <div>{{'dashboard.transactionRecords.t14' | translate}}</div>
+          <div>{{'dashboard.transactionRecords.t15' | translate}}</div>
+          <div>{{'dashboard.transactionRecords.t16' | translate}}</div>
+          <div>{{'dashboard.transactionRecords.t17' | translate}}</div>
+          <div>{{'dashboard.transactionRecords.t18' | translate}}</div>
+        </div>
+        <div class="table-body">
+          <div class="table-body-row"  *ngFor="let transaction of dataArray">
+            <div class="hidden-lg-up arrow"
+                 [ngClass]="{'up' : transaction.operation === 3 || transaction.operation === 10 || transaction.operation === 303,
+                 'down' : transaction.operation === 4 || transaction.operation === 8 || transaction.operation === 12 || transaction.operation === 14 || transaction.operation === 15}">
+              <i *ngIf="transaction.operation === 3 || transaction.operation === 10 || transaction.operation === 303" class="fas fa-arrow-alt-up"></i>
+              <i class="fas fa-arrow-alt-down" *ngIf="transaction.operation === 4 || transaction.operation === 8 || transaction.operation === 12 || transaction.operation === 14 || transaction.operation === 15"></i>
+
+            </div>
+           <div class="mobile_item hidden-lg-up">
+             <div class="hidden-lg-up mobile_row">
+               <div class="mobile_id">ID {{transaction.transaction_id}}</div>
+               <div class="mobile_date">{{transaction.date_time * 1000 | date: 'dd.MM.y hh:mm'}}</div>
+             </div>
+             <div class="hidden-lg-up  mobile_row">
+               <div class="mobile_type">{{transaction.operation_name}}</div>
+               <div class="mobile_provider">{{transaction.payment_system_name}}</div>
+             </div>
+             <div class="hidden-lg-up  mobile_row">
+               <div class="mobile_amount" [ngClass]="{'orange' : transaction.operation === 3 || transaction.operation === 10 || transaction.operation === 303,
+                 'green' : transaction.operation === 4 || transaction.operation === 8 || transaction.operation === 12 || transaction.operation === 14 || transaction.operation === 15}">
+                 ¥{{returnAbs(transaction.amount) | number: '1.2-2'}}
+               </div>
+               <div class="mobile_status">
+                 <ng-container *ngIf='transaction.operation !== 12'>{{getStatusByCode(transaction.operation)}}</ng-container>
+                 <span class="revoke" *ngIf='transaction.operation === 12' (click)='cancelRequest(transaction)'>Cancel</span>
+               </div>
+             </div>
+           </div>
+            <div class="hidden-lg-down">{{transaction.transaction_id}}</div>
+            <div class="hidden-lg-down">{{transaction.operation_name}}</div>
+            <div class="hidden-lg-down">{{transaction.payment_system_name}}</div>
+            <div class="hidden-lg-down"><ng-container *ngIf="transaction.amount > 0">+</ng-container>{{transaction.amount | number: '1.2-2'}}</div>
+            <div class="hidden-lg-down">{{transaction.balance | number: '1.2-2'}}</div>
+            <div class="hidden-lg-down">
+              <ng-container *ngIf='transaction.operation !== 12'>{{getStatusByCode(transaction.operation)}}</ng-container>
+              <span class="revoke" *ngIf='transaction.operation === 12 && transaction?.withdrawal?.is_cancelable' (click)='cancelRequest(transaction.withdrawal.id)'>Cancel</span>
+              <span *ngIf='transaction.operation === 12 && !transaction?.withdrawal?.is_cancelable && transaction?.withdrawal?.name'>{{transaction?.withdrawal.name}}</span>
+              <span *ngIf='!transaction.withdrawal && transaction.operation === 12'>{{transaction.operation_name}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="loading-wrapper" *ngIf="loading">
+    <div class="_loader"></div>
+  </div>
+</div>
+

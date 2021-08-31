@@ -1,0 +1,106 @@
+<div id="home__page__in-play" *ngIf="menuElements.length">
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+      <span>{{'sectionTitles.title2' | translate}}</span>
+      <div class="in_play__more_wrapper">
+        <a href="javascript:;" [routerLink]="'/sportsbook/in-play'">
+          <span class="hidden-md-down">{{ 'rest.view' | translate }}</span>
+          <span class="hidden-md-up">{{ 'rest.viewAll' | translate }}</span>
+          <span class="hidden-md-down"> {{totalEvents}} {{ 'rest.events' | translate }}</span></a>
+      </div>
+    </div>
+
+    <workspace-ohb-menu-tab [menuItems]="menuElements" (clickedItem)="getInPlays($event)"></workspace-ohb-menu-tab>
+
+    <div class="in-play__wrapper">
+      <div class="in_play__table">
+        <div class="in_play__table_header">
+          <div>
+            <span *ngFor="let head of actualTableHeader">{{head}}</span>
+          </div>
+
+        </div>
+
+        <div class="in_play__table_body">
+          <div class="in_play__table_item" *ngFor="let item of inPlayNewTable; trackBy: trackByFn">
+            <div class="in_play__table_item_info" [ngStyle]="{'max-width': getWidth()}">
+              <div class="mobile_time">
+                <div class="live__icon">
+                  <ng-container *ngIf="liveStreamIds.includes(item.id)">
+                    <div (click)="watchLive(item)"><i class="fa fa-play"></i></div>
+                    <span>LIVE</span>
+                  </ng-container>
+                  <ng-container *ngIf="!liveStreamIds.includes(item.id)">
+                    <i class="court" (click)="showAnimation(item)"></i>
+                  </ng-container>
+                  <span class="count">{{item.markets_count}} ></span>
+                </div>
+                <div class="start__time" #time>
+                  <div>
+                    <span *ngIf="item.is_started !== 1">{{'inPlay.notStarted' | translate}}</span>
+                    <span *ngIf="item.is_started === 1">
+                      <ng-container  *ngIf="item.info?.current_game_state !== 'Half Time'">
+                        <span *ngIf="activeSportId == 1">{{item?.info.current_game_time ? getCurrentTime(item.info.current_game_time) : '00'}}{{'inPlay.m' | translate}}</span>
+                        <span *ngIf="activeSportId != 1">{{ utility.getGameState(item?.info.current_game_state, activeSportId) }}</span>
+                      </ng-container>
+                      <span *ngIf="item?.info.current_game_state === 'Half Time'">{{ utility.getGameState(item?.info.current_game_state, activeSportId)}}</span>
+                    </span>
+                  </div>
+                  <span (click)="goToInPlay(item)">{{item.markets_count}} ></span>
+                </div>
+              </div>
+
+              <div class="in_play__table_item_info_teams">
+                <div class="in_play__table_item_info_teams-name" (click)="goToInPlay(item)">
+                  <span> {{item.team1_name}}
+                    <span *ngIf="item.team1_goal" class="goal">GOAL</span>
+                  </span>
+                  <span> {{item.team2_name}}
+                    <span *ngIf="item.team2_goal" class="goal">GOAL</span>
+                  </span>
+                </div>
+                <div class="in_play__table_item_info_score ">
+                  <div>{{item?.info.score1}}</div>
+                  <div>{{item?.info.score2}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="in_play__table_item_picks">
+
+              <ng-container *ngFor="let markets of item['market'] | keyvalue">
+                <ng-container *ngIf="markets.value['market_type'] === marketType">
+                  <ng-container *ngFor="let pick of markets.value['event'] | keyvalue:orderAsc">
+                    <div class="row_item_pick">
+                      <div class="pick__button can_pick"
+                        [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}"
+                        (click)="addBetToCart(pick, item, markets)">
+                        <ng-container *ngIf="item.is_blocked !== 1">
+                          <span *ngIf="marketType !== 'AsianHandicap' && (pick.value['base'] || pick.value['base'] == 0)" class="base">{{pick.value['base'] | number : '1.1-1'}}</span>
+                          <span *ngIf="marketType === 'AsianHandicap' && (pick.value['base'] || pick.value['base'] == 0)" class="base">{{pick.value['base'] | formatBase}}</span>
+                          <div>{{pick.value['price'] | oddsFormat: os.oddFormatName}}</div>
+                        </ng-container>
+                        <div *ngIf="item.is_blocked === 1">
+                          <i class="fas fa-lock"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="objectKeys(item['market']).length === 0">
+                <div class="row_item_pick" *ngFor="let h of actualTableHeader">
+                  <!-- <div class="pick__button can_pick">
+                  </div> -->
+                  <div class="disabled_container">
+                    <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

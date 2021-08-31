@@ -1,0 +1,24 @@
+<div class="trebles-stake">
+          <span class="trebles-stake-wrapper" [ngClass]="{'bet__placed':isBetPlaced}">
+            <div>
+                <span class="trebles-stake-odds">{{ betSlip['total_odds'] | oddsFormat: os.oddFormatName}}</span>
+              <div class="input__stake_wrapper"  >
+                <input *ngIf="!isBetPlaced"
+                       #multipleStake
+                       class="input__stake"
+                       [value]="displayVal"
+                       placeholder="Stake"
+                       type="number"
+                       (keyup)="changeMultiStake($event.target['value'], true)"
+                       (focusout)="formatMultiStake(true)"
+                       (click)="multipleStake.select()">
+                <span class='input__stake_fake_input hidden-lg-up' (click)='showNumpadFn()'>{{displayVal}}</span>
+                        <span class="placed_stake" *ngIf="isBetPlaced">
+                          <ng-container *ngIf="betSlip['multi_stake'] === 'NaN' || betSlip['multi_stake'] === ''"></ng-container>
+                          <ng-container *ngIf="betSlip['multi_stake'] !== 'NaN' && betSlip['multi_stake'] !== ''">¥{{betSlip['multi_stake']}}</ng-container>
+                        </span>
+                        <span class="_returns" *ngIf="possibleReturn && possibleReturn !== ''">{{'betSlipSection.m12' | translate}} ¥{{possibleReturn | number : '1.2-2'}}</span>
+              </div>
+            </div>
+          </span>
+</div>

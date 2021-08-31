@@ -1,0 +1,41 @@
+<div class="total-goals" *ngIf="inPlayObject.alias && inPlayObject.alias !== ''">
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+        <span>
+       <span>
+         Total goals ({{inPlayObject.competition.game.info.score1}}:{{inPlayObject.competition.game.info.score2}})
+       </span>
+      <i class="fas fa-angle-down"></i></span>
+    </div>
+    <ul class="total-goals__menu smaller_menu">
+      <li><span [ngClass]="{'__is_active' : whichShow === 1}" (click)="whichShow = 1;">Regular time</span></li>
+      <li><span [ngClass]="{'__is_active' : whichShow === 2, 'disabled': !firstHalf.length}" (click)="whichShow = 2;">1st Half</span></li>
+      <li><span [ngClass]="{'__is_active' : whichShow === 3, 'disabled': !secondHalf.length}" (click)="whichShow = 3;">2and Half</span></li>
+    </ul>
+    <div class="total-goals__wrapper" *ngIf="whichShow === 1">
+      <div class="total-goals__wrapper_header">
+        <div>Over</div>
+        <div>Under</div>
+      </div>
+      <div class="total-goals__wrapper_row_wrapper">
+        <div class="total-goals__wrapper_row">
+          <div><span>3.50</span></div>
+          <div><span>3.50</span></div>
+          <div><span>3.50</span></div>
+        </div>
+        <div class="total-goals__wrapper_row">
+          <div><span>3.50</span></div>
+          <div><span>3.50</span></div>
+          <div><span>3.50</span></div>
+        </div>
+        <div class="total-goals__wrapper_row">
+          <div><span>3.50</span></div>
+          <div><span>3.50</span></div>
+          <div><span>3.50</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="total-goals__wrapper" *ngIf="whichShow === 2"></div>
+    <div class="total-goals__wrapper" *ngIf="whichShow === 3"></div>
+  </div>
+</div>

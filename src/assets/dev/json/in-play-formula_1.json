@@ -1,0 +1,135 @@
+[
+  {
+    "itemHour": "08:35",
+    "teams": [
+      {
+        "teamName": "formula_1 team 1",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "formula_1 team 2",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "formula_1Itemspick1",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "formula_1Itemspick2",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "formula_1Itemspick3",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  },
+  {
+    "itemHour": "12:28",
+    "teams": [
+      {
+        "teamName": "formula_1 team 1a",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "formula_1 team 2a",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "formula_1Itemspick21",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "formula_1Itemspick22",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "formula_1Itemspick32",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  },
+  {
+    "itemHour": "08:35",
+    "teams": [
+      {
+        "teamName": "Borussia Dortmund",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Bayern Monachium",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "formula_1Itemspick13",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "formula_1Itemspick23",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "formula_1Itemspick33",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  },
+  {
+    "itemHour": "12:28",
+    "teams": [
+      {
+        "teamName": "Arsenal",
+        "teamScore": "2"
+      },
+      {
+        "teamName": "Man UTD",
+        "teamScore": "1"
+      }
+    ],
+    "picks": [
+      {
+        "id": "formula_1Itemspick14",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "formula_1Itemspick24",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      },
+      {
+        "id": "formula_1Itemspick34",
+        "inCart": false,
+        "inPlayPickMultiplier": "3.50",
+        "inPlaySomethingButDunnoWhat": "-0.5 -1.0"
+      }
+    ]
+  }
+]
+

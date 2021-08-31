@@ -1,0 +1,12 @@
+<div style="height:100%">
+  <perfect-scrollbar [disabled]="isMobile">
+    <workspace-casino-banner  *ngIf='!runGame'></workspace-casino-banner>
+    <workspace-casino-games [casinoCategories]="casinoCategories" [providers]="casinoProviders" *ngIf='!runGame'></workspace-casino-games>
+    <workspace-game-launcher (closeGame)='getGameClose($event)' *ngIf='runGame' [gameObj]='runGameObj'></workspace-game-launcher>
+    <workspace-footer></workspace-footer>
+  </perfect-scrollbar>
+</div>
+
+<workspace-ohb-modal [(visible)]="showSearch" *ngIf="showSearch" class='casino_search_modal'>
+  <workspace-casino-search (runGameEmitter)='handleRunGame($event)'></workspace-casino-search>
+</workspace-ohb-modal>

@@ -1,0 +1,71 @@
+<div id="container" [ngClass]="{'loading_section': loading}">
+    <div class="no-records" *ngIf="!bonus.length && !loading">
+        <div class="icon"><i class="far fa-times-circle"></i></div>
+        <div class="text">{{'dashboard.transactionRecords.t12' | translate}}</div>
+    </div>
+    <div class="promoBoxOuter">
+
+        <div class="promoBoxList" *ngFor="let b of bonus;">
+            <div class="promoBox" *ngIf="b.bonus_type == 5">
+                <div class="promoHead">
+                    <div class="promoHeadLeft">
+                        <em>{{b.amount}}</em> {{ 'dashboard.promotions.p9' | translate }}
+                        <span>{{b.expire_d}}</span>
+                    </div>
+                    <a href="javascript:void(0)" class="promoBtn">{{ 'dashboard.promotions.p5' | translate }}</a>
+                </div>
+
+                <div class="promoInnerBox">
+                    <div class="promoInnerBoxLeft">
+                        <span>{{ 'dashboard.promotions.p6' | translate }}</span>{{b.name}}
+                    </div>
+                </div>
+
+                <div class="promoBot">
+                    <span>{{ 'dashboard.promotions.p6' | translate }}</span>
+                    <em>{{ 'dashboard.promotions.p22' | translate }}</em>
+                    <a href="javascript:void(0)" [routerLink]="['/promotion/terms-condition', b.partner_bonus_id]">
+                        <span>{{ 'dashboard.promotions.p8' | translate }}
+                            <img src="../../../../../assets/images/dashboard/promotion/about.svg">
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="promoBox" *ngIf="b.bonus_type != 5">
+                <div class="promoHead">
+                    <div class="promoHeadLeft">
+                        {{ 'dashboard.promotions.p10' | translate }}
+                        <span>{{b.expire_d}}</span>
+                    </div>
+                    <div class="promoRate">¥{{b.amount}}</div>
+                </div>
+
+                <div class="promoInnerBox">
+                    <div class="promoInnerBoxLeft">
+                        <span>{{ 'dashboard.promotions.p11' | translate }}</span>{{bonus_rule.MinOdds}}
+                    </div>
+                    <div class="promoInnerBoxRgt">
+                        <span>{{ 'dashboard.promotions.p12' | translate }}</span>+{{bonus_rule.MinimumSelections}}
+                    </div>
+                </div>
+
+                <div class="promoBot">
+                    <span>{{ 'dashboard.promotions.p13' | translate }}</span>
+                    <em *ngIf="b.bonus_type == 1">{{ 'dashboard.promotions.bonus_type.1' | translate }}</em>
+                    <em *ngIf="b.bonus_type == 2">{{ 'dashboard.promotions.bonus_type.2' | translate }}</em>
+                    <em *ngIf="b.bonus_type == 3">{{ 'dashboard.promotions.bonus_type.3' | translate }}</em>
+                    <em *ngIf="b.bonus_type == 4">{{ 'dashboard.promotions.bonus_type.4' | translate }}</em>
+                    <em *ngIf="b.bonus_type == 5">{{ 'dashboard.promotions.bonus_type.5' | translate }}</em>
+                    <em *ngIf="b.bonus_type == 6">{{ 'dashboard.promotions.bonus_type.6' | translate }}</em>
+                    <em *ngIf="b.bonus_type == 7">{{ 'dashboard.promotions.bonus_type.7' | translate }}</em>
+                    <em *ngIf="b.bonus_type == 8">{{ 'dashboard.promotions.bonus_type.8' | translate }}</em>
+                    <a href="javascript:void(0)" [routerLink]="['/promotion/terms-condition', b.partner_bonus_id]">
+                        <span>{{ 'dashboard.promotions.p8' | translate }}
+                            <img src="../../../../../assets/images/dashboard/promotion/about.svg">
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

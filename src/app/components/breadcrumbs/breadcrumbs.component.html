@@ -1,0 +1,15 @@
+<div class="breadcrumbs">
+  <div class="container__fluid">
+    <div class="breadcrumbs__back">
+        <span *ngIf="homeUrl" routerLink="{{homeUrl}}">
+          <i class="fas fa-chevron-left"></i>
+        </span>
+    </div>
+    <ol>
+      <li *ngFor="let element of routeArr">
+        <span routerLink="{{homeUrl}}/{{element.url}}" >{{element.name | breadcrumbName}}</span>
+        <i class="fas fa-chevron-right"></i>
+      </li>
+    </ol>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="account-messages">
+  <div class="dashboard-header">
+    <div class="dashboard-header-sub">{{'dashboard.userMessages.m1' | translate}}</div>
+  </div>
+  <div class="account-messages-body" [ngClass]="{'empty': !playerMessages.length}">
+    <div class="no-records" *ngIf="!playerMessages.length">
+      <div class="icon"><i class="far fa-times-circle"></i></div>
+      <div class="text">{{'dashboard.transactionRecords.t12' | translate}}</div>
+    </div>
+    <div class="_messages" *ngIf="playerMessages.length">
+      <div *ngFor="let message of playerMessages; let i = index;" [ngClass]="{'open' : message.open}">
+        <div class="header" (click)="readMessage(message, i)">
+          <div class="subject">{{message.subject}}</div>
+          <div class="pull_right">
+            <div class="date">
+              <span class="message_state" [ngClass]="{'unread' : message.checked === 0}">
+                <ng-container *ngIf="message.checked === 0">{{'dashboard.userMessages.m2' | translate}}</ng-container>
+                <ng-container *ngIf="message.checked === 1">{{'dashboard.userMessages.m3' | translate}}</ng-container>
+              </span> |
+              {{message.date * 1000 | customDate: true}}</div>
+            <div class="icon"><i class="fas fa-chevron-down"></i></div>
+          </div>
+        </div>
+        <div class="body" [innerHTML]="message.body" *ngIf="message.open">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

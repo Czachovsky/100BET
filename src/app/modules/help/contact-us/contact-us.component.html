@@ -1,0 +1,42 @@
+<div *ngIf="contactUs">
+  <header class="hidden-lg-up">
+    <div class="img-back">
+      <a routerLink="/help">
+        <i class="far fa-chevron-left"></i>
+      </a>
+    </div>
+    <h3>{{ contactUs.title }}</h3>
+  </header>
+
+  <section>
+    <ul>
+
+      <li>
+        <h3>{{ contactUs.h1 }}</h3>
+        <div>
+          <h4>{{ contactUs.p1 }}</h4>
+          <h4>{{ contactUs.p2 }}</h4>
+          <div class='chat'>
+            <span (click)='loadChat();'>
+              <div class="loader" *ngIf="loadingChat"></div>
+              <i class="far fa-comment"></i>
+              <ng-container *ngIf='!utility._isChatVisible'>{{'dashboard.d18' | translate}}</ng-container>
+              <ng-container *ngIf='utility._isChatVisible'>{{'dashboard.d19' | translate}}</ng-container>
+            </span>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <h3>{{ contactUs.h2 }}</h3>
+        <div>
+          <h4>{{ contactUs.p3 }}</h4>
+          <a href="javascript:;" class="mail-address">{{ contactUs.mail }}</a>
+          <a href="mailto:support@100betcn.com">
+            {{ contactUs.link2 }}</a>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+</div>

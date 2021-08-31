@@ -1,0 +1,121 @@
+<div class="account-details">
+
+  <div class="account-details-body">
+    <div class="dashboard-header hidden-lg-up">
+      <div class="dashboard-header-sub">{{ 'dashboard.accDet.acc1' | translate }}</div>
+    </div>
+    <div class="container__row">
+
+     <div class="container__row main_body">
+       <div class="container__col-12 account-details-body-title">{{ 'dashboard.accDet.acc4' | translate }}</div>
+       <div>
+         <div class="input_wrapper">
+           <div class="label"><span>{{ 'dashboard.accDet.acc6' | translate }}</span></div>
+           <div class="input_wrapper_button">
+             <input class="full_width" type="text" [value]="userInfo['first_name']" disabled placeholder="{{ 'dashboard.accDet.acc14' | translate }}">
+           </div>
+         </div>
+         <div class="input_wrapper">
+           <div class="label"><span>{{ 'dashboard.accDet.acc7' | translate }}</span></div>
+
+           <div class="input_wrapper_button">
+             <div class="datepicker" [ngClass]="{'dateSet' : userInfo['birth_date'] && userInfo['birth_date'] !== ''}">
+               <input class="full_width" matInput [disabled]="userInfo['birth_date'] && userInfo['birth_date'] !== ''"
+                      [value]="userInfo['birth_date']"
+                      [min]="minDate" [max]="maxDate"
+                      [matDatepicker]="picker" placeholder="mm.dd.yyyy"
+                      (click)="picker.open()" #birthInput>
+               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-datepicker #picker></mat-datepicker>
+             </div>
+             <span (click)="updateUserData('birthday', birthInput)" *ngIf="!userInfo['birth_date'] || userInfo['birth_date'] === ''">{{ 'dashboard.accDet.acc15' | translate }}
+             <div class="loader" *ngIf="loader && whatDoYouWannaUpdate === 'birthday'">
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+            </div>
+             </span>
+           </div>
+           <div class="error" *ngIf="error && whatDoYouWannaUpdate === 'birthday'">{{error}}</div>
+
+         </div>
+       </div>
+       <div class="container__col-12 account-details-body-title">{{ 'dashboard.accDet.acc5' | translate }}</div>
+       <div>
+         <div class="input_wrapper">
+           <div class="label"><span>{{ 'dashboard.accDet.acc8' | translate }}</span></div>
+           <div class="input_wrapper_button">
+             <input type="text" [value]="userInfo['phone'] ? userInfo['phone'] : ''" placeholder="{{ 'dashboard.accDet.acc16' | translate }}" #phoneInput>
+             <span (click)="updateUserData('phone', phoneInput)">{{ 'dashboard.accDet.acc10' | translate }}
+              <div class="loader" *ngIf="loader && whatDoYouWannaUpdate === 'phone'">
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+              <div class="loader-dot"></div>
+            </div>
+             </span>
+           </div>
+           <div class="error" *ngIf="error && whatDoYouWannaUpdate === 'phone'">{{error}}</div>
+         </div>
+         <div class="input_wrapper">
+           <div class="label"><span>{{ 'dashboard.accDet.acc9' | translate }}</span></div>
+           <div class="input_wrapper_button">
+             <input type="password" value="thisisuserpassword" disabled>
+             <span (click)="showChangePasswordModal = true">{{ 'dashboard.accDet.acc10' | translate }}</span>
+           </div>
+         </div>
+       </div>
+       <div class="container__col-12 account-details-body-title">{{ 'dashboard.accDet.acc11' | translate }}</div>
+       <div>
+         <div class="input_wrapper">
+         <div class="label"><span>{{ 'dashboard.accDet.acc12' | translate }}</span></div>
+         <div class="input_wrapper_button">
+           <workspace-ohb-select [options]="languageOptions" [selected]="selectedLanguage" (changeValue)="updateUserData('language',$event)"></workspace-ohb-select>
+         </div>
+           <div class="error" *ngIf="error && whatDoYouWannaUpdate === 'language'">{{error}}</div>
+         </div>
+         <div class="input_wrapper">
+           <div class="label"><span>{{ 'dashboard.accDet.acc13' | translate }}</span></div>
+           <div class="input_wrapper_button">
+             <workspace-ohb-select [options]="oddTypeOptions" [selected]="selectedOddType" (changeValue)="changeOddFormat($event)"></workspace-ohb-select>
+           </div>
+         </div>
+       </div>
+     </div>
+    </div>
+  </div>
+</div>
+
+<workspace-ohb-modal [(visible)]="typePassword" *ngIf="typePassword">
+  <workspace-password-form (submitPass)="submitPassword($event)"></workspace-password-form>
+</workspace-ohb-modal>
+
+<workspace-ohb-modal [(visible)]="showChangePasswordModal" *ngIf="showChangePasswordModal">
+  <workspace-change-password (changesSuccessfully)="getIfChangesSuccessfully($event)"></workspace-change-password>
+</workspace-ohb-modal>
+<workspace-ohb-modal [(visible)]="passwordChanged" *ngIf="passwordChanged">
+  <div class="success_modal">
+    <div class="_icon">
+      <i class="far fa-check"></i>
+    </div>
+    <div class="_text">
+      <h4>{{ 'dashboard.accDet.acc17' | translate }}</h4>
+      <ng-container *ngIf="whatDoYouWannaUpdate === 'password'">
+        <span>{{ 'dashboard.accDet.acc18' | translate }}</span>
+      </ng-container>
+      <ng-container *ngIf="whatDoYouWannaUpdate === 'phone'">
+        <span>{{ 'dashboard.accDet.acc19' | translate }}</span>
+      </ng-container>
+      <ng-container *ngIf="whatDoYouWannaUpdate === 'language'">
+        <span>{{ 'dashboard.accDet.acc20' | translate }}</span>
+      </ng-container>
+      <button (click)="passwordChanged = false">{{ 'dashboard.accDet.acc15' | translate }}</button>
+    </div>
+  </div>
+</workspace-ohb-modal>
+

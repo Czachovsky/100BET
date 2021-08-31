@@ -1,0 +1,57 @@
+<div id="main_page__casino_games">
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+      <span>{{'rest.games' | translate}}</span>
+    </div>
+    <div class="casino_games_body">
+      <div class="search__container hidden-lg-down" (clickOutside)="showResults = false" *ngIf='!this.isMobile'>
+        <input type="text"
+         placeholder="{{'rest.searchGames' | translate}}"
+               [formControl]="casinoSearch"
+               (click)="maybeTheresResults()">
+        <div class="casino__search_results" [ngClass]="{'show_it' : showResults}">
+          <div class="casino__search_results_sub">
+            <div *ngIf="noGames" class="empty">No game found</div>
+            <div *ngFor="let game of searchedGames" class="result_row">
+              <img [src]="game.icon_2" [alt]="game.name">
+              <span>{{game.name}}</span>
+              <div class='play_buttons'>
+                <span (click)="runGame(game, 'real')">{{'casino.c15' | translate}}</span>
+                <span (click)="runGame(game, 'fun')">{{'casino.c14' | translate}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="casino_games_body_wrapper hidden-lg-down">
+        <div class="game__item" *ngFor="let game of gamesArray" [style.backgroundImage]="'url(' + game.icon_2 + ')'">
+          <div class="title">
+            <span (click)="runGame(game, 'real')">{{'casino.c15' | translate}}</span>
+            <span (click)="runGame(game, 'fun')">{{'casino.c14' | translate}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="casino_games_carousel_wrapper hidden-lg-up" *ngIf="gamesArray.length && this.isMobile">
+        <owl-carousel-o [options]="carouselOptions">
+          <ng-container *ngFor="let game of gamesArray">
+            <ng-template carouselSlide>
+              <img [src]="game.icon_2" [srcset]="game.icon_2"/>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<workspace-ohb-modal [(visible)]="depositError" *ngIf="depositError">
+  <div id="insufficient_balance">
+    <div class="info_icon">
+      <span><i class="fas fa-exclamation-triangle"></i></span>
+    </div>
+    <div class="a">{{'betSlipSection.b11' | translate}}</div>
+    <div class="b">{{'betSlipSection.b12' | translate}}</div>
+    <span class="deposit_button d__flex" (click)="goToDepositPage()">{{'betSlipSection.b13' | translate}}</span>
+  </div>
+</workspace-ohb-modal>

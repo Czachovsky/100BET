@@ -1,0 +1,96 @@
+@import "../../../../mixins";
+.asian-handicap {
+  margin-bottom: 10px;
+  border-radius: var(--radius-base);
+  background: #292929;
+  .solid__blue__header {
+    height: 50px;
+    font-size: rem-calc(16);
+    font-family: var(--roboto-regular);
+    display: flex;
+    padding: 0 20px;
+    border-radius: 0;
+
+    & > span {
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      & > span {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  &__wrapper {
+    padding: 15px 0;
+
+    .asian-handicap_teams {
+      &_sub {
+        display: flex;
+        div{
+          width: 50%;
+          text-align: center;
+          font-size: rem-calc(14);
+          line-height: 19px;
+          margin-bottom: 13px;
+          color: #73767e;
+        }
+      }
+      &_scores{
+        display: flex;
+        border-top:1px solid #313131;
+        border-bottom:1px solid #313131;
+        div{
+          text-align: center;
+          width: 50%;
+          height: 60px;
+          line-height: 60px;
+          font-size: rem-calc(15);
+          color: #afafaf;
+          b{
+            color: var(--yellow);
+            margin-left: 25px;
+          }
+          &:first-child{
+            border-right: 1px solid #313131;
+          }
+        }
+      }
+      &_to_score{
+        &_header{
+          margin: 15px 20px;
+          font-family: var(--roboto-medium);
+          font-size: rem-calc(15);
+          line-height: 22px;
+          color: #73767e;
+
+        }
+        &_sub{
+          display: flex;
+          border-top:1px solid #313131;
+          border-bottom:1px solid #313131;
+          div{
+            text-align: center;
+            width: 50%;
+            height: 60px;
+            line-height: 60px;
+            font-size: rem-calc(15);
+            color: #afafaf;
+
+            b{
+              color: var(--yellow);
+              margin-left: 25px;
+            }
+            &:first-child{
+              border-right: 1px solid #313131;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

@@ -1,0 +1,17 @@
+<div class="ohb_menu_tabs_wrapper">
+  <div *ngIf="showNavigationLeft()">
+    <span class="ohb_scroll ohb_scroll_left" (click)="scrollLeft()"><i class="fas fa-chevron-left"></i></span>
+  </div>
+  <ul class="ohb_menu_tabs" #scrollEl>
+    <li *ngFor="let tab of menuElements" [ngClass]="{'__is_active': tab.active}" (click)="menuElementClick(tab)">
+      <!-- <i class="fa {{tab.icon}}"></i> -->
+      <img [src]="tab.icon ? tab.icon : 'assets/images/icons/sports/soccer.png'" alt="" />
+      <span>
+        {{ tab.name }}
+      </span>
+    </li>
+  </ul>
+  <div *ngIf="showNavigationRight()">
+    <span class="ohb_scroll ohb_scroll_right" (click)="scrollRight()"><i class="fas fa-chevron-right"></i></span>
+  </div>
+</div>

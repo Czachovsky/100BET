@@ -1,0 +1,432 @@
+<div id="home__page__upcoming">
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+      {{'sectionTitles.title3' | translate}}
+    </div>
+
+    <workspace-ohb-menu-tab [menuItems]="menuElements" (clickedItem)="getUpcoming($event)"></workspace-ohb-menu-tab>
+
+    <div class="main__upcoming__wrapper" [ngClass]="{'isLoading': isLoading}">
+      <div class="main__upcoming__header" *ngIf="selectOptions.length">
+        <span>{{'rest.view' | translate}}</span>
+        <workspace-ohb-select  [options]="selectOptions" [selected]="defaoultOption"
+                              (changeValue)="selectMarket($event)"></workspace-ohb-select>
+      </div>
+      <div class="main__upcoming_table">
+        <div class="main__upcoming_table_header">
+          <div>
+<!--            <span>{{maxTimestamp * 1000 | date: 'EEE dd MMM'}}</span>-->
+          </div>
+          <div>
+            <!-- <span *ngFor="let item of actualTableHeader">{{item}}</span> -->
+            <span *ngFor="let item of actualTableHeader">{{item}}</span>
+            <span></span>
+          </div>
+        </div>
+        <div class="main__upcoming_table_body">
+          <div class="main__upcoming_table_item" *ngFor="let item of upcomingTableV2">
+            <div class="main__upcoming_table_item_date hidden-lg-down">
+              <span>{{todayOrTomorrow(item.start_ts * 1000) ? (todayOrTomorrow(item.start_ts * 1000) | date: 'MM/dd') : ''}}</span>
+              <div>{{item.start_ts * 1000 | date: 'hh:mm'}}</div>
+            </div>
+            <div class="main__upcoming_table_item_teams hidden-lg-down" (click)="redirectTo(item)">
+              <div class="main__upcoming_table_item_teams_team">{{item.team1_name}}</div>
+              <div class="main__upcoming_table_item_teams_team">{{item.team2_name}}</div>
+              <!-- <span class="hidden-lg-down">Draw</span> -->
+              <div class="hidden-lg-up main__upcoming_table_item_hour_mobile">
+                <span class="in_play__table_item_score_live_mobile"><i class="fas fa-desktop"></i></span>
+                <!-- <span class="in_play__table_item_score_live_mobile"><i class="fas fa-chart-bar"></i></span> -->
+              </div>
+            </div>
+            <div *ngIf="item.is_stat_available" class="main__upcoming_table_item_chart hidden-lg-down">
+              <span>
+                <a [href]="'http://statistics.100100188.com/#/en/external/page/h2h/' + item.team1_id + '/' + item.team2_id" target="_blank">
+                  <i class="fas fa-chart-bar"></i>
+                </a>
+              </span>
+            </div>
+            <div class="hidden-lg-up left-mobile">
+              <div class="main__upcoming_table_item_teams" (click)="redirectTo(item)">
+                <div class="main__upcoming_table_item_teams_team">{{item.team1_name}}</div>
+                <div class="main__upcoming_table_item_teams_team">{{item.team2_name}}</div>
+                <div class="hidden-lg-up main__upcoming_table_item_hour_mobile">
+                  <div class="time">{{item.start_ts * 1000 | date: 'hh:mm a'}}</div>
+                  <!-- <div class="in_play__table_item_score_live_mobile"><i class="fa fa-play"></i></div> -->
+                  <div class="count" (click)="redirectTo(item)" >{{item.markets_count}} <i class="fa fa-angle-right"></i></div>
+                </div>
+              </div>
+              <div *ngIf="item.is_stat_available"  class="main__upcoming_table_item_chart">
+                <span>
+                  <a [href]="'http://statistics.100100188.com/#/en/external/page/h2h/' + item.team1_id + '/' + item.team2_id" target="_blank">
+                    <i class="fas fa-chart-bar"></i>
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div class="main__upcoming_table_item_picks_wrap">
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['market_type'] === activeMarket">
+                    <div class="pick__button can_pick" *ngFor="let pick of markets.value['event'] | keyvalue:orderAsc"
+                         (click)="addBetToCart(pick, item, markets)"
+                         [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}">
+                      <span *ngIf="pick.value['base'] || pick.value['base'] === 0">
+                        <span *ngIf="activeMarket === 'AsianHandicap'">{{pick.value['base'] | formatBase}}</span>
+                        <span *ngIf="activeMarket !== 'AsianHandicap'">{{pick.value['base'] | number : '1.1-1'}}</span>
+                      </span>
+                      <div>{{pick.value['price'] | oddsFormat: os.oddFormatName}}</div>
+                      <div class="lock"><i class="fas fa-lock"></i></div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled" *ngFor="let head of actualTableHeader"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <!-- <div class="main__upcoming_table_item_picks hidden-lg-down">
+                <ng-container *ngFor="let markets of item.market | keyvalue; let i = index;">
+                  <ng-container *ngIf="markets.value['type'] === 'AsianHandicap' && i === 2;">
+                    <ng-container>
+                      <div class="pick__button can_pick" *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <span>
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks hidden-lg-down">
+                <ng-container *ngFor="let markets of item.market | keyvalue; let i = index;">
+                  <ng-container *ngIf="markets.value['type'] === 'AsianHandicap' && i === 3">
+                    <div class="pick__button can_pick" *ngFor="let pick of markets.value['event'] | keyvalue">
+                    <span>
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                      <div>{{pick.value['price'] | formatNumber}}</div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div> -->
+              <div class="main__upcoming_table_item_picks_more hidden-lg-down" (click)="redirectTo(item)">
+                <span>{{item.markets_count}} ></span>
+              </div>
+            </div>
+            <!-- <div class="main__upcoming_table_item_picks_wrap double_chance" *ngIf="activeMarket === '1X12X2'">
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === '1X12X2'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" *ngIf="pick.value['type'] === '1X'">
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === '1X12X2'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" *ngIf="pick.value['type'] === 'X2'">
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === '1X12X2'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" *ngIf="pick.value['type'] === '12'">
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks_more">
+                <span>{{item.markets_count}} ></span>
+              </div>
+            </div>
+            <div class="main__upcoming_table_item_picks_wrap double_chance" *ngIf="activeMarket === 'P1XP2'">
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'P1XP2'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'P1'">
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'P1XP2'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'X'">
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'P1XP2'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'P2'">
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks_more">
+                <span>{{item.markets_count}} ></span>
+              </div>
+            </div>
+            <div class="main__upcoming_table_item_picks_wrap no_last_border" *ngIf="activeMarket === 'DrawNoBet'">
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'DrawNoBet'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'Home'">
+                              <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'DrawNoBet'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'Away'">
+                        <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks_more">
+                <span>{{item.markets_count}} ></span>
+              </div>
+            </div>
+            <div class="main__upcoming_table_item_picks_wrap no_last_border" *ngIf="activeMarket === 'BothTeamsToScore'">
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'BothTeamsToScore'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'Yes'">
+                        <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'BothTeamsToScore'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'No'">
+                        <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks_more">
+                <span>{{item.markets_count}} ></span>
+              </div>
+            </div>
+            <div class="main__upcoming_table_item_picks_wrap no_last_border" *ngIf="activeMarket === 'OverUnder'">
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'OverUnder'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'Over'">
+                        <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'OverUnder'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'Under'">
+                        <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks_more">
+                <span>{{item.markets_count}} ></span>
+              </div>
+            </div>
+            <div class="main__upcoming_table_item_picks_wrap no_last_border" *ngIf="activeMarket === 'EvenOddTotal'">
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'EvenOddTotal'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'Odd'">
+                        <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'EvenOddTotal'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'Even'">
+                        <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base']}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks_more">
+                <span>{{item.markets_count}} ></span>
+              </div>
+            </div>
+            <div class="main__upcoming_table_item_picks_wrap no_last_border" *ngIf="activeMarket === 'HalfTimeAsianHandicap'">
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'HalfTimeAsianHandicap'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'Home' || pick.value['type_1'] === 'Home'">
+                        <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base'] | formatBase}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks">
+                <ng-container *ngFor="let markets of item.market | keyvalue">
+                  <ng-container *ngIf="markets.value['type'] === 'HalfTimeAsianHandicap'">
+                    <ng-container *ngFor="let pick of markets.value['event'] | keyvalue">
+                      <div class="pick__button can_pick" (click)="addBetToCart(pick, item, markets)"
+                           [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['inCart'], pick.value['id']), 'is_blocked' : item.is_blocked === 1}" *ngIf="pick.value['type'] === 'Away' || pick.value['type_1'] === 'Away'">
+                        <span *ngIf="pick.value['base']">
+                        <span>{{pick.value['base'] | formatBase}}</span>
+                      </span>
+                        <div>{{pick.value['price'] | formatNumber}}</div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <div class="disabled_container">
+                  <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                </div>
+              </div>
+              <div class="main__upcoming_table_item_picks_more">
+                <span>{{item.markets_count}} ></span>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

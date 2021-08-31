@@ -1,0 +1,165 @@
+<div class='search-dialog'>
+  <div class='dialog-header'>
+    <h2>{{ 'advanceSearch.title' | translate }}</h2>
+    <!-- <button>
+      <i class='fal fa-times hidden-lg-down'></i>
+    </button> -->
+  </div>
+
+  <div class='search-dialog-content'>
+    <div class='input-box'>
+      <input
+        (keyup.enter)='onEnter()'
+        [formControl]='apiSearchInput'
+        type='text'
+        [value]='searchKeyword'
+        placeholder="{{ 'advanceSearch.placeholder' | translate }}"
+      />
+      <img [src]="'/assets/images/icons/search/search-outline.svg'" (click)='onEnter()' />
+    </div>
+
+    <div class='search-result-box no-result'
+         *ngIf='recentSearches.length===0 && !isTyping && gamesList.length===0 && comeptitionsList.length===0 && sports.length===0'>
+      <img [src]="'/assets/images/icons/search/no-search-found.svg'" />
+      <h4>{{ 'advanceSearch.noSearches' | translate }}</h4>
+    </div>
+
+    <perfect-scrollbar *ngIf='isTyping'>
+
+      <div class="list-result">
+
+        <div *ngIf='gamesList.length>0'>
+          <div class='search-result-box' *ngFor='let item of gamesList[0].games'>
+            <div
+              class='search-item' (click)='onSelectSearch(item.team1_name)'>
+              <div class='tag-box tag-box-yellow'>MATCH</div>
+            <img [src]="item.icon" alt="" />
+              <span>{{ item.team1_name }} v {{ item.team2_name }}</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf='comeptitionsList.length>0'>
+
+          <div class='search-result-box' *ngFor='let item of comeptitionsList'>
+            <div
+              class='search-item' (click)='onSelectSearch(item.name)'
+            >
+              <div class='tag-box tag-box-skyblue'>COMPITITION</div>
+            <img [src]="item.icon" alt="" />
+              <span>{{ item.name }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf='sports.length>0'>
+
+          <div class='search-result-box' *ngFor='let item of sports'>
+            <div
+              class='search-item' (click)='onSelectSearch(item.name)'
+            >
+              <div class='tag-box tag-box-violet'>SPORT</div>
+            <img [src]="item.icon" alt="" />
+              <span>{{ item.name }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </perfect-scrollbar>
+
+    <perfect-scrollbar *ngIf='!isTyping'>
+      <div>
+        <perfect-scrollbar class='scroll-bar'
+            *ngIf="recentSearches.length>0 && searchKeyword===''  && gamesList.length===0 && comeptitionsList.length===0 && sports.length===0">
+          <div>
+            <h3>Recent Searches</h3>
+            <div class='search-result-box' *ngFor='let item of recentSearches'>
+              <div
+                class='search-item' (click)='onSelectSearch(item)'>
+                <i class='fal fa-history'></i>
+                <span>{{ item }}</span>
+              </div>
+            </div>
+
+          </div>
+        </perfect-scrollbar>
+
+        <h4 class='result hidden-lg-down' *ngIf='searchKeyword'>Showing results for "{{searchKeyword}}"</h4>
+
+
+        <div *ngIf='gamesList.length>0'>
+          <h2 class='list-title'>Matches({{gamesList[0].games.length}})</h2>
+          <div class='search-result-box' *ngFor='let item of gamesList[0].games'>
+            <div
+              class='search-item' routerLink='{{gotoMathch(item)}}'>
+
+            <img [src]="item.icon" alt="" />
+              <span class="hidden-lg-down">{{ item.team1_name }} v {{ item.team2_name }}</span>
+              <div class="hidden-lg-up team-name">
+                <div>{{ item.team1_name }}</div>
+                <div>{{ item.team2_name }}</div>
+              </div>
+              <div class='right-content'>
+                <div class='live-tag' *ngIf='item.type===1'>
+                  {{ "LIVE" }}
+                </div>
+                <div class='date-tag' *ngIf='item.type!=1'>
+                  {{ item.start_ts | date:'MM/dd' }}
+                </div>
+                <div class='time-tag'> {{ item.start_ts | date:'HH:mm' }}</div>
+                <button [ngClass]="['btn-yellow','hidden-lg-down']" routerLink='{{gotoMathch(item)}}'>GOTO MATCH</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf='comeptitionsList.length>0'>
+          <h2 class='list-title'>Competition({{comeptitionsList.length}})</h2>
+          <div class='search-result-box' *ngFor='let item of comeptitionsList'>
+            <div
+              class='search-item' routerLink='/sportsbook/{{item.alias}}/competitions/{{item.id}}/match-result'
+            >
+              <!-- <div class="tag-box">{{ header.tag }}</div> -->
+            <img [src]="item.icon" alt="" />
+              <span>{{ item.name }}</span>
+              <div class='right-content'>
+                <!--              <div class='live-tag' *ngIf="isLive && header.date == 'LIVE'">-->
+                <!--                {{ header.date }}-->
+                <!--              </div>-->
+                <!--              <div class='date-tag' *ngIf="isLive && header.date != 'LIVE'">-->
+                <!--                {{ header.score }}-->
+                <!--              </div>-->
+                <!--              <div class='time-tag'>{{ header.score }}</div>-->
+                <button [ngClass]="['btn-skyblue','hidden-lg-down']"
+                        routerLink='/sportsbook/{{item.alias}}/competitions/{{item.id}}/match-result'>{{ "GOTO COMPITITION" }}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf='sports.length>0'>
+          <h2 class='list-title'>Sports({{sports.length}})</h2>
+          <div class='search-result-box' *ngFor='let item of sports'>
+            <div
+              class='search-item' routerLink='/sportsbook/{{item.alias}}'
+            >
+              <!-- <div class="tag-box">{{ header.tag }}</div> -->
+            <img [src]="item.icon" alt="" />
+              <span>{{item.name }}</span>
+              <div class='right-content'>
+                <div class='live-tag' *ngIf='item.type===1'>
+                  LIVE
+                </div>
+                <!--                <div class='date-tag' *ngIf='item.type!=1'>-->
+                <!--                  {{ item.start_ts | date:'yy/MM' }}-->
+                <!--                </div>-->
+                <button [ngClass]="['btn-violet','hidden-lg-down']" routerLink='/sportsbook/{{item.alias}}'>GOTO SPORTS</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>

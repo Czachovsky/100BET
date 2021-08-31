@@ -1,0 +1,32 @@
+<div id="main_page__casino_promotions">
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+      <span>{{'rest.promotions' | translate}}</span>
+      <span><a routerLink="/promotion">{{'rest.viewAll' | translate}}</a></span>
+    </div>
+    <div class="casino_games_promotions">
+      <div class="casino_games_promotion" *ngFor="let  b of promotion_bonus;">
+        <div class="casino_games_promotion_more">
+          <span>More info</span>
+        </div>
+        <div class="casino_games_promotion_img" style="background-image: url({{b.img}})" [routerLink]="['/promotion/terms-condition/',b.id]">
+        </div>
+        <a [routerLink]="['/promotion/terms-condition/',b.id]">
+        </a>
+        <div class="casino_games_promotion_desc">
+          <span>
+            <a [routerLink]="['/promotion/terms-condition/',b.id]">
+              {{b.title}}
+            </a>
+          </span>
+          <!-- <span>18+ Promotional Period: 14.09.20 - 11.10.20</span> -->
+          <div>
+            <a [routerLink]="['/promotion/terms-condition/',b.id]">
+              {{b.desc}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<main>
+  <div class="container__row">
+    <div class="container__col-3 hidden-lg-down with_scrollbar left_section">
+      <div>
+        <perfect-scrollbar>
+          <workspace-left-column-nav>
+          </workspace-left-column-nav>
+        </perfect-scrollbar>
+      </div>
+    </div>
+    <div class="right_container">
+      <div class="container__col-xs-12 container__col-lg-6 with_scrollbar center_section">
+        <div>
+          <div class="sports_all">
+            <perfect-scrollbar>
+              <div class="sports_all_page">
+                <div class="container__fluid">
+
+                  <workspace-breadcrumbs [homeUrl]="'/sportsbook/home'" [routeArr]="sportName"></workspace-breadcrumbs>
+
+
+                  <div class="competition_section">
+                    <div class="container__fluid">
+                      <div class="competition_section__header">
+                        <ul class="smaller_menu">
+                          <li>
+                            <span (click)="changeTab('all')" [ngClass]="{'__is_active' : openedTab === 'all'}">
+                              {{'sports.allLeagues' | translate}}
+                            </span>
+                          </li>
+                          <li>
+                            <span (click)="changeTab('highlights')"
+                              [ngClass]="{'__is_active' : openedTab === 'highlights'}">{{'sports.highlights' | translate}}</span>
+                          </li>
+                          <li>
+                            <span (click)="changeTab('daily')" [ngClass]="{'__is_active' : openedTab === 'daily'}">
+                              {{'sports.dailyMatch' | translate}}
+                            </span>
+                          </li>
+                          <li>
+                            <span (click)="changeTab('live')"
+                              [ngClass]="{'__is_active' : openedTab === 'live'}">{{'sports.live' | translate}}</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="competition_section__body">
+                        <workspace-all-leagues (fullSportName)="valueChanger($event)" *ngIf="openedTab === 'all'">
+                        </workspace-all-leagues>
+                        <workspace-sports-highlights *ngIf="openedTab === 'highlights'">
+                        </workspace-sports-highlights>
+                        <workspace-daily-matches (fullSportName)="valueChanger($event)"
+                          *ngIf="openedTab === 'daily'"></workspace-daily-matches>
+                        <workspace-sports-live [activeSport]="selectedSport" *ngIf="openedTab === 'live'"></workspace-sports-live>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="hidden-lg-up">
+                <workspace-casino-games></workspace-casino-games>
+              </div>
+              <workspace-footer></workspace-footer>
+            </perfect-scrollbar>
+          </div>
+
+        </div>
+      </div>
+      <div class="container__col-xs-12 container__col-lg-3 with_scrollbar right_section">
+        <perfect-scrollbar>
+          <div>
+            <workspace-bet-column></workspace-bet-column>
+            <workspace-bet-history *ngIf="userLogged"></workspace-bet-history>
+            <workspace-casino-games></workspace-casino-games>
+            <workspace-casino-promotions></workspace-casino-promotions>
+          </div>
+        </perfect-scrollbar>
+      </div>
+
+    </div>
+  </div>
+</main>

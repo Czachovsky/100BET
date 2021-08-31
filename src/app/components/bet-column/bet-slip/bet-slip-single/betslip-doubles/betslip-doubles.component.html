@@ -1,0 +1,43 @@
+<div class="bet__slip-pick more-multiples">
+<div class="more-multiples-wraper">
+  <div class="more-multiples-title">{{betType}}</div>
+  <div class="more-multiples-stake">
+    <div class="more-multiples-stake">
+      <span>{{doublesArrayLength}}X</span>
+      <div class="input__stake_wrapper">
+       <div>
+         <input [value]="doublesVal" class="input__stake" placeholder="Stake" type="number"
+                (click)="input.select()"
+                (keyup)="test($event.target['value'])"
+                (focusout)="formatValue()"
+                #input/>
+         <span class="input__stake_fake_input hidden-lg-up" (click)="showNumpad = true">{{doublesVal}}</span>
+         <span class="show-more-multiples-stake" (click)="showAndCalculateTable()"><i class="fas fa-chevron-down"></i></span>
+       </div>
+        <span class="_returns" *ngIf="totalReturn > 0 &&  totalReturn !== ''">{{'betSlipSection.m12' | translate}}  ¥{{totalReturn | number : '1.2-2'}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="more-multiples-table" *ngIf="showTable">
+      <div class="more-multiples-table-body">
+      <div class="more-multiples-table-header">
+      <span>{{'betSlipSection.m9' | translate}}</span>
+      <span>{{'betSlipSection.m10' | translate}}</span>
+      <span>{{'betSlipSection.m11' | translate}}</span>
+      <span>{{'betSlipSection.m12' | translate}}</span>
+      </div>
+
+      <div class="more-multiples-table-body-row" *ngFor="let double of doublesArray">
+        <span><ng-container *ngFor="let bet of double">{{bet.index}}<span class="sep">/</span></ng-container></span>
+        <span>{{doublesStake | number: '1.2-2'}}</span>
+        <span>{{double.doublesOdds | oddsFormat: os.oddFormatName}}</span>
+        <span>{{double.doublesToReturn | number: '1.2-2'}}</span>
+      </div>
+      </div>
+</div>
+<workspace-numpad-small *ngIf="showNumpad" [initialStake]="doublesVal"
+                        (valueFromNumpad)="mobileValueFromNumpad($event)"
+                        (acceptValueFromNumpad)="acceptMobileValueFromNumpad($event)"></workspace-numpad-small>
+

@@ -1,0 +1,42 @@
+{
+  "default": {
+    "optionName": -1,
+    "optionDisplayName": "all",
+    "optionValue": "all"
+  },
+  "options": [
+    {
+      "optionName": -1,
+      "optionDisplayName": "all",
+      "optionValue": "all"
+    },
+    {
+      "optionName": 0,
+      "optionDisplayName": "deposit",
+      "optionValue": "deposit"
+    },
+    {
+      "optionName": 1,
+      "optionDisplayName": "withdraw",
+      "optionValue": "withdraw"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

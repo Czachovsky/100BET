@@ -1,0 +1,27 @@
+<div class='phone_recover'>
+  <form action='#' [formGroup]="passwordRecoverByPhone">
+    <div class='login-input-wrapper'>
+      <span>{{'dashboard.register.r2' | translate}}</span>
+      <ngx-intl-tel-input [cssClass]="'custom'" [preferredCountries]="preferredCountries" [customPlaceholder]="'dashboard.login.l18' | translate"
+                          [searchCountryPlaceholder]="'dashboard.login.l19' | translate"
+                          [enableAutoCountrySelect]="true" [enablePlaceholder]="true" [searchCountryFlag]="true"
+                          [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false"
+                          [selectedCountryISO]="CountryISO.China" [maxLength]="15" [tooltipField]="TooltipLabel.Name"
+                          [phoneValidation]="true" [separateDialCode]="true"
+                          [numberFormat]="PhoneNumberFormat.National" name="phone" formControlName="userphone">
+      </ngx-intl-tel-input>
+    </div>
+    <div class='login-btn-wrapper'>
+      <button (click)='sendSmsPasswordReset()' [ngClass]="{'disabled' : isLoading || !passwordRecoverByPhone.valid}" class="login-btn btn__solid">Next step
+        <div *ngIf="isLoading" class="loader">
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+          <div class="loader-dot"></div>
+        </div>
+      </button>
+    </div>
+  </form>
+</div>

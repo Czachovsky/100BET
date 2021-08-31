@@ -1,0 +1,17 @@
+<!-- [ngClass]="{'loading_section': loading}" -->
+<div class="betting-records" >
+    <div class="dashboard-header">
+      <div class="dashboard-header-sub">{{ 'dashboard.d6' | translate }}</div>
+    </div>
+    <div class="casino_or_sportsbook" >
+      <div [ngClass]="{'active': currentTab == 'ALL'}" (click)="changeTab('ALL')">{{ 'dashboard.promotions.p1' | translate }}</div>
+      <div [ngClass]="{'active': currentTab == 'SPORT'}" (click)="changeTab('SPORT')">{{ 'dashboard.promotions.p2' | translate }}</div>
+      <div [ngClass]="{'active': currentTab == 'CASINO'}" (click)="changeTab('CASINO')">{{ 'dashboard.promotions.p3' | translate }}</div>
+      <div [ngClass]="{'active': currentTab == 'MY_BONUS'}" (click)="changeTab('MY_BONUS')">{{ 'dashboard.promotions.p4' | translate }}</div>
+    </div>
+
+    <workspace-all-promotion *ngIf= "currentTab == 'ALL'" (changeTab)="changeTab($event)"></workspace-all-promotion>
+    <workspace-sortsbook *ngIf= "currentTab == 'SPORT'" (changeTab)="changeTab($event)"></workspace-sortsbook>
+    <workspace-casino *ngIf= "currentTab == 'CASINO'" (changeTab)="changeTab($event)"></workspace-casino>
+    <workspace-my-bonus *ngIf= "currentTab == 'MY_BONUS'"></workspace-my-bonus>
+</div>

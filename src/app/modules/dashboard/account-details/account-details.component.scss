@@ -1,0 +1,327 @@
+@import "../../../../mixins";
+
+.account-details{
+  &-ver{
+    background-color: #404040;
+    border-radius: 1px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #707070;
+    padding:35px 0;
+    &-head{
+      margin-bottom: 35px;
+      & > div{
+        color: #e7e7e7;
+        font-size: rem-calc(17);
+        text-align: center;
+        line-height: 32px;
+      }
+      & > span{
+        text-align: center;
+        color: #737375;
+        display: block;
+      }
+      .level{
+        font-size: rem-calc(17);
+        padding:0 8px;
+        border-radius: 3px;
+        height: 23px;
+        border: 1px solid #737375;
+        color: #737375;
+        &.low{
+          color: #ff3636;
+          border-color: #ff3636;
+        }
+      }
+    }
+    &-tiles{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      ul{
+        display: flex;
+        gap: 35px;
+        li{
+            width: 96px;
+            height: 96px;
+            border-radius: 2px;
+            border: solid 1px #737375;
+            color: #737375;
+          &.active{
+            border-color: #79bd1f;
+            color: #79bd1f;
+            background: #464d3d;
+            & > div{
+              span{
+                color: #79bd1f;
+              }
+            }
+          }
+          & > div{
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            div{
+              font-size: rem-calc(30);
+              margin-bottom: 5px;
+            }
+            span{
+              font-size: rem-calc(15);
+              color: #737375;
+            }
+          }
+        }
+      }
+    }
+  }
+  &-body{
+    @include lower-than('lg'){
+      .account-details-body-title{
+        background: #2c2c2c;
+        font-size: rem-calc(15);
+        font-family: var(--roboto-medium);
+        height: 38px;
+        margin-bottom: 14px;
+        padding:0  22px;
+        justify-content: center !important;
+      }
+    }
+    &-title {
+      font-size: rem-calc(24);
+      font-family: var(--roboto-medium);
+      color: #e7e7e7;
+      padding-bottom: 11px;
+      border-bottom: 1px solid #2c2c2c;
+      margin-bottom: 20px;
+
+    }
+    .main_body{
+      justify-content: space-between;
+      & > div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        @include lower-than(1100px){
+          flex-direction: column;
+        }
+        @include lower-than('lg'){
+          padding:0 22px;
+        }
+        .input_wrapper{
+          margin-bottom: 35px;
+          width: calc(50% - 30px);
+          @include lower-than(1230px){
+            width: calc(50% - 10px);
+          }
+          @include lower-than(1100px){
+            width: 100%;
+          }
+          @include lower-than('lg'){
+            margin-bottom: 23px;
+          }
+          div.error{
+            display: flex;
+            align-items: center;
+            margin-right: 10%;
+            color: #8f383a;
+            font-size: rem-calc(13);
+          }
+          .datepicker{
+            position: relative;
+            margin-bottom: 12px;
+            width: calc(100% - 160px);
+            @include lower-than('lg'){
+              width: 100%;
+            }
+            &.dateSet{
+              width: 100%;
+              input{
+                color: #7b7b7b;
+                border: solid 1px #101112;
+                background: #212121;
+              }
+              ::ng-deep mat-datepicker-toggle{
+                display: none !important;
+              }
+            }
+            ::ng-deep mat-datepicker-toggle {
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+
+              .mat-button-wrapper {
+                &:before {
+                  content: "\f073";
+                  font-family: "Font Awesome 5 Pro";
+                  font-weight: 300;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: inline-block;
+                  font-style: normal;
+                  font-variant: normal;
+                  text-rendering: auto;
+                  line-height: 1;
+                  font-size: rem-calc(20);
+                  color: #404040;
+                }
+
+                svg {
+                  display: none !important;
+                }
+              }
+            }
+              input{
+                width: 100%;
+                border: solid 1px #101112;
+                height: 49px;
+                border-radius: 3px;
+                margin-bottom: 0;
+                padding: 0 18px;
+                background: #212121;
+                color: #7b7b7b;
+                @include lower-than('lg'){
+                  height: 42px;
+                }
+              }
+          }
+          .label{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            color: #e7e7e7;
+            @include lower-than('lg'){
+              margin-bottom: 7px;
+            }
+            span{
+              font-size: rem-calc(17);
+              @include lower-than(1440px){
+                font-size: rem-calc(14);
+              }
+              @include lower-than(1230px){
+                font-size: rem-calc(13);
+              }
+              &:first-child{
+                color: #e7e7e7;
+              }
+              &:last-child{
+                @include lower-than('lg'){
+                  color: #ffffff;
+                  font-size: rem-calc(13);
+                }
+              }
+            }
+          }
+          &_button{
+            display: flex;
+            justify-content: flex-end;
+            @include lower-than('lg'){
+              position: relative;
+            }
+            input[type=text], input[type=password]{
+              height: 49px;
+              border-radius: 3px;
+              margin-bottom: 12px;
+              padding:0 18px;
+              width: calc(100% - 160px);
+              color: #7b7b7b;
+              border: solid 1px #404040;
+              background: #2b2b2b;
+              @include lower-than('lg'){
+                margin:  0;
+                height: 42px;
+                font-size: rem-calc(13);
+                width: 100%;
+              }
+              &:disabled{
+                color: #7b7b7b;
+                border: solid 1px #404040;
+                background: #2b2b2b;
+              }
+              &.full_width{
+                width: 100%;
+              }
+            }
+
+            span{
+              margin-left: 7px;
+              border-radius: 3px;
+              box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.24);
+              border: solid 1px #084d8d;
+              background-color: #084d8d;
+              color: #fff;
+              font-size: rem-calc(15);
+              width: 153px;
+              height: 49px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              @include lower-than('lg'){
+                height: 32px;
+                width: 72px;
+                margin:0;
+                position: absolute;
+                right: 5px;
+                top:5px;
+                font-size: rem-calc(13);
+              }
+              .loader{
+                margin-left:10px;
+                .loader-dot:before{
+                  background: #ffffff;
+                }
+              }
+            }
+            ::ng-deep workspace-ohb-select{
+              width: 100%;
+              .ohb-select{
+                width: 100%;
+                height: 49px;
+                line-height: initial;
+                display: flex;
+                align-items: center;
+                box-shadow: none;
+                border: solid 1px #101112;
+                background: #212121;
+                @include lower-than('lg'){
+                  height: 42px;
+                }
+                .ohb-placeholder{
+                  width: 100%;
+                  font-size: rem-calc(15);
+                  height: 100%;
+                  @include lower-than('lg'){
+                    font-size: rem-calc(13);
+                  }
+                }
+              }
+              .ohb-options{
+                ul{
+                  li{
+                    align-items: center;
+                    height: 40px;
+                    font-size: rem-calc(15);
+                    @include lower-than('lg'){
+                      font-size: rem-calc(13);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .ohb-modal{
+  border-radius: 3px;
+  box-shadow: 0 0 23px 0 rgba(0, 0, 0, 0.7);
+  border: solid 1px #414141;
+  background-image: linear-gradient(to bottom, #1e1f23, #151619);
+}
+

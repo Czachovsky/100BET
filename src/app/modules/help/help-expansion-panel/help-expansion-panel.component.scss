@@ -1,0 +1,101 @@
+@import "../../../../mixins";
+
+section {
+    @include lower-than("lg") {
+        box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.27);
+    }
+
+    mat-accordion {
+        box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+        background-color: #2f2f2f;
+
+        mat-expansion-panel {
+            margin: 0px;
+            background-color: #1d1e20;
+            box-shadow: none;
+            border-radius: 0px !important;
+
+            @include lower-than("lg") {
+                box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.27);
+            }
+
+            mat-expansion-panel-header {
+                height: 52px;
+                padding: 18px 26.7px;
+
+                @include lower-than("lg") {
+                    height: 60px;
+                    padding: 21px 15.7px 20px 16px;
+                }
+
+                mat-panel-title {
+                    margin: 0 0 0 0;
+                    font-family: Roboto;
+                    font-size: 13px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.2;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #d1d1d1;
+
+                    @include lower-than("lg") {
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 1.5;
+                    }
+
+                    img {
+                        width: 12.5px;
+                        display: block;
+                        margin: 0 17.5px 0.2px 0;
+
+                        @include lower-than("lg") {
+                            width: 18px;
+                            margin: 1px 10px 0px 0;
+                        }
+                    }
+                }
+            }
+
+            .link-box {
+                position: relative;
+                background-color: #2f2f2f;
+
+                a {
+                    position: relative;
+                    display: block;
+                    font-family: Roboto;
+                    font-size: 12px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.17;
+                    letter-spacing: normal;
+                    text-align: left;
+                    color: #ffffff;
+                    background-color: #2f2f2f;
+                    padding: 9px 0px 8px 10px;
+
+                    @include lower-than("lg") {
+                        font-size: 13px;
+                        line-height: 1.15;
+                        padding: 8px 0px 7px 15px;
+                    }
+
+                    &.navigation__active {
+                        background-color: #383838;
+                    }
+                }
+            }
+        }
+
+        .mat-expansion-panel-header.mat-expanded,
+        .mat-expansion-panel-header.mat-expanded {
+            background-color: #2d2e30;
+            box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.27);
+            z-index: 1;
+        }
+    }
+}

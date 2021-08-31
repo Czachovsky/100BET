@@ -1,0 +1,89 @@
+
+<div class="navigation_mobile_bottom">
+  <ul>
+    <li *ngIf='!isCasino'>
+      <a (click)='closeMyBets()' href="javascript:;" [class.navigation_mobile_active]="openSideMenu" (click)="toggle()">
+        <span class="mobile_bottom_icon">
+          <i class="fas fa-sort-amount-down"></i>
+        </span>
+        <span>A-Z menu</span>
+      </a>
+    </li>
+    <li *ngIf='!isCasino'>
+      <a (click)='closeMyBets()' [routerLink]="'sportsbook/in-play'" routerLinkActive="navigation_mobile_active">
+        <span class="mobile_bottom_icon">
+          <i class="fas fa-clock"></i>
+        </span>
+        <span>{{ 'nav.navInP' | translate}}</span>
+      </a>
+    </li>
+    <li *ngIf='!isCasino'>
+      <a (click)='closeMyBets()' [routerLink]="'casino'" routerLinkActive="navigation_mobile_active">
+        <span class="mobile_bottom_icon"><i class="fas fa-spade"></i> </span>
+        <span>{{ 'nav.navCas' | translate}}</span>
+      </a>
+    </li>
+    <li *ngIf='!isCasino'>
+      <a
+        routerLinkActive="navigation_mobile_active"
+        (click)="showMyBetsSection()">
+        <span class="mobile_bottom_icon">
+          <i class="fas fa-folder-open"></i>
+        </span>
+        <span>{{'nav.myBets' | translate}}</span>
+      </a>
+    </li>
+    <li *ngIf="isCasino">
+        <a href='#' (click)='showCasinoFilters($event)'>
+          <span class='mobile_bottom_icon'><i class="fas fa-filter"></i></span>
+          <span>Filter</span>
+        </a>
+    </li>
+    <li *ngIf="isCasino">
+      <a href='#' (click)="selectCasinoCategory(28 ,$event)">
+        <span class='mobile_bottom_icon'>
+          <svg xmlns="http://www.w3.org/2000/svg" width="27" height="18.002" viewBox="0 0 27 18.002">
+              <path fill="#777879" d="M-1950.8 1094h-14.456v-.9h3.6v-.9h-9.843V1076h27v16.2h-9.9v.9h3.6v.9zm-19.8-17.1v14.4h25.2v-14.4zm24.3 13.5h-23.4v-12.6h23.4v12.6zm-12.03-5.206c0 .556 0 .81-.819 1.176a.5.5 0 0 0-.292.572.5.5 0 0 0 .488.388h2.49a.508.508 0 0 0 .5-.407.5.5 0 0 0-.288-.55c-.824-.367-.825-.622-.828-1.181a1.947 1.947 0 0 0 1.438.638h.051a1.926 1.926 0 0 0 1.885-1.938 1.935 1.935 0 0 0-.5-1.3c-.33-.361-2.424-2.378-3.245-3.159a.376.376 0 0 0-.259-.1.374.374 0 0 0-.258.1c-.746.712-2.9 2.783-3.241 3.161a1.881 1.881 0 0 0-.5 1.259 1.94 1.94 0 0 0 1.93 1.977 1.954 1.954 0 0 0 1.444-.637z" transform="translate(1971.5 -1076)"/>
+            </svg>
+        </span>
+        <span>Live Casino</span>
+      </a>
+    </li>
+    <li *ngIf="isCasino">
+      <a href='#' (click)="selectCasinoCategory(93 ,$event)">
+        <span class='mobile_bottom_icon'>
+           <svg id='slots_icon' xmlns="http://www.w3.org/2000/svg" width="27.667" height="18" viewBox="0 0 27.667 18">
+              <g id="slots" transform="translate(1.5 1.5)">
+                <g id="Group_2545" data-name="Group 2545" transform="translate(-2404 9)">
+                  <g id="Rectangle_1306" data-name="Rectangle 1306" transform="translate(2404 -9)" fill="none" stroke="#777879" stroke-width="1.5">
+                    <path d="M1,0H7.667a0,0,0,0,1,0,0V15a0,0,0,0,1,0,0H1a1,1,0,0,1-1-1V1A1,1,0,0,1,1,0Z" stroke="none"/>
+                    <path d="M1-.75H7.667a.75.75,0,0,1,.75.75V15a.75.75,0,0,1-.75.75H1A1.75,1.75,0,0,1-.75,14V1A1.75,1.75,0,0,1,1-.75Z" fill="none"/>
+                  </g>
+                  <g id="Rectangle_1307" data-name="Rectangle 1307" transform="translate(2413 -9)" fill="none" stroke="#777879" stroke-width="1.5">
+                    <rect width="7.667" height="15" stroke="none"/>
+                    <rect x="-0.75" y="-0.75" width="9.167" height="16.5" fill="none"/>
+                  </g>
+                  <g id="Rectangle_1308" data-name="Rectangle 1308" transform="translate(2422 -9)" fill="none" stroke="#777879" stroke-width="1.5">
+                    <path d="M0,0H5.667a1,1,0,0,1,1,1V14a1,1,0,0,1-1,1H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" stroke="none"/>
+                    <path d="M0-.75H5.667A1.75,1.75,0,0,1,7.417,1V14a1.75,1.75,0,0,1-1.75,1.75H0A.75.75,0,0,1-.75,15V0A.75.75,0,0,1,0-.75Z" fill="none"/>
+                  </g>
+                </g>
+                <text id="_7" data-name="7" transform="translate(1.7 10.5)" fill="#777879" font-size="8" font-family="DINAlternate-Bold, DIN Alternate" font-weight="700"><tspan x="0" y="0">7</tspan></text>
+                <text id="_7-2" data-name="7" transform="translate(10.8 10.5)" fill="#777879" font-size="8" font-family="DINAlternate-Bold, DIN Alternate" font-weight="700"><tspan x="0" y="0">7</tspan></text>
+                <text id="_7-3" data-name="7" transform="translate(19.5 10.5)" fill="#777879" font-size="8" font-family="DINAlternate-Bold, DIN Alternate" font-weight="700"><tspan x="0" y="0">7</tspan></text>
+              </g>
+            </svg>
+        </span>
+        <span>Slots</span>
+      </a>
+    </li>
+    <li *ngIf="isCasino">
+      <a href='#' [routerLink]="'/sportsbook/home'">
+        <span class='mobile_bottom_icon'>
+           <i class="fa fa-futbol"></i>
+        </span>
+        <span>Sports</span>
+      </a>
+    </li>
+  </ul>
+</div>

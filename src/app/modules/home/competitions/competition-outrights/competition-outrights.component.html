@@ -1,0 +1,92 @@
+<div class="outights-container">
+  <div class="accordion-container">
+    <div class="competition_section">
+      <ng-container *ngIf="outrightData.length">
+        <div class="competition_body" *ngFor="let game of outrightData">
+          <div class="list_header active" #tableBody (click)="toggleTableBody(tableBody)">
+            <span>{{(game.start_ts * 1000) | date: 'EEE dd MMM yyyy'}}</span>
+            <div><i class="fas fa-angle-down"></i></div>
+          </div>
+          <div class="list_body">
+            <div class="sub_list" *ngFor="let market of game.market">
+              <div class="sub_list_header active" #tableSubBody>
+                <div class="left" (click)="toggleTableBody(tableSubBody)">
+                  <span class="competition_name">{{game.team1_name}} - {{market.name}}</span>
+                  <span class="competition_time">{{(game.start_ts * 1000) | date: 'EEE dd MMM yyyy HH:mm'}}</span>
+                </div>
+                <div>
+                  <div class="chart">
+                    <a [href]="'http://statistics.100100188.com/#/en/statistics/competition/' + actRoute?.snapshot?.params?.competitionId + '/overview'" target="_blank">
+                      <i class="fas fa-chart-bar"></i>
+                    </a>
+                  </div>
+                  <i class="fas fa-angle-down arrow" (click)="toggleTableBody(tableSubBody)"></i>
+                </div>
+              </div>
+              <div class="sub_list_body">
+                <div class="sub_list_row">
+                  <div class="sub_list_item">
+                    <div class="competitions-odds">
+                      <ng-container *ngFor="let event of market['event'] | keyvalue:orderAsc; let i = index">
+                        <div class="single_box" *ngIf="i < (market.col_count * 3)"
+                          [ngClass]="{'__is_picked': shouldHasPickedClass(event.value['id']), 'is_blocked' : game.is_blocked === 1}"
+                          (click)="addBetToCart(event, game, market)"  [ngStyle]="{'flex': getWidth(market['col_count'])}">
+                          <span>
+                            <ng-container *ngIf="game.is_blocked !== 1">
+                              {{event.value.name}}
+                            </ng-container>
+                            <ng-container *ngIf="event?.value.base || event.base === 0">
+                              <span class="base" *ngIf="isAsian(market.market_type)">{{event.value?.base | formatBase}}</span>
+                              <span class="base" *ngIf="!isAsian(market.market_type)">{{event?.value.base | number : '1.1-1'}}</span>
+                            </ng-container>
+                            <span *ngIf="game.is_blocked !== 1">
+                              {{event?.value.price | oddsFormat: os.oddFormatName}}
+                            </span>
+                            <span *ngIf="game.is_blocked === 1">
+                              <i class="fas fa-lock"></i>
+                            </span>
+                          </span>
+                        </div>
+                        <ng-container *ngIf="i > (market.col_count * 3)">
+                          <div class="single_box" *ngIf="market?.showMore"
+                            [ngClass]="{'__is_picked': shouldHasPickedClass(event['id']), 'is_blocked' : game.is_blocked === 1}"
+                            (click)="addBetToCart(event, game, market)"  [ngStyle]="{'flex': getWidth(market['col_count'])}">
+                            <span>
+                              <ng-container *ngIf="game.is_blocked !== 1">
+                                {{event.value.name}}
+                              </ng-container>
+                              <ng-container *ngIf="event?.value.base || event.base === 0">
+                                <span class="base" *ngIf="isAsian(market.market_type)">{{event.value?.base | formatBase}}</span>
+                                <span class="base" *ngIf="!isAsian(market.market_type)">{{event?.value.base | number : '1.1-1'}}</span>
+                              </ng-container>
+                              <span *ngIf="game.is_blocked !== 1">
+                                {{event?.value.price |  oddsFormat: os.oddFormatName}}
+                              </span>
+                              <span *ngIf="game.is_blocked === 1">
+                                <i class="fas fa-lock"></i>
+                              </span>
+                            </span>
+                          </div>
+                        </ng-container>
+                      </ng-container>
+                    </div>
+                    <div class="show-more" [class.show-less]="market?.showMore" *ngIf="objectKeys(market['event']).length > (market.col_count * 3)" (click)="market.showMore = !market.showMore">
+                      {{market?.showMore ? ('competitions.showLess' | translate) : ('competitions.showMore' | translate)}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!outrightData.length">
+        <div class="competition_matches__section">
+          <div class="solid__blue__header">
+          <span style="pointer-events: none;">No data found :(</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

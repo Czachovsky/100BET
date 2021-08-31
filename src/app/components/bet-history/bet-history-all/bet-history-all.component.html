@@ -1,0 +1,153 @@
+<div class="my_bets my_bets-cash-out">
+  <div class="no_data" *ngIf="!allData.length">
+    <div>{{'myBetsSection.noBets.a' | translate}}</div>
+    <span>{{'myBetsSection.noBets.e' | translate}}</span>
+    <span>{{'myBetsSection.noBets.h' | translate}}</span>
+  </div>
+  <div class="my_bets-items"  *ngIf="allData.length">
+    <div class="my_bets-item" *ngFor="let bet of allData; let i = index; trackBy: trackById" #betItemBody>
+      <div class="my_bets-item-header">
+        <div (click)="expandBet(bet)">
+          <span *ngIf='bet.bonus_bet_amount === 0'>¥{{formatAmount(bet.amount)}} {{getBetType(bet.type)}}</span>
+          <span *ngIf='bet.bonus_bet_amount > 0'>¥{{formatAmount(bet.bonus_bet_amount)}} {{getBetType(bet.type)}}</span>
+          <span class="bet_lost" *ngIf="bet.outcome === 1 || bet.outcome === 6">{{'dashboard.bettingRecords.b24' | translate}}</span>
+          <span class="bet_lost" *ngIf="bet.outcome === 3 || bet.outcome === 11">{{'selectTranslations.returned' | translate}} ¥{{bet.payout}}</span>
+          <span class="bet_lost" *ngIf="bet.outcome === 5">{{'selectTranslations.cashedOut' | translate}} ¥{{bet.payout}}</span>
+          <span><i class="fas fa-angle-down"></i></span>
+        </div>
+      </div>
+      <div class="my_bets-item-body" [ngClass]="{'expanded': bet.eventsExpanded}">
+        <div class="my_bets-item-body-row">
+          <div class="my_bets-match-row" *ngFor="let event of bet.events">
+            <div class="icon" >
+              <span [ngClass]="{'green' : event.outcome === 3 || event.outcome === 5 || event.outcome === 7,
+                                'red' : event.outcome === 1 || event.outcome === 6,
+                                'gray-rounded' : event.outcome === 0,
+                                'gray' : event.outcome === 2}">
+                <i *ngIf="event.outcome === 1 || event.outcome === 6" class="far fa-times"></i>
+                <i *ngIf="event.outcome === 3 || event.outcome === 5 || event.outcome === 7" class="far fa-check"></i>
+                <ng-container *ngIf="event.outcome === 2">~</ng-container>
+                <i *ngIf="event.outcome === 0" class="fas fa-clock"></i>
+              </span>
+            </div>
+            <div class="match_info">
+              <div class="selected">
+                <ng-container *ngIf="event.event_name === 'W1'">
+                  {{event.team1}}
+                </ng-container>
+                <ng-container *ngIf="event.event_name === 'W2'">
+                  {{event.team2}}
+                </ng-container>
+                <ng-container *ngIf="event.event_name !== 'W2' && event.event_name !== 'W1'">
+                  {{event.event_name}}
+                </ng-container>
+
+              </div>
+              <span>{{event.market_name}}</span>
+              <div class="infos">
+                <span>{{event.game_name}}</span>
+                <ng-container *ngIf="event.result !== 0"><span class="yellow">{{event.score}}</span></ng-container>
+                <span>{{todayOrTomorrow(event.game_start_date * 1000) ? (todayOrTomorrow(event.game_start_date * 1000) | date: 'MM/dd') : ''}} {{event.game_start_date * 1000 | date: 'hh:mm'}}</span>
+              </div>
+            </div>
+            <div class="multiplier">
+              <span>{{event.coeficient}}</span>
+              <div class="live__icon" *ngIf="bet.isLive" (click)='watchLive(bet, i)'>
+                <i class="fa fa-play"></i>
+              </div>
+            </div>
+          </div>
+          <div class='liveEvent_container' *ngIf='bet.showMobileEvent'>
+            <span class='close_liveEvent' (click)='closePlayer()'><i class='fal fa-times'></i></span>
+            <div class="loading-wrapper" *ngIf='bet.liveEventLoading'>
+              <div class="_loader"></div>
+            </div>
+            <div class="no-stream" *ngIf="bet.noStream">
+              <h3>{{'liveEvents.noStream' | translate}}</h3>
+            </div>
+            <div class="videojs_container">
+              <div class="video" id="live-video" *ngIf="bet.streamUrl">
+                <video id="_liveStream"
+                       class="video-js live-stream vjs-default-skin vjs-big-play-centered vjs-big-play-button" controls
+                       data-setup='{}'data-res="auto" >
+                </video>
+              </div>
+            </div>
+          </div>
+          <div class="cashout_container">
+            <div class="cashout_wrapper">
+              <div class="my_bets-stake_returns">
+                <div> <div class="my_bets-stake">
+                  <span>{{'betSlipSection.b4' | translate}}</span>
+                  <div *ngIf='bet.bonus_bet_amount === 0'>¥{{bet.amount}}</div>
+                  <div *ngIf='bet.bonus_bet_amount > 0'>¥{{bet.bonus_bet_amount}} {{'betSlipSection.b21' | translate}}</div>
+                </div>
+                  <div class="my_bets-returns">
+                    <ng-container *ngIf="bet.outcome != 0 && bet.payout">
+                      <span>{{'myBetsSection.myBoutcome' | translate}}</span>
+                      <div>¥{{bet.payout}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="bet.outcome == 0 && bet.possible_win > 0">
+                      <span>{{'myBetsSection.myPosWin' | translate}}</span>
+                      <div>¥{{bet.possible_win}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="bet.outcome == 0 && bet.possible_win === -1">
+                      <span>{{'myBetsSection.myBb2' | translate}}</span>
+                      <div></div>
+                    </ng-container>
+                    <ng-container *ngIf="bet.outcome == 0 && bet.bonus > 0">
+                      <span>{{'myBetsSection.myBb1' | translate}}</span>
+                      <div>¥{{bet.bonus}}</div>
+                    </ng-container>
+                  </div></div>
+                <div class="history" *ngIf="bet.cashouts_history  && bet.cashouts_history.length">
+                  <span (click)="showCashoutHistory(bet)">{{'myBetsSection.myBcashout5' | translate}}</span>
+                </div>
+              </div>
+              <div class="my_bets-buttons"  [ngClass]="{'are_disabled' : !bet.score_loaded, 'cashed_out': bet.outcome === 5}">
+                <ng-container *ngIf="(bet.cash_out && !bet.is_gift) || bet.outcome === 5">
+                  <div class="button my_bets-cash-out-button" (click)="triggerCashOut(bet, bet.cash_out, bet.calculatedCashout, bet.cash_out, bet.id, i)">
+                    <ng-container *ngIf="!bet.cashingOut && !bet.cashedOut && bet.outcome !== 5">
+                      <span>{{'myBetsSection.myBcashout1' | translate}}</span>¥
+                      <ng-container *ngIf="bet.calculatedCashout">{{bet.calculatedCashout}}</ng-container>
+                      <ng-container *ngIf="!bet.calculatedCashout">{{bet.cash_out}}</ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="bet.cashingOut">
+                      <span class="cashing_out">{{'myBetsSection.myBcashout2' | translate}}</span>
+                      <div class="loader">
+                        <div class="loader-dot"></div>
+                        <div class="loader-dot"></div>
+                        <div class="loader-dot"></div>
+                        <div class="loader-dot"></div>
+                        <div class="loader-dot"></div>
+                        <div class="loader-dot"></div>
+                      </div>
+                    </ng-container>
+                    <ng-container *ngIf="bet.cashedOut || bet.outcome === 5">
+                      <span class="cashed_out">{{'myBetsSection.myBcashout3' | translate}} <i class="fas fa-check-circle"></i></span>
+                    </ng-container>
+                  </div>
+                  <div *ngIf="!bet.cashedOut && bet.outcome !== 5" class="button my_bets-settings-button" (click)="bet.showCashOutSettings = !bet.showCashOutSettings">
+                    <i class="fas fa-cog"></i>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="(!bet.cash_out || bet.is_gift) && bet.outcome !== 5">
+                  <span class="cash_out_unavailable">{{'myBetsSection.myBcashout4' | translate}}</span>
+                </ng-container>
+                <workspace-cash-out-settings
+                  (partialCashOutValueEmitter)="calculateCashOutAmount($event, i)"
+                  (closeSettings)="getCloseSetttings($event, bet)"
+                  [cashoutBet]="bet"
+                  [maximumCashOut]="bet.cash_out"
+                  *ngIf="bet.showCashOutSettings"></workspace-cash-out-settings>
+              </div>
+            </div>
+          </div>
+        </div>
+        <workspace-cashout-history (closeHistory)="getCloseHistory($event, i)" [cashOutHistory]="bet" *ngIf="bet.cashouts_history  && bet.cashouts_history.length && bet.showHistory"></workspace-cashout-history>
+
+      </div>
+    </div>
+  </div>
+
+</div>

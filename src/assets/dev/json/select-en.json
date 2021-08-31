@@ -1,0 +1,49 @@
+{
+  "default": {
+    "optionName": "Full Time Result",
+    "optionDisplayName": "Full Time Result",
+    "optionValue": "P1XP2"
+  },
+  "options": [
+    {
+      "optionName": "Full Time Result",
+      "optionDisplayName": "Full Time Result",
+      "optionValue": "P1XP2"
+    },
+    {
+      "optionName": "Double Chance",
+      "optionDisplayName": "Double Chance",
+      "optionValue": "1X12X2"
+    },
+    {
+      "optionName": "Goals Over/Under",
+      "optionDisplayName": "Goals Over/Under",
+      "optionValue": "OverUnder"
+    },
+    {
+      "optionName": "Both Teams to Score",
+      "optionDisplayName": "Both Teams to Score",
+      "optionValue": "BothTeamsToScore"
+    },
+    {
+      "optionName": "1st Half Asians",
+      "optionDisplayName": "1st Half Asians",
+      "optionValue": "HalfTimeAsianHandicap"
+    },
+    {
+      "optionName": "Draw No Bet",
+      "optionDisplayName": "Draw No Bet",
+      "optionValue": "DrawNoBet"
+    },
+    {
+      "optionName": "Goals Odd/Even",
+      "optionDisplayName": "Goals Odd/Even",
+      "optionValue": "EvenOddTotal"
+    },
+    {
+      "optionName": "Asian Handicap & Goal Line",
+      "optionDisplayName": "Asian Handicap & Goal Line",
+      "optionValue": "AsianHandicap"
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+@import '../../../../mixins';
+
+main {
+  margin: 13.7px 19.2px 0 20px;
+
+  @include lower-than(1500px) {
+    padding: 0 15px;
+  }
+  @include lower-than('lg') {
+    padding: 0;
+    margin: 0;
+  }
+
+  .container__row {
+
+    .with_scrollbar {
+      @include lower-than('lg') {
+        height: auto;
+        overflow: auto;
+      }
+    }
+
+    .left_section {
+      margin-right: 14.1px;
+      @include lower-than('md'){
+        padding-right: 0;
+      }
+
+      @include higher-than('lg'){
+        flex: 0 0 250px;
+        max-width: 250px;
+      }
+
+      > div {
+        height: calc(100vh - 75.3px - 13.7px);
+      }
+    }
+
+    .right_container {
+      display: flex;
+      flex: 0 0 calc(100% - 265px);
+      max-width: calc(100% - 265px);
+      height: calc(100vh - 70px);
+      @include lower-than('lg'){
+        position: relative;
+        top: 48px;
+        max-width: 100%;
+        flex: auto;
+      }
+    }
+
+    .center_section {
+      flex: 0 0 65%;
+      max-width: 65%;
+      padding-right: 14px;
+      @include lower-than('lg'){
+        padding-right: 0;
+        max-width: 100%;
+        flex: auto;
+        margin: 0;
+      }
+      .sports_all {
+        height: calc(100vh - 70px);
+        margin: 0;
+
+        ::ng-deep {
+          workspace-footer footer {
+            padding: 43px 72.3px 42px 74px;
+            overflow-x: hidden;
+            @include lower-than(1550px){
+              padding: 20px;
+            }
+
+            .row {
+              @include lower-than(1550px){
+                flex-direction: column;
+              }
+              .left-content {
+                flex: 0 0 41.06%;
+                @include lower-than(1550px){
+                  margin-bottom: 20px;
+                }
+              }
+              .right-content {
+                flex: 0 0 58.94%;
+                @include lower-than(1550px){
+                  justify-content: flex-start;
+                  .column {
+                    width: 20%;
+                    justify-content: flex-start !important;
+
+                    &:not(:last-child) {
+                      margin-right: 10px;
+                    }
+
+                    &:nth-child(3) {
+                      width: 25%;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .sports_all_page {
+            background: #242424;
+          }
+
+          .competition_section {
+
+            &__header {
+              max-height: 54px;
+              // margin-bottom: 10px;
+              @include lower-than('lg') {
+                background: #292929;
+                margin: 0;
+              }
+
+              .smaller_menu {
+                display: flex;
+                border-bottom: solid 2px #2f2f2f;
+                overflow-x: auto;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                @include lower-than('lg') {
+                  padding: 0;
+                }
+
+                &::-webkit-scrollbar {
+                  display: none;
+                }
+
+                li {
+                  padding: 0 5px;
+                  position: relative;
+                  @include lower-than('lg') {
+                    padding: 0;
+                  }
+
+                  &:before {
+                    content: '';
+                    background: #2f2f2f;
+                    width: 2px;
+                    height: 25px;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                  }
+
+                  &:last-child {
+                    &:before {
+                      display: none;
+                    }
+                  }
+
+                  span {
+                    line-height: 54px;
+                    display: inline-block;
+                    font-size: 16px;
+                    height: 100%;
+                    color: #929292;
+                    cursor: pointer;
+                    position: relative;
+                    white-space: nowrap;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    padding:0 15px;
+                    @include lower-than('lg') {
+                      font-size: 13px;
+                      height: 34px;
+                      line-height: 34px;
+                      margin: 0;
+                      &:before {
+                        height: 2px;
+                      }
+                    }
+                    @include higher-than('lg') {
+                      &:before {
+                        content: none !important;
+                      }
+                    }
+
+                    &.__is_active, &:hover {
+                      color: var(--plain-white);
+                      transition: all 0.3s ease;
+                      @include lower-than('lg') {
+                        font-family: var(--roboto-bold);
+                        color: #d1d1d1;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+          }
+
+        }
+      }
+
+    }
+
+    .right_section {
+      flex: 0 0 35%;
+      max-width: 35%;
+      @include lower-than('lg'){
+        display: none;
+      }
+
+      ::ng-deep {
+        #main_page__bets {
+          margin-bottom: 24px;
+          background: #292929;
+          @include lower-than('lg'){
+            margin:0;
+          }
+          .solid__blue__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 38px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
+            background-image: linear-gradient(to right, #242424 16%, #2c2c2c 96%);
+
+            span {
+              font-family: var(--roboto-regular);
+              font-size: rem-calc(16);
+              line-height: 19px;
+              color: #ffffff;
+            }
+          }
+
+          workspace-my-bets .my_bets-tab-bar li{
+            height: 37px;
+            line-height: 37px;
+
+            button {
+              font-size: 14px;
+              opacity: 1 !important;
+              color: #949494;
+
+              &:before {
+                height: 1px;
+              }
+
+              &.__is_active {
+                color: #d1d1d1;
+              }
+            }
+          }
+
+          .my_bets-items {
+            .my_bets-item-header > div {
+              height: 38px;
+            }
+            .my_bets-item-body-row {
+              .my_bets-buttons .button.my_bets-cash-out-button {
+                width: 216.3px;
+              }
+              .my_bets-match-row {
+                min-height: 87px;
+                padding: 16px 16.8px;
+
+                .multiplier .live__icon {
+                  display: none;
+                }
+              }
+              .cashout_container {
+                padding: 8.5px 16.8px;
+
+                .my_bets-stake_returns {
+                  flex: 0 0 35%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

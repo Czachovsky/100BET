@@ -1,0 +1,26 @@
+<div class="bet-history" [ngClass]="{'mobileShow': showMobile, 'loading_section' : myBetsLoading}">
+  <div class="solid__blue__header"><span>{{'myBetsSection.myB1' | translate}}</span>
+  <span class="close_my_bets hidden-lg-up" (click)="closeMyBets()">{{'myBetsSection.myB6' | translate}}</span>
+  </div>
+<div style='width: 100%;'>
+  <perfect-scrollbar>
+    <ul class="my_bets-tab-bar">
+      <li><button (click)="myBetsTab =0" [ngClass]="{ '__is_active' : myBetsTab === 0 }">{{'myBetsSection.myB7' | translate}}</button></li>
+      <li><button (click)="myBetsTab =1" [ngClass]="{ '__is_active' : myBetsTab === 1 }">{{'myBetsSection.myB2' | translate}}</button></li>
+      <li><button (click)="myBetsTab =2" [ngClass]="{ '__is_active' : myBetsTab === 2 }">{{'myBetsSection.myB3' | translate}}</button></li>
+      <li><button (click)="myBetsTab =3" [ngClass]="{ '__is_active' : myBetsTab === 3 }">{{'myBetsSection.myB4' | translate}}</button></li>
+      <li><button (click)="myBetsTab =4" [ngClass]="{ '__is_active' : myBetsTab === 4 }">{{'myBetsSection.myB5' | translate}}</button></li>
+    </ul>
+  </perfect-scrollbar>
+</div>
+  <div class="bet-history_body">
+    <workspace-bet-history-cash-out *ngIf="myBetsTab === 0" [cashOutData]="myBetsObject.cashOut"></workspace-bet-history-cash-out>
+    <workspace-bet-history-live-now *ngIf="myBetsTab === 1" [liveNowData]="myBetsObject.liveNow"></workspace-bet-history-live-now>
+    <workspace-bet-history-unsettled *ngIf="myBetsTab === 2" [unsettledData]="myBetsObject.unsettled"></workspace-bet-history-unsettled>
+    <workspace-bet-history-settled *ngIf="myBetsTab === 3" [settledData]="myBetsObject.settled"></workspace-bet-history-settled>
+    <workspace-bet-history-all *ngIf="myBetsTab === 4" [allData]="myBetsObject.all"></workspace-bet-history-all>
+  </div>
+  <div class="loading-wrapper" [ngClass]="{'hide_it': !myBetsLoading}">
+    <div class="_loader"></div>
+  </div>
+</div>

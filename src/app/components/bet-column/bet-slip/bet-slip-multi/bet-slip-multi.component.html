@@ -1,0 +1,102 @@
+<div id="bet__slip_multi">
+  <div class="bet__slip-picks_wrapper">
+    <div class="bet__slip-pick" *ngFor="let picked of pickedItems; let i = index"
+      [ngClass]="{'pick_blocked': picked.isBlocked, 'isConflict': picked.isConflict}">
+      <div class="bet__slip-pick_remove_wrapper">
+        <span class="bet__slip-pick_remove" (click)="removeThisItem(picked, i)">
+          <i class="far fa-trash-alt"></i>
+          <span>Delete</span>
+        </span>
+      </div>
+      <div class="bet__slip-pick_infos">
+        <div class="bet__slip-pick_infos_selected">{{whatShouldIDisplay(picked.selectedOption, picked)}}
+        </div>
+        <div class="bet__slip-pick_infos_res">{{ picked.marketName }}</div>
+        <div class="bet__slip-pick_infos_teams">
+          {{picked.team1Name}} - {{picked.team2Name}}
+        </div>
+      </div>
+      <div class="bet__slip-pick_stake">
+        <span class="bet__slip_odds" *ngIf="picked.isBlocked !== 1">{{ picked.price | number : '1.2-2'}}</span>
+        <span class="input__stake_wrapper" *ngIf="picked.isBlocked !== 1" >
+          <div [ngClass]="{'error': picked.stakeError && !bankerEnabled}">
+<!--            <input class="input__stake" placeholder="Stake" type="number" value="{{picked.stake}}" (click)="showNumpad($event, i); input.select()" (keyup)="valFromInput($event, i)" #input/>-->
+                     <input *ngIf="!bankerEnabled" class="input__stake" placeholder="Stake" type="number" value="{{picked.stake}}" #input/>
+            <span class="banker_button" *ngIf="bankerEnabled" [ngClass]="{'active': picked.isBanker}" (click)="checkBanker(picked, i)">B</span>
+
+          </div>
+           <span class="_returns" *ngIf="!bankerEnabled &&
+                                         picked.stake !== '' &&
+                                         picked.stake !== 'NaN' &&
+                                         picked.isBlocked !== 1 &&
+                                        !picked.minStakeError &&
+                                        !picked.maxStakeError">Returns ¥{{ picked.possibleWin  | number : '1.2-2'}}</span>
+        </span>
+        <span *ngIf="picked.isBlocked === 1" class="bet__slip_odds_locked">
+          Closed
+        </span>
+      </div>
+    </div>
+    <div>
+      <div class="bet__slip-pick trebles" #trebles>
+        <div class="trebles-title">
+          <ng-container *ngIf="!bankerEnabled">
+          <div class="subtitle">Trebles</div>
+          <span (click)="showMoreTrebles(trebles)">Show more multiples<i class="fas fa-chevron-down"></i></span>
+          </ng-container>
+          <ng-container *ngIf="bankerEnabled">
+          <div class="subtitle banker" (click)="showMoreTrebles(trebles)">{{bankerTitle}}</div>
+          </ng-container>
+        </div>
+        <div class="trebles-stake">
+
+        <span class="trebles-stake-wrapper">
+          <div>
+              <span *ngIf="!bankerEnabled" class="trebles-stake-odds">{{ 2.99 | number : '1.2-2'}}</span>
+              <div>
+              <input class="input__stake" placeholder="Stake" type="number">
+              </div>
+          </div>
+        <span class="__returns">Possible Return ¥44.65</span>
+        </span>
+        </div>
+      </div>
+      <div style="display: none;">
+        <ng-container *ngIf="!bankerEnabled">
+          <div class="bet__slip-pick more-multiples">
+            <div class="more-multiples-title">Singles</div>
+            <input  class="input__stake" placeholder="Stake" type="number"/>
+          </div>
+          <div class="bet__slip-pick more-multiples">
+            <div class="more-multiples-title">Doubles</div>
+            <input  class="input__stake" placeholder="Stake" type="number"/>
+          </div>
+          <div class="bet__slip-pick more-multiples">
+            <div class="more-multiples-title">Trebles</div>
+            <input  class="input__stake" placeholder="Stake" type="number"/>
+          </div>
+          <div class="bet__slip-pick more-multiples">
+            <div class="more-multiples-title">4 Folds</div>
+            <input  class="input__stake" placeholder="Stake" type="number"/>
+          </div>
+          <div class="bet__slip-pick more-multiples">
+            <div class="more-multiples-title">Super Yankee</div>
+            <input  class="input__stake" placeholder="Stake" type="number"/>
+          </div>
+          <div class="bet__slip-pick more-multiples">
+            <div class="more-multiples-title">Luck 31</div>
+            <input  class="input__stake" placeholder="Stake" type="number"/>
+          </div>
+        </ng-container>
+        <ng-container  *ngIf="bankerEnabled">
+          <ng-container *ngFor="let pick of pickedItems">
+            <div *ngIf="!pick.isBanker" class="bet__slip-pick more-multiples">
+              <div class="more-multiples-title">{{isBanker}}B+x/{{notBanker}}</div>
+              <input  class="input__stake" placeholder="Stake" type="number"/>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

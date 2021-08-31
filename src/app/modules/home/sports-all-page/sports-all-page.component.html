@@ -1,0 +1,192 @@
+<main>
+  <div class="container__row" [class.isEventView]="isEventView">
+    <div class="container__col-3 hidden-lg-down with_scrollbar left_section" *ngIf="isEventView">
+      <div>
+        <perfect-scrollbar>
+          <workspace-left-column-nav [gameId]="gameInfo?.gameId" [activeSportId]="gameInfo?.sportId"></workspace-left-column-nav>
+        </perfect-scrollbar>
+      </div>
+    </div>
+    <div class="right_container">
+      <div class="container__col-xs-12 container__col-lg-6 with_scrollbar center_section" [ngClass]="{
+          'container__col-lg-6': isEventView,
+          'container__col-lg-9 sports_all_page': !isEventView
+        }">
+        <div>
+
+          <!--<workspace-breadcrumbs [homeUrl]="'/home/sportbook'" [routeArr]="kindaSportObj"></workspace-breadcrumbs>-->
+
+          <div class="sports_all">
+            <perfect-scrollbar #perfectScroll>
+              <div class="sports_all_page">
+                <div class="container__fluid">
+                  <div class="sports_all_page_menu hidden-lg-down">
+                    <ul class="smaller_menu">
+                      <li [class.active]="!isEventView" (click)="redirectTo(false)"><span>{{ 'rest.overview' |
+                          translate }}</span></li>
+                      <li [class.active]="isEventView" (click)="redirectTo(true)"><span>{{ 'rest.eventView' |
+                          translate }}</span></li>
+                    </ul>
+                  </div>
+                  <ng-container *ngIf="!isEventView">
+                    <div class="sports_all_page_categories">
+                      <div class="sports_all_page_categories_sub">
+                        <span *ngIf="showNavigationLeft()" class="sports_all_page_categories_toLeft" (click)="scrollLeft()">
+                          <span>
+                            <span class="go_to_left">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                          </span>
+                        </span>
+                        <ul #scrollEl *ngIf="sportsCategories?.length">
+                          <li *ngFor="let category of sportsCategories" class="sports_all_page_category_item">
+                            <div [ngClass]="{'active': category.selected}" (click)="changeCategory(category, true)">
+                              <!-- <i class="fa {{getGameIcon(category)}}"></i> -->
+                              <img [src]="getGameIcon(category) ? getGameIcon(category) : 'assets/images/icons/sports/soccer.png'" alt="" />
+                              <span>{{category.name}}</span>
+                            </div>
+                          </li>
+                        </ul>
+                        <span *ngIf="showNavigationRight()" class="sports_all_page_categories_toRight" (click)="scrollRight()">
+                          <span>
+                            <span class="go_to_right">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="sports_all_page_content" *ngIf="kindaSport && kindaSport.name !== ''">
+                      <div class="sports_all_page_content_header solid__blue__header">
+                        <span class="hidden-lg-down">{{kindaSport.name | titlecase}}</span>
+                        <span *ngIf="selectOptions?.length">
+                          <span>{{'rest.view' | translate}}</span>
+                          <workspace-ohb-select [options]="selectOptions" [selected]="defaultOption"
+                            (changeValue)="selectMarket($event)">
+                          </workspace-ohb-select>
+                        </span>
+                      </div>
+                      <div class="sports_all_page_content_body">
+                        <ng-container>
+                          <div class="sports_all_page_content_body_row" *ngFor="let item of competitions">
+                            <div class="sports_all_page_content_body_row_header">
+
+                              <span>{{item.region['name']}} - {{item['name']}}</span>
+                              <div>
+                                <span *ngFor="let head of actualTableHeader">{{head}}</span>
+                              </div>
+                            </div>
+                            <div class="sports_all_page_content_body_row_body">
+                              <div class="single_row" *ngFor="let game of item['game']; trackBy: trackByFn;">
+                                <div class="single_row_teams_wrap">
+                                  <div class="mobile_time">
+                                    <div class="live__icon">
+                                      <ng-container *ngIf="liveStreamIds.includes(game.id)">
+                                        <div (click)="watchLive(game)"><i class="fa fa-play"></i></div>
+                                        <span>LIVE</span>
+                                      </ng-container>
+                                      <ng-container *ngIf="!liveStreamIds.includes(game.id)">
+                                        <i class="court" (click)="showAnimation(game)"></i>
+                                      </ng-container>
+                                      <span class="count">{{game.markets_count}} ></span>
+                                      <!-- <span class="count">+{{game.markets_count}}</span> -->
+                                    </div>
+                                    <div class="start__time" #time>
+                                      <div>
+                                        <span *ngIf="game.is_started !== 1">{{'inPlay.notStarted' | translate}}</span>
+                                        <span *ngIf="game.is_started === 1">
+                                          <ng-container *ngIf="game.info.current_game_state !== 'Half Time'">
+                                            <!-- <span>{{game.info.current_game_time ? getCurrentTime(game.info) :
+                                              '00'}}{{'inPlay.m' | translate}}</span> -->
+                                            <span *ngIf="kindaSport && kindaSport?.id == 1">{{game.info.current_game_time ? getCurrentTime(game.info) : '00'}}{{'inPlay.m' | translate}}</span>
+                                            <span *ngIf="kindaSport && kindaSport?.id != 1">{{ utility.getGameState(game.info.current_game_state, kindaSport?.id) }}</span>
+                                            <!-- <span *ngIf="game.match_time">{{game.match_time}}:{{seconds}}</span> -->
+                                          </ng-container>
+
+                                          <span
+                                            *ngIf="game.info.current_game_state === 'Half Time'">{{ utility.getGameState(game.info.current_game_state, kindaSport?.id) }}</span>
+                                        </span>
+                                      </div>
+                                      <span (click)="goToInPlay(game)">{{game.markets_count}} ></span>
+                                    </div>
+                                  </div>
+
+                                  <div class="single_row_teams_wrap_teams">
+                                    <div class="single_row_teams_wrap_teams-name" (click)="goToInPlay(game)">
+                                      <span>{{game['team1_name']}}
+                                        <span *ngIf="game.team1_goal" class="goal">GOAL</span>
+                                      </span>
+                                      <span>{{game['team2_name']}}
+                                        <span *ngIf="game.team2_goal" class="goal">GOAL</span>
+                                      </span>
+                                    </div>
+                                    <div class="single_row_teams_wrap_score ">
+                                      <div>{{game['info']?.score1}}</div>
+                                      <div>{{game['info']?.score2}}</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="single_row_picks">
+                                    <ng-container *ngFor="let markets of game['market'] | keyvalue">
+                                      <ng-container *ngIf="markets.value['market_type'] === kindaMarket">
+                                        <ng-container *ngFor="let pick of markets.value['event'] | keyvalue:orderAsc">
+                                          <div class="row_item_pick">
+                                            <div class="pick__button can_pick"
+                                              [ngClass]="{'__is_picked': shouldHasPickedClass(pick.value['id']), 'is_blocked' : game.is_blocked === 1}"
+                                              (click)="addBetToCart(pick, game, markets)">
+                                              <span *ngIf="kindaMarket !== 'AsianHandicap'" class="base">{{pick.value['base'] | number : '1.1-1'}}</span>
+                                              <span *ngIf="kindaMarket === 'AsianHandicap'" class="base">{{pick.value['base'] | formatBase}}</span>
+                                              <div>{{pick.value['price'] | oddsFormat: os.oddFormatName}}</div>
+                                            </div>
+                                            <div class="disabled_container">
+                                              <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                                            </div>
+                                          </div>
+                                        </ng-container>
+                                      </ng-container>
+                                    </ng-container>
+                                    <ng-container *ngIf="objectKeys(game['market']).length === 0">
+                                      <div class="row_item_pick" *ngFor="let item of actualTableHeader">
+                                        <div class="disabled_container">
+                                          <div class="pick__button disabled"><i class="fas fa-lock"></i></div>
+                                        </div>
+                                      </div>
+                                    </ng-container>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="isEventView">
+                    <workspace-markets [perfectScroll]="perfectScroll" [gameInfo]="gameInfo" (navigateOverview)="isEventView = false"></workspace-markets>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="hidden-lg-up">
+                <workspace-casino-games></workspace-casino-games>
+              </div>
+              <workspace-footer></workspace-footer>
+            </perfect-scrollbar>
+          </div>
+
+        </div>
+      </div>
+      <div class="container__col-xs-12 container__col-lg-3 with_scrollbar right_section">
+        <perfect-scrollbar>
+          <div>
+            <workspace-live-event *ngIf="!isMobile" [gameInfo]="gameInfo"></workspace-live-event>
+            <workspace-bet-history *ngIf="userLogged"></workspace-bet-history>
+            <!-- <div class="hidden-md-down">
+              <workspace-featured></workspace-featured>
+            </div> -->
+            <workspace-casino-games></workspace-casino-games>
+            <workspace-casino-promotions></workspace-casino-promotions>
+          </div>
+        </perfect-scrollbar>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,76 @@
+<div class="categories">
+  <div class="categories_sub">
+    <ul>
+      <li [class.active]="selectedCategory == 'Sports'" (click)="changeTab('Sports')">
+        <span>{{ 'nav.navSp' | translate }}</span>
+      </li>
+      <li [class.active]="selectedCategory == 'InPlay'" (click)="changeTab('InPlay')">
+        <span>{{ 'nav.navInP' | translate }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="sports-list" [class.ios]="isMobileSafari()">
+  <perfect-scrollbar>
+    <div class="left__nav" *ngIf="leftSideMenuV2.length">
+      <ul class="left__nav__nodes" [workspaceTransitionGroup]="'flip-list'">
+        <li routerLink="/sportsbook/home" [routerLinkActive]="'active'" *ngIf="selectedCategory === 'Sports'">
+          <div>
+            <div class="nav__nodes__wrapper">
+              <span class="nav__nodes__parent sport__ sport__icon">
+                <i class="fa"></i>
+                <div>{{ 'nav.navHm' | translate}}</div>
+              </span>
+              <div class="__btns">
+                <span class="fas fa-home" ></span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li *ngFor="let item of leftSideMenuV2;let i = index;"
+          [workspaceTransitionGroupItem]="!item.childrenNode || !item.childrenNode.length">
+          <div #childrenNode [ngClass]="{'active': item.extend}">
+            <div class="nav__nodes__wrapper" (click)="expandElements(item)">
+              <span class="nav__nodes__parent sport__icon sport__{{item.sportype | lowercase}}"
+                (click)="goToSportPage(item)">
+                <!-- <i class="fa {{item.icon}}"></i> -->
+                <img [src]="item.icon" />
+                <div>{{ item.name }}</div>
+              </span>
+              <div class="__btns">
+                <span class="favourite" *ngIf="selectedCategory === 'Sports' && !item.childrenNode && item.favourite !== undefined"
+                  [ngClass]="{'fas __true': item.favourite, 'far' : !item.favourite}"
+                  (click)="addToFavourite(item)"></span>
+                <div class="total-events" *ngIf="!item.childrenNode && selectedCategory === 'InPlay'">
+                  {{item.game}} Event
+                </div>
+                <span class="menu__opener" *ngIf="item.childrenNode && item.childrenNode.length"
+                  [ngClass]="{'inactive' : !item.childrenNode || !item.childrenNode.length}">
+                  <i class="fas fa-angle-down"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <ul *ngIf="item.extend">
+            <li *ngFor="let child of item.childrenNode">
+              <div class="nav__nodes__wrapper firstChild" #grandChildrenNode>
+                <span (click)="goToSportPage(child)">
+                  <!-- <i class="fa {{child.icon}}"></i> -->
+                  <img [src]="child.icon" />
+                  <div>{{child.name}}</div>
+                </span>
+                <div class="__btns">
+                  <span class="favourite" *ngIf="selectedCategory === 'Sports'" [ngClass]="{'fas __true': child.favourite, 'far' : !child.favourite}"
+                    (click)="addToFavourite(child, item)"></span>
+                  <div class="total-events" *ngIf="selectedCategory === 'InPlay'">
+                    {{child.game}} Event
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </perfect-scrollbar>
+</div>

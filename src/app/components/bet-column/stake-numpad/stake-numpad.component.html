@@ -1,0 +1,51 @@
+<div class="stake__numpad">
+  <div class="stake__numpad_sub">
+    <div class="stake__numpad_keys">
+      <button class="stake__one" (click)="buttonClick('1')">1</button>
+      <button class="stake__two" (click)="buttonClick('2')">2</button>
+      <button class="stake__three" (click)="buttonClick('3')">3</button>
+      <button class="stake__delete" (click)="buttonClick('remove')"><i class="fas fa-backspace"></i></button>
+      <button class="stake__four" (click)="buttonClick('4')">4</button>
+      <button class="stake__five" (click)="buttonClick('5')">5</button>
+      <button class="stake__six" (click)="buttonClick('6')">6</button>
+      <button class="stake__ok" (click)="buttonClick('enter')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20.364" height="17.364" viewBox="0 0 20.364 17.364">
+          <defs>
+            <style>
+              .cls-1 {
+                fill: none;
+                stroke: #838383;
+                stroke-width: 2px;
+              }
+            </style>
+          </defs>
+          <g id="Group_1397" data-name="Group 1397" transform="translate(-319.636 -678)">
+            <line id="Line_429" data-name="Line 429" class="cls-1" y2="12" transform="translate(339 678)"/>
+            <line id="Line_430" data-name="Line 430" class="cls-1" x2="17" transform="translate(322 689)"/>
+            <g id="Group_1396" data-name="Group 1396" transform="translate(585.508 -21.642) rotate(45)">
+              <line id="Line_431" data-name="Line 431" class="cls-1" y1="9" transform="translate(315.5 681.5)"/>
+              <line id="Line_432" data-name="Line 432" class="cls-1" x2="9" transform="translate(314.5 689.5)"/>
+            </g>
+          </g>
+        </svg>
+
+      </button>
+      <button class="stake__seven" (click)="buttonClick('7')">7</button>
+      <button class="stake__eight" (click)="buttonClick('8')">8</button>
+      <button class="stake__nine" (click)="buttonClick('9')">9</button>
+      <button class="stake__zero" (click)="buttonClick('0')">0</button>
+      <button class="stake__zero_zero" (click)="buttonClick('00')">00</button>
+
+
+      <button class="stake__dot" (click)="buttonClick('.')">.</button>
+
+
+    </div>
+    <div class="stake__numpad_incremental">
+      <button (click)="addVal(5)">+5</button>
+      <button (click)="addVal(10)">+10</button>
+      <button (click)="addVal(50)">+50</button>
+      <button (click)="addVal(100)">+100</button>
+    </div>
+  </div>
+</div>

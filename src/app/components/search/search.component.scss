@@ -1,0 +1,69 @@
+@import "../../../mixins";
+
+::ng-deep workspace-search{
+  display: inline-block;
+  input{
+    width: 250px;
+  }
+  & > div{
+    position: relative;
+    .search_result{
+      max-height: 250px;
+      overflow-y:auto;
+      position: absolute;
+      background: #1d1e20;
+      color: #fff;
+      border-radius: 5px;
+      width: 100%;
+      z-index: 200;
+      padding:10px 0;
+      .search_games{
+        & > ul{
+          & > li{
+            & > div{
+              padding:5px;
+              .sport_name{
+                font-size: rem-calc(16);
+                margin-bottom: 5px;
+              }
+              .sport_link{
+                padding: 3px 0;
+                cursor: pointer;
+                div:first-child{
+                  font-size: rem-calc(13);
+                }
+                div:last-child{
+                  font-size: rem-calc(11);
+                }
+              }
+            }
+          }
+        }
+      }
+      .search_competition{
+        & > ul{
+          & > li{
+            & > div{
+              padding:5px;
+              .sport_name{
+                font-size: rem-calc(16);
+                margin-bottom: 5px;
+              }
+              .sport_link{
+                padding: 3px 0;
+                cursor: pointer;
+                div:first-child{
+                  font-size: rem-calc(13);
+                }
+                div:last-child{
+                  font-size: rem-calc(11);
+                }
+              }
+            }
+          }
+        }
+        border-top: 1px solid var(--plain-white);
+      }
+    }
+  }
+}

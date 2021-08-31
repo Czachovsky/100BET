@@ -1,0 +1,63 @@
+@import '../../../../mixins';
+
+main {
+  margin: 13.7px 19.2px 0 20px;
+
+  @include lower-than(1500px) {
+    padding: 0 15px;
+  }
+  @include lower-than('md') {
+    padding: 0;
+    margin: 0;
+  }
+
+  .container__row {
+
+    .with_scrollbar {
+      @include lower-than('lg') {
+        height: auto;
+        overflow: auto;
+      }
+    }
+
+    .center_section {
+      padding-right: 0;
+      @include higher-than('lg'){
+        flex: 0 0 70.821%;
+        max-width: 70.821%;
+      }
+      .sports_all {
+        height: calc(100vh - 89px);
+        margin-right: 14.7px;
+
+        ::ng-deep workspace-footer footer {
+          @include lower-than(1110px){
+            padding: 20px;
+          }
+        }
+      }
+
+    }
+
+    .right_section {
+      height: calc(100vh - 89px);
+      @include higher-than('lg'){
+        flex: 0 0 29.1791%;
+        max-width: 29.1791%;
+      }
+    }
+  }
+}
+
+.my_bets_section {
+  ::ng-deep .my_bets-buttons .button {
+    color: #262626 !important;
+    background-color: #afafaf !important;
+    border-color: #afafaf;
+  }
+
+  ::ng-deep .solid__blue__header {
+    display: none !important;
+  }
+}
+

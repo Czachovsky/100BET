@@ -1,0 +1,144 @@
+[
+  {
+    "nodeName": "Soccer",
+    "favourite": true,
+    "extend": false,
+    "childrenNode": [
+      {
+        "nodeName": "England",
+        "favourite": false
+      },
+      {
+        "nodeName": "Spain",
+        "favourite": false,
+      },
+      {
+        "nodeName": "France",
+        "favourite": false,
+      },
+      {
+        "nodeName": "Germany",
+        "favourite": true,
+        "grandChildrenNode": [
+          {
+            "nodeName": "German Bundesliga",
+            "searchId": "german-bundesliga",
+            "favourite": true,
+            "children": []
+          },
+          {
+            "nodeName": "German Bundesliga 2",
+            "searchId": "german-bundesliga_2",
+            "favourite": false,
+            "children": []
+          },
+          {
+            "nodeName": "German 3 Liga",
+            "searchId": "german-3-liga",
+            "favourite": false,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nodeName": "Tennis",
+    "favourite": false,
+    "extend": false,
+    "childrenNode": [
+      {
+        "nodeName": "England",
+        "favourite": false
+      },
+      {
+        "nodeName": "Spain",
+        "favourite": false
+      },
+      {
+        "nodeName": "France",
+        "favourite": false
+      },
+      {
+        "nodeName": "Germany",
+        "favourite": false
+      }
+    ]
+  },
+  {
+    "nodeName": "Volleyball",
+    "favourite": false,
+    "extend": false,
+    "childrenNode": [
+      {
+        "nodeName": "England"
+      },
+      {
+        "nodeName": "Spain"
+      },
+      {
+        "nodeName": "France"
+      },
+      {
+        "nodeName": "Germany"
+      }
+    ]
+  },
+  {
+    "nodeName": "Golf",
+    "favourite": false,
+    "extend": false,
+    "childrenNode": [
+      {
+        "nodeName": "England"
+      },
+      {
+        "nodeName": "Spain"
+      },
+      {
+        "nodeName": "France"
+      },
+      {
+        "nodeName": "Germany"
+      }
+    ]
+  },
+  {
+    "nodeName": "Boxing",
+    "favourite": false,
+    "extend": false,
+    "childrenNode": [
+      {
+        "nodeName": "England"
+      },
+      {
+        "nodeName": "Spain"
+      },
+      {
+        "nodeName": "France"
+      },
+      {
+        "nodeName": "Germany"
+      }
+    ]
+  },
+  {
+    "nodeName": "Esports",
+    "favourite": false,
+    "extend": false,
+    "childrenNode": [
+      {
+        "nodeName": "England"
+      },
+      {
+        "nodeName": "Spain"
+      },
+      {
+        "nodeName": "France"
+      },
+      {
+        "nodeName": "Germany"
+      }
+    ]
+  }
+]

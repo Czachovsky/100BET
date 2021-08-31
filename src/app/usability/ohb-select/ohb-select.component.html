@@ -1,0 +1,13 @@
+<div class="ohb-select" (clickOutside)="clickedOutside()" *ngIf="options?.length">
+  <div class="ohb-placeholder" (click)="checkState()" [ngClass]="{'opened': state}">
+    <span [innerHTML]="selected.noTranslate ? selected.optionDisplayName : ('selectTranslations.' + selected.optionDisplayName | translate)"></span>
+    <i class="fas fa-angle-down"></i>
+  </div>
+  <div class="ohb-options">
+    <ul [ngClass]="{'open': state}" #selectList>
+      <li *ngFor="let option of options" [value]="option.optionValue" (click)="selectOption(option)">
+        <span [innerHTML]="option.noTranslate ? option.optionDisplayName : ('selectTranslations.' + option.optionDisplayName | translate)"></span>
+      </li>
+    </ul>
+  </div>
+</div>

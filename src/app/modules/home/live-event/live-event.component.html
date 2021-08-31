@@ -1,0 +1,125 @@
+<div class="home__live-event" [ngClass]="{'loading_section' : isLoading}">
+  <div class="loading-wrapper" [ngClass]="{'hide_it': !isLoading}">
+    <div class="_loader"></div>
+  </div>
+  <a id="liveabc" style="visibility: hidden;"></a>
+  <div class="container__fluid">
+    <div class="solid__blue__header">
+      <span class="hidden-lg-down">{{'liveEvents.title' | translate}}</span>
+      <div class="home__live-event_header_menu">
+        <ul>
+          <li>
+            <a href="javascript:;" [class.__is_active]="activeTab === 'live'" *ngIf="streamUrl">
+              <span (click)="playLiveStream()">
+             <i class="live"></i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" [class.__is_active]="activeTab === 'court'">
+              <span (click)="activeTab = 'court';setAnimation();"><i class="court"></i></span>
+            </a>
+          </li>
+          <!-- <li>
+            <a href="javascript:;" [class.__is_active]="activeTab === 'stat'">
+              <span><i class="stat" (click)="activeTab = 'stat';destroyAnimation();"></i></span>
+            </a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+    <div class="home__live-event-wrapper">
+      <div class="home__live-event_teams" *ngIf="activeTab === 'stat' || !sportAnimation">
+        <span class="home__live-event_teams_team">
+          {{liveEvent?.team1_name}}
+        </span>
+        <span class="home__live-event_teams_score">
+          <span>
+            <span>{{liveEvent?.info?.score1}}</span>:<span>{{liveEvent?.info?.score2}}</span>
+          </span>
+          <div class="time" *ngIf="liveEvent">
+            <span *ngIf="liveEvent?.is_started !== 1">
+              {{liveEvent?.start_ts * 1000 | date: 'EEE'}} {{liveEvent?.start_ts * 1000 | date: 'd/M'}} {{liveEvent?.start_ts * 1000 | date: 'HH:mm' }}
+            </span>
+            <ng-container *ngIf="liveEvent?.is_started === 1">
+              <ng-container  *ngIf="liveEvent?.info.current_game_state !== 'Half Time'">
+                <span *ngIf="liveEvent?.is_started == 1 && gameInfo?.sportId == 1">{{liveEvent?.info?.current_game_time}}{{liveEvent?.info?.current_game_time ? 'm' : ''}}</span>
+                <span *ngIf="liveEvent?.is_started == 1 && gameInfo?.sportId != 1">{{utility.getGameState(liveEvent?.info.current_game_state, gameInfo?.sportId)}}</span>
+              </ng-container>
+              <ng-container  *ngIf="liveEvent?.info.current_game_state == 'Half Time'">
+                {{utility.getGameState(liveEvent?.info.current_game_state, gameInfo?.sportId)}}
+              </ng-container>
+            </ng-container>
+          </div>
+        </span>
+        <span class="home__live-event_teams_team">
+          {{liveEvent?.team2_name}}
+        </span>
+      </div>
+
+      <ng-container *ngIf="activeTab === 'live'">
+        <ng-container *ngIf="auth.isLoggedIn">
+          <div class="stream-header hidden-lg-down">
+            <div class="dropdown" (clickOutside)="clickedOutside()">
+              <div class="dropdown-placeholder" (click)="checkState()" [ngClass]="{'opened': state}">
+                <span>{{selected?.team1_name}} V {{selected?.team2_name}}</span>
+                <i class="fas fa-angle-down"></i>
+              </div>
+              <div class="dropdown-options">
+                  <ul [ngClass]="{'open': state}" #selectList>
+                    <perfect-scrollbar>
+                      <li *ngFor="let option of inPlaySports">
+                        <div class="sport-name">
+                          <img [src]="option.icon ? option.icon : 'assets/images/icons/sports/soccer.png'" alt="" />
+                          <!-- <i class="fa {{option.icon}}"></i> -->
+                          {{option.name}}
+                        </div>
+                        <ul>
+                          <ng-container *ngFor="let item of option?.competitions">
+                            <ng-container *ngFor="let game of item['game']; trackBy: trackByFn;">
+                              <li [value]="game" (click)="selectOption(game, option)" *ngIf="liveStreamIds.includes(game.id)">
+                                <span>{{game['team1_name']}} V {{game['team2_name']}}</span>
+                              </li>
+                            </ng-container>
+                          </ng-container>
+                        </ul>
+                      </li>
+                    </perfect-scrollbar>
+                  </ul>
+              </div>
+            </div>
+            <div class="pin" (click)="pinVideo()">
+              <i class="fas fa-thumbtack" [class.pinned]="utility.pinnedVideo"></i>
+            </div>
+          </div>
+          <div id="videojs_container">
+            <div class="video" id="live-video" *ngIf="streamUrl">
+              <video id="liveStream"
+                class="video-js live-stream vjs-default-skin vjs-big-play-centered vjs-big-play-button" controls
+                data-setup='{}'data-res="auto" >
+              </video>
+            </div>
+
+            <div class="no-stream" *ngIf="!streamUrl">
+              <h3>{{'liveEvents.noStream' | translate}}</h3>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!auth.isLoggedIn">
+          <div class="log-in-container">
+            <h3>{{'liveEvents.loginInfo' | translate}}</h3>
+            <button class="btn" (click)="logInAction()">{{'liveEvents.login' | translate}}</button>
+          </div>
+        </ng-container>
+
+      </ng-container>
+
+      <ng-container *ngIf="activeTab === 'court'">
+        <div class="home__live-event-body" *ngIf="!sportAnimation && !isLoading">
+          <img [src]="getFieldImageMobile()">
+        </div>
+        <div id="live-animation"></div>
+      </ng-container>
+    </div>
+  </div>
+</div>

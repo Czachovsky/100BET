@@ -1,0 +1,173 @@
+<div class="betting-records" [ngClass]="{'loading_section': loading}">
+  <div class="dashboard-header">
+    <div class="dashboard-header-sub">{{'dashboard.bettingRecords.b1' | translate}}</div>
+  </div>
+  <div class="casino_or_sportsbook">
+    <div [ngClass]="{'active': casinoOrNot === 0}" (click)="changeSection(0)">{{'dashboard.bettingRecords.b5' | translate}}</div>
+    <div [ngClass]="{'active': casinoOrNot === 1}" (click)="changeSection(1)">{{'dashboard.bettingRecords.b6' | translate}}</div>
+  </div>
+  <div class="betting-records-header">
+  <div>
+    <div class="betting-records-header-select" *ngIf='!casinoOrNot'>
+      <div>{{'dashboard.bettingRecords.b2' | translate}}</div>
+      <div>
+        <workspace-ohb-select [selected]="defaultBetTypeOption" [options]="selectBetTypeOptions" (changeValue)="changeBetType($event)"></workspace-ohb-select>
+      </div>
+    </div>
+    <div class="betting-records-header-select">
+      <div>{{'dashboard.bettingRecords.b3' | translate}}</div>
+      <div>
+        <workspace-ohb-select [selected]="defaultResult" [options]="selectResultOptions" (changeValue)="changeResult($event)"></workspace-ohb-select>
+      </div>
+    </div>
+    <div class="betting-records-header-select">
+      <div>{{'dashboard.bettingRecords.b4' | translate}}</div>
+      <div>
+        <div class="date-range-wrapper">
+          <mat-date-range-input [formGroup]="range" [rangePicker]="picker" (click)="picker.open()">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+      <button (click)="setFilters()" class="filter_records">{{'dashboard.bettingRecords.b7' | translate}}</button>
+    </div>
+  </div>
+  <div class="betting-records-body">
+    <div class="betting-records" [ngClass]="{'empty': !dataArray.length}">
+    <div class="no-records" *ngIf="!dataArray.length">
+      <div class="icon"><i class="far fa-times-circle"></i></div>
+      <div class="text">{{'dashboard.transactionRecords.t12' | translate}}</div>
+    </div>
+    <div class="betting-records-table" *ngIf="dataArray.length">
+      <div class="betting-records-table-header hidden-lg-down">
+        <div>{{'dashboard.bettingRecords.b8' | translate}}</div>
+        <div>{{'dashboard.bettingRecords.b9' | translate}}</div>
+        <div>{{'dashboard.bettingRecords.b10' | translate}}</div>
+        <div *ngIf='casinoOrNot'>{{'dashboard.bettingRecords.b25' | translate}}</div>
+        <div *ngIf='casinoOrNot'>{{'dashboard.bettingRecords.b27' | translate}}</div>
+        <div *ngIf='casinoOrNot'>{{'dashboard.bettingRecords.b28' | translate}}</div>
+        <div *ngIf='!casinoOrNot'>{{'dashboard.bettingRecords.b11' | translate}}</div>
+        <div *ngIf='!casinoOrNot'>{{'dashboard.bettingRecords.b12' | translate}}</div>
+        <div *ngIf='!casinoOrNot'>{{'dashboard.bettingRecords.b13' | translate}}</div>
+        <div>{{'dashboard.bettingRecords.b14' | translate}}</div>
+      </div>
+      <div class="betting-records-table-body">
+        <div class="betting-records-row" *ngFor="let bet of dataArray">
+          <div class="elements">
+            <div class="mobile_row hidden-lg-up">
+              <div class="mobile_type" *ngIf='!casinoOrNot'>{{betTypes[bet.type]}}</div>
+              <div class="mobile_type" *ngIf='casinoOrNot'>{{bet.product}}</div>
+              <div class="outcome" *ngIf='!casinoOrNot' [ngClass]="{'won' : bet.outcome === 3 || bet.outcome === 11, 'lost': bet.outcome === 1 || bet.outcome === 12}">{{betResults[bet.outcome]}}</div>
+              <div class="outcome" *ngIf='casinoOrNot' [ngClass]="{'won' : bet.operation === 1, 'lost' : bet.operation === 0}">
+                <ng-container *ngIf='bet.operation === 1'>{{'dashboard.bettingRecords.b23' | translate}}</ng-container>
+                <ng-container *ngIf='bet.operation === 0'>{{'dashboard.bettingRecords.b24' | translate}}</ng-container>
+              </div>
+            </div>
+            <div class="mobile_row hidden-lg-up">
+              <div class="mobile_id" *ngIf='!casinoOrNot'>ID {{bet.id}}</div>
+              <div class="mobile_id" *ngIf='casinoOrNot'>ID {{bet.bet_id}}</div>
+              <div class="mobile_date">{{bet.date_time * 1000 | customDate: true}}</div>
+            </div>
+            <div class="hidden-lg-down" *ngIf='!casinoOrNot'>{{bet.id}}</div>
+            <div class="hidden-lg-down" *ngIf='casinoOrNot'>{{bet.bet_id}}</div>
+            <div class="hidden-lg-down">{{bet.date_time * 1000 | customDate: true}}</div>
+            <div class="hidden-lg-down" *ngIf='!casinoOrNot'>{{betTypes[bet.type]}}</div>
+            <div class="hidden-lg-down" *ngIf='casinoOrNot'>{{bet.product}}</div>
+            <div class="hidden-lg-down" *ngIf='!casinoOrNot'>{{bet.amount | number: '1.2-2'}}</div>
+            <div class="hidden-lg-down" *ngIf='casinoOrNot'>{{bet.game}}</div>
+            <div class="hidden-lg-down"*ngIf='!casinoOrNot'>{{bet.k | number: '1.2-2'}}</div>
+            <div class="hidden-lg-down"*ngIf='casinoOrNot'><ng-container *ngIf='bet.amount > 0'>+</ng-container>{{bet.amount | number: '1.2-2'}}</div>
+            <div class="hidden-lg-down" *ngIf='!casinoOrNot'>
+              <ng-container *ngIf="bet.outcome != 0 && bet.payout; else noPayOut">{{bet.payout | number: '1.2-2'}}</ng-container>
+              <ng-template #noPayOut>
+                0.00
+              </ng-template>
+            </div>
+            <div class="hidden-lg-down" *ngIf='casinoOrNot'>{{bet.balance | number: '1.2-2'}}</div>
+            <div class="outcome hidden-lg-down" *ngIf='!casinoOrNot' [ngClass]="{'won' : bet.outcome === 3 || bet.outcome === 11, 'lost': bet.outcome === 1 || bet.outcome === 12}">{{betResults[bet.outcome]}}</div>
+            <div class="outcome hidden-lg-down" *ngIf='casinoOrNot' [ngClass]="{'won' : bet.operation === 1, 'lost' : bet.operation === 0}">
+              <ng-container *ngIf='bet.operation === 1'>{{'dashboard.bettingRecords.b23' | translate}}</ng-container>
+              <ng-container *ngIf='bet.operation === 0'>{{'dashboard.bettingRecords.b24' | translate}}</ng-container>
+            </div>
+            <div class="show_more" [ngClass]="{'active': bet.showMore, 'hidden-lg-up': casinoOrNot}" (click)="bet.showMore = !bet.showMore"><i class="fas fa-chevron-down"></i></div>
+          </div>
+          <div class="more_bets" *ngIf="bet.showMore">
+            <div class="more_bets_header hidden-lg-down">
+              <div>{{'dashboard.bettingRecords.b15' | translate}}</div>
+              <div>{{'dashboard.bettingRecords.b16' | translate}}</div>
+              <div>{{'dashboard.bettingRecords.b17' | translate}}</div>
+              <div>{{'dashboard.bettingRecords.b18' | translate}}</div>
+              <div>{{'dashboard.bettingRecords.b19' | translate}}</div>
+            </div>
+            <div class="more_bets_body">
+              <div class="mobile_body_row hidden-lg-up">
+                <div *ngIf='!casinoOrNot'>
+                  <div>{{'dashboard.bettingRecords.b20' | translate}}</div>
+                  <div>{{bet.amount | number: '1.2-2'}}</div>
+                </div>
+                <div *ngIf='!casinoOrNot'>
+                  <div>{{'dashboard.bettingRecords.b21' | translate}}</div>
+                  <div>{{bet.k | number: '1.2-2'}}</div>
+                </div>
+                <div *ngIf='!casinoOrNot'>
+                  <div>{{'dashboard.bettingRecords.b22' | translate}}</div>
+                  <div>
+                    <ng-container *ngIf="bet.outcome != 0 && bet.payout; else noPayOut">{{bet.payout | number: '1.2-2'}}</ng-container>
+                    <ng-template #noPayOut>
+                      0.00
+                    </ng-template>
+                  </div>
+                </div>
+                <div *ngIf='casinoOrNot'>
+                  <div>{{'dashboard.bettingRecords.b26' | translate}}</div>
+                  <div>{{bet.game}}</div>
+                </div>
+                <div *ngIf='casinoOrNot'>
+                  <div>{{'dashboard.bettingRecords.b27' | translate}}</div>
+                  <div>
+                    <ng-container *ngIf='bet.amount > 0'>+</ng-container>{{bet.amount | number: '1.2-2'}}</div>
+                </div>
+                <div *ngIf='casinoOrNot'>
+                    <div>{{'dashboard.bettingRecords.b28' | translate}}</div>
+                    <div>{{bet.balance | number: '1.2-2'}}</div>
+                </div>
+              </div>
+              <div class="mobile_body_row hidden-lg-up" *ngFor="let event of bet.events">
+                <div>
+                  <div>{{event.game_start_date * 1000 | customDate: true}}</div>
+                  <div></div>
+                </div>
+                <div>
+                  <div>{{event.game_name}}</div>
+                  <div>{{betResults[event.outcome]}}</div>
+                </div>
+                <div>
+                  <div>{{event.market_name ? event.market_name + ": ": ""}}{{event.basis ? event.basis : event.event_name}}</div>
+                  <div>{{event.coeficient}}</div>
+                </div>
+              </div>
+              <div class="more_bets_body_row hidden-lg-down" *ngFor="let event of bet.events">
+                <div>{{event.game_start_date * 1000 | customDate: true}}</div>
+                <div>{{event.game_name}}</div>
+                <div>{{event.market_name ? event.market_name + ": ": ""}}{{event.basis ? event.basis : event.event_name}}</div>
+                <div>{{event.coeficient}}</div>
+                <div>{{betResults[event.outcome]}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </div>
+  <div class="loading-wrapper" *ngIf="loading">
+    <div class="_loader"></div>
+  </div>
+</div>
